@@ -67,8 +67,13 @@ export default function HomePage() {
     }
     acCacheRef.current.set(q, { t: Date.now(), data })
   }
-// 👇 PASTE IT RIGHT HERE (anywhere before return is fine)
+  // Desktop/tablet only: lock scroll while loading (avoid mobile layout "disforming")
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const isSmUp = window.matchMedia('(min-width: 640px)').matches
+    if (!isSmUp) return
+
     if (loading) {
       document.body.style.overflow = 'hidden'
       document.body.style.touchAction = 'none'
@@ -82,6 +87,7 @@ export default function HomePage() {
       document.body.style.touchAction = ''
     }
   }, [loading])
+
 
   useEffect(() => {
     if (query.length < 2) {
@@ -262,11 +268,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div
-  className={`min-h-screen bg-[var(--bg-primary)] ${
-    loading ? 'overflow-hidden' : ''
-  }`}
->
+    <div className={`min-h-screen bg-[var(--bg-primary)] ${loading ? 'sm:overflow-hidden' : ''}`}>
       <Header />
 
       {/* HERO - FULLY RESPONSIVE */}
@@ -282,7 +284,7 @@ export default function HomePage() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="text-xs sm:text-sm font-medium text-[var(--text-secondary)]">
+            <span className="text-[14px] sm:text-sm font-medium text-[var(--text-secondary)]">
               Trusted by <span className="text-[var(--text-primary)] font-semibold">10,000+</span> NYC renters
             </span>
           </div>
@@ -317,7 +319,7 @@ export default function HomePage() {
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Enter NYC address..."
-                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 md:py-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-base transition-all"
+                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 md:py-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-[16px] sm:text-lg transition-all"
                   />
                 </div>
 
@@ -353,7 +355,7 @@ export default function HomePage() {
                       }`}
                     >
                       <div className="font-medium text-sm sm:text-base line-clamp-1">{s.address}</div>
-                      <div className="text-xs sm:text-sm text-[var(--text-muted)] mt-0.5 line-clamp-1">
+                      <div className="text-sm sm:text-sm text-[var(--text-muted)] mt-0.5 line-clamp-1">
                         {s.neighborhood ? `${s.neighborhood}, ` : ''}
                         {s.borough}
                         {s.zipcode ? ` ${s.zipcode}` : ''}
@@ -364,12 +366,23 @@ export default function HomePage() {
               )}
             </form>
 
-            {/* UNIVERSAL RESPONSIVE LOADING SCREEN */}
+            {/* MOBILE: fixed overlay loading (no reflow / no “disforming”) */}
             {loading && (
-  <div
-    aria-hidden
-    className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 mt-4 sm:mt-6 pointer-events-none select-none"
-  >
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden">
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-center mx-4">
+                  <div className="mx-auto mb-4 animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-blue-600" />
+                  <p className="text-base font-medium">Checking building safety...</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-1">Searching 55+ data sources</p>
+                </div>
+              </div>
+            )}
+
+            {/* SM+: keep your existing in-flow loading block */}
+            {loading && (
+              <div
+                aria-hidden
+                className="hidden sm:flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 mt-4 sm:mt-6 pointer-events-none select-none"
+              >
                 <div className="relative mb-4 sm:mb-5">
                   <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-gray-200"></div>
                   <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
@@ -377,14 +390,15 @@ export default function HomePage() {
                 <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 dark:text-gray-300 text-center px-4">
                   Checking building safety...
                 </p>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-2 text-center px-4">
+                <p className="text-sm sm:text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-2 text-center px-4">
                   Searching 55+ data sources
                 </p>
               </div>
             )}
+
           </div>
 
-          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
               <span className="text-[var(--text-muted)]">Instant Results</span>
