@@ -506,52 +506,40 @@ export default function BuildingPage() {
           </div>
         )}
 
-           {/* Tabs */}
+        {/* Tabs */}
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-          {[
-            { id: 'overview', label: 'Overview', icon: Home },
-            { id: 'violations', label: 'Violations', icon: AlertTriangle },
-            { id: 'complaints', label: 'Complaints', icon: FileText },
-            { id: 'timeline', label: 'Timeline', icon: History },
-            { id: 'landlord', label: 'Landlord', icon: Users },
-            { id: 'permits', label: 'Permits', icon: Hammer },
-            { id: 'sales', label: 'Sales', icon: DollarSign },
-            { id: 'neighborhood', label: 'Neighborhood', icon: MapPin },
-          ].map(t => (
-            <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id as Tab)}
-              className={`tab flex items-center gap-2 ${activeTab === t.id ? 'tab-active' : ''}`}
-            >
-              <t.icon size={16} />
-              {t.label}
+          {tabs.map(t => (
+            <button key={t.id} onClick={() => setTab(t.id as Tab)} className={`tab flex items-center gap-2 ${tab === t.id ? 'tab-active' : ''}`}>
+              <t.icon size={16} />{t.label}
             </button>
           ))}
         </div>
 
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div className="space-y-6">
-            {/* Score Breakdown */}
-            <div className="card p-6">
-              <h2 className="text-2xl font-bold mb-6">Score Breakdown</h2>
-              <div className="grid sm:grid-cols-3 gap-6">
-                {data.categoryScores.map((cat: any) => (
-                  <div key={cat.category} className="text-center">
-                    <div
-                      className="w-24 h-24 mx-auto mb-3 rounded-full flex items-center justify-center text-2xl font-bold"
-                      style={{
-                        background: `conic-gradient(${cat.color} ${cat.score * 3.6}deg, #1e293b ${cat.score * 3.6}deg)`,
-                      }}
-                    >
-                      <div className="w-20 h-20 bg-[#0a0e17] rounded-full flex items-center justify-center">
-                        {cat.score}
-                      </div>
-                    </div>
-                    <div className="font-semibold mb-1">{cat.category}</div>
-                    <div className="text-sm text-[#64748b]">{cat.label}</div>
+        {/* OVERVIEW TAB */}
+        {tab === 'overview' && (
+          <div className="space-y-6 animate-fade-in">
+            {/* Time Window */}
+            <div className="card p-5">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 font-bold">
+                    <Clock size={16} className="text-[#94a3b8]" />
+                    Time window: <span className="text-white">{rangeLabel}</span>
                   </div>
-                ))}
+                  <p className="text-sm text-[#64748b] mt-1">We summarize this period and compare it to the previous period of the same length.</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {rangeOptions.map((r) => (
+                    <button
+                      key={r.key}
+                      onClick={() => setRange(r.key)}
+                      className={`px-3 py-2 rounded-xl border text-sm transition-all ${range === r.key ? 'bg-blue-500 border-blue-500 text-white' : 'bg-[#151c2c] border-[#1e293b] text-[#94a3b8] hover:text-white'}`}
+                    >
+                      <div className="font-semibold leading-none">{r.label}</div>
+                      <div className="text-[10px] opacity-80 mt-0.5">{r.subtitle}</div>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
