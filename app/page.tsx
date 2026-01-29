@@ -287,7 +287,7 @@ export default function HomePage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="cta-super flex items-center gap-2 justify-center flex-shrink-0 disabled:opacity-50 whitespace-nowrap"
+                  className="cta-super flex items-center gap-2 justify-center flex-shrink-0 disabled:opacity-50 whitespace-nowrap !py-3 sm:!py-4 !px-4 sm:!px-6 !text-sm sm:!text-base"
                 >
                   {loading ? (
                     <>
@@ -298,7 +298,7 @@ export default function HomePage() {
                     <>
                       <span className="!hidden sm:!inline">Check Building</span>
                       <span className="!inline sm:!hidden">Check</span>
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </>
                   )}
                 </button>
