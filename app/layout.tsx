@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     'heat complaints NYC',
     'rent stabilized apartments',
   ],
-  
   icons: {
     icon: '/favicon-32.png',
   shortcut: '/favicon.ico',
