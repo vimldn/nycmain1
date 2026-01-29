@@ -5,12 +5,12 @@
 /* ===== THEME VARIABLES ===== */
 :root {
   --bg-primary: #0a0e17;
-  --bg-secondary: #111827;
-  --bg-card: #151c2c;
+  --bg-secondary: #0f172a;
+  --bg-card: #0f172a;
   --bg-hover: #1a2235;
   --border-primary: #1e293b;
   --border-secondary: #2d3748;
-  --text-primary: #f1f5f9;
+  --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 }
@@ -110,6 +110,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===== INTERACTIVE ELEMENTS ===== */
+/* Card base styles */
+.card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.badge-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.badge-yellow {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.badge-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
 /* Card with gradient border on hover */
 .gradient-border {
   position: relative;
