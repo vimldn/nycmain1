@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     'heat complaints NYC',
     'rent stabilized apartments',
   ],
+  
   icons: {
-    icon: '/icon.png',
-    shortcut: '/favicon.ico',
-    apple: '/icon.png',
-  },
+    icon: '/favicon-32.png',
+  shortcut: '/favicon.ico',
+  apple: '/logo-256.png',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
