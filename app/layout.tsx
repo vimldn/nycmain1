@@ -16,7 +16,7 @@ const spaceMono = Space_Mono({
   variable: '--font-space-mono',
 })
 
-export const metadata: Metadata = {
+xport const metadata: Metadata = {
   title: 'Building Health X | NYC Building Research & Apartment Check',
   description:
     'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
@@ -36,8 +36,9 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: '/favicon-32.png',
-  shortcut: '/favicon.ico',
-  apple: '/logo-256.png',
+    shortcut: '/favicon.ico',
+    apple: '/logo-256.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
