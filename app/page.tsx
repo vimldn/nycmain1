@@ -67,6 +67,21 @@ export default function HomePage() {
     }
     acCacheRef.current.set(q, { t: Date.now(), data })
   }
+// 👇 PASTE IT RIGHT HERE (anywhere before return is fine)
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.touchAction = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.touchAction = ''
+    }
+  }, [loading])
 
   useEffect(() => {
     if (query.length < 2) {
