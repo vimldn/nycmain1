@@ -179,6 +179,17 @@ export default function BuildingPage() {
     return monthly
   }, [data, range])
 
+  useEffect(() => {
+  if (typeof window === 'undefined') return
+  const isMobile = window.matchMedia('(max-width: 639px)').matches
+  if (!isMobile) return
+
+  // On navigation into this page, kill any lingering focus that can preserve iOS zoom state
+  requestAnimationFrame(() => {
+    ;(document.activeElement as HTMLElement | null)?.blur()
+    window.scrollTo(0, 0)
+  })
+}, [])
   // Initialize time range from query string (?range=30d|90d|1y|3y)
   useEffect(() => {
     try {
@@ -375,7 +386,7 @@ useEffect(() => {
               <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={b?.address || "Search..."} className="w-full pl-10 pr-10 py-2.5 bg-[#151c2c] border border-[#1e293b] rounded-xl text-[16px] sm:text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-blue-500/50" disabled={searching} />
               {searching && <div className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />}
             </div>
-            {searchError && <div className="text-xs text-red-400 mt-1">{searchError}</div>}
+            {searchError && <div className="text-sm sm:text-xs text-red-400 mt-1">{searchError}</div>}
           </form>
 
           <Link
@@ -405,11 +416,11 @@ useEffect(() => {
                 {b?.neighborhood && `${b.neighborhood}, `}{b?.borough}, NY {b?.zipcode}
               </p>
               <div className="flex flex-wrap gap-3">
-                {b?.unitsRes > 0 && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-xs">Units</span><span className="ml-2 text-white font-semibold">{b.unitsRes}</span></div>}
-                {b?.yearBuilt && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-xs">Built</span><span className="ml-2 text-white font-semibold">{b.yearBuilt}</span></div>}
-                {b?.floors > 0 && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-xs">Floors</span><span className="ml-2 text-white font-semibold">{b.floors}</span></div>}
-                {b?.buildingClassDesc && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-xs">Type</span><span className="ml-2 text-white font-semibold">{b.buildingClassDesc}</span></div>}
-                {b?.rentStabilizedUnits && <div className="px-3 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"><span className="text-cyan-400 text-xs">RS Units</span><span className="ml-2 text-cyan-300 font-semibold">{b.rentStabilizedUnits}</span></div>}
+                {b?.unitsRes > 0 && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-sm sm:text-xs">Units</span><span className="ml-2 text-white font-semibold">{b.unitsRes}</span></div>}
+                {b?.yearBuilt && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-sm sm:text-xs">Built</span><span className="ml-2 text-white font-semibold">{b.yearBuilt}</span></div>}
+                {b?.floors > 0 && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-sm sm:text-xs">Floors</span><span className="ml-2 text-white font-semibold">{b.floors}</span></div>}
+                {b?.buildingClassDesc && <div className="px-3 py-2 bg-[#1a2235] rounded-lg"><span className="text-[#64748b] text-sm sm:text-xs">Type</span><span className="ml-2 text-white font-semibold">{b.buildingClassDesc}</span></div>}
+                {b?.rentStabilizedUnits && <div className="px-3 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"><span className="text-cyan-400 text-sm text-xs">RS Units</span><span className="ml-2 text-cyan-300 font-semibold">{b.rentStabilizedUnits}</span></div>}
               </div>
             </div>
             <div className="flex-shrink-0 flex flex-col items-center">
@@ -480,7 +491,7 @@ useEffect(() => {
                       className={`px-3 py-2 rounded-xl border text-sm transition-all ${range === r.key ? 'bg-blue-500 border-blue-500 text-white' : 'bg-[#151c2c] border-[#1e293b] text-[#94a3b8] hover:text-white'}`}
                     >
                       <div className="font-semibold leading-none">{r.label}</div>
-                      <div className="text-[10px] opacity-80 mt-0.5">{r.subtitle}</div>
+                      <div className="text-xs sm:text-[10px] opacity-80 mt-0.5">{r.subtitle}</div>
                     </button>
                   ))}
                 </div>
