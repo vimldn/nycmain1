@@ -148,6 +148,39 @@ h1, h2, h3, h4, h5, h6 {
   color: #f87171;
 }
 
+/* Tab styles */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-active {
+  color: #ffffff;
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.tab-active:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
 /* Card with gradient border on hover */
 .gradient-border {
   position: relative;
