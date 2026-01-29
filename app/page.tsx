@@ -40,6 +40,10 @@ export default function HomePage() {
 
   const router = useRouter()
   const dropdownRef = useRef<HTMLFormElement>(null)
+
+  // NEW: ref to the input so we can blur it (prevents iOS zoom + blinking caret)
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const abortRef = useRef<AbortController | null>(null)
   const reqSeqRef = useRef(0)
 
@@ -142,7 +146,14 @@ export default function HomePage() {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])
 
+  // NEW: helper to kill focus (stops blinking caret + iOS focus-zoom “sticking” into loading UI)
+  const blurActive = () => {
+    inputRef.current?.blur()
+    ;(document.activeElement as HTMLElement | null)?.blur()
+  }
+
   const handleSelect = (s: Suggestion) => {
+    blurActive()
     setLoading(true)
     setShowDropdown(false)
     router.push(`/building/${s.bbl}`)
@@ -167,6 +178,8 @@ export default function HomePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    blurActive()
 
     if (selectedIndex >= 0 && suggestions[selectedIndex]) {
       handleSelect(suggestions[selectedIndex])
@@ -254,12 +267,12 @@ export default function HomePage() {
               Trusted by <span className="text-[var(--text-primary)] font-semibold">10,000+</span> NYC renters
             </span>
           </div>
-          
+
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
             Research Any NYC Building{' '}
             <span className="gradient-text block mt-1 sm:mt-2">Before You Sign the Lease</span>
           </h1>
-          
+
           <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] mb-6 sm:mb-8 max-w-3xl mx-auto px-2 leading-relaxed">
             Stop gambling on your next apartment. Search any address and instantly see{' '}
             <span className="text-[var(--text-primary)] font-medium">violations</span>,{' '}
@@ -270,17 +283,22 @@ export default function HomePage() {
 
           {/* UNIVERSAL RESPONSIVE SEARCH BOX */}
           <div className="max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit} className="relative" ref={dropdownRef}>
+            <form
+              onSubmit={handleSubmit}
+              className={`relative ${loading ? 'pointer-events-none' : ''}`}
+              ref={dropdownRef}
+            >
               <div className="flex flex-row gap-2 sm:gap-3 md:gap-4">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 pointer-events-none" />
                   <input
+                    ref={inputRef}
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Enter NYC address..."
-                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 md:py-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base transition-all"
+                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 md:py-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-base transition-all"
                   />
                 </div>
 
@@ -361,7 +379,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT YOU'LL FIND - FULLY RESPONSIVE */}
+      {/* Everything below is unchanged */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg-secondary)] px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
@@ -476,7 +494,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS - FULLY RESPONSIVE */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg-primary)] px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
@@ -493,28 +510,44 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             <div className="text-center p-4 sm:p-5 md:p-6 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter" data-target="1200000" data-suffix="+">
+              <div
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter"
+                data-target="1200000"
+                data-suffix="+"
+              >
                 0+
               </div>
               <div className="text-xs sm:text-sm text-[var(--text-muted)]">Properties</div>
             </div>
 
             <div className="text-center p-4 sm:p-5 md:p-6 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter" data-target="800000" data-suffix="+">
+              <div
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter"
+                data-target="800000"
+                data-suffix="+"
+              >
                 0+
               </div>
               <div className="text-xs sm:text-sm text-[var(--text-muted)]">Violations</div>
             </div>
 
             <div className="text-center p-4 sm:p-5 md:p-6 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter" data-target="500000" data-suffix="+">
+              <div
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter"
+                data-target="500000"
+                data-suffix="+"
+              >
                 0+
               </div>
               <div className="text-xs sm:text-sm text-[var(--text-muted)]">311 Complaints</div>
             </div>
 
             <div className="text-center p-4 sm:p-5 md:p-6 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter" data-target="250000" data-suffix="+">
+              <div
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-1 sm:mb-2 counter"
+                data-target="250000"
+                data-suffix="+"
+              >
                 0+
               </div>
               <div className="text-xs sm:text-sm text-[var(--text-muted)]">DOB Permits</div>
