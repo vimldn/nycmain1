@@ -260,8 +260,26 @@ export default function BuildingPage() {
       setSearching(false)
     }
   }
+  // Disable scrolling while the full-screen loading UI is shown
+useEffect(() => {
+  if (typeof window === 'undefined') return
+
+  if (loading) {
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
+  } else {
+    document.body.style.overflow = ''
+    document.body.style.touchAction = ''
+  }
+
+  return () => {
+    document.body.style.overflow = ''
+    document.body.style.touchAction = ''
+  }
+}, [loading])
 
   if (loading) return (
+    
     <div className="min-h-screen flex items-center justify-center bg-[#0a0e17]">
       <div className="text-center">
         <div className="relative w-24 h-24 mx-auto mb-6">
@@ -354,7 +372,7 @@ export default function BuildingPage() {
           <form onSubmit={handleSearch} className="flex-1 max-w-xl">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#4a5568]" size={18} />
-              <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={b?.address || "Search..."} className="w-full pl-10 pr-10 py-2.5 bg-[#151c2c] border border-[#1e293b] rounded-xl text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-blue-500/50" disabled={searching} />
+              <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={b?.address || "Search..."} className="w-full pl-10 pr-10 py-2.5 bg-[#151c2c] border border-[#1e293b] rounded-xl text-[16px] sm:text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-blue-500/50" disabled={searching} />
               {searching && <div className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />}
             </div>
             {searchError && <div className="text-xs text-red-400 mt-1">{searchError}</div>}
