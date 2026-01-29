@@ -17,23 +17,10 @@ const ViolationsYearlyBarChart = dynamic(() => import('./ViolationsYearlyBarChar
   loading: () => <div className="h-full w-full flex items-center justify-center text-xs text-[#64748b]">Loading chart…</div>,
 })
 
-type Tab = 'overview' | 'violations' | 'complaints' | 'timeline' | 'landlord' | 'permits' | 'sales' | 'neighborhood' | 'reviews'
+type Tab = 'overview' | 'violations' | 'complaints' | 'timeline' | 'landlord' | 'permits' | 'sales' | 'neighborhood'
 
 type RangeKey = '30d' | '90d' | '1y' | '3y'
 
-type Review = {
-  id: string
-  bbl: string
-  rating: number
-  title: string | null
-  review: string
-  pros: string | null
-  cons: string | null
-  lived_here: boolean
-  years_lived: string | null
-  author_name: string
-  helpful_count: number
-  created_at: string
 }
 
 // Recharts is generally stable, but a single unexpected value can occasionally
@@ -584,37 +571,6 @@ export default function BuildingPage() {
                 <div className="text-xs text-[#64748b] mt-1">Class C (immediately hazardous)</div>
               </div>
             </div>
-
-            {/* Resident Reviews Widget - Prominent */}
-            <div className="card p-6 border-2 border-yellow-500/30 bg-gradient-to-r from-yellow-500/5 to-orange-500/5 cursor-pointer hover:border-yellow-500/50 transition-colors" onClick={() => setTab('reviews')}>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center">
-                    <Star className="text-yellow-400 fill-yellow-400" size={28} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">What Do Residents Say?</h3>
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl font-bold">{reviewsData.averageRating > 0 ? reviewsData.averageRating.toFixed(1) : '—'}</span>
-                      <div className="flex items-center gap-0.5">
-                        {[1,2,3,4,5].map(star => (
-                          <Star key={star} size={18} className={star <= Math.round(reviewsData.averageRating) ? 'text-yellow-400 fill-yellow-400' : 'text-[#4a5568]'} />
-                        ))}
-                      </div>
-                      <span className="text-[#64748b]">({reviewsData.count} review{reviewsData.count !== 1 ? 's' : ''})</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button onClick={(e) => { e.stopPropagation(); setTab('reviews'); setShowReviewForm(true); }} className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg flex items-center gap-2">
-                    <MessageSquare size={16} />
-                    Write a Review
-                  </button>
-                  <ChevronRight className="text-[#4a5568]" size={20} />
-                </div>
-              </div>
-            </div>
-
             {/* Signals over time */}
             <div className="card p-6">
               <div className="flex items-center justify-between mb-4">
