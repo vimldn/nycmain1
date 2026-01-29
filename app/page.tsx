@@ -262,7 +262,11 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)]">
+    <div
+  className={`min-h-screen bg-[var(--bg-primary)] ${
+    loading ? 'overflow-hidden' : ''
+  }`}
+>
       <Header />
 
       {/* HERO - FULLY RESPONSIVE */}
@@ -362,7 +366,10 @@ export default function HomePage() {
 
             {/* UNIVERSAL RESPONSIVE LOADING SCREEN */}
             {loading && (
-              <div className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 mt-4 sm:mt-6">
+  <div
+    aria-hidden
+    className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 mt-4 sm:mt-6 pointer-events-none select-none"
+  >
                 <div className="relative mb-4 sm:mb-5">
                   <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-gray-200"></div>
                   <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
