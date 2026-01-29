@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { BreadcrumbJsonLd, ServiceJsonLd } from '@/components/seo'
 import Image from 'next/image'
 import {
   ChevronRight,
@@ -362,6 +363,25 @@ export default function ServiceLocationPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
       <Header />
+       <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: service.name, url: `/services/${params.service}` },
+          { name: location.name, url: `/services/${params.service}/${params.location}` }
+        ]}
+      />
+
+      <ServiceJsonLd
+        serviceName={service.name}
+        url={`/services/${params.service}/${params.location}`}
+        description={service.description}
+        areaServed={{
+          name: location.name,
+          url: `/locations/${params.location}`,
+          description: location.description
+        }}
+      />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
