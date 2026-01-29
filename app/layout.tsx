@@ -34,12 +34,6 @@ export const metadata: Metadata = {
     'heat complaints NYC',
     'rent stabilized apartments',
   ],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   icons: {
     icon: '/icon.png',
     shortcut: '/favicon.ico',
@@ -51,6 +45,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-88LHQSVE0N"
           strategy="beforeInteractive"
