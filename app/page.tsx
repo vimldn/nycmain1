@@ -368,7 +368,7 @@ export default function HomePage() {
 
             {/* MOBILE: fixed overlay loading (no reflow / no “disforming”) */}
             {loading && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden">
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden touch-none overscroll-contain">
                 <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-center mx-4">
                   <div className="mx-auto mb-4 animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-blue-600" />
                   <p className="text-base font-medium">Checking building safety...</p>
