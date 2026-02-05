@@ -21,6 +21,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import { services } from '@/lib/services-data'
+import NYCInfoBar from '@/components/NYCInfoBar'
 
 interface Suggestion {
   bbl: string
@@ -412,6 +413,10 @@ export default function HomePage() {
               <span className="text-[var(--text-muted)]">55+ Data Sources</span>
             </div>
           </div>
+                      {/* NYC Info Bar */}
+<div className="mt-8 sm:mt-10 flex justify-center">
+  <NYCInfoBar />
+</div>
         </div>
       </section>
 
