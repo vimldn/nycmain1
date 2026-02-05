@@ -109,45 +109,126 @@ export default function NYCInfoBar() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-6 px-6 py-3.5 bg-[#0a0e1a] bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-blue-500/15 rounded-lg border border-blue-500/10">
-      {/* Time and Date */}
-      <div className="flex items-center gap-2">
-        <div className="flex flex-col gap-0.5">
-          <span className="text-white font-semibold text-[15px]">{currentTime} EST</span>
-          <span className="text-gray-400 text-[11px]">{currentDate}</span>
+    <div className="w-full max-w-4xl mx-auto">
+      <style jsx>{`
+        @keyframes gradient-shift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        
+        @keyframes pulse-glow {
+          0%, 100% {
+            opacity: 0.4;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+          }
+          50% {
+            opacity: 0.8;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+          }
+        }
+        
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .gradient-animate {
+          background: linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.25) 0%,
+            rgba(147, 51, 234, 0.25) 25%,
+            rgba(59, 130, 246, 0.25) 50%,
+            rgba(147, 51, 234, 0.25) 75%,
+            rgba(59, 130, 246, 0.25) 100%
+          );
+          background-size: 200% 100%;
+          animation: gradient-shift 8s ease infinite;
+        }
+        
+        .divider-glow {
+          animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .info-section {
+          animation: fade-in-up 0.6s ease-out forwards;
+        }
+      `}</style>
+      
+      <div className="relative gradient-animate rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/10 backdrop-blur-sm overflow-hidden">
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 bg-[#0a0e1a]/80 backdrop-blur-sm"></div>
+        
+        {/* Content */}
+        <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6 px-6 sm:px-8 md:px-12 lg:px-16 py-5 sm:py-6">
+          {/* Time and Date */}
+          <div className="info-section flex items-center gap-3 sm:gap-4 flex-1">
+            <div className="flex flex-col gap-1 text-center sm:text-left">
+              <span className="text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight animate-pulse">
+                {currentTime} <span className="text-blue-400">EST</span>
+              </span>
+              <span className="text-gray-400 text-xs sm:text-sm md:text-base font-medium">
+                {currentDate}
+              </span>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="hidden sm:block h-14 md:h-16 w-0.5 bg-gradient-to-b from-transparent via-blue-400 to-transparent divider-glow"></div>
+
+          {/* Weather */}
+          <div className="info-section flex items-center gap-3 sm:gap-4 flex-1">
+            {loading ? (
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <span className="text-white font-bold text-lg sm:text-xl md:text-2xl">
+                  <span className="inline-block animate-pulse">Loading...</span>
+                </span>
+                <span className="text-gray-400 text-xs sm:text-sm md:text-base">Weather data</span>
+              </div>
+            ) : weather ? (
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <span className="text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight">
+                  {weather.temp}<span className="text-blue-400">°F</span>
+                </span>
+                <span className="text-gray-400 text-xs sm:text-sm md:text-base font-medium">
+                  {weather.condition}
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <span className="text-white font-bold text-lg sm:text-xl md:text-2xl">N/A</span>
+                <span className="text-gray-400 text-xs sm:text-sm md:text-base">Weather unavailable</span>
+              </div>
+            )}
+          </div>
+
+          {/* Divider */}
+          <div className="hidden sm:block h-14 md:h-16 w-0.5 bg-gradient-to-b from-transparent via-purple-400 to-transparent divider-glow"></div>
+
+          {/* NYC Label */}
+          <div className="info-section flex items-center gap-3 sm:gap-4 flex-1">
+            <div className="flex flex-col gap-1 text-center sm:text-left">
+              <span className="text-white font-bold text-lg sm:text-xl md:text-2xl tracking-tight">
+                <span className="gradient-text">NYC</span>
+              </span>
+              <span className="text-gray-400 text-xs sm:text-sm md:text-base font-medium">
+                New York City
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Divider */}
-      <div className="h-8 w-0.5 bg-gradient-to-b from-transparent via-blue-500/50 to-transparent"></div>
-
-      {/* Weather */}
-      <div className="flex items-center gap-2">
-        {loading ? (
-          <div className="flex flex-col gap-0.5">
-            <span className="text-white font-semibold text-[15px]">Loading...</span>
-            <span className="text-gray-400 text-[11px]">Weather data</span>
-          </div>
-        ) : weather ? (
-          <div className="flex flex-col gap-0.5">
-            <span className="text-white font-semibold text-[15px]">{weather.temp}°F</span>
-            <span className="text-gray-400 text-[11px]">{weather.condition}</span>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-0.5">
-            <span className="text-white font-semibold text-[15px]">N/A</span>
-            <span className="text-gray-400 text-[11px]">Weather unavailable</span>
-          </div>
-        )}
-      </div>
-
-      {/* Divider */}
-      <div className="h-8 w-0.5 bg-gradient-to-b from-transparent via-blue-500/50 to-transparent"></div>
-
-      {/* NYC Label */}
-      <div className="flex flex-col gap-0.5">
-        <span className="text-white font-semibold text-[15px]">NYC</span>
-        <span className="text-gray-400 text-[11px]">New York City</span>
+        
+        {/* Bottom animated border */}
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
       </div>
     </div>
   );
