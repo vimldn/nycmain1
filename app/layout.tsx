@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/icon.png',
   },
+  verification: {
+    google: 'h7xVoaXFKTzIGvKWxd8yT6tg-ULX6wwyk5cTJauiDCE',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -49,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-                <meta name="google-site-verification" content="h7xVoaXFKTzIGvKWxd8yT6tg-ULX6wwyk5cTJauiDCE" />
 
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-88LHQSVE0N"
