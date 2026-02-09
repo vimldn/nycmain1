@@ -17,9 +17,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  verification: {
-    google: 'h7xVoaXFKTzIGvKWxd8yT6tg-ULX6wwyk5cTJauiDCE',
-  },
+
   title: 'Building Health X | NYC Building Research & Apartment Check',
   description:
     'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
