@@ -5,7 +5,7 @@ export type RawPostFile = {
 };
 
 export const buildingViolationsPart3: RawPostFile[] = [
-  { folder: "what-are-sprinkler-system-violations", publishDate: "2025-03-04", raw: `
+  { folder: "what-are-sprinkler-system-violations", publishDate: "2026-03-05", raw: `
 ---
 title: What Are Sprinkler System Violations?
 slug: what-are-sprinkler-system-violations
@@ -46,7 +46,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-find-buildings-with-working-fire-escapes", publishDate: "2025-03-05", raw: `
+  { folder: "how-to-find-buildings-with-working-fire-escapes", publishDate: "2026-03-06", raw: `
 ---
 title: How to Find Buildings with Working Fire Escapes
 slug: how-to-find-buildings-with-working-fire-escapes
@@ -87,7 +87,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-unsafe-building-mean-on-nyc-records", publishDate: "2025-03-05", raw: `
+  { folder: "what-does-unsafe-building-mean-on-nyc-records", publishDate: "2026-03-06", raw: `
 ---
 title: What Does "Unsafe Building" Mean on NYC Records?
 slug: what-does-unsafe-building-mean-on-nyc-records
@@ -128,7 +128,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-gas-and-electrical-safety-violations", publishDate: "2025-03-05", raw: `
+  { folder: "how-to-look-up-gas-and-electrical-safety-violations", publishDate: "2026-03-06", raw: `
 ---
 title: How to Look Up Gas and Electrical Safety Violations
 slug: how-to-look-up-gas-and-electrical-safety-violations
@@ -169,7 +169,7 @@ tags:
   
 </section>
 ` },
-  { folder: "which-williamsburg-buildings-have-the-most-violations", publishDate: "2025-03-06", raw: `
+  { folder: "which-williamsburg-buildings-have-the-most-violations", publishDate: "2026-03-07", raw: `
 ---
 title: Which Williamsburg Buildings Have the Most Violations?
 slug: which-williamsburg-buildings-have-the-most-violations
@@ -210,7 +210,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-astoria-apartment-buildings-for-red-flags", publishDate: "2025-03-06", raw: `
+  { folder: "how-to-check-astoria-apartment-buildings-for-red-flags", publishDate: "2026-03-07", raw: `
 ---
 title: How to Check Astoria Apartment Buildings for Red Flags
 slug: how-to-check-astoria-apartment-buildings-for-red-flags
@@ -251,7 +251,7 @@ tags:
   
 </section>
 ` },
-  { folder: "upper-east-side-buildings-with-the-fewest-complaints", publishDate: "2025-03-06", raw: `
+  { folder: "upper-east-side-buildings-with-the-fewest-complaints", publishDate: "2026-03-07", raw: `
 ---
 title: Upper East Side Buildings with the Fewest Complaints
 slug: upper-east-side-buildings-with-the-fewest-complaints
@@ -292,7 +292,7 @@ tags:
   
 </section>
 ` },
-  { folder: "park-slope-landlords-with-best-tenant-records", publishDate: "2025-03-07", raw: `
+  { folder: "park-slope-landlords-with-best-tenant-records", publishDate: "2026-03-08", raw: `
 ---
 title: Park Slope Landlords with Best Tenant Records
 slug: park-slope-landlords-with-best-tenant-records
@@ -333,7 +333,7 @@ tags:
   
 </section>
 ` },
-  { folder: "which-bushwick-buildings-have-bed-bug-problems", publishDate: "2025-03-07", raw: `
+  { folder: "which-bushwick-buildings-have-bed-bug-problems", publishDate: "2026-03-08", raw: `
 ---
 title: Which Bushwick Buildings Have Bed Bug Problems?
 slug: which-bushwick-buildings-have-bed-bug-problems
@@ -374,7 +374,7 @@ tags:
   
 </section>
 ` },
-  { folder: "crown-heights-buildings-to-avoid-violation-analysis", publishDate: "2025-03-07", raw: `
+  { folder: "crown-heights-buildings-to-avoid-violation-analysis", publishDate: "2026-03-08", raw: `
 ---
 title: Crown Heights Buildings to Avoid: Violation Analysis
 slug: crown-heights-buildings-to-avoid-violation-analysis
@@ -415,7 +415,7 @@ tags:
   
 </section>
 ` },
-  { folder: "lic-buildings-with-most-311-complaints", publishDate: "2025-03-08", raw: `
+  { folder: "lic-buildings-with-most-311-complaints", publishDate: "2026-03-09", raw: `
 ---
 title: LIC Buildings with Most 311 Complaints
 slug: lic-buildings-with-most-311-complaints
@@ -456,7 +456,7 @@ tags:
   
 </section>
 ` },
-  { folder: "financial-district-buildings-with-heat-issues", publishDate: "2025-03-08", raw: `
+  { folder: "financial-district-buildings-with-heat-issues", publishDate: "2026-03-09", raw: `
 ---
 title: Financial District Buildings with Heat Issues
 slug: financial-district-buildings-with-heat-issues
@@ -497,7 +497,7 @@ tags:
   
 </section>
 ` },
-  { folder: "best-maintained-buildings-in-harlem-by-the-data", publishDate: "2025-03-08", raw: `
+  { folder: "best-maintained-buildings-in-harlem-by-the-data", publishDate: "2026-03-09", raw: `
 ---
 title: Best-Maintained Buildings in Harlem by the Data
 slug: best-maintained-buildings-in-harlem-by-the-data
@@ -538,7 +538,7 @@ tags:
   
 </section>
 ` },
-  { folder: "east-village-buildings-with-chronic-pest-problems", publishDate: "2025-03-09", raw: `
+  { folder: "east-village-buildings-with-chronic-pest-problems", publishDate: "2026-03-10", raw: `
 ---
 title: East Village Buildings with Chronic Pest Problems
 slug: east-village-buildings-with-chronic-pest-problems
@@ -579,7 +579,7 @@ tags:
   
 </section>
 ` },
-  { folder: "whats-included-when-you-check-a-building-on-nyc-open-data", publishDate: "2025-03-09", raw: `
+  { folder: "whats-included-when-you-check-a-building-on-nyc-open-data", publishDate: "2026-03-10", raw: `
 ---
 title: What's Included When You Check a Building on NYC Open Data?
 slug: whats-included-when-you-check-a-building-on-nyc-open-data
@@ -621,7 +621,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-far-back-do-nyc-building-records-go", publishDate: "2025-03-09", raw: `
+  { folder: "how-far-back-do-nyc-building-records-go", publishDate: "2026-03-10", raw: `
 ---
 title: How Far Back Do NYC Building Records Go?
 slug: how-far-back-do-nyc-building-records-go
@@ -661,7 +661,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-request-building-records-before-applying", publishDate: "2025-03-10", raw: `
+  { folder: "can-i-request-building-records-before-applying", publishDate: "2026-03-11", raw: `
 ---
 title: Can I Request Building Records Before Applying?
 slug: can-i-request-building-records-before-applying
@@ -701,7 +701,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-should-i-ask-my-landlord-about-past-violations", publishDate: "2025-03-10", raw: `
+  { folder: "what-should-i-ask-my-landlord-about-past-violations", publishDate: "2026-03-11", raw: `
 ---
 title: What Should I Ask My Landlord About Past Violations?
 slug: what-should-i-ask-my-landlord-about-past-violations
@@ -741,7 +741,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-interpret-311-complaint-data-for-apartments", publishDate: "2025-03-10", raw: `
+  { folder: "how-to-interpret-311-complaint-data-for-apartments", publishDate: "2026-03-11", raw: `
 ---
 title: How to Interpret 311 Complaint Data for Apartments
 slug: how-to-interpret-311-complaint-data-for-apartments
@@ -781,7 +781,7 @@ tags:
   
 </section>
 ` },
-  { folder: "are-buildings-with-zero-violations-actually-better", publishDate: "2025-03-11", raw: `
+  { folder: "are-buildings-with-zero-violations-actually-better", publishDate: "2026-03-12", raw: `
 ---
 title: Are Buildings with Zero Violations Actually Better?
 slug: are-buildings-with-zero-violations-actually-better
@@ -821,7 +821,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-often-are-nyc-building-databases-updated", publishDate: "2025-03-11", raw: `
+  { folder: "how-often-are-nyc-building-databases-updated", publishDate: "2026-03-12", raw: `
 ---
 title: How Often Are NYC Building Databases Updated?
 slug: how-often-are-nyc-building-databases-updated
@@ -861,7 +861,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-get-a-full-building-report-before-signing", publishDate: "2025-03-11", raw: `
+  { folder: "can-i-get-a-full-building-report-before-signing", publishDate: "2026-03-12", raw: `
 ---
 title: Can I Get a Full Building Report Before Signing?
 slug: can-i-get-a-full-building-report-before-signing
@@ -901,7 +901,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-red-flags-should-i-look-for-in-building-data", publishDate: "2025-03-12", raw: `
+  { folder: "what-red-flags-should-i-look-for-in-building-data", publishDate: "2026-03-13", raw: `
 ---
 title: What Red Flags Should I Look for in Building Data?
 slug: what-red-flags-should-i-look-for-in-building-data
@@ -943,7 +943,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-use-hpd-online-to-research-before-you-rent", publishDate: "2025-03-12", raw: `
+  { folder: "how-to-use-hpd-online-to-research-before-you-rent", publishDate: "2026-03-13", raw: `
 ---
 title: How to Use HPD Online to Research Before You Rent
 slug: how-to-use-hpd-online-to-research-before-you-rent
@@ -983,7 +983,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-pay-for-a-building-report-service-in-nyc", publishDate: "2025-03-12", raw: `
+  { folder: "should-i-pay-for-a-building-report-service-in-nyc", publishDate: "2026-03-13", raw: `
 ---
 title: Should I Pay for a Building Report Service in NYC?
 slug: should-i-pay-for-a-building-report-service-in-nyc
@@ -1023,7 +1023,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-accurate-are-nyc-open-data-building-records", publishDate: "2025-03-13", raw: `
+  { folder: "how-accurate-are-nyc-open-data-building-records", publishDate: "2026-03-14", raw: `
 ---
 title: How Accurate Are NYC Open Data Building Records?
 slug: how-accurate-are-nyc-open-data-building-records
@@ -1063,7 +1063,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-old-violations-still-affect-my-apartment-today", publishDate: "2025-03-13", raw: `
+  { folder: "can-old-violations-still-affect-my-apartment-today", publishDate: "2026-03-14", raw: `
 ---
 title: Can Old Violations Still Affect My Apartment Today?
 slug: can-old-violations-still-affect-my-apartment-today
@@ -1103,7 +1103,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-many-311-complaints-is-normal-for-a-nyc-building", publishDate: "2025-03-13", raw: `
+  { folder: "how-many-311-complaints-is-normal-for-a-nyc-building", publishDate: "2026-03-14", raw: `
 ---
 title: How Many 311 Complaints Is Normal for a NYC Building?
 slug: how-many-311-complaints-is-normal-for-a-nyc-building
@@ -1143,7 +1143,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-choose-a-building-with-older-or-newer-violations", publishDate: "2025-03-14", raw: `
+  { folder: "should-i-choose-a-building-with-older-or-newer-violations", publishDate: "2026-03-15", raw: `
 ---
 title: Should I Choose a Building with Older or Newer Violations?
 slug: should-i-choose-a-building-with-older-or-newer-violations
@@ -1183,7 +1183,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-compare-two-buildings-using-public-data", publishDate: "2025-03-14", raw: `
+  { folder: "how-to-compare-two-buildings-using-public-data", publishDate: "2026-03-15", raw: `
 ---
 title: How to Compare Two Buildings Using Public Data
 slug: how-to-compare-two-buildings-using-public-data
@@ -1223,7 +1223,7 @@ tags:
   
 </section>
 ` },
-  { folder: "manhattan-vs-brooklyn-buildings-which-have-more-issues", publishDate: "2025-03-14", raw: `
+  { folder: "manhattan-vs-brooklyn-buildings-which-have-more-issues", publishDate: "2026-03-15", raw: `
 ---
 title: Manhattan vs Brooklyn Buildings: Which Have More Issues?
 slug: manhattan-vs-brooklyn-buildings-which-have-more-issues
@@ -1263,7 +1263,7 @@ tags:
   
 </section>
 ` },
-  { folder: "are-smaller-buildings-better-than-large-nyc-complexes", publishDate: "2025-03-15", raw: `
+  { folder: "are-smaller-buildings-better-than-large-nyc-complexes", publishDate: "2026-03-16", raw: `
 ---
 title: Are Smaller Buildings Better Than Large NYC Complexes?
 slug: are-smaller-buildings-better-than-large-nyc-complexes
@@ -1303,7 +1303,7 @@ tags:
   
 </section>
 ` },
-  { folder: "pre-war-vs-new-construction-which-has-fewer-violations", publishDate: "2025-03-15", raw: `
+  { folder: "pre-war-vs-new-construction-which-has-fewer-violations", publishDate: "2026-03-16", raw: `
 ---
 title: Pre-War vs New Construction: Which Has Fewer Violations?
 slug: pre-war-vs-new-construction-which-has-fewer-violations
@@ -1343,7 +1343,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-spot-fake-no-violations-claims-from-landlords", publishDate: "2025-03-15", raw: `
+  { folder: "how-to-spot-fake-no-violations-claims-from-landlords", publishDate: "2026-03-16", raw: `
 ---
 title: How to Spot Fake "No Violations" Claims from Landlords
 slug: how-to-spot-fake-no-violations-claims-from-landlords
