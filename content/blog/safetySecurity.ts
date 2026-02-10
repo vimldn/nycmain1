@@ -1,4 +1,8 @@
-export type RawPostFile = { folder: string; raw: string };
+export type RawPostFile = { 
+  folder: string; 
+  raw: string;
+  publishDate?: string;
+};
 export const safetySecurity: RawPostFile[] = [
   { folder: "can-i-break-my-lease-if-my-apartment-has-no-heat", raw: `
 ---
