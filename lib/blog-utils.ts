@@ -81,8 +81,16 @@ const parseFrontmatter = (raw: string): { fm: Frontmatter; body: string } => {
 const buildIndex = (): IndexedPost[] => {
   if (cachedIndex) return cachedIndex
 
+  const now = new Date()
   const out: IndexedPost[] = []
-  for (const { raw } of allRawPosts) {
+  for (const rawPost of allRawPosts) {
+    // Filter by publishDate - only include if date has passed
+    if (rawPost.publishDate) {
+      const publishDate = new Date(rawPost.publishDate)
+      if (publishDate > now) continue // Skip future posts
+    }
+    
+    const { raw } = rawPost
     const { fm, body } = parseFrontmatter(raw)
 
     const title = (fm.title as string) || 'Untitled'
