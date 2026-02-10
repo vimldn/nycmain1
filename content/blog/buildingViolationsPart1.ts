@@ -5,7 +5,7 @@ export type RawPostFile = {
 };
 
 export const buildingViolationsPart1: RawPostFile[] = [
-  { folder: "what-does-a-bed-bug-violation-mean-on-nyc-building-records", publishDate: "2026-02-11", raw: `
+  { folder: "what-does-a-bed-bug-violation-mean-on-nyc-building-records", publishDate: "2026-02-09", raw: `
 ---
 title: What Does a Bed Bug Violation Mean on NYC Building Records?
 slug: what-does-a-bed-bug-violation-mean-on-nyc-building-records
