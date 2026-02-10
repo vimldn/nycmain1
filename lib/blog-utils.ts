@@ -19,7 +19,7 @@ export type BlogPost = BlogPostMeta & {
 type IndexedPost = BlogPostMeta & { raw: string }
 type Frontmatter = Record<string, unknown>
 
-let cachedIndex: IndexedPost[] | null = null
+// Cache only the slug map for performance
 let cachedBySlug: Map<string, IndexedPost> | null = null
 
 const DEFAULT_LIST_COUNT = 12
@@ -79,10 +79,10 @@ const parseFrontmatter = (raw: string): { fm: Frontmatter; body: string } => {
 }
 
 const buildIndex = (): IndexedPost[] => {
-  if (cachedIndex) return cachedIndex
-
+  // Always rebuild to check current publish dates
   const now = new Date()
   const out: IndexedPost[] = []
+  
   for (const rawPost of allRawPosts) {
     // Filter by publishDate - only include if date has passed
     if (rawPost.publishDate) {
@@ -129,7 +129,7 @@ const buildIndex = (): IndexedPost[] => {
     return a.title.localeCompare(b.title)
   })
 
-  cachedIndex = out
+  // Update slug cache for fast lookups
   cachedBySlug = new Map(out.map((p) => [p.slug, p]))
   return out
 }
