@@ -12,7 +12,7 @@ slug: how-to-check-if-a-building-has-illegal-alterations
 excerpt: Discover how to check if a building has illegal alterations through property records, visual inspections, permit verification, and expert hires. Avoid...
 metaTitle: Spot Illegal Building Alterations: Key Checks Guide
 metaDescription: Discover how to check if a building has illegal alterations through property records, visual inspections, permit verification, and expert hires. Avoid fines and safety risks with this step-by-step guide. Protect your investment today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-a-building-has-illegal-alterations(wonj)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -53,7 +53,7 @@ slug: how-to-check-if-an-nyc-apartment-is-rent-stabilized
 excerpt: Discover how to check if your NYC apartment is rent stabilized using DHCR database, HPD tools, lease reviews, and key indicators. Unlock capped rent i...
 metaTitle: Verify NYC Rent Stabilized Status: Easy Guide
 metaDescription: Discover how to check if your NYC apartment is rent stabilized using DHCR database, HPD tools, lease reviews, and key indicators. Unlock capped rent increases, eviction protections, and save thousands yearly. Learn official methods now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-an-nyc-apartment-is-rent-stabilized(r5ct)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -94,7 +94,7 @@ slug: where-to-find-rent-history-using-acris-records
 excerpt: Discover where to find rent history using ACRIS records for NYC apartments. Learn to access the official site, search by BBL or address, decode key do...
 metaTitle: Unlock NYC Rent History via ACRIS Records Guide
 metaDescription: Discover where to find rent history using ACRIS records for NYC apartments. Learn to access the official site, search by BBL or address, decode key documents, and understand rent-regulated vs. market-rate data. Start verifying rents today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/where-to-find-rent-history-using-acris-records(088x)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -135,7 +135,7 @@ slug: can-my-landlord-lie-about-rent-stabilization-status
 excerpt: Discover if your landlord can lie about rent stabilization status. Learn key laws, differences from rent control, penalties for false claims, and veri...
 metaTitle: Landlord Lying on Rent Stabilization? Know Your Rights
 metaDescription: Discover if your landlord can lie about rent stabilization status. Learn key laws, differences from rent control, penalties for false claims, and verification tools like DHCR databases. Protect yourself from overpaying today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/can-my-landlord-lie-about-rent-stabilization-status(pcl8)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -176,7 +176,7 @@ slug: how-to-look-up-dhcr-rent-registration-records
 excerpt: Discover how to look up DHCR rent registration records to verify legal rents, check histories, and protect your rights as a NYC tenant. Follow our ste...
 metaTitle: Guide: Look Up DHCR Rent Records Online
 metaDescription: Discover how to look up DHCR rent registration records to verify legal rents, check histories, and protect your rights as a NYC tenant. Follow our step-by-step guide to access official records via the DHCR website and search by address effortlessly.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-look-up-dhcr-rent-registration-records(tcqb)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -217,7 +217,7 @@ slug: what-is-a-rent-stabilization-rider-and-do-i-need-it
 excerpt: Unsure what a rent stabilization rider is or if your lease needs it? Learn its definition, purpose, eligibility, key differences from rent control, an...
 metaTitle: Rent Stabilization Rider: What It Is & Do You Need One?
 metaDescription: Unsure what a rent stabilization rider is or if your lease needs it? Learn its definition, purpose, eligibility, key differences from rent control, and where it applies in cities like NYC. Protect your rights today with this essential guide.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-is-a-rent-stabilization-rider-and-do-i-need-it(drha)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -258,7 +258,7 @@ slug: how-much-can-rent-increase-in-a-stabilized-nyc-apartment
 excerpt: Discover how much rent can increase in a stabilized NYC apartment. Learn 2024 RGB guidelines, one/two-year lease rates, vacancy rules, preferential re...
 metaTitle: NYC Rent Stabilized Increases: 2024 Limits Guide
 metaDescription: Discover how much rent can increase in a stabilized NYC apartment. Learn 2024 RGB guidelines, one/two-year lease rates, vacancy rules, preferential rents, and tenant rights. Protect your budget with this essential guide.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-much-can-rent-increase-in-a-stabilized-nyc-apartment(xdps)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -299,7 +299,7 @@ slug: how-to-tell-if-my-building-has-rent-controlled-units
 excerpt: Wondering how to tell if your building has rent-controlled units? Learn rent control basics, check location laws, review property records, and contact...
 metaTitle: Discover Rent-Controlled Units in Your Building
 metaDescription: Wondering how to tell if your building has rent-controlled units? Learn rent control basics, check location laws, review property records, and contact agencies. Uncover protected units and safeguard your rights today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-tell-if-my-building-has-rentcontrolled-units(tq0x)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -340,7 +340,7 @@ slug: can-i-find-out-what-the-previous-tenant-paid
 excerpt: Can I find out what the previous tenant paid? Learn legitimate reasons, FCRA privacy laws, state rules, and safe methods like asking landlords or chec...
 metaTitle: Discover Previous Tenant's Rent: Legal Ways
 metaDescription: Can I find out what the previous tenant paid? Learn legitimate reasons, FCRA privacy laws, state rules, and safe methods like asking landlords or checking Zillow. Avoid legal risks and explore market comps. Get expert tips now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/can-i-find-out-what-the-previous-tenant-paid(s9f3)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -381,7 +381,7 @@ slug: what-is-a-j-51-tax-abatement-building
 excerpt: Unlock J-51 tax abatements in NYC: Slash property taxes up to 100% via renovations under Article XI. Learn eligibility, qualified improvements, rehab ...
 metaTitle: J-51 Tax Abatement: NYC Building Guide (55 chars)
 metaDescription: Unlock J-51 tax abatements in NYC: Slash property taxes up to 100% via renovations under Article XI. Learn eligibility, qualified improvements, rehab benefits, and application steps with HPD and DOF today. (152 characters)
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-is-a-j51-tax-abatement-building(8cab)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -422,7 +422,7 @@ slug: how-to-check-if-my-landlord-is-overcharging-me
 excerpt: Learn how to check if your landlord is overcharging you through illegal rent hikes, hidden fees, inflated utilities, and deposit issues. Review your l...
 metaTitle: Spot Landlord Overcharging: Check Rent Now
 metaDescription: Learn how to check if your landlord is overcharging you through illegal rent hikes, hidden fees, inflated utilities, and deposit issues. Review your lease, research local laws, compare market rates, and fight back effectively today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-my-landlord-is-overcharging-me(gqa7)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -463,7 +463,7 @@ slug: how-to-check-eviction-history-for-nyc-buildings
 excerpt: Learn how to check eviction history for NYC buildings using eCourts Portal, WebCivil, and HPD data. Uncover holdover vs. nonpayment cases with step-by...
 metaTitle: Check NYC Building Eviction History Guide
 metaDescription: Learn how to check eviction history for NYC buildings using eCourts Portal, WebCivil, and HPD data. Uncover holdover vs. nonpayment cases with step-by-step guides and tools like JustFix.nyc. Make smarter rental choices today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-eviction-history-for-nyc-buildings(8wdh)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -504,7 +504,7 @@ slug: can-i-look-up-housing-court-cases-by-address-in-nyc
 excerpt: Can I look up Housing Court cases by address in NYC? Yes, via eCourts portal. Learn step-by-step how to search eviction records, disputes, and outcome...
 metaTitle: Search NYC Housing Court Cases by Address: Guide
 metaDescription: Can I look up Housing Court cases by address in NYC? Yes, via eCourts portal. Learn step-by-step how to search eviction records, disputes, and outcomes tied to addresses. Uncover hidden rental histories now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/can-i-look-up-housing-court-cases-by-address-in-nyc(829y)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -545,7 +545,7 @@ slug: should-i-avoid-buildings-with-high-eviction-rates
 excerpt: Discover why you should avoid buildings with high eviction rates. Learn data sources, economic causes, tenant risks, and research tools to find safe r...
 metaTitle: Avoid High Eviction Rate Buildings? Key Risks Revealed
 metaDescription: Discover why you should avoid buildings with high eviction rates. Learn data sources, economic causes, tenant risks, and research tools to find safe rentals. Protect your finances and peace now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/should-i-avoid-buildings-with-high-eviction-rates(bs4x)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -586,7 +586,7 @@ slug: how-to-check-if-my-landlord-has-housing-court-violations
 excerpt: Discover how to check if your landlord has housing court violations using NYC HPD, DOB NOW, PropertyShark, and JustFix.nyc. Learn to find owner detail...
 metaTitle: Check Landlord Housing Court Violations Guide
 metaDescription: Discover how to check if your landlord has housing court violations using NYC HPD, DOB NOW, PropertyShark, and JustFix.nyc. Learn to find owner details, interpret violations, and protect your tenant rights today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-my-landlord-has-housing-court-violations(3sox)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -627,7 +627,7 @@ slug: what-are-hp-actions-and-why-do-they
 excerpt: Discover what HP Actions are, why they appear on NYC building records, and their types like individual, emergency, and vacate actions. Uncover HPD and...
 metaTitle: HP Actions Explained: NYC Building Records Guide
 metaDescription: Discover what HP Actions are, why they appear on NYC building records, and their types like individual, emergency, and vacate actions. Uncover HPD and DOB violations impacting property value. Learn triggers and fixes now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-are-hp-actions-and-why-do-they-appear-on-building-records(fjgp)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -668,7 +668,7 @@ slug: can-i-find-out-if-previous-tenants-had-lease-disputes
 excerpt: Wondering 'Can I find out if previous tenants had lease disputes?' Discover legal access to records, court searches, screening services, neighbor tips...
 metaTitle: Check Past Tenant Lease Disputes Before Renting
 metaDescription: Wondering 'Can I find out if previous tenants had lease disputes?' Discover legal access to records, court searches, screening services, neighbor tips, and red flags to avoid. Protect your rental choice with proven strategies today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/can-i-find-out-if-previous-tenants-had-lease-disputes(2rvh)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -709,7 +709,7 @@ slug: how-to-look-up-marshal-evictions-in-nyc
 excerpt: Discover how to look up marshal evictions in NYC using DOF eCourt portal, Civil Court records, and Housing Court dockets. Learn marshal roles, evictio...
 metaTitle: Search NYC Marshal Evictions: Step-by-Step Guide
 metaDescription: Discover how to look up marshal evictions in NYC using DOF eCourt portal, Civil Court records, and Housing Court dockets. Learn marshal roles, eviction warrants, and search steps to stay informed on over 20,000 annual cases.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-look-up-marshal-evictions-in-nyc(5t1a)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -750,7 +750,7 @@ slug: what-does-a-holdover-eviction-mean
 excerpt: Uncover what a holdover eviction means when tenants stay past lease end. Learn definitions, distinctions, legal steps, state laws, costs, and alternat...
 metaTitle: Holdover Eviction Meaning: Guide for Landlords
 metaDescription: Uncover what a holdover eviction means when tenants stay past lease end. Learn definitions, distinctions, legal steps, state laws, costs, and alternatives like cash-for-keys. Empower landlords to reclaim property swiftly.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-does-a-holdover-eviction-mean(744k)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -791,7 +791,7 @@ slug: how-to-find-out-who-owns-my-nyc-building
 excerpt: Learn how to find out who owns your NYC building using free ACRIS tools. Get your address, BBL, search deeds, and decode LLC owners for repairs and co...
 metaTitle: Discover NYC Building Owner: Free ACRIS Guide
 metaDescription: Learn how to find out who owns your NYC building using free ACRIS tools. Get your address, BBL, search deeds, and decode LLC owners for repairs and complaints. Start uncovering today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-find-out-who-owns-my-nyc-building(8zu9)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -832,7 +832,7 @@ slug: how-to-look-up-landlord-complaints-on-public-records
 excerpt: Discover how to look up landlord complaints on public records before renting. Uncover housing violations, tenant disputes, HUD complaints, and more vi...
 metaTitle: Find Landlord Complaints in Public Records Guide
 metaDescription: Discover how to look up landlord complaints on public records before renting. Uncover housing violations, tenant disputes, HUD complaints, and more via federal, state, and local resources. Avoid bad landlords and protect your rights today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-look-up-landlord-complaints-on-public-records(60s5)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -873,7 +873,7 @@ slug: should-i-avoid-buildings-owned-by-specific-management
 excerpt: Should I avoid buildings owned by specific management companies? Spot poor maintenance, high turnover, legal disputes, unresponsive teams, and pest is...
 metaTitle: Avoid Bad Property Managers: Key Red Flags
 metaDescription: Should I avoid buildings owned by specific management companies? Spot poor maintenance, high turnover, legal disputes, unresponsive teams, and pest issues. Learn research tools like reviews, forums, and records to find reliable rentals now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/should-i-avoid-buildings-owned-by-specific-management-companies(f2z4)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -914,7 +914,7 @@ slug: how-to-check-if-my-building-is-in-foreclosure
 excerpt: Discover how to check if your building is in foreclosure using county records, online databases like RealtyTrac, title reports, and tax checks. Learn ...
 metaTitle: Check Building Foreclosure Status Now
 metaDescription: Discover how to check if your building is in foreclosure using county records, online databases like RealtyTrac, title reports, and tax checks. Learn foreclosure basics, timelines, and proven steps to uncover liens and notices fast. Protect your investment today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-my-building-is-in-foreclosure(6q8m)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -955,7 +955,7 @@ slug: what-is-acris-and-how-do-i-use-it-to-research-landlords
 excerpt: Discover what ACRIS is and how to use NYC's free property database to research landlords. Uncover ownership history, liens, foreclosures, and transact...
 metaTitle: ACRIS Guide: Research NYC Landlords Easily
 metaDescription: Discover what ACRIS is and how to use NYC's free property database to research landlords. Uncover ownership history, liens, foreclosures, and transactions before signing a lease. Learn expert search techniques today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-is-acris-and-how-do-i-use-it-to-research-landlords(uy5y)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -996,7 +996,7 @@ slug: how-to-tell-if-a-building-recently-sold
 excerpt: Discover how to tell if a building recently sold using public records, MLS sites, Zillow listings, and more. Unlock market insights for smart buying o...
 metaTitle: Spot Recent Building Sales: Top Detection Tips
 metaDescription: Discover how to tell if a building recently sold using public records, MLS sites, Zillow listings, and more. Unlock market insights for smart buying or investing decisions today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-tell-if-a-building-recently-sold(4h25)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1037,7 +1037,7 @@ slug: what-are-hpd-watchlists-and-is-my-building-on-one
 excerpt: Discover what HPD Watchlists are, their purpose, types, criteria, and history in NYC. Learn how buildings get flagged for violations and what it means...
 metaTitle: HPD Watchlists Explained: Check Your Building Now
 metaDescription: Discover what HPD Watchlists are, their purpose, types, criteria, and history in NYC. Learn how buildings get flagged for violations and what it means for tenants and owners. Check if your building is on one today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-are-hpd-watchlists-and-is-my-building-on-one(0mih)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1078,7 +1078,7 @@ slug: how-to-find-out-if-my-landlord-is-a-slumlord
 excerpt: Learn how to find out if your landlord is a slumlord by spotting neglect signs, inspecting structural integrity, plumbing, electrical systems, pests, ...
 metaTitle: Spot Slumlord Signs: Inspect Rentals Now
 metaDescription: Learn how to find out if your landlord is a slumlord by spotting neglect signs, inspecting structural integrity, plumbing, electrical systems, pests, and HVAC. Check public records and know your rights to protect your safety and finances today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-find-out-if-my-landlord-is-a-slumlord(67pr)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1119,7 +1119,7 @@ slug: can-i-look-up-my-buildings-tax-records
 excerpt: Discover if you can look up your building's tax records, what info they reveal about value, liens, and ownership, and how to access them via county si...
 metaTitle: Access Your Building's Tax Records Easily Now
 metaDescription: Discover if you can look up your building's tax records, what info they reveal about value, liens, and ownership, and how to access them via county sites, Zillow, or registries. Avoid surprises in sales or renovations today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/can-i-look-up-my-buildings-tax-records(qdzb)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1160,7 +1160,7 @@ slug: how-to-check-if-a-building-has-liens-or-debts
 excerpt: Discover how to check if a building has liens or debts before buying. Learn types of liens, gather property info, use county records, tax databases, a...
 metaTitle: Check Building Liens & Debts: Step-by-Step Guide
 metaDescription: Discover how to check if a building has liens or debts before buying. Learn types of liens, gather property info, use county records, tax databases, and online tools to avoid costly surprises. Safeguard your investment today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-a-building-has-liens-or-debts(e6z6)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1201,7 +1201,7 @@ slug: how-to-check-fire-safety-violations-before-renting
 excerpt: Learn how to check fire safety violations before renting: probe government databases, spot hazards like faulty detectors and blocked exits, understand...
 metaTitle: Check Fire Safety Violations Pre-Renting Guide
 metaDescription: Learn how to check fire safety violations before renting: probe government databases, spot hazards like faulty detectors and blocked exits, understand codes, and protect tenant rights. Avoid displacement from apartment fires. Safeguard your safety today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-fire-safety-violations-before-renting(yh99)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1242,7 +1242,7 @@ slug: what-do-boiler-inspection-records-tell-you-about-a-building
 excerpt: Discover what boiler inspection records reveal about your building's safety, compliance, and boiler condition. Learn key components like inspection da...
 metaTitle: Boiler Inspection Records: Building Safety Secrets
 metaDescription: Discover what boiler inspection records reveal about your building's safety, compliance, and boiler condition. Learn key components like inspection dates, pressure vessel integrity, safety valves, and more to spot risks and ensure operational health today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/what-do-boiler-inspection-records-tell-you-about-a-building(bhx8)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1283,7 +1283,7 @@ slug: how-to-look-up-elevator-violations-in-nyc
 excerpt: Uncover NYC elevator violations fast using DOB BIS portal, PropertyShark, and NYC Open Data. Learn to search by address, decode EAPC-41 codes, and ens...
 metaTitle: Check NYC Elevator Violations: DOB BIS Guide
 metaDescription: Uncover NYC elevator violations fast using DOB BIS portal, PropertyShark, and NYC Open Data. Learn to search by address, decode EAPC-41 codes, and ensure building safety with our step-by-step guide. Protect yourself today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-look-up-elevator-violations-in-nyc(25x5)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1324,7 +1324,7 @@ slug: should-i-worry-about-dob-emergency-declarations
 excerpt: Discover what DOB emergency declarations mean for property owners: triggers, stop-work orders, fines, historical cases, and real risks. Learn when to ...
 metaTitle: Worried About DOB Emergency Declarations?
 metaDescription: Discover what DOB emergency declarations mean for property owners: triggers, stop-work orders, fines, historical cases, and real risks. Learn when to worry and how to protect your projects from sudden halts today.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/should-i-worry-about-dob-emergency-declarations(qyub)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
@@ -1365,7 +1365,7 @@ slug: how-to-check-if-smoke-detectors-are-code-compliant
 excerpt: Learn how to check if smoke detectors are code compliant per NFPA 72, IBC, and local rules. Ensure proper types, placement, age, and testing to protec...
 metaTitle: Verify Smoke Detector Code Compliance Guide
 metaDescription: Learn how to check if smoke detectors are code compliant per NFPA 72, IBC, and local rules. Ensure proper types, placement, age, and testing to protect lives and meet insurance needs. Follow our expert steps now.
-featuredImage: https://files.autoblogging.ai/images/building-violations-nyc.jpeg
+featuredImage: https://files.autoblogging.ai/images/how-to-check-if-smoke-detectors-are-code-compliant(fzxw)_4.jpeg
 tags:
 - Building Violations
 - NYC Housing
