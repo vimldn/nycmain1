@@ -5,7 +5,7 @@ export type RawPostFile = {
 };
 
 export const buildingViolationsPart1: RawPostFile[] = [
-  { folder: "what-does-a-bed-bug-violation-mean-on-nyc-building-records", publishDate: "2025-02-10", raw: `
+  { folder: "what-does-a-bed-bug-violation-mean-on-nyc-building-records", publishDate: "2026-02-11", raw: `
 ---
 title: What Does a Bed Bug Violation Mean on NYC Building Records?
 slug: what-does-a-bed-bug-violation-mean-on-nyc-building-records
@@ -46,7 +46,7 @@ tags:
   
 </section>
 ` },
-  { folder: "is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc", publishDate: "2025-02-10", raw: `
+  { folder: "is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc", publishDate: "2026-02-11", raw: `
 ---
 title: Is My Landlord Required to Pay for Bed Bug Treatment in NYC?
 slug: is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc
@@ -87,7 +87,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-class-b-violations-for-bed-bugs-in-nyc-buildings", publishDate: "2025-02-10", raw: `
+  { folder: "what-are-class-b-violations-for-bed-bugs-in-nyc-buildings", publishDate: "2026-02-11", raw: `
 ---
 title: What Are Class B Violations for Bed Bugs in NYC Buildings?
 slug: what-are-class-b-violations-for-bed-bugs-in-nyc-buildings
@@ -128,7 +128,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-long-does-my-nyc-landlord-have-to-fix-a-bed-bug-problem", publishDate: "2025-02-11", raw: `
+  { folder: "how-long-does-my-nyc-landlord-have-to-fix-a-bed-bug-problem", publishDate: "2026-02-12", raw: `
 ---
 title: How Long Does My NYC Landlord Have to Fix a Bed Bug Problem?
 slug: how-long-does-my-nyc-landlord-have-to-fix-a-bed-bug-problem
@@ -169,7 +169,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-read-hpd-bed-bug-complaints-on-nyc-open-data", publishDate: "2025-02-11", raw: `
+  { folder: "how-to-read-hpd-bed-bug-complaints-on-nyc-open-data", publishDate: "2026-02-12", raw: `
 ---
 title: How to Read HPD Bed Bug Complaints on NYC Open Data
 slug: how-to-read-hpd-bed-bug-complaints-on-nyc-open-data
@@ -210,7 +210,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-to-do-if-your-nyc-landlord-wont-treat-bed-bugs", publishDate: "2025-02-11", raw: `
+  { folder: "what-to-do-if-your-nyc-landlord-wont-treat-bed-bugs", publishDate: "2026-02-12", raw: `
 ---
 title: What to Do if Your NYC Landlord Won't Treat Bed Bugs
 slug: what-to-do-if-your-nyc-landlord-wont-treat-bed-bugs
@@ -251,7 +251,7 @@ tags:
   
 </section>
 ` },
-  { folder: "are-cockroaches-a-lease-breaking-issue-in-nyc", publishDate: "2025-02-12", raw: `
+  { folder: "are-cockroaches-a-lease-breaking-issue-in-nyc", publishDate: "2026-02-13", raw: `
 ---
 title: Are Cockroaches a Lease-Breaking Issue in NYC?
 slug: are-cockroaches-a-lease-breaking-issue-in-nyc
@@ -292,7 +292,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-for-mouse-and-rat-complaints-in-nyc-buildings", publishDate: "2025-02-12", raw: `
+  { folder: "how-to-check-for-mouse-and-rat-complaints-in-nyc-buildings", publishDate: "2026-02-13", raw: `
 ---
 title: How to Check for Mouse and Rat Complaints in NYC Buildings
 slug: how-to-check-for-mouse-and-rat-complaints-in-nyc-buildings
@@ -333,7 +333,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-do-dohmh-pest-inspection-results-mean", publishDate: "2025-02-12", raw: `
+  { folder: "what-do-dohmh-pest-inspection-results-mean", publishDate: "2026-02-13", raw: `
 ---
 title: What Do DOHMH Pest Inspection Results Mean?
 slug: what-do-dohmh-pest-inspection-results-mean
@@ -374,7 +374,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-many-pest-violations-are-too-many-in-an-nyc-building", publishDate: "2025-02-13", raw: `
+  { folder: "how-many-pest-violations-are-too-many-in-an-nyc-building", publishDate: "2026-02-14", raw: `
 ---
 title: How Many Pest Violations Are Too Many in an NYC Building?
 slug: how-many-pest-violations-are-too-many-in-an-nyc-building
@@ -415,7 +415,7 @@ tags:
   
 </section>
 ` },
-  { folder: "brooklyns-bed-buggiest-buildings-data-analysis-2026", publishDate: "2025-02-13", raw: `
+  { folder: "brooklyns-bed-buggiest-buildings-data-analysis-2026", publishDate: "2026-02-14", raw: `
 ---
 title: Brooklyn's Bed Buggiest Buildings: Data Analysis 2026
 slug: brooklyns-bed-buggiest-buildings-data-analysis-2026
@@ -456,7 +456,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-heat-complaints-before-renting-in-nyc", publishDate: "2025-02-13", raw: `
+  { folder: "how-to-check-heat-complaints-before-renting-in-nyc", publishDate: "2026-02-14", raw: `
 ---
 title: How to Check Heat Complaints Before Renting in NYC
 slug: how-to-check-heat-complaints-before-renting-in-nyc
@@ -497,7 +497,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-file-a-311-heat-complaint-in-nyc", publishDate: "2025-02-14", raw: `
+  { folder: "how-to-file-a-311-heat-complaint-in-nyc", publishDate: "2026-02-15", raw: `
 ---
 title: How to File a 311 Heat Complaint in NYC
 slug: how-to-file-a-311-heat-complaint-in-nyc
@@ -538,7 +538,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-temperature-must-nyc-landlords-maintain", publishDate: "2025-02-14", raw: `
+  { folder: "what-temperature-must-nyc-landlords-maintain", publishDate: "2026-02-15", raw: `
 ---
 title: What Temperature Must NYC Landlords Maintain?
 slug: what-temperature-must-nyc-landlords-maintain
@@ -579,7 +579,7 @@ tags:
   
 </section>
 ` },
-  { folder: "do-buildings-with-more-heat-complaints-have-bad-landlords", publishDate: "2025-02-14", raw: `
+  { folder: "do-buildings-with-more-heat-complaints-have-bad-landlords", publishDate: "2026-02-15", raw: `
 ---
 title: Do Buildings with More Heat Complaints Have Bad Landlords?
 slug: do-buildings-with-more-heat-complaints-have-bad-landlords
@@ -620,7 +620,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-a-building-has-chronic-heat-problems", publishDate: "2025-02-15", raw: `
+  { folder: "how-to-check-if-a-building-has-chronic-heat-problems", publishDate: "2026-02-16", raw: `
 ---
 title: How to Check if a Building Has Chronic Heat Problems
 slug: how-to-check-if-a-building-has-chronic-heat-problems
@@ -661,7 +661,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-no-heathot-water-on-311-data-really-mean", publishDate: "2025-02-15", raw: `
+  { folder: "what-does-no-heathot-water-on-311-data-really-mean", publishDate: "2026-02-16", raw: `
 ---
 title: What Does "No Heat/Hot Water" on 311 Data Really Mean?
 slug: what-does-no-heathot-water-on-311-data-really-mean
@@ -702,7 +702,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-long-can-an-nyc-apartment-go-without-heat-legally", publishDate: "2025-02-15", raw: `
+  { folder: "how-long-can-an-nyc-apartment-go-without-heat-legally", publishDate: "2026-02-16", raw: `
 ---
 title: How Long Can an NYC Apartment Go Without Heat Legally?
 slug: how-long-can-an-nyc-apartment-go-without-heat-legally
@@ -743,7 +743,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-class-a-b-and-c-violations-in-nyc", publishDate: "2025-02-16", raw: `
+  { folder: "what-are-class-a-b-and-c-violations-in-nyc", publishDate: "2026-02-17", raw: `
 ---
 title: What Are Class A, B, and C Violations in NYC?
 slug: what-are-class-a-b-and-c-violations-in-nyc
@@ -785,7 +785,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-an-open-hpd-violation-mean", publishDate: "2025-02-16", raw: `
+  { folder: "what-does-an-open-hpd-violation-mean", publishDate: "2026-02-17", raw: `
 ---
 title: What Does an Open HPD Violation Mean?
 slug: what-does-an-open-hpd-violation-mean
@@ -827,7 +827,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-hpd-violations-were-actually-fixed", publishDate: "2025-02-16", raw: `
+  { folder: "how-to-check-if-hpd-violations-were-actually-fixed", publishDate: "2026-02-17", raw: `
 ---
 title: How to Check if HPD Violations Were Actually Fixed
 slug: how-to-check-if-hpd-violations-were-actually-fixed
@@ -867,7 +867,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-rent-an-apartment-with-active-hpd-violations", publishDate: "2025-02-17", raw: `
+  { folder: "can-i-rent-an-apartment-with-active-hpd-violations", publishDate: "2026-02-18", raw: `
 ---
 title: Can I Rent an Apartment with Active HPD Violations?
 slug: can-i-rent-an-apartment-with-active-hpd-violations
@@ -907,7 +907,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-immediately-hazardous-violations-in-nyc", publishDate: "2025-02-17", raw: `
+  { folder: "what-are-immediately-hazardous-violations-in-nyc", publishDate: "2026-02-18", raw: `
 ---
 title: What Are Immediately Hazardous Violations in NYC?
 slug: what-are-immediately-hazardous-violations-in-nyc
@@ -947,7 +947,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-building-violations-on-hpd-online", publishDate: "2025-02-17", raw: `
+  { folder: "how-to-look-up-building-violations-on-hpd-online", publishDate: "2026-02-18", raw: `
 ---
 title: How to Look Up Building Violations on HPD Online
 slug: how-to-look-up-building-violations-on-hpd-online
@@ -987,7 +987,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-certified-corrected-mean-on-hpd-violations", publishDate: "2025-02-18", raw: `
+  { folder: "what-does-certified-corrected-mean-on-hpd-violations", publishDate: "2026-02-19", raw: `
 ---
 title: What Does "Certified Corrected" Mean on HPD Violations?
 slug: what-does-certified-corrected-mean-on-hpd-violations
@@ -1027,7 +1027,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-avoid-buildings-with-lead-paint-violations", publishDate: "2025-02-18", raw: `
+  { folder: "should-i-avoid-buildings-with-lead-paint-violations", publishDate: "2026-02-19", raw: `
 ---
 title: Should I Avoid Buildings with Lead Paint Violations?
 slug: should-i-avoid-buildings-with-lead-paint-violations
@@ -1067,7 +1067,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-long-do-landlords-have-to-fix-hpd-violations", publishDate: "2025-02-18", raw: `
+  { folder: "how-long-do-landlords-have-to-fix-hpd-violations", publishDate: "2026-02-19", raw: `
 ---
 title: How Long Do Landlords Have to Fix HPD Violations?
 slug: how-long-do-landlords-have-to-fix-hpd-violations
@@ -1107,7 +1107,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-for-active-construction-permits-before-renting", publishDate: "2025-02-19", raw: `
+  { folder: "how-to-check-for-active-construction-permits-before-renting", publishDate: "2026-02-20", raw: `
 ---
 title: How to Check for Active Construction Permits Before Renting
 slug: how-to-check-for-active-construction-permits-before-renting
@@ -1147,7 +1147,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-it-mean-if-my-building-has-open-dob-violations", publishDate: "2025-02-19", raw: `
+  { folder: "what-does-it-mean-if-my-building-has-open-dob-violations", publishDate: "2026-02-20", raw: `
 ---
 title: What Does It Mean if My Building Has Open DOB Violations?
 slug: what-does-it-mean-if-my-building-has-open-dob-violations
@@ -1187,7 +1187,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-my-landlord-do-construction-while-im-living-there", publishDate: "2025-02-19", raw: `
+  { folder: "can-my-landlord-do-construction-while-im-living-there", publishDate: "2026-02-20", raw: `
 ---
 title: Can My Landlord Do Construction While I'm Living There?
 slug: can-my-landlord-do-construction-while-im-living-there
@@ -1228,7 +1228,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-avoid-buildings-with-active-permits", publishDate: "2025-02-20", raw: `
+  { folder: "should-i-avoid-buildings-with-active-permits", publishDate: "2026-02-21", raw: `
 ---
 title: Should I Avoid Buildings with Active Permits?
 slug: should-i-avoid-buildings-with-active-permits
@@ -1269,7 +1269,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-stop-work-orders-and-why-do-they-matter", publishDate: "2025-02-20", raw: `
+  { folder: "what-are-stop-work-orders-and-why-do-they-matter", publishDate: "2026-02-21", raw: `
 ---
 title: What Are Stop Work Orders and Why Do They Matter?
 slug: what-are-stop-work-orders-and-why-do-they-matter
@@ -1310,7 +1310,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-tell-if-construction-will-affect-my-apartment", publishDate: "2025-02-20", raw: `
+  { folder: "how-to-tell-if-construction-will-affect-my-apartment", publishDate: "2026-02-21", raw: `
 ---
 title: How to Tell if Construction Will Affect My Apartment
 slug: how-to-tell-if-construction-will-affect-my-apartment
@@ -1351,7 +1351,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-ecb-violations-and-should-i-care", publishDate: "2025-02-21", raw: `
+  { folder: "what-are-ecb-violations-and-should-i-care", publishDate: "2026-02-22", raw: `
 ---
 title: What Are ECB Violations and Should I Care?
 slug: what-are-ecb-violations-and-should-i-care
