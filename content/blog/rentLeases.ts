@@ -1,4 +1,8 @@
-export type RawPostFile = { folder: string; raw: string };
+export type RawPostFile = { 
+  folder: string; 
+  raw: string;
+  publishDate?: string;
+};
 export const rentLeases: RawPostFile[] = [
   { folder: "can-a-nyc-landlord-refuse-to-allow-pets", raw: `
 ---
