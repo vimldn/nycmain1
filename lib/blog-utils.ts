@@ -137,15 +137,38 @@ const buildIndex = (): IndexedPost[] => {
 export const getAllPosts = (): BlogPostMeta[] => buildIndex().map(({ raw: _raw, ...m }) => m)
 
 export const getPostBySlug = (slug: string): BlogPost | null => {
-  const index = buildIndex()
-  if (!cachedBySlug) cachedBySlug = new Map(index.map((p) => [p.slug, p]))
-  const meta = cachedBySlug.get(slug)
-  if (!meta) return null
-
-  const { body } = parseFrontmatter(meta.raw)
-
-  // Posts are stored as HTML blocks inside MDX/MD. We render them as HTML.
-  return { ...meta, html: body.replace(/<\/?strong>/gi, '') }
+  // Don't filter by date for direct access - allow viewing any post by URL
+  for (const rawPost of allRawPosts) {
+    const { raw } = rawPost
+    const { fm, body } = parseFrontmatter(raw)
+    
+    const postSlug = (fm.slug as string) || ''
+    if (postSlug !== slug) continue
+    
+    const title = (fm.title as string) || 'Untitled'
+    const featuredImage = (fm.featuredImage as string) || undefined
+    const metaTitle = (fm.metaTitle as string) || undefined
+    const metaDescription = (fm.metaDescription as string) || undefined
+    const schema = fm.schema
+    const tags = Array.isArray(fm.tags) ? (fm.tags as string[]).filter(Boolean) : []
+    const dateISO = (fm.date as string) || undefined
+    const excerpt = (fm.excerpt as string) || extractExcerpt(body)
+    
+    return {
+      slug: postSlug,
+      title,
+      excerpt,
+      featuredImage,
+      tags,
+      dateISO,
+      metaTitle,
+      metaDescription,
+      schema,
+      html: body.replace(/<\/?strong>/gi, '')
+    }
+  }
+  
+  return null
 }
 
 export const getRecentPosts = (count = DEFAULT_LIST_COUNT): BlogPostMeta[] =>
