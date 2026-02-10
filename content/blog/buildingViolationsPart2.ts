@@ -5,7 +5,7 @@ export type RawPostFile = {
 };
 
 export const buildingViolationsPart2: RawPostFile[] = [
-  { folder: "how-to-check-if-a-building-has-illegal-alterations", publishDate: "2025-02-21", raw: `
+  { folder: "how-to-check-if-a-building-has-illegal-alterations", publishDate: "2026-02-22", raw: `
 ---
 title: How to Check if a Building Has Illegal Alterations
 slug: how-to-check-if-a-building-has-illegal-alterations
@@ -46,7 +46,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-an-nyc-apartment-is-rent-stabilized", publishDate: "2025-02-21", raw: `
+  { folder: "how-to-check-if-an-nyc-apartment-is-rent-stabilized", publishDate: "2026-02-22", raw: `
 ---
 title: How to Check if an NYC Apartment Is Rent Stabilized
 slug: how-to-check-if-an-nyc-apartment-is-rent-stabilized
@@ -87,7 +87,7 @@ tags:
   
 </section>
 ` },
-  { folder: "where-to-find-rent-history-using-acris-records", publishDate: "2025-02-22", raw: `
+  { folder: "where-to-find-rent-history-using-acris-records", publishDate: "2026-02-23", raw: `
 ---
 title: Where to Find Rent History Using ACRIS Records
 slug: where-to-find-rent-history-using-acris-records
@@ -128,7 +128,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-my-landlord-lie-about-rent-stabilization-status", publishDate: "2025-02-22", raw: `
+  { folder: "can-my-landlord-lie-about-rent-stabilization-status", publishDate: "2026-02-23", raw: `
 ---
 title: Can My Landlord Lie About Rent Stabilization Status?
 slug: can-my-landlord-lie-about-rent-stabilization-status
@@ -169,7 +169,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-dhcr-rent-registration-records", publishDate: "2025-02-22", raw: `
+  { folder: "how-to-look-up-dhcr-rent-registration-records", publishDate: "2026-02-23", raw: `
 ---
 title: How to Look Up DHCR Rent Registration Records
 slug: how-to-look-up-dhcr-rent-registration-records
@@ -210,7 +210,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-is-a-rent-stabilization-rider-and-do-i-need-it", publishDate: "2025-02-23", raw: `
+  { folder: "what-is-a-rent-stabilization-rider-and-do-i-need-it", publishDate: "2026-02-24", raw: `
 ---
 title: What Is a Rent Stabilization Rider and Do I Need It?
 slug: what-is-a-rent-stabilization-rider-and-do-i-need-it
@@ -251,7 +251,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-much-can-rent-increase-in-a-stabilized-nyc-apartment", publishDate: "2025-02-23", raw: `
+  { folder: "how-much-can-rent-increase-in-a-stabilized-nyc-apartment", publishDate: "2026-02-24", raw: `
 ---
 title: How Much Can Rent Increase in a Stabilized NYC Apartment?
 slug: how-much-can-rent-increase-in-a-stabilized-nyc-apartment
@@ -292,7 +292,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-tell-if-my-building-has-rent-controlled-units", publishDate: "2025-02-23", raw: `
+  { folder: "how-to-tell-if-my-building-has-rent-controlled-units", publishDate: "2026-02-24", raw: `
 ---
 title: How to Tell if My Building Has Rent-Controlled Units
 slug: how-to-tell-if-my-building-has-rent-controlled-units
@@ -333,7 +333,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-find-out-what-the-previous-tenant-paid", publishDate: "2025-02-24", raw: `
+  { folder: "can-i-find-out-what-the-previous-tenant-paid", publishDate: "2026-02-25", raw: `
 ---
 title: Can I Find Out What the Previous Tenant Paid?
 slug: can-i-find-out-what-the-previous-tenant-paid
@@ -374,7 +374,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-is-a-j-51-tax-abatement-building", publishDate: "2025-02-24", raw: `
+  { folder: "what-is-a-j-51-tax-abatement-building", publishDate: "2026-02-25", raw: `
 ---
 title: What Is a J-51 Tax Abatement Building?
 slug: what-is-a-j-51-tax-abatement-building
@@ -415,7 +415,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-my-landlord-is-overcharging-me", publishDate: "2025-02-24", raw: `
+  { folder: "how-to-check-if-my-landlord-is-overcharging-me", publishDate: "2026-02-25", raw: `
 ---
 title: How to Check if My Landlord Is Overcharging Me
 slug: how-to-check-if-my-landlord-is-overcharging-me
@@ -456,7 +456,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-eviction-history-for-nyc-buildings", publishDate: "2025-02-25", raw: `
+  { folder: "how-to-check-eviction-history-for-nyc-buildings", publishDate: "2026-02-26", raw: `
 ---
 title: How to Check Eviction History for NYC Buildings
 slug: how-to-check-eviction-history-for-nyc-buildings
@@ -497,7 +497,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-look-up-housing-court-cases-by-address-in-nyc", publishDate: "2025-02-25", raw: `
+  { folder: "can-i-look-up-housing-court-cases-by-address-in-nyc", publishDate: "2026-02-26", raw: `
 ---
 title: Can I Look Up Housing Court Cases by Address in NYC?
 slug: can-i-look-up-housing-court-cases-by-address-in-nyc
@@ -538,7 +538,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-avoid-buildings-with-high-eviction-rates", publishDate: "2025-02-25", raw: `
+  { folder: "should-i-avoid-buildings-with-high-eviction-rates", publishDate: "2026-02-26", raw: `
 ---
 title: Should I Avoid Buildings with High Eviction Rates?
 slug: should-i-avoid-buildings-with-high-eviction-rates
@@ -579,7 +579,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-my-landlord-has-housing-court-violations", publishDate: "2025-02-26", raw: `
+  { folder: "how-to-check-if-my-landlord-has-housing-court-violations", publishDate: "2026-02-27", raw: `
 ---
 title: How to Check if My Landlord Has Housing Court Violations
 slug: how-to-check-if-my-landlord-has-housing-court-violations
@@ -620,7 +620,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-hp-actions-and-why-do-they", publishDate: "2025-02-26", raw: `
+  { folder: "what-are-hp-actions-and-why-do-they", publishDate: "2026-02-27", raw: `
 ---
 title: What Are HP Actions and Why Do They Appear on Building Records?
 slug: what-are-hp-actions-and-why-do-they
@@ -661,7 +661,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-find-out-if-previous-tenants-had-lease-disputes", publishDate: "2025-02-26", raw: `
+  { folder: "can-i-find-out-if-previous-tenants-had-lease-disputes", publishDate: "2026-02-27", raw: `
 ---
 title: Can I Find Out if Previous Tenants Had Lease Disputes?
 slug: can-i-find-out-if-previous-tenants-had-lease-disputes
@@ -702,7 +702,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-marshal-evictions-in-nyc", publishDate: "2025-02-27", raw: `
+  { folder: "how-to-look-up-marshal-evictions-in-nyc", publishDate: "2026-02-28", raw: `
 ---
 title: How to Look Up Marshal Evictions in NYC
 slug: how-to-look-up-marshal-evictions-in-nyc
@@ -743,7 +743,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-does-a-holdover-eviction-mean", publishDate: "2025-02-27", raw: `
+  { folder: "what-does-a-holdover-eviction-mean", publishDate: "2026-02-28", raw: `
 ---
 title: What Does a Holdover Eviction Mean?
 slug: what-does-a-holdover-eviction-mean
@@ -784,7 +784,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-find-out-who-owns-my-nyc-building", publishDate: "2025-02-27", raw: `
+  { folder: "how-to-find-out-who-owns-my-nyc-building", publishDate: "2026-02-28", raw: `
 ---
 title: How to Find Out Who Owns My NYC Building
 slug: how-to-find-out-who-owns-my-nyc-building
@@ -825,7 +825,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-landlord-complaints-on-public-records", publishDate: "2025-02-28", raw: `
+  { folder: "how-to-look-up-landlord-complaints-on-public-records", publishDate: "2026-03-01", raw: `
 ---
 title: How to Look Up Landlord Complaints on Public Records
 slug: how-to-look-up-landlord-complaints-on-public-records
@@ -866,7 +866,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-avoid-buildings-owned-by-specific-management", publishDate: "2025-02-28", raw: `
+  { folder: "should-i-avoid-buildings-owned-by-specific-management", publishDate: "2026-03-01", raw: `
 ---
 title: Should I Avoid Buildings Owned by Specific Management Companies?
 slug: should-i-avoid-buildings-owned-by-specific-management
@@ -907,7 +907,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-my-building-is-in-foreclosure", publishDate: "2025-02-28", raw: `
+  { folder: "how-to-check-if-my-building-is-in-foreclosure", publishDate: "2026-03-01", raw: `
 ---
 title: How to Check if My Building Is in Foreclosure
 slug: how-to-check-if-my-building-is-in-foreclosure
@@ -948,7 +948,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-is-acris-and-how-do-i-use-it-to-research-landlords", publishDate: "2025-03-01", raw: `
+  { folder: "what-is-acris-and-how-do-i-use-it-to-research-landlords", publishDate: "2026-03-02", raw: `
 ---
 title: What Is ACRIS and How Do I Use It to Research Landlords?
 slug: what-is-acris-and-how-do-i-use-it-to-research-landlords
@@ -989,7 +989,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-tell-if-a-building-recently-sold", publishDate: "2025-03-01", raw: `
+  { folder: "how-to-tell-if-a-building-recently-sold", publishDate: "2026-03-02", raw: `
 ---
 title: How to Tell if a Building Recently Sold
 slug: how-to-tell-if-a-building-recently-sold
@@ -1030,7 +1030,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-are-hpd-watchlists-and-is-my-building-on-one", publishDate: "2025-03-01", raw: `
+  { folder: "what-are-hpd-watchlists-and-is-my-building-on-one", publishDate: "2026-03-02", raw: `
 ---
 title: What Are HPD Watchlists and Is My Building On One?
 slug: what-are-hpd-watchlists-and-is-my-building-on-one
@@ -1071,7 +1071,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-find-out-if-my-landlord-is-a-slumlord", publishDate: "2025-03-02", raw: `
+  { folder: "how-to-find-out-if-my-landlord-is-a-slumlord", publishDate: "2026-03-03", raw: `
 ---
 title: How to Find Out if My Landlord Is a Slumlord
 slug: how-to-find-out-if-my-landlord-is-a-slumlord
@@ -1112,7 +1112,7 @@ tags:
   
 </section>
 ` },
-  { folder: "can-i-look-up-my-buildings-tax-records", publishDate: "2025-03-02", raw: `
+  { folder: "can-i-look-up-my-buildings-tax-records", publishDate: "2026-03-03", raw: `
 ---
 title: Can I Look Up My Building's Tax Records?
 slug: can-i-look-up-my-buildings-tax-records
@@ -1153,7 +1153,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-a-building-has-liens-or-debts", publishDate: "2025-03-02", raw: `
+  { folder: "how-to-check-if-a-building-has-liens-or-debts", publishDate: "2026-03-03", raw: `
 ---
 title: How to Check if a Building Has Liens or Debts
 slug: how-to-check-if-a-building-has-liens-or-debts
@@ -1194,7 +1194,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-fire-safety-violations-before-renting", publishDate: "2025-03-03", raw: `
+  { folder: "how-to-check-fire-safety-violations-before-renting", publishDate: "2026-03-04", raw: `
 ---
 title: How to Check Fire Safety Violations Before Renting
 slug: how-to-check-fire-safety-violations-before-renting
@@ -1235,7 +1235,7 @@ tags:
   
 </section>
 ` },
-  { folder: "what-do-boiler-inspection-records-tell-you-about-a-building", publishDate: "2025-03-03", raw: `
+  { folder: "what-do-boiler-inspection-records-tell-you-about-a-building", publishDate: "2026-03-04", raw: `
 ---
 title: What Do Boiler Inspection Records Tell You About a Building?
 slug: what-do-boiler-inspection-records-tell-you-about-a-building
@@ -1276,7 +1276,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-look-up-elevator-violations-in-nyc", publishDate: "2025-03-03", raw: `
+  { folder: "how-to-look-up-elevator-violations-in-nyc", publishDate: "2026-03-04", raw: `
 ---
 title: How to Look Up Elevator Violations in NYC
 slug: how-to-look-up-elevator-violations-in-nyc
@@ -1317,7 +1317,7 @@ tags:
   
 </section>
 ` },
-  { folder: "should-i-worry-about-dob-emergency-declarations", publishDate: "2025-03-04", raw: `
+  { folder: "should-i-worry-about-dob-emergency-declarations", publishDate: "2026-03-05", raw: `
 ---
 title: Should I Worry About DOB Emergency Declarations?
 slug: should-i-worry-about-dob-emergency-declarations
@@ -1358,7 +1358,7 @@ tags:
   
 </section>
 ` },
-  { folder: "how-to-check-if-smoke-detectors-are-code-compliant", publishDate: "2025-03-04", raw: `
+  { folder: "how-to-check-if-smoke-detectors-are-code-compliant", publishDate: "2026-03-05", raw: `
 ---
 title: How to Check if Smoke Detectors Are Code Compliant
 slug: how-to-check-if-smoke-detectors-are-code-compliant
