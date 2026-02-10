@@ -2,12 +2,15 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
 import { getAllPosts, getPostBySlug } from '@/lib/blog-utils'
+import { allRawPosts } from '@/content/blog'
 import BlogSidebar from '@/components/BlogSidebar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export async function generateStaticParams() {
-  return getAllPosts().map((p) => ({ slug: p.slug }))
+  // Generate pages for ALL posts (including future scheduled ones)
+  // This ensures the pages exist, even if they're not shown in the listing yet
+  return allRawPosts.map((p) => ({ slug: p.folder }))
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
