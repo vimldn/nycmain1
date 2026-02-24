@@ -296,11 +296,12 @@ export default function HomePage() {
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] mb-6 sm:mb-8 max-w-3xl mx-auto px-2 leading-relaxed">
-            Stop gambling on your next apartment. Search any address and instantly see{' '}
-            <span className="text-[var(--text-primary)] font-medium">violations</span>,{' '}
+            Search any NYC address and instantly see{' '}
+            <span className="text-[var(--text-primary)] font-medium">building violations</span>,{' '}
             <span className="text-[var(--text-primary)] font-medium">pest history</span>,{' '}
             <span className="text-[var(--text-primary)] font-medium">heat complaints</span>, and{' '}
-            <span className="text-[var(--text-primary)] font-medium">real tenant reviews</span>, all pulled from official NYC data.
+            <span className="text-[var(--text-primary)] font-medium">311 records</span> — all pulled from official NYC government data.
+            {' '}Don&apos;t sign a lease until you&apos;ve checked.
           </p>
 
           {/* UNIVERSAL RESPONSIVE SEARCH BOX */}
