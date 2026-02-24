@@ -98,9 +98,9 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-              <li><a href="#" className="hover:text-[var(--text-primary)] transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[var(--text-primary)] transition">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-[var(--text-primary)] transition">Data Sources</a></li>
+              <li><Link href="/privacy-policy" className="hover:text-[var(--text-primary)] transition">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-service" className="hover:text-[var(--text-primary)] transition">Terms of Service</Link></li>
+              <li><Link href="/data-sources" className="hover:text-[var(--text-primary)] transition">Data Sources</Link></li>
             </ul>
           </div>
         </div>
