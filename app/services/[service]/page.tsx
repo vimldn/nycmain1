@@ -68,8 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const noun = stripServicesSuffix(service.name)
 
   return {
-    title: `${service.name} in NYC | Compare Options and Find Local Help`,
-    description: `Explore ${noun.toLowerCase()} options across NYC neighborhoods. Request help, compare availability, and book with clear next steps.`,
+    title: `${service.name} in NYC | Find Local Help Across All 5 Boroughs`,
+    description: service.intro.length > 155 ? service.intro.slice(0, 152) + '...' : service.intro,
   }
 }
 
@@ -80,9 +80,7 @@ export default function ServicePage({ params }: Props) {
   const noun = stripServicesSuffix(service.name)
   const providerNoun = providerNounFor(params.service, service.name)
 
-  const pitch = needs24x7(params.service)
-    ? `We connect you with 24/7 ${providerNoun} across NYC, backed by experienced pros and fast availability.`
-    : `We connect you with ${providerNoun} across NYC, backed by experienced pros and fast availability.`
+  const pitch = service.intro
 
   const allLocations = Object.entries(locations)
 
