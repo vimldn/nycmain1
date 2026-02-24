@@ -18,7 +18,8 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
 
-  title: 'Building Health X | NYC Building Research & Apartment Check',
+  applicationName: 'Building Health X',
+  title: 'Building Health X | NYC Building Violations Lookup',
   description:
     'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
   keywords: [
@@ -40,6 +41,19 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/icon.png',
   },
+
+  openGraph: {
+    title: 'Building Health X | NYC Building Violations Lookup',
+    description:
+      'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
+    siteName: 'Building Health X',
+  },
+
+  twitter: {
+    title: 'Building Health X | NYC Building Violations Lookup',
+    description:
+      'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -49,6 +63,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Building Health X',
+              url: 'https://www.buildinghealthx.com',
+            }),
+          }}
         />
 
         <Script
