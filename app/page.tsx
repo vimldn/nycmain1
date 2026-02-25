@@ -291,7 +291,7 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
-            Research Any NYC Building{' '}
+            Research Any NYC Building Violations{' '}
             <span className="gradient-text block mt-1 sm:mt-2">Before You Sign the Lease</span>
           </h1>
 
