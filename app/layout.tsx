@@ -17,7 +17,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
- metadataBase: new URL('https://www.buildinghealthx.com'),
+  metadataBase: new URL('https://www.buildinghealthx.com'),
   applicationName: 'Building Health X',
   title: 'Building Health X | NYC Building Violations Lookup',
   description:
@@ -68,6 +68,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
 
+        {/* Organization schema helps Google associate a brand name (site name) vs showing the raw URL */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Building Health X',
+              url: 'https://www.buildinghealthx.com',
+              logo: 'https://www.buildinghealthx.com/icon.png',
+            }),
+          }}
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -75,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Building Health X',
+              alternateName: 'BuildingHealthX',
               url: 'https://www.buildinghealthx.com',
             }),
           }}
