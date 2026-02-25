@@ -17,7 +17,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-
+ metadataBase: new URL('https://www.buildinghealthx.com'),
   applicationName: 'Building Health X',
   title: 'Building Health X | NYC Building Violations Lookup',
   description:
