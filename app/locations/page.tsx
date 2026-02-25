@@ -10,9 +10,9 @@ import OpenModalButton from '@/components/OpenModalButton'
 import { locations } from '@/lib/locations-data'
 
 export const metadata: Metadata = {
-  title: 'NYC Neighborhoods | Find Services by Location | Building Health X',
+  title: 'NYC Neighborhoods | Building Violations Lookup by Area | Building Health X',
   description:
-    'Browse services by NYC neighborhood. Find trusted movers, lawyers, pest control, and more in Manhattan, Brooklyn, Queens, Bronx, and Staten Island.',
+    'Research buildings and find renter services by NYC neighborhood. Check HPD violation profiles for Manhattan, Brooklyn, Queens, The Bronx, and Staten Island before you sign.',
 }
 
 // Group locations by borough
