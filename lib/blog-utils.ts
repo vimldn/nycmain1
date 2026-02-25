@@ -210,3 +210,26 @@ export function getAllTags(): { tag: string; count: number }[] {
 export function getPostsByTag(tag: string): BlogPostMeta[] {
   return getAllPosts().filter((p) => (p.tags || []).includes(tag))
 }
+
+/**
+ * Extracts FAQ question/answer pairs from blog post HTML.
+ * Looks for an <h2> containing "Frequently Asked Questions" and pulls
+ * all <h3>/<p> pairs that follow it before the next <h2>.
+ */
+export function extractFaqsFromHtml(html: string): { q: string; a: string }[] {
+  const faqMatch = html.match(/<h2[^>]*>.*?Frequently Asked Questions.*?<\/h2>([\s\S]*?)(?=<h2|$)/i)
+  if (!faqMatch) return []
+
+  const section = faqMatch[1]
+  const faqs: { q: string; a: string }[] = []
+
+  const pairs = section.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>\s*(?:<img[^>]*>\s*)?<p[^>]*>([\s\S]*?)<\/p>/gi)
+
+  for (const match of pairs) {
+    const q = match[1].replace(/<[^>]+>/g, '').trim()
+    const a = match[2].replace(/<[^>]+>/g, '').trim()
+    if (q && a) faqs.push({ q, a })
+  }
+
+  return faqs
+}
