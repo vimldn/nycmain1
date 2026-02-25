@@ -1,5 +1,13 @@
 // BHXX-with-Images-main/app/services/page.tsx
 
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'NYC Renter Services | Moving, Pest Control, Inspections & More | Building Health X',
+  description:
+    'Find trusted local services for NYC renters — moving companies, pest control, building inspectors, electricians, plumbers, and more. Browse all 17 service categories across all 5 boroughs.',
+}
+
 import Link from 'next/link'
 import {
   ChevronRight,
