@@ -292,7 +292,7 @@ export default function HomePage() {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
             Research Any NYC Building Violations{' '}
-            <span className="gradient-text block mt-1 sm:mt-2">Before You Signing Your Lease</span>
+            <span className="gradient-text block mt-1 sm:mt-2">Before Signing Your Lease</span>
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] mb-6 sm:mb-8 max-w-3xl mx-auto px-2 leading-relaxed">
