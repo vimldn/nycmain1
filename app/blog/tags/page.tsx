@@ -4,8 +4,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Tags | Blog | Building Health X',
-  description: 'Browse Building Health X blog posts by topic.',
+  title: 'Blog Topics & Tags | NYC Tenant Rights & Building Guides | Building Health X',
+  description: 'Browse NYC renter guides by topic — tenant rights, building violations, pest issues, lease advice, moving tips, and neighbourhood guides across all 5 boroughs.',
 }
 
 export default function BlogTagsIndexPage() {
