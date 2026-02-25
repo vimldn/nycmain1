@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
-import { getAllPosts, getPostBySlug } from '@/lib/blog-utils'
+import { getAllPosts, getPostBySlug, extractFaqsFromHtml } from '@/lib/blog-utils'
 import { allRawPosts } from '@/content/blog'
 import BlogSidebar from '@/components/BlogSidebar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { FaqJsonLd } from '@/components/seo'
 
 export async function generateStaticParams() {
   // Generate pages for ALL posts (including future scheduled ones)
@@ -26,9 +27,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
   if (!post) return notFound()
 
+  const faqs = extractFaqsFromHtml(post.html)
+
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       <Header />
+      <FaqJsonLd faqs={faqs} />
 
       <article className="max-w-7xl mx-auto px-4 py-10 pt-28">
         {/* Back link */}
