@@ -300,7 +300,7 @@ export default function HomePage() {
             <span className="text-[var(--text-primary)] font-medium">building violations</span>,{' '}
             <span className="text-[var(--text-primary)] font-medium">pest history</span>,{' '}
             <span className="text-[var(--text-primary)] font-medium">heat complaints</span>, and{' '}
-            <span className="text-[var(--text-primary)] font-medium">311 records</span> — all pulled from official NYC government data.
+            <span className="text-[var(--text-primary)] font-medium">311 records,</span> all pulled from official NYC government data.
             {' '}Don&apos;t sign a lease until you&apos;ve checked.
           </p>
 
