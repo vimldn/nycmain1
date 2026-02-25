@@ -43,13 +43,16 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
+    type: 'website',
+    url: 'https://www.buildinghealthx.com',
+    siteName: 'Building Health X',
     title: 'Building Health X | NYC Building Violations Lookup',
     description:
       'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
-    siteName: 'Building Health X',
   },
 
   twitter: {
+    card: 'summary_large_image',
     title: 'Building Health X | NYC Building Violations Lookup',
     description:
       'Research any NYC building before signing your lease. Check HPD violations, DOB complaints, pest history, heat issues, and tenant reviews. Free building lookup for all 5 boroughs.',
