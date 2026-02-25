@@ -223,7 +223,7 @@ export function extractFaqsFromHtml(html: string): { q: string; a: string }[] {
   const section = faqMatch[1]
   const faqs: { q: string; a: string }[] = []
 
-  const pairs = section.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>\s*(?:<img[^>]*>\s*)?<p[^>]*>([\s\S]*?)<\/p>/gi)
+  const pairs = Array.from(section.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>\s*(?:<img[^>]*>\s*)?<p[^>]*>([\s\S]*?)<\/p>/gi))
 
   for (const match of pairs) {
     const q = match[1].replace(/<[^>]+>/g, '').trim()
