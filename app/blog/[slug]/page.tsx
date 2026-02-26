@@ -5,6 +5,7 @@ import { getAllPosts, getPostBySlug, extractFaqsFromHtml } from '@/lib/blog-util
 import { allRawPosts } from '@/content/blog'
 import BlogSidebar from '@/components/BlogSidebar'
 import BlogServiceLinks from '@/components/BlogServiceLinks'
+import ViolationsLookupBanner from '@/components/ViolationsLookupBanner'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { FaqJsonLd } from '@/components/seo'
@@ -76,13 +77,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ) : null}
 
+            <ViolationsLookupBanner postSlug={post.slug} className="mb-7" />
+
             <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
-            <BlogServiceLinks
-              tags={post.tags || []}
-              postSlug={post.slug}
-              postTitle={post.title}
-            />
+            <BlogServiceLinks tags={post.tags || []} postSlug={post.slug} postTitle={post.title} />
           </div>
 
           <BlogSidebar currentSlug={post.slug} />
