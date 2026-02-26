@@ -42,7 +42,7 @@ export default function Footer() {
               <span className="font-bold text-lg">Building Health X</span>
             </div>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              NYC's most comprehensive building research tool. Make informed decisions before signing your lease.
+              NYC's most comprehensive building violations lookup tool. Make informed decisions before signing your lease.
             </p>
           </div>
 
