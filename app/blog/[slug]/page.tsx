@@ -24,11 +24,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 /**
- * Splits HTML right BEFORE the Nth <h2 ...> tag.
- * If there are fewer than N h2 tags, returns [html, ""] (banner will render at the end).
+ * Places banner AFTER the entire first H2 section by splitting right BEFORE the 2nd <h2 ...>.
+ * - Works even if the first H2 section contains H3s, lists, etc.
+ * - If there is no 2nd H2, banner goes at the end.
  */
-function splitHtmlBeforeNthH2(html: string, n: number): { beforeHtml: string; afterHtml: string } {
-  // matches <h2 ...> (case-insensitive). We split at the START of the tag.
+function splitHtmlBeforeSecondH2(html: string): { beforeHtml: string; afterHtml: string } {
   const re = /<h2\b[^>]*>/gi
   let match: RegExpExecArray | null
   let count = 0
@@ -36,20 +36,14 @@ function splitHtmlBeforeNthH2(html: string, n: number): { beforeHtml: string; af
 
   while ((match = re.exec(html)) !== null) {
     count += 1
-    if (count === n) {
-      cutIndex = match.index // start of the Nth <h2>
+    if (count === 2) {
+      cutIndex = match.index // start of 2nd <h2>
       break
     }
   }
 
-  if (cutIndex === -1) {
-    return { beforeHtml: html, afterHtml: '' }
-  }
-
-  return {
-    beforeHtml: html.slice(0, cutIndex),
-    afterHtml: html.slice(cutIndex),
-  }
+  if (cutIndex === -1) return { beforeHtml: html, afterHtml: '' }
+  return { beforeHtml: html.slice(0, cutIndex), afterHtml: html.slice(cutIndex) }
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -58,8 +52,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const faqs = extractFaqsFromHtml(post.html)
 
-  // Place banner BEFORE the 2nd H2 in the post HTML
-  const { beforeHtml, afterHtml } = splitHtmlBeforeNthH2(post.html, 2)
+  // Banner after first H2 section (i.e., before 2nd H2)
+  const { beforeHtml, afterHtml } = splitHtmlBeforeSecondH2(post.html)
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -106,7 +100,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ) : null}
 
-            {/* Post content with banner injected before the 2nd H2 */}
             <div className="blog-content">
               <div dangerouslySetInnerHTML={{ __html: beforeHtml }} />
 
