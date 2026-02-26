@@ -24,11 +24,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 /**
- * Splits HTML after the Nth closing </p>.
- * If there are fewer than N paragraphs, returns [html, ""] so the banner can still render after the content.
+ * Splits HTML right BEFORE the Nth <h2 ...> tag.
+ * If there are fewer than N h2 tags, returns [html, ""] (banner will render at the end).
  */
-function splitHtmlAfterNthParagraph(html: string, n: number): { beforeHtml: string; afterHtml: string } {
-  const re = /<\/p\s*>/gi
+function splitHtmlBeforeNthH2(html: string, n: number): { beforeHtml: string; afterHtml: string } {
+  // matches <h2 ...> (case-insensitive). We split at the START of the tag.
+  const re = /<h2\b[^>]*>/gi
   let match: RegExpExecArray | null
   let count = 0
   let cutIndex = -1
@@ -36,7 +37,7 @@ function splitHtmlAfterNthParagraph(html: string, n: number): { beforeHtml: stri
   while ((match = re.exec(html)) !== null) {
     count += 1
     if (count === n) {
-      cutIndex = re.lastIndex // index right AFTER the Nth </p>
+      cutIndex = match.index // start of the Nth <h2>
       break
     }
   }
@@ -57,8 +58,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const faqs = extractFaqsFromHtml(post.html)
 
-  // Place banner AFTER the 2nd paragraph in the post HTML
-  const { beforeHtml, afterHtml } = splitHtmlAfterNthParagraph(post.html, 2)
+  // Place banner BEFORE the 2nd H2 in the post HTML
+  const { beforeHtml, afterHtml } = splitHtmlBeforeNthH2(post.html, 2)
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -105,7 +106,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ) : null}
 
-            {/* Post content with banner injected after 2nd paragraph */}
+            {/* Post content with banner injected before the 2nd H2 */}
             <div className="blog-content">
               <div dangerouslySetInnerHTML={{ __html: beforeHtml }} />
 
