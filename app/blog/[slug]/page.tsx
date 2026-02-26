@@ -23,11 +23,42 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
+/**
+ * Splits HTML after the Nth closing </p>.
+ * If there are fewer than N paragraphs, returns [html, ""] so the banner can still render after the content.
+ */
+function splitHtmlAfterNthParagraph(html: string, n: number): { beforeHtml: string; afterHtml: string } {
+  const re = /<\/p\s*>/gi
+  let match: RegExpExecArray | null
+  let count = 0
+  let cutIndex = -1
+
+  while ((match = re.exec(html)) !== null) {
+    count += 1
+    if (count === n) {
+      cutIndex = re.lastIndex // index right AFTER the Nth </p>
+      break
+    }
+  }
+
+  if (cutIndex === -1) {
+    return { beforeHtml: html, afterHtml: '' }
+  }
+
+  return {
+    beforeHtml: html.slice(0, cutIndex),
+    afterHtml: html.slice(cutIndex),
+  }
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
   if (!post) return notFound()
 
   const faqs = extractFaqsFromHtml(post.html)
+
+  // Place banner AFTER the 2nd paragraph in the post HTML
+  const { beforeHtml, afterHtml } = splitHtmlAfterNthParagraph(post.html, 2)
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -74,15 +105,20 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ) : null}
 
-            <ViolationsLookupBanner
-              postSlug={post.slug}
-              title={post.title}
-              excerpt={post.excerpt}
-              tags={post.tags || []}
-              className="mb-7"
-            />
+            {/* Post content with banner injected after 2nd paragraph */}
+            <div className="blog-content">
+              <div dangerouslySetInnerHTML={{ __html: beforeHtml }} />
 
-            <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+              <ViolationsLookupBanner
+                postSlug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                tags={post.tags || []}
+                className="my-7"
+              />
+
+              <div dangerouslySetInnerHTML={{ __html: afterHtml }} />
+            </div>
 
             <BlogServiceLinks tags={post.tags || []} postSlug={post.slug} postTitle={post.title} />
           </div>
