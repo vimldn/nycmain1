@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
-import { getAllPosts, getPostBySlug, extractFaqsFromHtml } from '@/lib/blog-utils'
+import { getPostBySlug, extractFaqsFromHtml } from '@/lib/blog-utils'
 import { allRawPosts } from '@/content/blog'
 import BlogSidebar from '@/components/BlogSidebar'
 import BlogServiceLinks from '@/components/BlogServiceLinks'
@@ -11,8 +11,6 @@ import Footer from '@/components/Footer'
 import { FaqJsonLd } from '@/components/seo'
 
 export async function generateStaticParams() {
-  // Generate pages for ALL posts (including future scheduled ones)
-  // This ensures the pages exist, even if they're not shown in the listing yet
   return allRawPosts.map((p) => ({ slug: p.folder }))
 }
 
@@ -37,7 +35,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <FaqJsonLd faqs={faqs} />
 
       <article className="max-w-7xl mx-auto px-4 py-10 pt-28">
-        {/* Back link */}
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] mb-6 transition"
@@ -77,7 +74,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ) : null}
 
-            <ViolationsLookupBanner postSlug={post.slug} className="mb-7" />
+            <ViolationsLookupBanner
+              postSlug={post.slug}
+              title={post.title}
+              excerpt={post.excerpt}
+              tags={post.tags || []}
+              className="mb-7"
+            />
 
             <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.html }} />
 
