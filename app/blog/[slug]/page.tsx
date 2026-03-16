@@ -6,9 +6,11 @@ import { allRawPosts } from '@/content/blog'
 import BlogSidebar from '@/components/BlogSidebar'
 import BlogServiceLinks from '@/components/BlogServiceLinks'
 import ViolationsLookupBanner from '@/components/ViolationsLookupBanner'
+import ServiceBanner from '@/components/ServiceBanner'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { FaqJsonLd } from '@/components/seo'
+import { getRelevantService } from '@/lib/service-matcher'
 
 export async function generateStaticParams() {
   return allRawPosts.map((p) => ({ slug: p.folder }))
@@ -25,21 +27,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 /**
  * Insert banner after the first H2 "intro content" but BEFORE the first H3 under that H2.
- *
- * Implementation:
- * 1) Find the first <h2 ...>...</h2>
- * 2) From right after that </h2>, find the first <h3 ...>
- *    - If found: split BEFORE that <h3>
- *    - Else: split BEFORE the next <h2 ...> (if any)
- *    - Else: banner goes at the end
  */
 function splitHtmlAfterFirstH2BeforeFirstH3(html: string): { beforeHtml: string; afterHtml: string } {
-  // 1) Find first <h2 ...>
   const h2OpenRe = /<h2\b[^>]*>/i
   const h2Open = h2OpenRe.exec(html)
   if (!h2Open || h2Open.index == null) return { beforeHtml: html, afterHtml: '' }
 
-  // 2) Find the closing </h2> that corresponds to that first H2 (good enough for generated blog HTML)
   const afterH2Open = html.slice(h2Open.index)
   const h2CloseRe = /<\/h2\s*>/i
   const h2Close = h2CloseRe.exec(afterH2Open)
@@ -48,17 +41,14 @@ function splitHtmlAfterFirstH2BeforeFirstH3(html: string): { beforeHtml: string;
   const afterFirstH2Index = h2Open.index + h2Close.index + h2Close[0].length
   const rest = html.slice(afterFirstH2Index)
 
-  // Find first <h3 ...> after the first H2
   const h3Re = /<h3\b[^>]*>/i
   const h3Match = h3Re.exec(rest)
   const h3Idx = h3Match && h3Match.index != null ? afterFirstH2Index + h3Match.index : -1
 
-  // Fallback: find next <h2 ...> (i.e., start of the next major section)
   const h2NextRe = /<h2\b[^>]*>/i
   const h2NextMatch = h2NextRe.exec(rest)
   const h2NextIdx = h2NextMatch && h2NextMatch.index != null ? afterFirstH2Index + h2NextMatch.index : -1
 
-  // Choose earliest valid cut among: first H3, else next H2, else end
   let cutIndex = -1
   if (h3Idx !== -1 && h2NextIdx !== -1) cutIndex = Math.min(h3Idx, h2NextIdx)
   else if (h3Idx !== -1) cutIndex = h3Idx
@@ -74,9 +64,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   if (!post) return notFound()
 
   const faqs = extractFaqsFromHtml(post.html)
-
-  // Banner after first H2 content, before first H3 under that H2
   const { beforeHtml, afterHtml } = splitHtmlAfterFirstH2BeforeFirstH3(post.html)
+
+  // Pick a service banner if the post relates to one of our 16 services,
+  // otherwise fall back to the ViolationsLookupBanner
+  const matchedService = getRelevantService(post.title, post.slug, post.tags || [], post.excerpt)
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -126,13 +118,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="blog-content">
               <div dangerouslySetInnerHTML={{ __html: beforeHtml }} />
 
-              <ViolationsLookupBanner
-                postSlug={post.slug}
-                title={post.title}
-                excerpt={post.excerpt}
-                tags={post.tags || []}
-                className="my-7"
-              />
+              {matchedService ? (
+                <ServiceBanner service={matchedService} className="my-7" />
+              ) : (
+                <ViolationsLookupBanner
+                  postSlug={post.slug}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  tags={post.tags || []}
+                  className="my-7"
+                />
+              )}
 
               <div dangerouslySetInnerHTML={{ __html: afterHtml }} />
             </div>
