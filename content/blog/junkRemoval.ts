@@ -3,7 +3,7 @@ export type RawPostFile = {
   raw: string;
   publishDate?: string;
 };
-export const junkRemovalPosts: RawPostFile[] = [
+export const junkRemoval: RawPostFile[] = [
   { folder: "the-2026-nyc-trash-bin-law-and-whether-your-building-is-compliant-before-the-june-deadline", raw: `
 ---
 title: The 2026 NYC Trash Bin Law and Whether Your Building Is Compliant Before the June Deadline
