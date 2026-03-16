@@ -5,7 +5,7 @@ import { safetySecurity } from './safetySecurity'
 import { buildingViolationsPart1 } from './buildingViolationsPart1'
 import { buildingViolationsPart2 } from './buildingViolationsPart2'
 import { buildingViolationsPart3 } from './buildingViolationsPart3'
-import { junkRemoval } from './junkRemovalPosts'
+import { junkRemoval } from './junkRemoval'
 export type { RawPostFile }
 export { rentLeases, buildingIssues, safetySecurity, junkRemoval }
 // Combine all building violations parts
