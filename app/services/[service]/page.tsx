@@ -10,6 +10,8 @@ import {
   DollarSign,
   HelpCircle,
   ClipboardCheck,
+  Search,
+  AlertTriangle,
 } from 'lucide-react'
 
 import Header from '@/components/Header'
@@ -57,6 +59,15 @@ const providerNounFor = (serviceSlug: string, serviceDisplayName: string) => {
   return `${noun} pros`
 }
 
+/** Map the borough display label to the value stored in locations-data */
+const BOROUGH_DISPLAY: { label: string; dataValue: string }[] = [
+  { label: 'Manhattan', dataValue: 'Manhattan' },
+  { label: 'Brooklyn', dataValue: 'Brooklyn' },
+  { label: 'Queens', dataValue: 'Queens' },
+  { label: 'The Bronx', dataValue: 'Bronx' },
+  { label: 'Staten Island', dataValue: 'Staten Island' },
+]
+
 export async function generateStaticParams() {
   return Object.keys(services).map((service) => ({ service }))
 }
@@ -68,7 +79,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const noun = stripServicesSuffix(service.name)
 
   return {
-    title: `${service.name} in NYC | Find Local Help Across All 5 Boroughs`,
+    title: service.h1Override
+      ? `${service.h1Override} | Building Health X`
+      : `${service.name} in NYC | Find Local Help Across All 5 Boroughs`,
     description: service.intro.length > 155 ? service.intro.slice(0, 152) + '...' : service.intro,
   }
 }
@@ -92,16 +105,40 @@ export default function ServicePage({ params }: Props) {
       ? `/services/${params.service}/${allLocations[0][0]}`
       : `/services/${params.service}/${Object.keys(locations)[0]}`
 
-  // Group locations by borough
-  const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island']
-  const locationsByBorough = boroughs.map(borough => ({
-    borough,
-    locations: allLocations.filter(([_, loc]) => loc.borough === borough).slice(0, 6)
+  // Group locations by borough — use BOROUGH_DISPLAY to fix Bronx matching
+  const locationsByBorough = BOROUGH_DISPLAY.map(({ label, dataValue }) => ({
+    borough: label,
+    locations: allLocations.filter(([_, loc]) => loc.borough === dataValue)
   })).filter(group => group.locations.length > 0)
+
+  // Headline — use h1Override if present, otherwise default
+  const headline = service.h1Override || `${service.name} in NYC`
+
+  // FAQ Schema markup for SEO — opt-in per service
+  const faqSchema = service.faqSchema && service.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: service.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  } : null
 
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
       <Header />
+
+      {/* FAQ Schema.org structured data */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
@@ -137,18 +174,25 @@ export default function ServicePage({ params }: Props) {
             <div className="max-w-5xl mx-auto mb-10">
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                  {service.name} in NYC
+                  {headline}
                 </h1>
                 <OpenModalButton variant="primary" className="lg:w-auto w-full">
                   Get {service.name} quotes
                 </OpenModalButton>
               </div>
-              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
-                {pitch}
-              </p>
+              {/* Sub-headline with trust signal */}
+              {service.subHeadline ? (
+                <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
+                  {service.subHeadline}
+                </p>
+              ) : (
+                <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
+                  {pitch}
+                </p>
+              )}
             </div>
 
-            {/* Stats grid - cleaner layout */}
+            {/* Stats grid */}
             <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
               <div className="bg-[#12161f] border border-emerald-500/20 rounded-2xl p-6 text-center">
                 <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -175,6 +219,21 @@ export default function ServicePage({ params }: Props) {
               </div>
             </div>
 
+            {/* Extra quick fact (e.g. COI requirement for movers) */}
+            {service.extraQuickFact && (
+              <div className="max-w-5xl mx-auto mb-8">
+                <div className="bg-[#12161f] border border-amber-500/20 rounded-2xl p-6 flex items-start gap-4">
+                  <div className="w-14 h-14 bg-amber-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <ClipboardCheck className="w-7 h-7 text-amber-400" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-lg mb-1">Requirements: {service.extraQuickFact.label}</div>
+                    <div className="text-sm text-slate-400">{service.extraQuickFact.detail}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Quick navigation - prominent */}
             <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
               <a href="#neighborhoods" className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
@@ -182,6 +241,9 @@ export default function ServicePage({ params }: Props) {
               </a>
               <a href="#requests" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
                 Common requests
+              </a>
+              <a href="#faqs" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
+                FAQs
               </a>
               <a href="#questions" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
                 Questions to ask
@@ -191,10 +253,10 @@ export default function ServicePage({ params }: Props) {
 
           {/* PAGE CONTENT */}
           <div className="space-y-12">
-            {/* Quick Facts (no sidebar on this page) */}
+            {/* Quick Facts */}
             <section className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-6">Quick facts about {noun.toLowerCase()}</h2>
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className={`grid ${service.extraQuickFact ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-6`}>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6">
                   <div className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
@@ -213,8 +275,20 @@ export default function ServicePage({ params }: Props) {
                     </div>
                   </div>
                 </div>
+                {service.extraQuickFact && (
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+                    <div className="flex items-start gap-3">
+                      <ClipboardCheck className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-slate-400">Requirement</div>
+                        <div className="font-semibold">{service.extraQuickFact.label}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
+
               {/* LOCATION GRID - Grouped by borough */}
               <section id="neighborhoods" className="bg-[#12161f] border border-white/10 rounded-2xl p-10">
                 <div className="flex items-center justify-between mb-8">
@@ -261,15 +335,71 @@ export default function ServicePage({ params }: Props) {
                   ))}
                 </div>
 
-                {/* View all link */}
+                {/* View all link — rendered as crawlable <a> via Next Link */}
                 {allLocations.length > 30 && (
                   <div className="mt-8 text-center">
-                    <button className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
+                    <Link
+                      href={`/services/${params.service}/${allLocations[0][0]}`}
+                      className="inline-block px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition"
+                    >
                       View all {allLocations.length} neighborhoods →
-                    </button>
+                    </Link>
                   </div>
                 )}
               </section>
+
+              {/* DATA MOAT — dynamic per service */}
+              {service.dataMoat && (
+                <section className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl p-8 lg:p-10">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <AlertTriangle className="w-6 h-6 text-amber-400" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl font-bold">{service.dataMoat.headline}</h2>
+                      <p className="text-slate-300 mt-1 text-sm">{service.dataMoat.subtitle}</p>
+                    </div>
+                  </div>
+                  <p className="text-slate-200 leading-relaxed mb-6 max-w-3xl">
+                    {service.dataMoat.body}
+                  </p>
+                  <Link
+                    href={service.dataMoat.ctaHref}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-xl transition"
+                  >
+                    <Search className="w-5 h-5" />
+                    {service.dataMoat.ctaText}
+                  </Link>
+                </section>
+              )}
+
+              {/* FAQ ACCORDION — SEO-optimized with Schema.org */}
+              {service.faqs.length > 0 && (
+                <section id="faqs" className="bg-[#12161f] border border-white/10 rounded-2xl p-8 lg:p-10">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                      <HelpCircle className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-bold">Frequently asked questions</h2>
+                  </div>
+                  <div className="space-y-4">
+                    {service.faqs.map((faq, i) => (
+                      <details
+                        key={i}
+                        className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden"
+                      >
+                        <summary className="flex items-center justify-between cursor-pointer p-5 text-left font-semibold text-white hover:bg-white/5 transition list-none [&::-webkit-details-marker]:hidden">
+                          <span className="pr-4">{faq.q}</span>
+                          <ChevronRight className="w-5 h-5 text-slate-500 group-open:rotate-90 transition-transform flex-shrink-0" />
+                        </summary>
+                        <div className="px-5 pb-5 text-slate-300 leading-relaxed border-t border-white/5 pt-4">
+                          {faq.a}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* QUICK SERVICE INFO */}
               <section id="requests" className="grid lg:grid-cols-2 gap-8">
