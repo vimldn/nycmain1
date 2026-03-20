@@ -461,7 +461,18 @@ export default function ServiceLocationPage({ params }: Props) {
                 {/* Description */}
                 <p className="text-lg text-slate-300 leading-relaxed mb-4">{pitch}</p>
 
-                <p className="text-lg text-slate-300 leading-relaxed mb-6">{seoIntro}</p>
+                <div className="space-y-4 mb-6">
+                  {seoIntro.split(/(?<=\.)\s+(?=[A-Z])/).reduce<string[][]>((acc, sentence, i) => {
+                    const chunkIndex = Math.floor(i / 3)
+                    if (!acc[chunkIndex]) acc[chunkIndex] = []
+                    acc[chunkIndex].push(sentence)
+                    return acc
+                  }, []).map((chunk, i) => (
+                    <p key={i} className="text-lg text-slate-300 leading-relaxed">
+                      {chunk.join(' ')}
+                    </p>
+                  ))}
+                </div>
 
                 {/* Quick stats badges */}
                 <div className="flex flex-wrap gap-6 mb-8">
