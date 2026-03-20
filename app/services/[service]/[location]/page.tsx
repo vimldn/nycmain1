@@ -459,9 +459,9 @@ export default function ServiceLocationPage({ params }: Props) {
                 </div>
 
                 {/* Description */}
-                <p className="text-xl text-slate-300 leading-relaxed mb-4">{pitch}</p>
+                <p className="text-lg text-slate-300 leading-relaxed mb-4">{pitch}</p>
 
-                <p className="text-base text-slate-400 leading-relaxed mb-6">{seoIntro}</p>
+                <p className="text-lg text-slate-300 leading-relaxed mb-6">{seoIntro}</p>
 
                 {/* Quick stats badges */}
                 <div className="flex flex-wrap gap-6 mb-8">
