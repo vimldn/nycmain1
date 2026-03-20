@@ -39,6 +39,7 @@ import LeadModal from '@/components/LeadModal'
 import OpenModalButton from '@/components/OpenModalButton'
 import { services } from '@/lib/services-data'
 import { locations } from '@/lib/locations-data'
+import { getServiceLocationCopy } from '@/lib/service-location-copy'
 
 // Helper to get icon component
 const getServiceIcon = (service: string) => {
@@ -315,11 +316,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const location = locations[params.location]
   if (!service || !location) return {}
 
-  const h1 = pickHeadline(params.service, service.name, params.location, location.name)
+  const copy = getServiceLocationCopy(params.service, params.location)
+  const h1 = copy?.h1 || pickHeadline(params.service, service.name, params.location, location.name)
 
   return {
     title: `${h1} | Building Health X`,
-    description: `Get connected with ${stripServicesSuffix(service.name).toLowerCase()} professionals serving ${location.name}. Compare options, review typical costs and timelines, and book with clear next steps.`,
+    description: copy?.seoIntro
+      ? copy.seoIntro.slice(0, 155) + '...'
+      : `Get connected with ${stripServicesSuffix(service.name).toLowerCase()} professionals serving ${location.name}. Compare options, review typical costs and timelines, and book with clear next steps.`,
   }
 }
 
@@ -339,7 +343,8 @@ export default function ServiceLocationPage({ params }: Props) {
   if (!service || !location) return notFound()
 
   const noun = stripServicesSuffix(service.name)
-  const headline = pickHeadline(params.service, service.name, params.location, location.name)
+  const copy = getServiceLocationCopy(params.service, params.location)
+  const headline = copy?.h1 || pickHeadline(params.service, service.name, params.location, location.name)
 
   const relatedLocations = Object.entries(locations)
     .filter(([slug, loc]) => loc.borough === location.borough && slug !== params.location)
@@ -350,15 +355,17 @@ export default function ServiceLocationPage({ params }: Props) {
     .slice(0, 6)
 
   const requests = commonRequests(params.service, service.name)
-  const pitch = needs24x7(params.service)
+  const pitch = copy?.heroSubText || (needs24x7(params.service)
     ? `We connect you with 24/7 ${noun.toLowerCase()} professionals serving ${location.name}, backed by experienced pros and fast availability.`
-    : `We connect you with ${noun.toLowerCase()} professionals serving ${location.name}, backed by experienced pros and fast availability.`
+    : `We connect you with ${noun.toLowerCase()} professionals serving ${location.name}, backed by experienced pros and fast availability.`)
 
-  const seoIntro = `Need ${noun.toLowerCase()} help in ${location.name} right now? Submit a quick request to get matched with available local professionals who handle ${requests
+  const seoIntro = copy?.seoIntro || `Need ${noun.toLowerCase()} help in ${location.name} right now? Submit a quick request to get matched with available local professionals who handle ${requests
     .slice(0, 4)
     .join(', ')}. Many buildings in ${location.name} include ${location.buildingTypes.toLowerCase()}, which means the right approach depends on the situation and setup. Requests are routed based on availability and urgency, helping you move fast while reducing the risk of surprise pricing. Whether it is urgent or scheduled, sharing a few details upfront helps you get connected to the right option and clear next steps to book.`
 
-  const detailedFaqs = [...leadGenFaqs(params.service, service.name, location.name), ...service.faqs]
+  // Localized FAQs first (from batch), then generic lead-gen FAQs, then service-level FAQs
+  const localizedFaqs = copy?.faqs || []
+  const detailedFaqs = [...localizedFaqs, ...leadGenFaqs(params.service, service.name, location.name), ...service.faqs]
 
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
@@ -592,11 +599,12 @@ export default function ServiceLocationPage({ params }: Props) {
                     <div>
                       <h4 className="font-semibold text-amber-300 mb-2">Pro tip for {location.name}</h4>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        {location.borough === 'Manhattan'
-                          ? `Manhattan buildings often have strict requirements. Confirm scheduling rules and any COI requirements before booking.`
-                          : location.borough === 'Brooklyn'
-                            ? `Many ${location.name} buildings are walk-ups or brownstones. Confirm experience with stairs and tight spaces when relevant.`
-                            : `${location.name} may have longer travel times depending on provider locations. Adding your exact area and time window helps improve matching.`}
+                        {copy?.proTip
+                          || (location.borough === 'Manhattan'
+                            ? `Manhattan buildings often have strict requirements. Confirm scheduling rules and any COI requirements before booking.`
+                            : location.borough === 'Brooklyn'
+                              ? `Many ${location.name} buildings are walk-ups or brownstones. Confirm experience with stairs and tight spaces when relevant.`
+                              : `${location.name} may have longer travel times depending on provider locations. Adding your exact area and time window helps improve matching.`)}
                       </p>
                     </div>
                   </div>
@@ -648,23 +656,25 @@ export default function ServiceLocationPage({ params }: Props) {
                 )}
               </section>
 
-              {/* Building Health X CTA */}
-              <section className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8">
+              {/* Building Health X — Localized Data Moat */}
+              <section className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl p-8">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-amber-400" />
                   </div>
-                  <h2 className="text-2xl font-bold">Moving to {location.name}?</h2>
+                  <h2 className="text-2xl font-bold">
+                    {copy?.dataMoat?.headline || `Check ${location.name} Building Violations Before You Book`}
+                  </h2>
                 </div>
                 <p className="text-slate-300 mb-6">
-                  Before you sign a lease, check the building&apos;s history. Building Health X shows violations,
-                  complaints, and issues from 55+ official NYC sources for free.
+                  {copy?.dataMoat?.body
+                    || `Before you book, check the building\u2019s history. Building Health X shows violations, complaints, and issues from 55+ official NYC sources for free.`}
                 </p>
                 <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition"
+                  href="/building"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-xl transition"
                 >
-                  Search Any NYC Address
+                  Look Up a Building Address
                   <ChevronRight className="w-5 h-5" />
                 </Link>
               </section>
