@@ -229,25 +229,12 @@ export default function PressPage() {
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-5">Building Health X in the News</h1>
           <p className="text-lg text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-            Since launching as the most comprehensive{' '}
-            <Link href="/" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-              NYC building violations lookup tool
-            </Link>
-            , Building Health X has been featured across{' '}
+            Since launching as the most comprehensive
+            NYC building violations lookup tool, Building Health X has been featured across{' '}
             <strong className="text-[var(--text-primary)]">500+ news outlets</strong>{' '}
-            nationwide. Our platform helps renters research{' '}
-            <Link href="/services" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-              renter safety reports
-            </Link>
-            ,{' '}
-            <Link href="/blog" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-              NYC building inspection data
-            </Link>
-            , and complaint histories across all five boroughs — pulling from{' '}
-            <Link href="/data-sources" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-              55+ official government data sources
-            </Link>
-            .
+            nationwide. Our platform helps renters research
+            renter safety reports, NYC building inspection data, and complaint histories across all five boroughs — pulling from
+            55+ official government data sources.
           </p>
         </header>
 
@@ -329,15 +316,9 @@ export default function PressPage() {
             <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
               This page shows a curated selection of our press coverage. The full distribution
               reached over 500 outlets across news, lifestyle, financial, and regional media
-              networks across the United States. Building Health X is the only{' '}
-              <Link href="/" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-                free NYC building research tool
-              </Link>{' '}
-              that aggregates data from 55+ official sources into a single searchable report
-              for every address in{' '}
-              <Link href="/locations" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition">
-                all five boroughs
-              </Link>.
+              networks across the United States. Building Health X is the only
+              free NYC building research tool that aggregates data from 55+ official sources into a single searchable report
+              for every address in all five boroughs.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
