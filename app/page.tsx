@@ -22,6 +22,7 @@ import Footer from '@/components/Footer'
 import Image from 'next/image'
 import { services } from '@/lib/services-data'
 import NYCInfoBar from '@/components/NYCInfoBar'
+import AsSeenIn from '@/components/AsSeenIn'
 
 interface Suggestion {
   bbl: string
