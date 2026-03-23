@@ -421,7 +421,7 @@ export default function HomePage() {
 </div>
         </div>
       </section>
-
+<AsSeenIn />
       {/* Everything below is unchanged */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg-secondary)] px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
