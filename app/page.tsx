@@ -23,6 +23,7 @@ import Image from 'next/image'
 import { services } from '@/lib/services-data'
 import NYCInfoBar from '@/components/NYCInfoBar'
 import AsSeenIn from '@/components/AsSeenIn'
+import { DatasetJsonLd } from '@/components/seo'
 
 interface Suggestion {
   bbl: string
@@ -271,6 +272,7 @@ export default function HomePage() {
 
   return (
     <div className={`min-h-screen bg-[var(--bg-primary)] ${loading ? 'sm:overflow-hidden' : ''}`}>
+      <DatasetJsonLd />
       <Header />
 
       {/* HERO - FULLY RESPONSIVE */}

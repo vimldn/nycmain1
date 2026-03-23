@@ -9,7 +9,7 @@ import ViolationsLookupBanner from '@/components/ViolationsLookupBanner'
 import ServiceBanner from '@/components/ServiceBanner'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { FaqJsonLd } from '@/components/seo'
+import { FaqJsonLd, ArticleJsonLd } from '@/components/seo'
 import { getRelevantService } from '@/lib/service-matcher'
 
 export async function generateStaticParams() {
@@ -74,6 +74,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       <Header />
       <FaqJsonLd faqs={faqs} />
+      <ArticleJsonLd
+        headline={post.title}
+        url={`/blog/${params.slug}`}
+        description={post.metaDescription || post.excerpt}
+        datePublished={post.dateISO}
+        dateModified={post.dateISO}
+        imageUrl={post.featuredImage}
+      />
 
       <article className="max-w-7xl mx-auto px-4 py-10 pt-28">
         <Link

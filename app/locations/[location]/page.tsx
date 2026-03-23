@@ -33,6 +33,7 @@ import Footer from '@/components/Footer'
 import UniversalLeadForm from '@/components/UniversalLeadForm'
 import { services } from '@/lib/services-data'
 import { locations } from '@/lib/locations-data'
+import { BreadcrumbJsonLd, LocationJsonLd } from '@/components/seo'
 
 const getServiceIcon = (service: string, size: string = 'w-6 h-6') => {
   const icons: Record<string, React.ReactNode> = {
@@ -113,38 +114,21 @@ export default function LocationPage({ params }: Props) {
     .filter(([slug, loc]) => loc.borough !== location.borough)
     .slice(0, 6)
 
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: `Building Health X — ${location.name}`,
-    description: `NYC Building Violations Lookup and renter services for ${location.name}, ${location.borough}. Research any building before you sign.`,
-    url: `https://www.buildinghealthx.com/locations/${params.location}`,
-    areaServed: {
-      '@type': 'Place',
-      name: `${location.name}, ${location.borough}, New York City`,
-    },
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: location.name,
-      addressRegion: 'NY',
-      addressCountry: 'US',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.buildinghealthx.com' },
-      { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://www.buildinghealthx.com/locations' },
-      { '@type': 'ListItem', position: 3, name: location.name, item: `https://www.buildinghealthx.com/locations/${params.location}` },
-    ],
-  }
-
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <LocationJsonLd
+        name={location.name}
+        url={`/locations/${params.location}`}
+        description={`NYC Building Violations Lookup and renter services for ${location.name}, ${location.borough}. Research any building before you sign.`}
+        borough={location.borough}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Locations', url: '/locations' },
+          { name: location.name, url: `/locations/${params.location}` },
+        ]}
+      />
 
       <Header />
       <main className="pt-24 pb-16">

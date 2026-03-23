@@ -42,9 +42,7 @@ export function ServiceJsonLd({
     name: serviceName,
     url: toAbs(siteUrl, url),
     provider: {
-      "@type": "Organization",
-      name: orgName,
-      url: siteUrl
+      "@id": `${siteUrl}/#organization`,
     }
   };
 

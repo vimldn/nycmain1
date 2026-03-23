@@ -38,12 +38,18 @@ export function ArticleJsonLd({
     "@context": "https://schema.org",
     "@type": "Article",
     headline,
-    mainEntityOfPage: toAbs(siteUrl, url),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": toAbs(siteUrl, url),
+    },
     publisher: {
+      "@id": `${siteUrl}/#organization`,
+    },
+    author: {
       "@type": "Organization",
       name: orgName,
-      url: siteUrl
-    }
+      url: siteUrl,
+    },
   };
 
   if (description) data.description = description;

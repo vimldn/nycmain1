@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ExternalLink, Database, RefreshCw, Building2, AlertTriangle } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { DatasetJsonLd } from '@/components/seo'
 
 export const metadata: Metadata = {
   title: 'Data Sources | Building Health X',
@@ -85,6 +86,7 @@ const sources = [
 export default function DataSourcesPage() {
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
+      <DatasetJsonLd />
       <Header />
 
       <main className="pt-24 pb-20">
