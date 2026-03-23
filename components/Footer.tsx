@@ -91,6 +91,7 @@ export default function Footer() {
               <li><Link href="/blog" className="hover:text-[var(--text-primary)] transition">Blog</Link></li>
               <li><Link href="/blog" className="hover:text-[var(--text-primary)] transition">NYC Renter's Guide</Link></li>
               <li><Link href="/news" className="hover:text-[var(--text-primary)] transition">News</Link></li>
+              <li><Link href="/press" className="hover:text-[var(--text-primary)] transition">Press</Link></li>
             </ul>
           </div>
 

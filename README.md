@@ -1,39 +1,34 @@
-# Building Health X
+# BHX Press Patch — Integration Guide
 
-NYC building reality check: violations, complaints, signals (heat/pests/noise), and resident reviews with 30/90-day and 1–3 year views.
+## Files included
 
-A Next.js app that aggregates NYC Open Data into a single building intelligence view.
+| File | Action |
+|---|---|
+| `components/AsSeenIn.tsx` | NEW — drop into `/components/` |
+| `components/Footer.tsx` | REPLACE — adds "Press" link to Resources nav |
+| `app/press/page.tsx` | NEW — drop into `/app/press/` |
+| `content/blog/pressLaunch.ts` | NEW — drop into `/content/blog/` |
+| `content/blog/index.ts` | REPLACE — adds `pressLaunch` to `allRawPosts` |
 
-## Quick start
+## One manual step: Add AsSeenIn to homepage
 
-1) Install dependencies
+In `app/page.tsx`, add the import at the top:
 
-```bash
-npm install
+```tsx
+import AsSeenIn from '@/components/AsSeenIn'
 ```
 
-2) Configure environment variables
+Then insert `<AsSeenIn />` between the hero `</section>` closing tag
+and the next section ("What You'll Find"). Look for this comment:
 
-Copy `.env.example` to `.env.local` and fill in your Supabase details.
-
-```bash
-cp .env.example .env.local
+```tsx
+      {/* Everything below is unchanged */}
 ```
 
-Recommended for API routes: use a **server-only** key.
+Add just above it:
 
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
-
-If you use the anon key instead, make sure your Supabase Row Level Security policies allow the required operations.
-
-3) Run locally
-
-```bash
-npm run dev
+```tsx
+      <AsSeenIn />
 ```
 
-## Privacy note (important)
-
-Reviews collect contact info for verification. The API routes are configured to **never return contact fields** (email/phone) back to clients.
-
+That's it. The strip renders between the hero and the first content section.

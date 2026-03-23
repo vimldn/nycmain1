@@ -8,8 +8,9 @@ import { buildingViolationsPart3 } from './buildingViolationsPart3'
 import { junkRemoval } from './junkRemoval'
 import { movingCompanies } from './movingCompanies'
 import { packingServices } from './packingServices'
+import { pressLaunch } from './pressLaunch'
 export type { RawPostFile }
-export { rentLeases, buildingIssues, safetySecurity, junkRemoval, movingCompanies, packingServices }
+export { rentLeases, buildingIssues, safetySecurity, junkRemoval, movingCompanies, packingServices, pressLaunch }
 // Combine all building violations parts
 export const buildingViolations = [
   ...buildingViolationsPart1,
@@ -17,6 +18,7 @@ export const buildingViolations = [
   ...buildingViolationsPart3,
 ]
 export const allRawPosts: RawPostFile[] = [
+  ...pressLaunch,
   ...rentLeases,
   ...buildingIssues,
   ...safetySecurity,
