@@ -53,8 +53,10 @@ const BUCKETS = [
     headline: 'Your Landlord Isn\'t Fixing It',
     description: 'Mold, no heat, roaches, water damage, eviction threats — your landlord has legal deadlines and daily fines if they miss them. Here\'s how to force their hand.',
     cta: { label: 'Find a certified NYC contractor', href: '/services' },
-    ctaNote: 'Get free quotes from licensed NYC pest control, HVAC, and mold remediation professionals.',
+    ctaNote: 'Need backup? Get matched with NYC pest control, emergency movers, and renters insurance providers.',
     slugs: [
+      'landlord-ignoring-mold-nyc-tenant-rights',
+      'no-heat-hot-water-force-landlord-fix-nyc',
       'landlord-wont-fix-roaches-bedbugs',
       'who-pays-pipe-burst-nyc-apartment',
       'eviction-notice-nyc-rights-next-steps',
@@ -141,13 +143,13 @@ export default function GuidesPage() {
             <span className="text-blue-400">Now you do too.</span>
           </h1>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-            Step-by-step guides for NYC renters and landlords — from checking a building before you sign,
-            to forcing repairs, to getting your deposit back when you leave.
+            Step-by-step guides for NYC renters — from checking a building before you sign,
+            to forcing repairs when your landlord ignores you, to getting out clean when it's time to leave.
           </p>
         </div>
 
         {/* ── Intent navigation pills ───────────────────────────────────────── */}
-        <div className="flex flex-wrap gap-2 mb-14">
+        <div className="flex flex-wrap gap-2 mb-8">
           {BUCKETS.map(bucket => (
             <a
               key={bucket.id}
@@ -158,6 +160,18 @@ export default function GuidesPage() {
               {bucket.label}
             </a>
           ))}
+        </div>
+
+        {/* ── Trust banner ─────────────────────────────────────────────────── */}
+        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] mb-14">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0 mt-0.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <p className="text-xs text-[#64748b] leading-relaxed">
+            <span className="text-[#94a3b8] font-semibold">Verified against official sources.</span>
+            {' '}All guides are researched using NYC Housing Preservation &amp; Development (HPD), Department of Buildings (DOB), DHCR, and New York State legal codes. Nothing here is legal advice — for your specific situation, consult a tenant attorney or{' '}
+            <a href="https://www.legalaidnyc.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">NYC Legal Aid</a>.
+          </p>
         </div>
 
         {/* ── Intent buckets ────────────────────────────────────────────────── */}

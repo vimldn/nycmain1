@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, AlertTriangle, CheckCircle, XCircle, Search, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
-import { buildGuidePanel } from '@/lib/violation-blog-map'
+import { buildGuidePanel, VIOLATION_GUIDE_LINK_MAP } from '@/lib/violation-blog-map'
 import ViolationLeadForm, { VIOLATION_SERVICE_MAP } from '@/components/ViolationLeadForm'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
@@ -676,6 +676,23 @@ export default function BuildingPage() {
                           violationClass={v.class}
                           violationSource={v.source}
                         />
+                      )}
+                      {/* Inline guide link — tenant rights guide for this violation type */}
+                      {v.status === 'Open' && VIOLATION_GUIDE_LINK_MAP[v.category] && (
+                        <div className="mt-3 pt-3 border-t border-[#1e293b]">
+                          <Link
+                            href={`/guides/${VIOLATION_GUIDE_LINK_MAP[v.category].slug}`}
+                            className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                          >
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                            {VIOLATION_GUIDE_LINK_MAP[v.category].label}
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                          </Link>
+                        </div>
                       )}
                     </div>
                   )

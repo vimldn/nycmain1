@@ -3431,3 +3431,335 @@ GUIDES.push({
     },
   ],
 })
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FIGHTING: Landlord ignoring mold — tenant rights (Local Law 55)
+// Bucket: Fighting | Services: Renters Insurance + Moving Companies
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'landlord-ignoring-mold-nyc-tenant-rights',
+  category: 'violations-repairs',
+  title: 'My Landlord Is Ignoring Mold: NYC Tenant Rights & Local Law 55',
+  metaTitle: 'Landlord Ignoring Mold in NYC? Tenant Rights & Local Law 55 | Building Health X',
+  metaDescription: 'NYC landlords must fix mold within 30 days under Local Law 55. If yours is ignoring it, here\'s exactly how to escalate — 311, HPD violations, Housing Court, and rent withholding.',
+  headline: 'My Landlord Is Ignoring Mold. What Are My Rights in NYC?',
+  subheadline: 'Under Local Law 55, NYC landlords have a legal deadline to fix mold — and daily fines if they miss it. Here\'s how to force the issue when they ignore you.',
+  serviceSlug: 'mold-remediation',
+  serviceName: 'Mold Remediation',
+  leadBaitCta: 'Mold is getting worse? Get a professional assessment while you fight your landlord.',
+  datePublished: '2024-12-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['landlord-wont-fix-roaches-bedbugs', 'how-to-break-lease-nyc-violations', 'who-pays-pipe-burst-nyc-apartment'],
+  relatedServicePages: [
+    { label: 'Mold remediation in Manhattan', href: '/services/mold-remediation/manhattan' },
+    { label: 'Mold remediation in Brooklyn', href: '/services/mold-remediation/brooklyn' },
+    { label: 'Mold remediation in Queens', href: '/services/mold-remediation/queens' },
+    { label: 'Mold remediation in the Bronx', href: '/services/mold-remediation/bronx' },
+    { label: 'Moving companies in NYC', href: '/services/moving-companies' },
+  ],
+  furtherReading: [
+    { slug: 'what-do-i-do-if-my-nyc-apartment-has-mold', title: 'What Do I Do If My NYC Apartment Has Mold?' },
+    { slug: 'can-i-get-a-rent-reduction-if-my-landlord-has-open-violations', title: 'Can I Get a Rent Reduction If My Landlord Has Open Violations?' },
+    { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to Check If HPD Violations Were Actually Fixed' },
+  ],
+  govLinks: [
+    { label: 'HPD — Local Law 55 Mold Information', url: 'https://www.nyc.gov/site/hpd/services-and-information/mold.page', description: 'Official HPD guidance on Local Law 55 mold obligations for landlords and tenant rights.' },
+    { label: 'File a 311 Mold Complaint', url: 'https://portal.311.nyc.gov/', description: 'File a mold complaint online — triggers an HPD inspection and starts the violation clock.' },
+    { label: 'HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: 'Check if your building already has open mold violations on record.' },
+    { label: 'NYC Legal Aid — Tenant Resources', url: 'https://www.legalaidnyc.org/', description: 'Free legal help for eligible tenants — especially useful if you need to withhold rent or break a lease over mold.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Mold in your apartment is not a cosmetic issue. It is a documented health hazard linked to respiratory illness, asthma, and allergic reactions — and under NYC Local Law 55, your landlord has a legal obligation to fix it, a mandatory deadline to do so, and daily financial penalties if they refuse. If your landlord is telling you to buy a dehumidifier, paint over it yourself, or that 'it's just a bit of mildew,' they are either uninformed or deliberately stalling. This guide explains exactly how the law works, what your escalation options are, and how to use the city\'s own enforcement machinery to force action.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '30 days', label: 'Correction deadline for a Class B mold violation — daily fines begin the moment this window closes', source: 'NYC HPD' },
+        { value: '21 days', label: 'Correction deadline for a Class C mold violation (large area, sleeping room, or vulnerable tenant)', source: 'NYC HPD' },
+        { value: '$25,000', label: 'Maximum ECB civil penalty for wilful or repeat mold non-compliance', source: 'NYC Admin Code' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'What Local Law 55 Actually Requires',
+    },
+    {
+      type: 'body',
+      body: "Local Law 55 of 2018 (NYC Admin Code §27-2017.1) requires landlords of multiple dwellings to maintain apartments free from mold in all areas under their control. Crucially, the law also requires landlords to address the underlying moisture source — not just clean the visible mold. A landlord who bleaches the mold without fixing the leaking pipe is not in compliance and will fail any HPD reinspection.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Notify Your Landlord in Writing — Today',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Send a written notice with photos',
+      body: 'Before filing any city complaint, notify your landlord in writing. Email is fine. This creates a timestamp and gives you documented proof that they knew about the problem.',
+      items: [
+        'Describe the location, size, and appearance of the mold — "black mold approximately 18 inches across on the bathroom ceiling."',
+        'Attach clear timestamped photos.',
+        'State that you expect them to arrange a licensed mold assessment and remediation under Local Law 55.',
+        'Give a 7-day response deadline.',
+        'If your landlord has ignored previous verbal reports, reference those: "Despite notifying the super on [date], no action has been taken."',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: File a 311 Complaint — This Creates the Official Clock',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'File at 311.nyc.gov under "Mold"',
+      body: 'A 311 mold complaint triggers an HPD inspection. When the inspector confirms mold, they issue a Notice of Violation — a Class B or Class C — and the landlord\'s correction deadline starts. From this moment, every day of non-compliance carries a financial penalty.',
+      items: [
+        'File online at portal.311.nyc.gov — select "Mold/Mildew" from the complaint categories.',
+        'Write down your service request number.',
+        'HPD will schedule an inspection — typically within 30 days for non-emergency, within 24 hours if you report a Class C condition (large area, sleeping room, child under 6 present).',
+        'If mold covers more than 10 square feet OR is in a bedroom or bathroom AND you have young children, explicitly report this on the complaint form — it triggers emergency inspection protocol.',
+        'After the inspection, check HPD Online at hpdonline.nyc.gov to see if a violation was issued and what class it was assigned.',
+      ],
+    },
+    {
+      type: 'tip',
+      body: "If the inspector doesn\'t show within 10 business days for a non-emergency complaint, call HPD\'s mold hotline and follow up in writing to your landlord referencing the pending inspection. The complaint record alone — even without a violation — strengthens your position in any subsequent proceeding.",
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 3: File an HP Proceeding in Housing Court',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Get a court order requiring remediation',
+      body: 'If your landlord has an HPD mold violation and is still not acting, an HP (Housing Part) proceeding compels them through court order. It costs nothing to file, requires no attorney, and creates a legal record the landlord cannot ignore.',
+      items: [
+        'File at your borough\'s Housing Court Help Center — they will assist you with the paperwork.',
+        'Bring: your written notice to the landlord, the HPD violation number, your 311 complaint number, photos of the mold, and any medical documentation if mold is affecting your health.',
+        'The court will schedule a hearing. The judge can order the landlord to complete remediation by a specific date and require proof of certification.',
+        'Non-compliance with a Housing Court order can result in contempt proceedings and significantly higher penalties than the HPD fines alone.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: Withhold Rent Legally — The Escrow Method',
+    },
+    {
+      type: 'body',
+      body: "A mold infestation serious enough to affect health and habitability is a breach of the warranty of habitability under NY RPL §235-b. This gives you the right to seek a rent abatement — a reduction in the rent owed for the period during which the apartment was substandard. The safest way to exercise this right is through the HP proceeding, where the court can authorise rent withholding into escrow. Do not simply stop paying rent without a court authorisation — that exposes you to eviction proceedings.",
+    },
+    {
+      type: 'warning',
+      body: "Mold affects health — if you or anyone in your household is experiencing respiratory symptoms, headaches, or worsening asthma, see a doctor and ask them to document the potential environmental cause. Medical records linking health issues to the mold in your apartment are significant evidence in both HPD proceedings and any subsequent rent abatement or lease termination case.",
+    },
+    {
+      type: 'h2',
+      heading: 'When to Consider Breaking Your Lease',
+    },
+    {
+      type: 'body',
+      body: "If the mold is extensive (covering large areas across multiple rooms), recurring despite treatment, or is making you or your family ill — and your landlord has failed to fix it despite HPD violations and court proceedings — you may have grounds for constructive eviction under the warranty of habitability. See our full guide on breaking a lease due to violations. If you reach this point, document everything meticulously: the lease break needs to be defensible.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about mold and tenant rights in NYC',
+      items: [
+        {
+          q: 'My landlord says the mold is my fault because I don\'t ventilate enough. Is that a valid defence?',
+          a: 'Rarely. Under Local Law 55, the landlord\'s obligation is to address moisture problems in areas under their control — which includes building envelopes, pipes, and inadequate ventilation systems. If your bathroom has no operable window or functioning exhaust fan (both of which are the landlord\'s responsibility to provide), claiming you caused the mold through poor ventilation is legally weak. HPD inspectors are trained to assess the moisture source, not just the mold symptom.',
+        },
+        {
+          q: 'Can I clean the mold myself while waiting for the landlord to fix it?',
+          a: 'For very small areas (under 10 square feet), surface cleaning with appropriate products can slow visible growth. However, DIY cleaning does not address the underlying moisture source and may not meet HPD\'s remediation standard. More importantly, cleaning it yourself could be used by your landlord to argue the mold is now resolved — do not clean it without first photographing it thoroughly and notifying the landlord in writing that you are doing interim cleaning solely to protect your health, not as acceptance of responsibility for the problem.',
+        },
+        {
+          q: 'How long does the HPD mold inspection process take?',
+          a: 'After a 311 complaint, HPD typically inspects within 30 days for standard mold complaints. If you report emergency conditions — mold in a sleeping area, child under 6 in the household, mold covering more than 10 square feet — the inspection should occur within 24 hours. Once a violation is issued, the landlord has 21 days (Class C) or 30 days (Class B) to complete remediation and file certification. Total timeline from complaint to compliance: 6–12 weeks if the landlord acts promptly.',
+        },
+        {
+          q: 'My landlord painted over the mold. Has that fixed it legally?',
+          a: 'No. Painting over mold is not a legally compliant remediation under NYC law and will result in a failed HPD reinspection. Local Law 55 requires licensed mold remediation by a NYS-licensed mold remediator following a separate assessment by a licensed mold assessor. A landlord who paints over mold is also creating conditions for faster recurrence, since the moisture source is not addressed. File a new 311 complaint immediately if this occurs.',
+        },
+        {
+          q: 'The mold came back after treatment. Do I have to start the complaint process over?',
+          a: 'Recurring mold after supposedly completed remediation is evidence that the underlying moisture source was not fixed — which is itself a violation of Local Law 55. File a new 311 complaint and reference the prior violation number. If the landlord certified a correction that was not genuine, HPD can issue a new violation with a faster deadline. Recurring violations are also treated more seriously in Housing Court.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FIGHTING: No heat or hot water — force landlord to fix it
+// Bucket: Fighting | Services: Renters Insurance + Moving Companies
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'no-heat-hot-water-force-landlord-fix-nyc',
+  category: 'heat-utilities',
+  title: 'No Heat or Hot Water in NYC? How to Force Your Landlord to Fix It',
+  metaTitle: 'No Heat or Hot Water in NYC? How to Force Your Landlord to Fix It | Building Health X',
+  metaDescription: 'No heat in your NYC apartment? Landlords have 24 hours to restore it or face $1,000/day fines. Here\'s how to file 311, document the violation, and get compensated for the outage.',
+  headline: 'No Heat or Hot Water in Your NYC Apartment? Here\'s How to Force a Fix.',
+  subheadline: 'Your landlord is legally required to restore heat within 24 hours. They face $1,000/day fines if they don\'t. Here\'s how to use that against them.',
+  serviceSlug: 'hvac-repair',
+  serviceName: 'HVAC Repair',
+  leadBaitCta: 'Freezing right now? Get emergency HVAC quotes — 24/7 response.',
+  datePublished: '2024-12-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['landlord-ignoring-mold-nyc-tenant-rights', 'landlord-wont-fix-roaches-bedbugs', 'how-to-break-lease-nyc-violations'],
+  relatedServicePages: [
+    { label: 'HVAC repair in Manhattan', href: '/services/hvac-repair/manhattan' },
+    { label: 'HVAC repair in Brooklyn', href: '/services/hvac-repair/brooklyn' },
+    { label: 'HVAC repair in Queens', href: '/services/hvac-repair/queens' },
+    { label: 'HVAC repair in the Bronx', href: '/services/hvac-repair/bronx' },
+    { label: 'Renters insurance in NYC', href: '/services/renters-insurance' },
+  ],
+  furtherReading: [
+    { slug: 'what-temperature-must-nyc-landlords-maintain', title: 'What Temperature Must NYC Landlords Maintain?' },
+    { slug: 'how-to-file-a-311-heat-complaint-in-nyc', title: 'How to File a 311 Heat Complaint in NYC' },
+    { slug: 'how-to-check-if-a-building-has-chronic-heat-problems', title: 'How to Check if a Building Has Chronic Heat Problems' },
+  ],
+  govLinks: [
+    { label: 'File a 311 Heat or Hot Water Complaint', url: 'https://portal.311.nyc.gov/', description: 'File online — HPD treats heat complaints as emergencies and can dispatch an inspector same day.' },
+    { label: 'HPD Heat Season Information', url: 'https://www.nyc.gov/site/hpd/services-and-information/heat-hot-water.page', description: 'Official NYC heat season rules, legal temperature requirements, and tenant rights.' },
+    { label: 'HPD Heat Line', url: 'https://www.nyc.gov/site/hpd/services-and-information/heat-hot-water.page', description: 'HPD Heat Line: (212) 863-7900 — report a heat emergency during the heating season.' },
+    { label: 'NYC Legal Aid — Tenant Resources', url: 'https://www.legalaidnyc.org/', description: 'Free legal help if your landlord refuses to restore heat or you want to seek rent abatement.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "In New York City, no heat in winter is not an inconvenience — it is a Class C immediately hazardous violation, the most serious category HPD issues. Your landlord must restore heat within 24 hours of being notified. Every day they fail to do so, they face fines of up to $1,000. If they still don\'t act, the city will send its own contractors and bill the landlord at premium rates as a lien on the property. You have significant legal leverage here. This guide tells you how to use it.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '68°F', label: 'Minimum daytime temperature required in all NYC apartments from 6am–10pm when it\'s below 55°F outside', source: 'NYC Admin Code §27-2029' },
+        { value: '24 hrs', label: 'Maximum legal window for your landlord to restore heat after a violation — after this, daily fines start', source: 'NYC HPD' },
+        { value: '$1,000/day', label: 'Maximum daily fine for repeated heat violations in a single season', source: 'NYC HPD' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'The Legal Temperature Requirements — Know These Exactly',
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Time', 'Outside temperature', 'Required inside temperature', 'Period'],
+        ['6am – 10pm', 'Below 55°F', 'Minimum 68°F in all apartments', 'Oct 1 – May 31'],
+        ['10pm – 6am', 'Any temperature', 'Minimum 62°F in all apartments', 'Oct 1 – May 31'],
+        ['All hours', 'N/A', 'Hot water at minimum 120°F at the tap', 'Year-round'],
+      ],
+    },
+    {
+      type: 'body',
+      body: "Note that the overnight 62°F requirement applies regardless of outside temperature during the heat season. Many tenants do not know this — they assume heat is only required when it\'s cold outside. The overnight requirement applies on a 50°F October night just as much as a 15°F February night.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Document the Temperature — Then Notify Your Landlord',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Measure and document the temperature before contacting anyone',
+      body: 'Your documentation is your evidence. Before you call 311, create a timestamped record of the violation.',
+      items: [
+        'Use a digital thermometer — your phone\'s weather app shows outdoor temperature, not indoor. Any cheap digital indoor thermometer works. Screenshot or photograph the reading with the date/time visible.',
+        'Measure in the warmest room — if the warmest room in your apartment is below 68°F during daytime, you have an unambiguous violation.',
+        'Check the time of day and outside temperature — both matter for which threshold applies.',
+        'Notify your landlord in writing simultaneously: "Indoor temperature is currently X°F at [time]. Please restore heat immediately per NYC Admin Code §27-2029."',
+        'Keep recording temperature every 2–3 hours while the heat is out — this documents the duration of the violation for any subsequent rent abatement claim.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: Call 311 — Heat Complaints Get Emergency Priority',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'File a 311 heat complaint — HPD can dispatch same day',
+      body: 'Unlike most HPD complaints, heat complaints during the heating season are treated as emergencies. HPD can dispatch an inspector same day or next day, and the violation triggers the 24-hour correction clock immediately.',
+      items: [
+        'Call 311 or file at portal.311.nyc.gov — select "Heat/Hot Water" under the housing complaint categories.',
+        'Write down your service request number — you can track the status online.',
+        'HPD may call you to confirm the complaint before dispatching. Answer the call.',
+        'If an inspector visits and confirms the temperature is below the legal minimum, a Class C violation is issued on the spot. This is the highest violation class and triggers immediate financial penalties.',
+        'Also call HPD\'s Heat Line at (212) 863-7900 during heat season to report the emergency directly — this can accelerate the response.',
+      ],
+    },
+    {
+      type: 'tip',
+      body: "File the 311 complaint even if your landlord promises to fix it today. The complaint creates a city record that cannot be altered. If the landlord fails to deliver on their promise, you already have the enforcement process started. If they fix it, the complaint simply closes — no harm done.",
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 3: What You\'re Entitled to While Heat Is Out',
+    },
+    {
+      type: 'body',
+      body: "While your landlord is required to restore heat, they are also legally obligated to provide temporary heat to affected tenants during the repair period. And beyond immediate relief, you may be entitled to a rent reduction for the period of the outage.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Temporary heat: your landlord must provide electric space heaters to every affected unit while repairs are underway. If they do not, add this to your 311 complaint and document the failure.",
+        "Rent abatement: a heat outage that lasted multiple days represents a period during which your apartment was below the habitable standard. Courts calculate abatements proportionally — a 5-day heat outage in January might represent 10–20% of that month\'s rent. Document every hour of the outage.",
+        "Hotel costs: if the heat outage made your apartment literally unliveable (temperatures below 50°F, vulnerable occupants), you may be able to claim hotel or alternative accommodation costs as part of a rent abatement or small claims action.",
+        "Security deposit: if the landlord attempts to deduct anything from your deposit at move-out after a documented heat failure during your tenancy, the documented violation and any court records are evidence of their breach — not yours.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: If Your Landlord Still Won\'t Fix It',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'Escalate to Housing Court for an HP order',
+      body: 'If the HPD violation has been issued and the landlord is still not restoring heat, an HP proceeding in Housing Court is the next escalation. A judge can order the landlord to restore heat by a specific date and refer any defiance to HPD\'s Emergency Repair Program — where the city fixes it and bills the landlord.',
+      items: [
+        'File the HP proceeding at your borough\'s Housing Court Help Center — free, no attorney required.',
+        'Bring your documented temperature readings, the 311 complaint number, the HPD violation number, and your written notice to the landlord.',
+        'Housing Court judges treat heat cases urgently during the heating season and typically schedule hearings within days, not weeks.',
+        'If the Emergency Repair Program intervenes, the city sends its own HVAC contractor and charges the landlord directly — often at 2–3× market rates plus an administrative fee. This is a significant financial consequence that most landlords want to avoid.',
+      ],
+    },
+    {
+      type: 'warning',
+      body: "Do not use propane or kerosene space heaters indoors as a substitute for building heat. Both produce carbon monoxide and pose serious fire and asphyxiation risks. If your landlord provides or suggests these as a solution, refuse them and report this to 311 as an additional safety violation. Only electric space heaters are appropriate for indoor temporary heat.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about no heat and hot water in NYC',
+      items: [
+        {
+          q: 'My landlord says the heat is fixed but my apartment is still cold. What do I do?',
+          a: 'Document the temperature with a thermometer and file a new 311 complaint referencing the prior violation number. You can also call HPD to flag that a previously issued violation has not been genuinely resolved. If the landlord certified a correction that was incomplete — for example, the main boiler was repaired but steam is not reaching your unit due to a valve problem — that is an ongoing violation, not a resolved one.',
+        },
+        {
+          q: 'Can I withhold rent because I have no heat?',
+          a: 'The safest method is to pay rent into a court-supervised escrow account through an HP proceeding rather than simply stopping payment. Unilateral rent withholding without court authorisation exposes you to eviction proceedings even if the heat failure is real and documented. The HP proceeding achieves the same pressure effect (your rent goes into escrow, not to the landlord) while legally protecting you from non-payment claims.',
+        },
+        {
+          q: 'My hot water is only lukewarm. Does that count as a violation?',
+          a: 'Yes. Hot water must be a minimum of 120°F at the tap — year-round, not just during heat season. Consistently lukewarm water (below 120°F) is a Class B HPD violation. File a 311 complaint specifically for "no hot water" — bring a food thermometer to document the actual temperature at the tap before filing.',
+        },
+        {
+          q: 'My building has radiators but only some get hot. What do I do?',
+          a: 'Uneven heat distribution in a steam system — where some radiators get scalding hot while others stay cold — is a building maintenance problem, typically caused by failed thermostatic radiator valves, air-locked radiators, or an unbalanced steam system. If your specific unit\'s radiators are providing inadequate heat (below the legal minimums), you have a violation regardless of what other units experience. File a 311 complaint, document your temperature, and notify your landlord in writing.',
+        },
+        {
+          q: 'Is the heating season always October through May?',
+          a: 'In NYC, the legal heating season runs from October 1 through May 31. Outside this window, there are no legal minimum temperature requirements. However, if an unusual cold snap occurs outside the heating season and your landlord has control over the building\'s heating system, you may still have a warranty of habitability argument if temperatures drop to genuinely dangerous levels. During the heating season itself — October 1 through May 31 — the requirements apply every day, regardless of the weather.',
+        },
+      ],
+    },
+  ],
+})

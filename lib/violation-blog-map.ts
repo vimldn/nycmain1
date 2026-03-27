@@ -119,6 +119,22 @@ export function buildGuidePanel(
   return result
 }
 
+/**
+ * Maps open violation categories to the tenant-facing /guides/ page
+ * that is most relevant to a renter experiencing that violation.
+ * Used to render an inline guide link inside each open violation card
+ * on the building profile page.
+ */
+export const VIOLATION_GUIDE_LINK_MAP: Record<string, { slug: string; label: string }> = {
+  'Pests':         { slug: 'landlord-wont-fix-roaches-bedbugs',          label: 'Landlord won\'t exterminate? Know your legal options' },
+  'Heat/Hot Water':{ slug: 'no-heat-hot-water-force-landlord-fix-nyc',   label: 'No heat or hot water? Here\'s how to force a fix' },
+  'Mold':          { slug: 'landlord-ignoring-mold-nyc-tenant-rights',   label: 'Landlord ignoring mold? Your rights under Local Law 55' },
+  'Plumbing':      { slug: 'hire-plumber-nyc-hpd-violation',             label: 'Open plumbing violation — what this means for you' },
+  'Electrical':    { slug: 'clear-hpd-electrical-violation-nyc',         label: 'Open electrical violation — your tenant rights' },
+  'Lead Paint':    { slug: 'what-to-check-before-signing-nyc-lease',     label: 'Lead paint in your building — what the law requires' },
+  'Structural':    { slug: 'who-pays-pipe-burst-nyc-apartment',          label: 'Structural issues — who is legally responsible' },
+}
+
 // Legacy compat — some callers still use this signature
 export function getBlogLinksForCategory(category: string, max = 2) {
   const guide = VIOLATION_GUIDE_MAP[category] ?? VIOLATION_GUIDE_MAP['Other']
