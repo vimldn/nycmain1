@@ -23,10 +23,100 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// leadBaitRendered tracks whether we have already injected the form once
+// ── Schema helpers ────────────────────────────────────────────────────────────
+
+function ArticleJsonLd({ guide, url }: { guide: ReturnType<typeof getGuideBySlug> & object; url: string }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.headline,
+    description: guide.metaDescription,
+    url,
+    datePublished: guide.datePublished ?? '2024-09-01',
+    dateModified: guide.dateModified ?? guide.datePublished ?? '2024-09-01',
+    author: {
+      '@type': 'Organization',
+      name: 'Building Health X Editorial Team',
+      url: 'https://www.buildinghealthx.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Building Health X',
+      url: 'https://www.buildinghealthx.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.buildinghealthx.com/logo.png',
+      },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+function FAQPageJsonLd({ guide }: { guide: ReturnType<typeof getGuideBySlug> & object }) {
+  const faqSections = guide.content.filter((s: GuideSection) => s.type === 'faq') as Array<{
+    type: 'faq'; items: { q: string; a: string }[]
+  }>
+  if (!faqSections.length) return null
+  const allItems = faqSections.flatMap(s => s.items)
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allItems.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+function HowToJsonLd({ guide, url }: { guide: ReturnType<typeof getGuideBySlug> & object; url: string }) {
+  const stepSections = guide.content.filter((s: GuideSection) => s.type === 'step') as Array<{
+    type: 'step'; stepNumber?: number; heading?: string; body?: string
+  }>
+  if (stepSections.length < 2) return null
+  if (!guide.headline.toLowerCase().startsWith('how')) return null
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: guide.headline,
+    description: guide.metaDescription,
+    url,
+    step: stepSections.map(s => ({
+      '@type': 'HowToStep',
+      name: s.heading,
+      text: s.body ?? s.heading,
+      position: s.stepNumber ?? 1,
+    })),
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+// ── Section renderer ──────────────────────────────────────────────────────────
+
 let leadBaitRendered = false
 
-function renderSection(section: GuideSection, guide: { serviceSlug: string; serviceName: string; leadBaitCta: string }, index: number) {
+function renderSection(
+  section: GuideSection,
+  guide: { serviceSlug: string; serviceName: string; leadBaitCta: string },
+  index: number
+) {
   switch (section.type) {
     case 'intro':
       return (
@@ -152,10 +242,82 @@ function renderSection(section: GuideSection, guide: { serviceSlug: string; serv
         />
       )
 
+    case 'stat': {
+      const colorMap: Record<string, { bg: string; border: string; val: string; src: string }> = {
+        blue:   { bg: 'bg-blue-500/8',   border: 'border-blue-500/20',   val: 'text-blue-300',   src: 'text-blue-400/60'   },
+        yellow: { bg: 'bg-yellow-500/8', border: 'border-yellow-500/20', val: 'text-yellow-300', src: 'text-yellow-400/60' },
+        green:  { bg: 'bg-green-500/8',  border: 'border-green-500/20',  val: 'text-green-300',  src: 'text-green-400/60'  },
+        red:    { bg: 'bg-red-500/8',    border: 'border-red-500/20',    val: 'text-red-300',    src: 'text-red-400/60'    },
+      }
+      const c = colorMap[section.color ?? 'blue']
+      return (
+        <div key={index} className={`my-8 flex flex-col items-center text-center p-7 rounded-xl ${c.bg} border ${c.border}`}>
+          <span className={`text-4xl font-black mb-2 tabular-nums ${c.val}`}>{section.value}</span>
+          <span className="text-sm text-[var(--text-secondary)] max-w-md leading-relaxed">{section.label}</span>
+          {section.source && (
+            <span className={`text-xs mt-2 ${c.src}`}>Source: {section.source}</span>
+          )}
+        </div>
+      )
+    }
+
+    case 'statrow':
+      return (
+        <div
+          key={index}
+          className={`my-8 grid gap-4 ${
+            section.stats?.length === 2 ? 'grid-cols-2' :
+            section.stats?.length === 3 ? 'sm:grid-cols-3' :
+            'sm:grid-cols-2 lg:grid-cols-4'
+          }`}
+        >
+          {section.stats?.map((s, i) => (
+            <div key={i} className="flex flex-col items-center text-center p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
+              <span className="text-3xl font-black text-blue-300 mb-1 tabular-nums">{s.value}</span>
+              <span className="text-xs text-[var(--text-secondary)] leading-relaxed">{s.label}</span>
+              {s.source && <span className="text-[10px] text-[#334155] mt-1">{s.source}</span>}
+            </div>
+          ))}
+        </div>
+      )
+
+    case 'faq':
+      return (
+        <div key={index} className="my-10">
+          <h2 className="text-xl font-black mb-5 text-[#e2e8f0]">
+            {section.heading ?? 'Frequently asked questions'}
+          </h2>
+          <div className="space-y-2">
+            {section.items?.map((item, i) => (
+              <details
+                key={i}
+                className="group rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden"
+              >
+                <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none select-none">
+                  <span className="text-sm font-semibold text-[#e2e8f0] leading-snug">{item.q}</span>
+                  <svg
+                    width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    className="text-[#475569] flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
+                  >
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 pt-2 border-t border-[var(--border-primary)]">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      )
+
     default:
       return null
   }
 }
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function GuidePage({ params }: Props) {
   const guide = getGuideBySlug(params.slug)
@@ -163,8 +325,9 @@ export default function GuidePage({ params }: Props) {
 
   const category = getCategoryBySlug(guide.category)
   const related = getRelatedGuides(guide.relatedSlugs)
-  // Reset so the single-render guard works per page load
   leadBaitRendered = false
+
+  const url = `https://www.buildinghealthx.com/guides/${guide.slug}`
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -172,9 +335,13 @@ export default function GuidePage({ params }: Props) {
         items={[
           { name: 'Home', url: 'https://www.buildinghealthx.com' },
           { name: 'Guides', url: 'https://www.buildinghealthx.com/guides' },
-          { name: guide.title, url: `https://www.buildinghealthx.com/guides/${guide.slug}` },
+          { name: guide.title, url },
         ]}
       />
+      <ArticleJsonLd guide={guide} url={url} />
+      <FAQPageJsonLd guide={guide} />
+      <HowToJsonLd guide={guide} url={url} />
+
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 pt-28 pb-20">
@@ -323,7 +490,6 @@ export default function GuidePage({ params }: Props) {
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-5">
 
-              {/* Sidebar CTA — static, no form duplication */}
               <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
                 <div className="h-1 w-full bg-gradient-to-r from-blue-600 to-blue-400" />
                 <div className="p-5">
@@ -341,7 +507,6 @@ export default function GuidePage({ params }: Props) {
                 </div>
               </div>
 
-              {/* BHX tool CTA */}
               <div className="p-5 rounded-xl bg-blue-500/8 border border-blue-500/20">
                 <div className="text-sm font-semibold mb-2">Check your building's BHX Score</div>
                 <p className="text-xs text-[#64748b] mb-4 leading-relaxed">
@@ -358,7 +523,6 @@ export default function GuidePage({ params }: Props) {
                 </Link>
               </div>
 
-              {/* All guides link */}
               <Link
                 href="/guides"
                 className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors group"
