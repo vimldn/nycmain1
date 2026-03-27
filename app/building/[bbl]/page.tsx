@@ -2,11 +2,13 @@
 
 import React, { useEffect, useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { Building2, AlertTriangle, CheckCircle, XCircle, Search, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
+import { AlertTriangle, CheckCircle, XCircle, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
 import { buildGuidePanel, VIOLATION_GUIDE_LINK_MAP } from '@/lib/violation-blog-map'
 import ViolationLeadForm, { VIOLATION_SERVICE_MAP } from '@/components/ViolationLeadForm'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
@@ -161,9 +163,7 @@ export default function BuildingPage() {
   const [error, setError] = useState('')
   const [tab, setTab] = useState<Tab>('overview')
   const [range, setRange] = useState<RangeKey>('90d')
-  const [search, setSearch] = useState('')
-  const [searching, setSearching] = useState(false)
-  const [searchError, setSearchError] = useState('')
+  
 
   const pendingScrollRef = React.useRef<{ tab: Tab; sectionId?: string } | null>(null)
 
@@ -249,22 +249,7 @@ export default function BuildingPage() {
     if (bbl) load()
   }, [bbl])
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const q = search.trim()
-    if (!q) return
-    setSearching(true)
-    setSearchError('')
-    try {
-      const res = await fetch(`/api/lookup?address=${encodeURIComponent(q)}`)
-      const json = await res.json()
-      if (json?.bbl) { router.push(`/building/${json.bbl}`) }
-      else { setSearchError(json?.error || 'Address not found') }
-    } catch { setSearchError('Search failed. Please try again.') }
-    finally { setSearching(false) }
-  }
-
-  useEffect(() => {
+    useEffect(() => {
     if (typeof window === 'undefined') return
     if (loading) { document.body.style.overflow = 'hidden'; document.body.style.touchAction = 'none' }
     else { document.body.style.overflow = ''; document.body.style.touchAction = '' }
@@ -351,28 +336,9 @@ export default function BuildingPage() {
   return (
     <div className="min-h-screen bg-[#0a0e17]">
 
-      {/* ── Sticky header ── */}
-      <header className="sticky top-0 z-50 bg-[#0a0e17]/95 backdrop-blur-xl border-b border-[#1e293b]">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-              <Building2 size={18} className="text-white" />
-            </div>
-            <span className="text-lg font-bold hidden sm:block">Building Health X</span>
-          </Link>
-          <form onSubmit={handleSearch} className="flex-1 max-w-xl">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#4a5568]" size={18} />
-              <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={b?.address || 'Search...'} className="w-full pl-10 pr-10 py-2.5 bg-[#151c2c] border border-[#1e293b] rounded-xl text-[16px] sm:text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-blue-500/50" disabled={searching} />
-              {searching && <div className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />}
-            </div>
-            {searchError && <div className="text-sm sm:text-xs text-red-400 mt-1">{searchError}</div>}
-          </form>
-          <Link href="/blog" className="inline-flex items-center px-3 py-1.5 rounded-lg border border-[#1e293b] text-sm text-[#cbd5e1] hover:bg-white/5 transition flex-shrink-0">Blog</Link>
-        </div>
-      </header>
+      <Header showSearch />
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main className="max-w-7xl mx-auto px-4 pt-28 pb-10">
 
         {/* ══ HERO CARD — V2 Bold Verdict ══ */}
         <div className="card mb-5 overflow-hidden">
@@ -1363,6 +1329,8 @@ export default function BuildingPage() {
         </div>
 
       </main>
+
+      <Footer />
     </div>
   )
 }
