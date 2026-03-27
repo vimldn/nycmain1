@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, AlertTriangle, CheckCircle, XCircle, Search, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
-import { getBlogLinksForCategory } from '@/lib/violation-blog-map'
+import { getBlogLinksForCategory, buildGuidePanel } from '@/lib/violation-blog-map'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
@@ -611,6 +611,8 @@ export default function BuildingPage() {
         ══════════════════════════════════════════ */}
         {tab === 'violations' && (
           <div className="space-y-5 animate-fade-in">
+
+            {/* Summary counts */}
             <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
               {[
                 { label: 'Class C', val: data?.violations?.hpd?.classC ?? 0, cls: 'text-red-400' },
@@ -627,6 +629,7 @@ export default function BuildingPage() {
               ))}
             </div>
 
+            {/* Yearly chart */}
             <div className="card p-6">
               <h3 className="font-bold mb-4 text-base">Violations by year</h3>
               <div className="h-56">
@@ -636,11 +639,78 @@ export default function BuildingPage() {
               </div>
             </div>
 
+            {/* ── Guide Panel ── */}
+            {data.violations.recent?.length > 0 && (() => {
+              const guides = buildGuidePanel(data.violations.recent)
+              if (!guides.length) return null
+              return (
+                <div className="card p-6">
+                  <div className="flex items-center gap-2 mb-5">
+                    <span className="text-base">📚</span>
+                    <h3 className="font-bold text-base">Guides for this building's violations</h3>
+                  </div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {guides.map(g => (
+                      <div key={g.category} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span style={{ fontSize: 16 }}>{g.icon}</span>
+                          <span className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide">{g.category}</span>
+                        </div>
+                        <ul className="space-y-2">
+                          {g.links.map(link => (
+                            <li key={link.slug}>
+                              <Link
+                                href={`/blog/${link.slug}`}
+                                className="flex items-start gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors group"
+                              >
+                                <span className="mt-0.5 flex-shrink-0 w-1 h-1 rounded-full bg-blue-500/50 group-hover:bg-blue-400 transition-colors" style={{ marginTop: 7 }} />
+                                <span className="leading-snug">{link.title}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            })()}
+
             <div className="card p-6" id="section-building-violations">
               <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
+
+              {/* Guide strip — one link per unique violation category found in this building */}
+              {data.violations.recent?.length > 0 && (() => {
+                const seen = new Set<string>()
+                const guides: { slug: string; title: string; category: string }[] = []
+                data.violations.recent.forEach((v: any) => {
+                  if (v.category && !seen.has(v.category)) {
+                    seen.add(v.category)
+                    const links = getBlogLinksForCategory(v.category, 1)
+                    if (links.length > 0) guides.push({ ...links[0], category: v.category })
+                  }
+                })
+                return guides.length > 0 ? (
+                  <div className="mb-4 p-4 rounded-xl border border-blue-500/20" style={{ background: 'rgba(59,130,246,0.06)' }}>
+                    <div className="text-xs font-semibold text-blue-400 mb-2.5">Relevant guides for this building</div>
+                    <div className="flex flex-wrap gap-2">
+                      {guides.map(g => (
+                        <Link
+                          key={g.slug}
+                          href={`/blog/${g.slug}`}
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#111827] border border-blue-500/20 rounded-lg text-xs text-blue-300 hover:text-blue-200 hover:border-blue-400/40 transition-colors"
+                        >
+                          <span className="text-[#475569]">{g.category}:</span>&nbsp;{g.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null
+              })()}
+
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
-                  const blogLinks = v.status === 'Open' ? getBlogLinksForCategory(v.category, 2) : []
+                  const blogLinks = getBlogLinksForCategory(v.category, 1)
                   return (
                     <div key={v.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
                       <div className="flex items-start justify-between gap-4">
@@ -663,7 +733,7 @@ export default function BuildingPage() {
                       </div>
                       {blogLinks.length > 0 && (
                         <div className="mt-3 pt-3 border-t border-[#1e293b] flex flex-wrap gap-2 items-center">
-                          <span className="text-[10px] text-[#475569]">Related guide:</span>
+                          <span className="text-[10px] text-[#475569]">Guide:</span>
                           {blogLinks.map(link => (
                             <Link key={link.slug} href={`/blog/${link.slug}`} className="text-[11px] text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors">
                               {link.title}
