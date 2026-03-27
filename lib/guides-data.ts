@@ -1303,3 +1303,540 @@ export function getGuideBySlug(slug: string): GuidePost | undefined { return GUI
 export function getGuidesByCategory(categorySlug: string): GuidePost[] { return GUIDES.filter(g => g.category === categorySlug) }
 export function getCategoryBySlug(slug: string): GuideCategory | undefined { return GUIDE_CATEGORIES.find(c => c.slug === slug) }
 export function getRelatedGuides(slugs: string[]): GuidePost[] { return slugs.map(s => GUIDES.find(g => g.slug === s)).filter(Boolean) as GuidePost[] }
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MONEY PAGE 1: Break your lease due to violations
+// Intent bucket: Escaping | Service: Moving Companies
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'how-to-break-lease-nyc-violations',
+  category: 'inspections-leasing',
+  title: 'How to Break Your NYC Lease Due to Landlord Violations',
+  metaTitle: 'How to Break Your NYC Lease Due to Landlord Violations | Building Health X',
+  metaDescription: 'NYC tenants can legally break a lease when a landlord fails to fix violations. Learn constructive eviction, the warranty of habitability, required notice steps, and how to get your deposit back.',
+  headline: 'How to Break Your NYC Lease When Your Landlord Won\'t Fix Violations',
+  subheadline: 'The exact legal process for NYC tenants who want out — constructive eviction, warranty of habitability breaches, required documentation, and how to protect your deposit.',
+  serviceSlug: 'moving-companies',
+  serviceName: 'Moving Companies',
+  leadBaitCta: 'Ready to move? Get free quotes from vetted NYC movers.',
+  datePublished: '2024-11-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['what-to-check-before-signing-nyc-lease', 'get-security-deposit-back-nyc', 'clear-hpd-mold-violation-nyc'],
+  relatedServicePages: [
+    { label: 'Moving companies in Manhattan', href: '/services/moving-companies/manhattan' },
+    { label: 'Moving companies in Brooklyn', href: '/services/moving-companies/brooklyn' },
+    { label: 'Moving companies in Queens', href: '/services/moving-companies/queens' },
+    { label: 'Moving companies in the Bronx', href: '/services/moving-companies/bronx' },
+    { label: 'Moving companies in Staten Island', href: '/services/moving-companies/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+    { slug: 'can-i-get-a-rent-reduction-if-my-landlord-has-open-violations', title: 'Can I Get a Rent Reduction If My Landlord Has Open Violations?' },
+    { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What Are Immediately Hazardous Violations in NYC?' },
+  ],
+  govLinks: [
+    { label: 'NY Real Property Law §235-b (Warranty of Habitability)', url: 'https://codes.findlaw.com/ny/real-property-law/rpy-sect-235-b.html', description: 'The statutory basis for your right to break a lease over uninhabitable conditions.' },
+    { label: 'NYC Housing Court — HP Proceedings', url: 'https://www.courts.state.ny.us/courts/nyc/housing/', description: 'File a Housing Part case to force repairs or document breach for lease termination.' },
+    { label: 'HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: 'Pull the official violation record you\'ll need to document your landlord\'s breach.' },
+    { label: 'NYC Legal Aid Society — Tenant Resources', url: 'https://www.legalaidnyc.org/', description: 'Free legal help for eligible tenants facing habitability and lease issues.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Breaking a lease early in NYC typically costs you — forfeited deposit, remaining rent, legal fees. But when a landlord allows uninhabitable conditions to persist despite proper notice, the law flips. Under New York Real Property Law §235-b, a landlord\'s failure to maintain a habitable apartment can constitute a material breach of the lease, giving you a legal pathway to terminate without penalty. This guide explains exactly when that applies, how to document it properly, and what to do step by step so you leave clean — without owing your landlord anything.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '§235-b', label: 'New York Real Property Law — your statutory right to a habitable apartment that cannot be waived in any lease', source: 'NY State Law' },
+        { value: '2× rent', label: 'What a landlord owes you in punitive damages if they wrongfully withhold your security deposit after you leave', source: 'NY General Obligations Law §7-108' },
+        { value: '14 days', label: 'Time landlord has to return your deposit or itemize deductions after your tenancy ends', source: 'NY General Obligations Law §7-108' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'When Can You Legally Break Your NYC Lease?',
+    },
+    {
+      type: 'body',
+      body: "NYC lease termination without penalty is available under two related but distinct legal theories. Both require documentation — the stronger your paper trail, the better your position.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Legal theory', 'What it means', 'Strength of claim'],
+        ['Warranty of Habitability breach', 'Landlord failed to maintain a safe, liveable apartment', 'Strong if conditions are documented + landlord was notified'],
+        ['Constructive Eviction', 'Conditions are so severe you were effectively forced to leave', 'Very strong but requires you to actually vacate — risky if done wrong'],
+        ['Actual eviction / lease violation', 'Landlord violated the lease (illegal entry, harassment, shutting off utilities)', 'Strong — document every incident with dates'],
+        ['Military deployment', 'Active duty orders (SCRA)', 'Absolute right — no negotiation needed'],
+        ['Domestic violence (VAWA)', 'You are a victim of domestic violence', 'Absolute right under NY RPL §227-c'],
+      ],
+    },
+    {
+      type: 'body',
+      body: "The most common successful lease break for renters in NYC is the warranty of habitability route — particularly when the condition involves mold, pests, lack of heat, or structural hazards, and the landlord has been formally notified via HPD complaint and has open Class B or C violations.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Build an Unassailable Documentation File',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Create a chronological paper trail starting today',
+      body: 'Courts and landlords alike respond to documentation. If you do not have a written record of the problem and your attempts to get it fixed, you are significantly weakened in any dispute. Start building this file immediately.',
+      items: [
+        'Pull your building\'s full HPD violation record at hpdonline.nyc.gov — screenshot it with today\'s date visible. Every open violation is evidence.',
+        'Take dated photos and video of every affected area in the apartment — mold, no heat, pest activity, structural damage, broken fixtures.',
+        'Compile every written communication with your landlord about the condition — emails, texts, building app messages. If you have had verbal-only conversations, send a follow-up email confirming what was said: "Confirming our conversation today — you said the boiler would be fixed by Friday."',
+        'If you have filed 311 complaints, print the confirmation numbers and complaint descriptions from the 311 online portal.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: Send Formal Written Notice to Your Landlord',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'Send a notice of breach by certified mail',
+      body: 'Before you can break the lease, you must give your landlord a formal written notice of the breach and a reasonable opportunity to remedy it. This protects you legally — it shows you gave them a chance to fix the problem before you left.',
+      items: [
+        'Write a concise letter identifying: the specific conditions that breach the warranty of habitability, the dates you first reported them, the HPD violation numbers if any, and a clear deadline for correction (typically 10–14 days for serious conditions).',
+        'Send it via certified mail with return receipt requested to the landlord\'s registered address (search ACRIS if unsure of the correct entity) AND via email.',
+        'Keep the green return card when it comes back — that proves delivery.',
+        'If the landlord does not respond or fails to correct within your stated deadline, this letter becomes the foundation of your lease termination claim.',
+      ],
+    },
+    {
+      type: 'tip',
+      body: "Send the notice to the landlord's legal entity as listed on your lease AND to the managing agent if there is one. Sending to just the super or a property manager does not always constitute legal notice to the landlord — courts have dismissed breach claims on this technicality.",
+    },
+    {
+      type: 'leadbait',
+    },
+    {
+      type: 'h2',
+      heading: 'Step 3: File an HP Proceeding in Housing Court',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Create an official court record of the breach',
+      body: 'An HP (Housing Part) proceeding is a court order requiring your landlord to make specific repairs. Filing one achieves two things: it forces the repair process through the court system, and it creates an official legal record of the landlord\'s non-compliance that massively strengthens any subsequent lease termination claim.',
+      items: [
+        'File at NYC Housing Court — no attorney required, the court\'s Help Center can assist you. There is no filing fee for tenants in HP proceedings.',
+        'The court will schedule an inspection by an HPD housing specialist who will document all conditions in writing.',
+        'If the judge orders repairs and the landlord still does not comply, you have powerful evidence for constructive eviction.',
+        'The HP proceeding stays on the building\'s court record — it also protects future tenants and may cause the landlord to settle rather than fight.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: Send Your Lease Termination Letter',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'Give proper notice of termination',
+      body: 'If the landlord has failed to cure the breach after formal notice, you can now send your lease termination letter. This is a separate, distinct document from your notice of breach.',
+      items: [
+        'State clearly that you are terminating the lease as of a specific date (typically 30 days out) due to the landlord\'s material breach of the warranty of habitability under NY RPL §235-b.',
+        'Reference the specific conditions, your earlier notice letter and its date, and any HPD violations or court proceedings by case number.',
+        'State that you expect the full return of your security deposit within 14 days of vacating, per NY General Obligations Law §7-108.',
+        'Send via certified mail with return receipt — and also email so you have a timestamp.',
+        'Do NOT abandon the apartment without sending this letter. Abandonment without proper notice is treated differently from legal termination and can result in liability for remaining rent.',
+      ],
+    },
+    {
+      type: 'warning',
+      body: "Constructive eviction requires you to actually vacate within a reasonable time of the intolerable conditions. If you stay in the apartment for an extended period after claiming the conditions are uninhabitable, courts will often find you waived the claim. If you plan to use constructive eviction, you need to leave — not stay and keep fighting from inside.",
+    },
+    {
+      type: 'h2',
+      heading: 'Getting Your Security Deposit Back',
+    },
+    {
+      type: 'body',
+      body: "Under NY General Obligations Law §7-108, your landlord has 14 days from the end of the tenancy to either return your full deposit or send you an itemized list of deductions with receipts. If they fail to do this within 14 days, they forfeit their right to make any deductions — and you are entitled to the full amount. If they withhold it wrongfully, you can sue in Small Claims Court for up to 2× the deposit amount in punitive damages, plus the deposit itself.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['What landlords can deduct', 'What they cannot deduct'],
+        ['Damage beyond normal wear and tear', 'Painting after a normal tenancy'],
+        ['Missing keys or lock replacement', 'General cleaning if apartment was left reasonably clean'],
+        ['Unpaid rent (with documentation)', 'Repairs for pre-existing conditions'],
+        ['Repairs for tenant-caused damage', 'Deductions without receipts after the 14-day window'],
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about breaking an NYC lease over violations',
+      items: [
+        {
+          q: 'Can I just stop paying rent and leave if my apartment is uninhabitable?',
+          a: 'No. Stopping rent without following the proper legal procedure — written notice, reasonable cure period, formal termination — exposes you to eviction proceedings and a judgment for unpaid rent that can affect your credit. The legal route takes slightly longer but protects you completely. The steps in this guide are the correct sequence.',
+        },
+        {
+          q: 'My landlord has HPD violations but says the conditions aren\'t that bad. Do I have a case?',
+          a: 'Open Class B or C HPD violations are strong objective evidence that conditions breach the housing code — your landlord cannot simply characterize them away. Class C violations are classified as "immediately hazardous" by a trained city inspector. Courts give significant weight to HPD violation records. The more violations, the older they are, and the higher their class, the stronger your breach claim.',
+        },
+        {
+          q: 'Do I need a lawyer to break my lease due to violations?',
+          a: 'Not necessarily. Tenants can file HP proceedings and send breach notices without an attorney. However, if your landlord retaliates, refuses to return the deposit, or files an eviction proceeding against you, having a tenant attorney is strongly advisable. NYC Legal Aid Society offers free services to eligible tenants. Many tenant attorneys also take cases on contingency for deposit disputes.',
+        },
+        {
+          q: 'What if my lease has a clause saying I waive the right to terminate?',
+          a: 'That clause is unenforceable under New York law. The warranty of habitability under NY RPL §235-b explicitly cannot be waived by any lease provision or tenant agreement. Courts routinely void such clauses. Do not let a landlord intimidate you with lease language that New York law makes void.',
+        },
+        {
+          q: 'I\'m on a month-to-month tenancy, not a fixed lease. Is this different?',
+          a: 'Month-to-month tenants have the same warranty of habitability rights as fixed-term lease tenants. The termination process is somewhat simpler — you give proper notice (typically 30 days, or whatever your lease specifies for month-to-month termination) with documentation of the breach. The landlord cannot retaliate against a month-to-month tenant for a habitability complaint within 180 days of the complaint under NY RPL §223-b.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MONEY PAGE 2: Get your security deposit back
+// Intent bucket: Escaping | Service: Cleaning Services
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'get-security-deposit-back-nyc',
+  category: 'inspections-leasing',
+  title: 'How to Get Your Security Deposit Back in NYC',
+  metaTitle: 'How to Get Your Security Deposit Back in NYC | Building Health X',
+  metaDescription: 'NYC landlords have 14 days to return your deposit or lose the right to deduct anything. Learn the exact law, what they can and cannot deduct, and how to sue in Small Claims Court.',
+  headline: 'How to Get Your Security Deposit Back in NYC',
+  subheadline: 'The exact law on deductions, the 14-day deadline, move-out walkthrough strategy, and how to take a landlord to Small Claims Court and win.',
+  serviceSlug: 'cleaning-services',
+  serviceName: 'Cleaning Services',
+  leadBaitCta: 'Leave the apartment spotless — get free quotes from NYC move-out cleaners.',
+  datePublished: '2024-11-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['how-to-break-lease-nyc-violations', 'what-to-check-before-signing-nyc-lease', 'clear-hpd-mold-violation-nyc'],
+  relatedServicePages: [
+    { label: 'Cleaning services in Manhattan', href: '/services/cleaning-services/manhattan' },
+    { label: 'Cleaning services in Brooklyn', href: '/services/cleaning-services/brooklyn' },
+    { label: 'Cleaning services in Queens', href: '/services/cleaning-services/queens' },
+    { label: 'Cleaning services in the Bronx', href: '/services/cleaning-services/bronx' },
+    { label: 'Cleaning services in Staten Island', href: '/services/cleaning-services/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'how-to-check-if-an-nyc-apartment-is-rent-stabilized', title: 'How to Check If an NYC Apartment Is Rent Stabilised' },
+    { slug: 'can-i-get-a-rent-reduction-if-my-landlord-has-open-violations', title: 'Can I Get a Rent Reduction If My Landlord Has Open Violations?' },
+    { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+  ],
+  govLinks: [
+    { label: 'NY General Obligations Law §7-108', url: 'https://codes.findlaw.com/ny/general-obligations-law/gob-sect-7-108.html', description: 'The NYC security deposit law — 14-day return deadline, itemization requirements, and penalties for wrongful withholding.' },
+    { label: 'NYC Small Claims Court', url: 'https://www.courts.state.ny.us/courts/nyc/smallclaims/', description: 'File a Small Claims Court case against your landlord for up to $10,000 without an attorney.' },
+    { label: 'NYC Tenant Rights Guide (HPD)', url: 'https://www.nyc.gov/site/hpd/renters/tenant-rights.page', description: 'Official HPD guide to tenant rights in NYC.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Your security deposit is your money. Under New York law, your landlord holds it in trust — they do not own it and cannot spend it. When your tenancy ends, they have exactly 14 days to return it in full or send you an itemized statement of deductions with supporting documentation. Miss that window, and they forfeit every right to deduct a single dollar. This guide explains the law precisely, tells you exactly how to protect yourself before you leave, and walks you through Small Claims Court if the landlord tries to steal your deposit anyway.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '14 days', label: 'Landlord\'s deadline to return your deposit or itemize deductions — after that they forfeit all deductions', source: 'NY General Obligations Law §7-108' },
+        { value: '2×', label: 'Punitive damages you can win in court on top of the deposit if the landlord withholds it in bad faith', source: 'NY General Obligations Law §7-108' },
+        { value: '$10,000', label: 'Maximum claim in NYC Small Claims Court — no attorney required to file', source: 'NYC Courts' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: The Move-Out Walkthrough — Your Most Important Protection',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Request a joint move-out inspection with your landlord',
+      body: 'Under NY General Obligations Law §7-108(1-a), you have the right to request a pre-departure inspection by the landlord before you vacate. This is one of the most underused tenant protections in New York. The landlord must give you written notice of any conditions they intend to deduct for — and then give you the opportunity to cure those conditions before you leave.',
+      items: [
+        'Send a written request for a pre-departure inspection at least a week before your move-out date.',
+        'If the landlord agrees, attend the walkthrough with your phone recording video the entire time.',
+        'Note every condition they flag — you then have the right to clean or repair those items before turning in the keys.',
+        'If the landlord refuses the walkthrough or fails to schedule it, they may forfeit their right to claim deductions for those conditions. Document the refusal in writing.',
+        'Take a comprehensive video of every room, every surface, every appliance, and every fixture immediately before handing back the keys. Time-stamp everything.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: What Landlords Can and Cannot Deduct',
+    },
+    {
+      type: 'body',
+      body: "The most common source of wrongful deductions is landlords blurring the line between 'normal wear and tear' — which you are not responsible for — and actual damage. New York law is clear on this distinction.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Landlord CAN deduct', 'Landlord CANNOT deduct'],
+        ['Holes in walls beyond normal picture-hanging', 'Small nail holes from pictures'],
+        ['Burns, stains, or gouges in floors', 'Surface scuffs from normal furniture use'],
+        ['Broken fixtures, doors, or window glass (tenant fault)', 'Repainting if walls were in normal condition'],
+        ['Missing or damaged appliances', 'General apartment cleaning if reasonably clean'],
+        ['Unpaid rent (with documentation)', 'Repairs for pre-existing conditions'],
+        ['Replacing lost keys or re-keying (if lease requires)', 'Deductions without receipts'],
+        ['Any deduction with documentation within 14 days', 'Any deduction made after the 14-day window'],
+      ],
+    },
+    {
+      type: 'tip',
+      body: "A professional move-out clean is the single best investment for maximising your deposit return. A landlord who wants to deduct for cleaning must show the apartment was left in worse-than-normal condition. A professional clean with a receipt shifts that burden completely. NYC move-out cleaning typically costs $150–$350 for a 1BR — versus a potential landlord claim of $500–$1,500.",
+    },
+    {
+      type: 'leadbait',
+    },
+    {
+      type: 'h2',
+      heading: 'Step 3: What to Do When You Get the Itemized Statement',
+    },
+    {
+      type: 'body',
+      body: "If your landlord returns less than the full deposit, they must send an itemized deduction statement within 14 days of your tenancy ending. Read it carefully and dispute any items that are:",
+    },
+    {
+      type: 'list',
+      items: [
+        "Normal wear and tear (paint, minor scuffs, carpet wear from normal use)",
+        "Pre-existing conditions you documented at move-in (this is why move-in photos are essential — take them even if you forgot for this tenancy)",
+        "Missing receipts or contractor invoices — deductions must be substantiated with documentation",
+        "Repairs for conditions that were HPD violations during your tenancy (the landlord was legally responsible for those — they cannot deduct them from your deposit)",
+        "Any deduction that arrived after the 14-day window — even one day late forfeits the right to deduct",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: Disputing the Deductions in Writing',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'Send a formal written dispute within 10 days',
+      body: 'If you dispute any deduction, send a written dispute letter by certified mail within 10 days of receiving the itemization. This creates a timestamped record and gives the landlord a chance to correct the error before court.',
+      items: [
+        'Reference the specific deductions you dispute and explain why each is improper (wear and tear, pre-existing condition, missing documentation, etc.)',
+        'Attach your move-out photos and video evidence',
+        'Include a copy of your move-in condition documentation if available',
+        'State the specific amount you believe you are owed and the date you expect it returned',
+        'Notify the landlord that you will file in Small Claims Court if the matter is not resolved',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 5: Small Claims Court — Straightforward and Effective',
+    },
+    {
+      type: 'step',
+      stepNumber: 5,
+      heading: 'File in NYC Small Claims Court if the landlord does not comply',
+      body: 'Small Claims Court in NYC handles disputes up to $10,000. The filing fee is $15–$20. You do not need an attorney. Landlords who wrongfully withhold deposits rarely want to appear in court — many pay before the hearing date.',
+      items: [
+        'File at your borough\'s Civil Court (Manhattan: 111 Centre Street, Brooklyn: 141 Livingston Street, Queens: 89-17 Sutphin Blvd, Bronx: 851 Grand Concourse, Staten Island: 927 Castleton Ave)',
+        'Bring: your lease, all correspondence with the landlord, your move-out photo/video evidence, the 14-day itemization (or evidence they failed to send one), your professional cleaning receipt if applicable, and any HPD violation records for conditions they are attempting to charge you for',
+        'If the landlord failed to return the deposit within 14 days OR failed to send an itemized statement within 14 days, cite NY General Obligations Law §7-108(1-a)(e) — this provision entitles you to the full deposit AND punitive damages up to 2× the deposit',
+        'Judges in NYC Small Claims Court are experienced with deposit cases and are familiar with landlord tactics. Clear documentation usually wins.',
+      ],
+    },
+    {
+      type: 'warning',
+      body: "If you are in a rent-stabilised apartment, your security deposit may not exceed one month\'s legal regulated rent. If your landlord collected more than one month\'s rent as a deposit for a stabilised apartment, that excess collection was itself illegal — and you may have a claim for its return plus penalties entirely separately from the standard deposit dispute.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about NYC security deposits',
+      items: [
+        {
+          q: 'My landlord did not send an itemized statement within 14 days. Do I automatically get my full deposit back?',
+          a: 'Yes. Under NY General Obligations Law §7-108(1-a)(e), if the landlord fails to provide an itemized statement with documentation within 14 days of the tenancy ending, they forfeit their right to make any deductions — and you are entitled to the full deposit. You may need to sue in Small Claims Court to recover it, but the legal entitlement is clear. Document the date your tenancy ended and the date (if any) the statement arrived.',
+        },
+        {
+          q: 'My landlord is deducting for painting. Is that allowed?',
+          a: 'In most cases, no. In New York, painting is generally considered a landlord\'s maintenance responsibility after a normal tenancy. Unless you caused specific damage to the walls beyond normal wear and tear — large holes, heavy markings, smoke damage — a landlord cannot deduct painting costs from your deposit. Courts consistently rule that a fresh coat of paint at tenancy end is a normal maintenance expense, not a tenant-caused damage.',
+        },
+        {
+          q: 'The landlord is claiming I damaged the apartment but I have photos showing it was pre-existing. What do I do?',
+          a: 'Your photos are your evidence. At Small Claims Court, present your move-in and move-out photos with timestamps showing the conditions existed before you lived there. If you did not document conditions at move-in, check whether you sent any early maintenance requests about those conditions — emails or 311 complaints mentioning the problem before you could reasonably have caused it are useful evidence. Also check the HPD violation record — pre-existing HPD violations for those conditions prove the landlord was already aware of them.',
+        },
+        {
+          q: 'How do I get my deposit back if my landlord has already spent it?',
+          a: 'Under New York law, security deposits must be held in a separate account and cannot be commingled with the landlord\'s personal or operating funds. If a landlord has spent your deposit, they are still legally obligated to return it — this is a debt owed by the landlord personally. A Small Claims Court judgment against the landlord can be enforced through wage garnishment, bank account levies, and property liens. This is why you get the judgment even if the funds are spent — you can then enforce it.',
+        },
+        {
+          q: 'Should I hire a lawyer for a deposit dispute?',
+          a: 'For most deposit disputes under $10,000, Small Claims Court is specifically designed for self-represented parties — you do not need a lawyer. The filing fee is $15–$20 and the process is straightforward. If your deposit is larger, if the landlord is countersuing you for significant unpaid rent, or if the situation involves complex lease break circumstances, a tenant attorney is worth consulting. Many work on contingency for deposit cases where they believe the landlord acted in bad faith.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MONEY PAGE 3: Landlord won't fix roaches or bedbugs
+// Intent bucket: Fighting | Service: Pest Control
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'landlord-wont-fix-roaches-bedbugs',
+  category: 'pests-infestations',
+  title: 'My Landlord Won\'t Fix Roaches or Bed Bugs in NYC — What to Do',
+  metaTitle: 'Landlord Won\'t Fix Roaches or Bed Bugs in NYC | Building Health X',
+  metaDescription: 'NYC landlords are legally required to exterminate pests — and face daily fines if they refuse. Here\'s how to force the issue: 311 complaints, HPD violations, rent withholding, and getting your own exterminator.',
+  headline: 'My NYC Landlord Won\'t Fix Roaches or Bed Bugs. Now What?',
+  subheadline: 'Your landlord is breaking the law. Here\'s how to use 311, HPD violations, Housing Court, and rent withholding to force them to act — or get compensated if they don\'t.',
+  serviceSlug: 'pest-control',
+  serviceName: 'Pest Control',
+  leadBaitCta: 'While you fight them: get a licensed NYC exterminator quote — fast.',
+  datePublished: '2024-11-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['clear-hpd-pest-violation-nyc', 'what-to-check-before-signing-nyc-lease', 'how-to-break-lease-nyc-violations'],
+  relatedServicePages: [
+    { label: 'Pest control in Manhattan', href: '/services/pest-control/manhattan' },
+    { label: 'Pest control in Brooklyn', href: '/services/pest-control/brooklyn' },
+    { label: 'Pest control in Queens', href: '/services/pest-control/queens' },
+    { label: 'Pest control in the Bronx', href: '/services/pest-control/bronx' },
+    { label: 'Pest control in Staten Island', href: '/services/pest-control/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'what-does-a-bed-bug-violation-mean-on-nyc-building-records', title: 'What Does a Bed Bug Violation Mean on NYC Building Records?' },
+    { slug: 'is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc', title: 'Is My Landlord Required to Pay for Bed Bug Treatment in NYC?' },
+    { slug: 'how-many-pest-violations-are-too-many-in-an-nyc-building', title: 'How Many Pest Violations Are Too Many in an NYC Building?' },
+  ],
+  govLinks: [
+    { label: 'File a 311 Pest Complaint (NYC)', url: 'https://portal.311.nyc.gov/', description: 'File a pest complaint online — this triggers an HPD inspection and creates an official record.' },
+    { label: 'HPD Online — Building Violation History', url: 'https://hpdonline.nyc.gov', description: 'See if your building already has pest violations on record.' },
+    { label: 'NYC Housing Court — HP Proceedings', url: 'https://www.courts.state.ny.us/courts/nyc/housing/', description: 'File a Housing Part case to court-order your landlord to exterminate.' },
+    { label: 'NYC Bed Bug Portal (HPD)', url: 'https://www.nyc.gov/site/hpd/services-and-information/bedbug.page', description: 'HPD\'s official bed bug resources for tenants and landlords.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Under the NYC Housing Maintenance Code Section 27-2017, your landlord is legally required to exterminate pests in your apartment and building. This is not a courtesy — it is a statutory obligation with financial penalties for every day they ignore it. If your landlord is shrugging off your roach or bed bug complaint, they are breaking the law right now. This guide gives you the exact escalation ladder — from 311 complaint to Housing Court — that forces their hand.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '$150/day', label: 'Maximum daily HPD fine for an uncorrected pest violation — starts 21 days after the notice of violation', source: 'NYC Housing Maintenance Code' },
+        { value: '$25,000', label: 'Maximum ECB civil penalty for buildings with repeat or wilful pest non-compliance', source: 'NYC Admin Code' },
+        { value: '30 days', label: 'Legal correction deadline for a bed bug or roach violation — after which fines begin accruing', source: 'NYC HPD' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'First: Notify Your Landlord in Writing',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Send written notice of the pest problem today',
+      body: 'Before escalating to the city, notify your landlord in writing. This is both legally prudent and tactically smart — it establishes a baseline timeline and gives the landlord a chance to act. Send it via email AND text so you have timestamps.',
+      items: [
+        'Describe the specific pest and where you\'ve seen activity — bedroom, kitchen, bathroom, common areas.',
+        'State the date you first observed the problem.',
+        'Attach photos or video if you have them.',
+        'Ask the landlord to confirm receipt and provide a timeline for treatment.',
+        'If you\'ve made verbal complaints before, reference them: "As I\'ve told you verbally multiple times since [date], the bed bug infestation in my apartment has not been addressed."',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: File a 311 Complaint — This Is How You Start the Clock',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'File a 311 complaint online or by phone',
+      body: 'A 311 pest complaint triggers an HPD inspection. The inspector visits, confirms the infestation, and issues a Notice of Violation — typically a Class B (30-day deadline) or Class C (21-day deadline) violation. From that moment, the landlord has a government deadline with daily fines attached.',
+      items: [
+        'File at portal.311.nyc.gov or call 311. Select "Pest/Rodent" and specify bed bugs, roaches, or mice/rats.',
+        'Write down your complaint tracking number — you can check the status online.',
+        'HPD will schedule an inspection. You do not need to be home for the hallway/common area inspection, but unit access helps. Make sure you or someone 18+ can let the inspector in.',
+        'If HPD confirms the infestation, a Notice of Violation will be issued to the landlord. It appears on the building\'s public HPD record within days.',
+        'Check the violation on HPD Online at hpdonline.nyc.gov — screenshot it with date. This is your evidence.',
+      ],
+    },
+    {
+      type: 'tip',
+      body: "File the 311 complaint even if your landlord has promised to fix it. The HPD record protects you — if the landlord's treatment fails, you already have a violation on record. If they do fix it properly, the violation gets certified and closes. You lose nothing by filing.",
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 3: File an HP Proceeding in Housing Court',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Get a court order requiring the landlord to exterminate',
+      body: 'If the 311 complaint and HPD violation don\'t move your landlord, an HP (Housing Part) proceeding in NYC Housing Court is the next escalation. This is a legal proceeding where a judge orders the landlord to make specific repairs — in your case, extermination. It costs you nothing to file.',
+      items: [
+        'File at your borough\'s Housing Court. The court\'s Help Center (free, walk-in) will help you fill out the forms.',
+        'Include: your written notice to the landlord, HPD violation number, photos of pest activity, and any evidence that the landlord has ignored your complaints.',
+        'The court will schedule a hearing — both you and the landlord appear. Judges in Housing Court deal with pest cases constantly and take them seriously.',
+        'If the landlord has already been issued an HPD violation for the same infestation, the court has hard evidence of their obligation and non-compliance.',
+        'The court can order extermination by a specific date, require proof of treatment, and impose contempt penalties if the landlord defies the order.',
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: Hire Your Own Exterminator and Deduct From Rent',
+    },
+    {
+      type: 'body',
+      body: "In extreme cases where the landlord refuses to act and you need immediate relief, you may have the right to hire a licensed exterminator yourself and deduct the cost from the following month\'s rent. This is called the 'repairs and deduct' remedy under New York law. It is not without risk — your landlord may claim non-payment of rent — but it is legally available under the right conditions.",
+    },
+    {
+      type: 'list',
+      items: [
+        "You must have given the landlord written notice and a reasonable opportunity to fix the problem first — typically at least 30 days for a non-emergency, shorter for an acute infestation.",
+        "The deduction cannot exceed one month\'s rent in any single month.",
+        "You must hire a licensed NYS DEC Pesticide Applicator — not any contractor. Keep the invoice and documentation of the treatment.",
+        "Send the landlord a letter explaining what you did, why, the cost, and that you are deducting it from next month\'s rent. Attach the exterminator\'s invoice.",
+        "This is a risky move if you do not have a clear paper trail showing prior notice and landlord non-response. Only do it after attempting Steps 1–3.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 5: Seek Rent Reduction for Pest Conditions',
+    },
+    {
+      type: 'body',
+      body: "If you have been living with an active infestation while your landlord ignored it, you may be entitled to a rent abatement — a retroactive reduction in rent for the period during which your apartment was below the habitable standard. In a Housing Court HP proceeding or a subsequent DHCR complaint (for rent-stabilised tenants), a judge or hearing officer will calculate a percentage reduction based on the severity and duration of the pest condition. Tenants with strong documentation regularly receive 10–30% rent abatements for extended pest infestations.",
+    },
+    {
+      type: 'warning',
+      body: "Do not throw out furniture, bedding, or personal property without photographing it first — even if it is heavily infested. This documentation is evidence of the severity of the infestation. If you need to dispose of items due to bed bugs, photograph them in place, then label them 'Bed Bug Infested — Do Not Take\' per NYC DSNY rules before putting them at the kerb.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about landlords ignoring pest problems in NYC',
+      items: [
+        {
+          q: 'My landlord says I brought the bed bugs in and refuses to treat. Is that a valid defence for them?',
+          a: 'No. Under NYC Housing Maintenance Code Section 27-2017, landlords are strictly liable for pest extermination regardless of the source. Even if a tenant introduced bed bugs, the landlord\'s legal obligation to treat the infestation does not change. The only situation where a landlord might have a civil claim against a tenant is if the tenant demonstrably refused treatment — but this does not relieve the landlord of the duty to exterminate. File the 311 complaint regardless of who your landlord blames.',
+        },
+        {
+          q: 'How long does the 311 → HPD inspection → violation process take?',
+          a: 'After you file a 311 complaint, HPD typically schedules a pest inspection within 3–10 business days. If the inspector confirms the infestation, the violation is usually issued within 1–3 business days of the inspection and appears on HPD Online shortly after. From there, the landlord has 30 days (Class B) or 21 days (Class C) to correct before daily fines begin. The whole process from your 311 filing to a landlord having a legal deadline with fines typically runs 2–5 weeks.',
+        },
+        {
+          q: 'Can I withhold rent entirely until the landlord treats the infestation?',
+          a: 'You can withhold rent by paying into a court-managed escrow account through an HP proceeding — this is the safest method. Unilateral rent withholding without a court process exposes you to eviction for non-payment, even if the infestation is real and the landlord is in breach. The HP proceeding + escrow route achieves the same pressure effect while protecting you legally. Do not simply stop paying rent without consulting a tenant attorney first.',
+        },
+        {
+          q: 'My building has had multiple 311 pest complaints. Does that help my case?',
+          a: 'Significantly. A building with a pattern of pest complaints — searchable on HPD Online and displayed on BuildingHealthX — indicates a systemic infestation rather than an isolated unit issue. Courts and HPD treat building-wide patterns more seriously, and the landlord faces greater difficulty arguing your situation is isolated. In an HP proceeding, building-wide complaint history is powerful evidence that the landlord has failed to maintain the property.',
+        },
+        {
+          q: 'The landlord sent an exterminator once but the bugs are back. What now?',
+          a: 'One treatment is almost never sufficient for bed bugs — eggs survive most chemical applications, and a second treatment 10–14 days later is legally required. If your landlord sent a single treatment and considers the matter closed, that does not meet the legal standard. File a follow-up 311 complaint if bugs persist after 3–4 weeks. If the HPD violation was certified after only one treatment, you can call your HPD district office to flag that the infestation returned — this can trigger a new inspection and violation.',
+        },
+      ],
+    },
+  ],
+})

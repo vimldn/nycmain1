@@ -2,16 +2,102 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { GUIDE_CATEGORIES, GUIDES, getGuidesByCategory } from '@/lib/guides-data'
+import GuidesEmailCapture from '@/components/GuidesEmailCapture'
+import { GUIDES } from '@/lib/guides-data'
 import { BreadcrumbJsonLd } from '@/components/seo'
 
 export const metadata: Metadata = {
-  title: 'NYC Tenant & Landlord Guides: Fix Violations, Pests & Building Issues | Building Health X',
+  title: 'NYC Renter & Landlord Guides: Violations, Rights & Repairs | Building Health X',
   description:
-    'Expert guides on clearing NYC HPD/DOB violations, handling pest infestations, and hiring certified local contractors. Step-by-step answers for tenants and landlords.',
+    'Step-by-step guides for NYC tenants and landlords — clearing HPD violations, fighting back when your landlord ignores repairs, and getting out clean. Know your rights before you sign.',
+}
+
+// ── Intent buckets ────────────────────────────────────────────────────────────
+// Hardcoded slug → bucket mapping. Add new guide slugs here as you build them.
+
+const BUCKETS = [
+  {
+    id: 'researching',
+    emoji: '🔍',
+    label: 'Researching',
+    headline: 'Before You Sign',
+    description: 'Do your homework before handing over a deposit. These guides help you spot a bad building — and a worse landlord — before you\'re locked in.',
+    cta: { label: 'Check any building free', href: '/' },
+    ctaNote: 'Our building search tool shows HPD violations, pest history, and landlord court records instantly.',
+    slugs: [
+      'what-to-check-before-signing-nyc-lease',
+    ],
+    accentColor: 'blue',
+  },
+  {
+    id: 'fighting',
+    emoji: '🚨',
+    label: 'Fighting',
+    headline: 'Your Landlord Isn\'t Fixing It',
+    description: 'Mold, no heat, roaches, a flooded bathroom. Your landlord has a legal deadline — and daily fines if they miss it. Here\'s how to force the issue.',
+    cta: { label: 'Find a certified NYC contractor', href: '/services' },
+    ctaNote: 'Get free quotes from licensed NYC professionals who specialise in violation clearance.',
+    slugs: [
+      'landlord-wont-fix-roaches-bedbugs',
+      'clear-hpd-mold-violation-nyc',
+      'clear-hpd-pest-violation-nyc',
+      'clear-hpd-heat-violation-nyc',
+      'hire-plumber-nyc-hpd-violation',
+      'clear-hpd-electrical-violation-nyc',
+    ],
+    accentColor: 'red',
+  },
+  {
+    id: 'escaping',
+    emoji: '📦',
+    label: 'Escaping',
+    headline: 'Getting Out Clean',
+    description: 'Ready to leave? Whether you\'re breaking a lease over violations or fighting for your deposit back, these guides walk you through every step.',
+    cta: { label: 'Find NYC movers & cleaners', href: '/services' },
+    ctaNote: 'Get free quotes from vetted NYC movers and move-out cleaning companies.',
+    slugs: [
+      'how-to-break-lease-nyc-violations',
+      'get-security-deposit-back-nyc',
+    ],
+    accentColor: 'emerald',
+  },
+] as const
+
+type AccentColor = 'blue' | 'red' | 'emerald'
+
+const ACCENT: Record<AccentColor, { pill: string; icon: string; border: string; label: string }> = {
+  blue:    { pill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',    icon: 'text-blue-400',    border: 'border-blue-500/20',    label: 'text-blue-400' },
+  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',       icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400' },
+  emerald: { pill: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20', icon: 'text-emerald-400', border: 'border-emerald-500/20', label: 'text-emerald-400' },
+}
+
+// ItemList schema for the whole guides hub
+function ItemListJsonLd({ guides }: { guides: typeof GUIDES }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'NYC Renter & Landlord Guides',
+    description: 'Step-by-step guides for NYC tenants and landlords on violations, rights, and repairs.',
+    url: 'https://www.buildinghealthx.com/guides',
+    numberOfItems: guides.length,
+    itemListElement: guides.map((g, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: g.title,
+      url: `https://www.buildinghealthx.com/guides/${g.slug}`,
+    })),
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
 }
 
 export default function GuidesPage() {
+  const guidesBySlug = Object.fromEntries(GUIDES.map(g => [g.slug, g]))
+
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       <BreadcrumbJsonLd
@@ -20,82 +106,115 @@ export default function GuidesPage() {
           { name: 'Guides', url: 'https://www.buildinghealthx.com/guides' },
         ]}
       />
+      <ItemListJsonLd guides={GUIDES} />
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 pt-28 pb-20">
+      <main className="max-w-7xl mx-auto px-4 pt-28 pb-24">
 
-        {/* Hero */}
-        <div className="mb-14 max-w-3xl">
+        {/* ── Hero ──────────────────────────────────────────────────────────── */}
+        <div className="mb-12 max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/20">
-              Knowledge Hub
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#1e293b] text-[#94a3b8]">
-              {GUIDES.length} guides
+              NYC Tenant Rights Hub
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
-            Navigate NYC Real Estate Like a Pro.
+            Your landlord knows the rules.<br className="hidden sm:block" />
+            <span className="text-blue-400">Now you do too.</span>
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl">
-            From clearing stubborn HPD violations to finding emergency contractors — step-by-step guides and instant connections to verified NYC professionals.
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+            Step-by-step guides for NYC renters and landlords — from checking a building before you sign,
+            to forcing repairs, to getting your deposit back when you leave.
           </p>
         </div>
 
-        {/* Category sections */}
-        <div className="space-y-14">
-          {GUIDE_CATEGORIES.map(cat => {
-            const guides = getGuidesByCategory(cat.slug)
-            if (!guides.length) return null
+        {/* ── Intent navigation pills ───────────────────────────────────────── */}
+        <div className="flex flex-wrap gap-2 mb-14">
+          {BUCKETS.map(bucket => (
+            <a
+              key={bucket.id}
+              href={`#${bucket.id}`}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${ACCENT[bucket.accentColor].pill} hover:opacity-80`}
+            >
+              <span>{bucket.emoji}</span>
+              {bucket.label}
+            </a>
+          ))}
+        </div>
+
+        {/* ── Intent buckets ────────────────────────────────────────────────── */}
+        <div className="space-y-20">
+          {BUCKETS.map(bucket => {
+            const guides = bucket.slugs
+              .map(slug => guidesBySlug[slug])
+              .filter(Boolean)
+
+            const a = ACCENT[bucket.accentColor]
+
             return (
-              <section key={cat.slug}>
-                {/* Category header */}
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-10 h-10 rounded-xl bg-${cat.color}-500/10 border border-${cat.color}-500/20 flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={`text-${cat.color}-400`}>
-                      <path d={cat.icon} />
-                    </svg>
+              <section key={bucket.id} id={bucket.id}>
+
+                {/* Section header */}
+                <div className="mb-7">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">{bucket.emoji}</span>
+                    <span className={`text-xs font-bold uppercase tracking-widest ${a.label}`}>
+                      {bucket.label}
+                    </span>
                   </div>
-                  <div>
-                    <h2 className="text-xl font-black mb-1">{cat.title}</h2>
-                    <p className="text-sm text-[var(--text-secondary)]">{cat.description}</p>
-                  </div>
+                  <h2 className="text-2xl md:text-3xl font-black mb-2 text-[#e2e8f0]">
+                    {bucket.headline}
+                  </h2>
+                  <p className="text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+                    {bucket.description}
+                  </p>
                 </div>
 
                 {/* Guide cards */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
-                  {guides.map(guide => (
-                    <Link
-                      key={guide.slug}
-                      href={`/guides/${guide.slug}`}
-                      className="group p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-blue-500/30 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-3 mb-3">
-                        <h3 className="text-sm font-semibold leading-snug group-hover:text-blue-300 transition-colors">
-                          {guide.title}
-                        </h3>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-blue-400 transition-colors flex-shrink-0 mt-0.5">
-                          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                        </svg>
-                      </div>
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-hover)] text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
-                        {guide.serviceName}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                {guides.length > 0 ? (
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    {guides.map(guide => (
+                      <Link
+                        key={guide.slug}
+                        href={`/guides/${guide.slug}`}
+                        className={`group flex flex-col justify-between p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:${a.border} transition-colors`}
+                      >
+                        <div>
+                          <h3 className="text-sm font-semibold leading-snug text-[#e2e8f0] group-hover:text-blue-300 transition-colors mb-3">
+                            {guide.title}
+                          </h3>
+                          <p className="text-xs text-[#64748b] leading-relaxed line-clamp-2">
+                            {guide.subheadline}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between mt-4">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[var(--bg-hover)] text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                            {guide.serviceName}
+                          </span>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-blue-400 transition-colors">
+                            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                          </svg>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-5 rounded-xl border border-dashed border-[#1e293b] text-sm text-[#475569] mb-6">
+                    More guides coming soon in this category.
+                  </div>
+                )}
 
-                {/* CTA row for this category */}
-                <div className="flex items-center gap-3 pl-14">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0">
-                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                  </svg>
-                  <span className="text-sm text-[#64748b]">Need it fixed now?</span>
+                {/* Bucket CTA row */}
+                <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border ${a.border} bg-[var(--bg-card)]`}>
+                  <p className="text-xs text-[#64748b] flex-1">{bucket.ctaNote}</p>
                   <Link
-                    href={`/services/${guides[0].serviceSlug}`}
-                    className="text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+                    href={bucket.cta.href}
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-xs font-semibold text-white whitespace-nowrap"
                   >
-                    Find a certified NYC {guides[0].serviceName.toLowerCase()} →
+                    {bucket.cta.label}
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
                   </Link>
                 </div>
               </section>
@@ -103,22 +222,32 @@ export default function GuidesPage() {
           })}
         </div>
 
-        {/* Bottom conversion section */}
-        <div className="mt-20 p-8 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] text-center">
-          <h2 className="text-2xl font-black mb-3">Stop researching. Start resolving.</h2>
-          <p className="text-[var(--text-secondary)] mb-6 max-w-xl mx-auto">
-            Have an active violation or an urgent repair? Enter your building address and we'll connect you with vetted NYC professionals who can fix it today.
-          </p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition-colors font-semibold text-sm text-white"
-          >
-            Search your building
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-            </svg>
-          </Link>
+        {/* ── Email capture lead magnet ──────────────────────────────────────── */}
+        <div className="mt-20">
+          <GuidesEmailCapture />
         </div>
+
+        {/* ── Bottom address search CTA ─────────────────────────────────────── */}
+        <div className="mt-12 p-8 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)]">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            <div className="flex-1">
+              <h2 className="text-xl font-black mb-1 text-[#e2e8f0]">Is your building hiding something?</h2>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Search any NYC address to see its full violation history, complaint trends, and 0–100 BHX health score — free, in seconds.
+              </p>
+            </div>
+            <Link
+              href="/"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition-colors font-semibold text-sm text-white"
+            >
+              Search your building
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </Link>
+          </div>
+        </div>
+
       </main>
 
       <Footer />

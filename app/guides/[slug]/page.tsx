@@ -7,6 +7,7 @@ import ContextualLeadBait from '@/components/ContextualLeadBait'
 import { getGuideBySlug, getAllGuides, getCategoryBySlug, getRelatedGuides } from '@/lib/guides-data'
 import type { GuideSection } from '@/lib/guides-data'
 import { BreadcrumbJsonLd } from '@/components/seo'
+import StickyAddressBar from '@/components/StickyAddressBar'
 
 type Props = { params: { slug: string } }
 
@@ -539,6 +540,7 @@ export default function GuidePage({ params }: Props) {
         </div>
       </main>
 
+      <StickyAddressBar />
       <Footer />
     </div>
   )
