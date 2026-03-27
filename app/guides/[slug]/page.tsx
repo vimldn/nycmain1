@@ -35,7 +35,6 @@ function renderSection(section: GuideSection, guide: { serviceSlug: string; serv
         </p>
       )
 
-    case 'heading':
     case 'h2':
       return (
         <h2 key={index} className="text-xl font-black mt-10 mb-4 text-[#e2e8f0]">
