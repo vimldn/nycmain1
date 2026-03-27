@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, AlertTriangle, CheckCircle, XCircle, Search, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
 import { buildGuidePanel } from '@/lib/violation-blog-map'
+import ViolationLeadForm, { VIOLATION_SERVICE_MAP } from '@/components/ViolationLeadForm'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
@@ -665,6 +666,17 @@ export default function BuildingPage() {
                           <p className="text-xs text-[#4a5568] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
                         </div>
                       </div>
+                      {/* Contextual lead form — only for open violations with a mapped service */}
+                      {v.status === 'Open' && VIOLATION_SERVICE_MAP[v.category] && (
+                        <ViolationLeadForm
+                          violationCategory={v.category}
+                          violationDescription={v.description || ''}
+                          buildingAddress={b?.address || ''}
+                          bbl={bbl}
+                          violationClass={v.class}
+                          violationSource={v.source}
+                        />
+                      )}
                     </div>
                   )
                 }) : (
