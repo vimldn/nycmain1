@@ -11,6 +11,8 @@ export type ViolationBlogLink = {
   title: string
 }
 
+export type FaqItem = { q: string; a: string }
+
 export type GuidePost = {
   slug: string
   category: string
@@ -22,6 +24,8 @@ export type GuidePost = {
   serviceSlug: string
   serviceName: string
   leadBaitCta: string
+  datePublished?: string
+  dateModified?: string
   content: GuideSection[]
   relatedSlugs: string[]
   relatedServicePages: { label: string; href: string }[]
@@ -29,14 +33,19 @@ export type GuidePost = {
   govLinks: { label: string; url: string; description: string }[]
 }
 
-export type GuideSection = {
-  type: 'intro' | 'step' | 'warning' | 'tip' | 'leadbait' | 'list' | 'h2' | 'body' | 'table'
-  heading?: string
-  body?: string
-  items?: string[]
-  rows?: string[][]
-  stepNumber?: number
-}
+export type GuideSection =
+  | { type: 'intro'; body: string }
+  | { type: 'h2'; heading: string }
+  | { type: 'body'; body: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'table'; rows: string[][] }
+  | { type: 'step'; stepNumber: number; heading: string; body?: string; items?: string[] }
+  | { type: 'warning'; body: string }
+  | { type: 'tip'; body: string }
+  | { type: 'leadbait' }
+  | { type: 'stat'; value: string; label: string; source?: string; color?: 'blue' | 'yellow' | 'green' | 'red' }
+  | { type: 'statrow'; stats: { value: string; label: string; source?: string }[] }
+  | { type: 'faq'; heading?: string; items: FaqItem[] }
 
 export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
@@ -92,6 +101,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'mold-remediation',
     serviceName: 'Mold Remediation',
     leadBaitCta: 'Running out of time? Get a fast, free quote from a certified NYC mold remediator.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['hire-plumber-nyc-hpd-violation', 'clear-hpd-pest-violation-nyc', 'what-to-check-before-signing-nyc-lease'],
     relatedServicePages: [
       { label: 'Mold Remediation in Brooklyn', href: '/services/mold-remediation/brooklyn' },
@@ -115,6 +126,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "If you have received a Notice of Violation (NOV) from the NYC Department of Housing Preservation and Development (HPD) for mold, the clock is already ticking — and it is ticking fast. Under Local Law 55 of 2018, landlords of multiple-dwelling buildings are legally required to maintain tenants' apartments free from mold in all areas under their control. This is not a discretionary obligation. Failure to act within the prescribed window triggers compounding daily fines, potential Emergency Repair Program intervention at your direct expense, and a significant downgrade to your building's BHX Score — which is publicly visible to every prospective tenant and buyer who looks up your address. This guide gives you the complete legal roadmap to correct the violation, communicate properly with your tenant, and certify the correction with HPD before your deadline expires.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '21 days', label: 'Correction deadline for a Class C mold violation before daily fines begin', source: 'NYC HPD' },
+          { value: '$25,000', label: 'Maximum ECB civil penalty for wilful or repeated non-compliance', source: 'NYC Admin Code' },
+          { value: '2', label: 'Licensed professionals required by law — assessor and remediator must be separate', source: 'NYS Labor Law Article 32' },
+        ],
       },
       {
         type: 'h2',
@@ -167,9 +186,7 @@ export const GUIDES: GuidePost[] = [
         type: 'body',
         body: "Keep a signed copy of every notice. If a tenant refuses entry, document the refusal in writing and contact HPD immediately. Refusing access to perform a court-ordered or violation-driven repair does not protect the tenant — it creates separate legal exposure for them — but you must follow the correct procedure to protect yourself.",
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: 'Step 3: Hire Two Separate Licensed Professionals — This is the Law',
@@ -289,6 +306,36 @@ export const GUIDES: GuidePost[] = [
         type: 'body',
         body: "The cost of doing this correctly — assessor, remediator, moisture repair, and clearance document — typically runs between $2,500 and $7,000 for a standard NYC apartment. That is significantly less than the combined cost of daily ECB fines, tenant rent-abatement claims, and potential HPD Emergency Repair Program intervention, where the city performs the work and charges you a premium with an administrative fee on top.",
       },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about HPD mold violations',
+        items: [
+          {
+            q: 'Can I use the same company to assess and remediate the mold?',
+            a: 'No. New York State Labor Law Article 32 explicitly prohibits the same licensed entity from performing both the mold assessment and the mold remediation on the same project. The assessor must be independent from the remediator. Any contractor who offers a combined assess-and-fix service is violating state law, and HPD will reject your certification if the same license number appears for both roles.',
+          },
+          {
+            q: 'How long does it take for HPD to process my certification after I file it?',
+            a: 'HPD typically processes mold violation certifications within 5 to 10 business days of submission. During this period the violation will still show as open in HPD Online — this is normal and does not mean your filing failed. If the status has not changed after 15 business days, contact HPD directly. A rejected certification will come with a notice explaining what documentation was missing.',
+          },
+          {
+            q: 'What happens if my tenant refuses to let the remediation contractor in?',
+            a: 'Send a written notice (certified mail) to the tenant specifying the date, time, and purpose of entry. Document every attempt in writing. If the tenant continues to refuse, you can petition Housing Court for an access order — this demonstrates good faith to HPD and is essential for protecting yourself from fine liability during the access refusal period. Keep HPD informed of the situation by calling your district office.',
+          },
+          {
+            q: 'Do I need a mold violation cleared before I can sell or refinance the building?',
+            a: 'Yes, in practice. While HPD violations do not automatically block a sale, lenders conducting due diligence and buyers\' attorneys routinely pull HPD Online records. An open Class B or C mold violation will almost always trigger a lender condition requiring resolution before closing, or will become a price negotiation point. Clear violations before listing wherever possible.',
+          },
+          {
+            q: 'My building had a roof leak fixed six months ago but mold is still appearing. What is happening?',
+            a: 'Mold can persist or recur after a moisture source is repaired if the affected building materials were not properly remediated after the leak. Water-damaged drywall, insulation, and wood framing are ongoing mold sources even after the leak stops. A licensed mold assessor needs to inspect and determine whether the existing mold growth pre-dates or post-dates the roof repair, and whether additional remediation of the building materials is required.',
+          },
+          {
+            q: 'What is the difference between HPD mold violations and DOH mold violations?',
+            a: 'HPD (Housing Preservation & Development) issues mold violations in residential buildings under Local Law 55 and the Housing Maintenance Code — these are the violations that appear on HPD Online and affect your building\'s record. The NYC Department of Health (DOH/DOHMH) handles mold in schools and public buildings. For residential properties, HPD is the relevant agency and the eCertification portal is where you file corrections.',
+          },
+        ],
+      },
     ],
   },
 
@@ -306,6 +353,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'pest-control',
     serviceName: 'Pest Control',
     leadBaitCta: 'Get a fast, free quote from a licensed NYC exterminator to clear this violation.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['clear-hpd-mold-violation-nyc', 'what-to-check-before-signing-nyc-lease', 'clear-hpd-heat-violation-nyc'],
     relatedServicePages: [
       { label: 'Pest Control in Brooklyn', href: '/services/pest-control/brooklyn' },
@@ -329,6 +378,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "An HPD pest violation means a city inspector has visited your building and confirmed an active infestation. It is now a matter of public record — visible to any tenant, buyer, or journalist who searches your address on HPD Online or BuildingHealthX. Beyond the reputational damage, the legal and financial exposure is significant. Under the NYC Housing Maintenance Code, landlords of multiple dwellings are strictly liable for exterminating pests in all units and common areas under their control. There are no exceptions for new ownership, deferred maintenance, or tenant-caused conditions. This guide explains exactly what you must do, in what order, and what it will cost to clear the violation legally and permanently.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '30 days', label: 'To correct a Class B bed bug or rodent violation before daily fines begin', source: 'NYC HPD' },
+          { value: '$25,000', label: 'Maximum ECB penalty for buildings with multiple pest violation cycles', source: 'NYC Admin Code' },
+          { value: '2×', label: 'Minimum bed bug treatments required — eggs survive most single applications', source: 'NYC DOHMH' },
+        ],
       },
       {
         type: 'h2',
@@ -383,9 +440,7 @@ export const GUIDES: GuidePost[] = [
           "Request a written treatment report after each visit — this is required documentation for your HPD certification",
         ],
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: 'Step 3: Address Harborage Conditions or Reinspection Will Fail',
@@ -442,6 +497,32 @@ export const GUIDES: GuidePost[] = [
         type: 'warning',
         body: "HPD maintains a Heat and Pest Complaint Tracking System. Buildings with multiple pest violation cycles are flagged for enhanced scrutiny. Consider establishing a quarterly IPM contract with a licensed exterminator — it costs far less than one round of ECB fines, and it is the single most effective way to prevent repeat violations.",
       },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about HPD pest violations',
+        items: [
+          {
+            q: 'Who is responsible for paying for bed bug extermination — the landlord or the tenant?',
+            a: 'Under NYC law, the landlord is responsible for exterminating pests in residential buildings regardless of who introduced the infestation. The exception is if a tenant demonstrably brought infested items into the building — but this is very difficult for landlords to prove and rarely succeeds as a defence at ECB hearings. The safest and legally correct approach is to treat the infestation promptly and document everything.',
+          },
+          {
+            q: 'Can I certify a bed bug violation after just one treatment?',
+            a: 'No. HPD requires a minimum of two bed bug treatments, performed 10–14 days apart, because standard chemical treatments do not kill eggs. A certification filed after only one treatment will be rejected. The second treatment must be completed and documented before you file. Your exterminator should provide signed treatment reports for both visits.',
+          },
+          {
+            q: 'What is the Alternative Enforcement Program (AEP) and how do I avoid it?',
+            a: 'The AEP is an HPD programme for buildings with persistently high violation rates — typically three or more Class B or C violations within 24 months. AEP designation means mandatory quarterly inspections, public identification on HPD\'s website, and significantly higher oversight costs. The only reliable way to avoid it is to resolve violations promptly, maintain a quarterly IPM pest control contract, and keep common areas and garbage disposal areas clean and sealed.',
+          },
+          {
+            q: 'My exterminator says the tenant is causing the infestation by refusing to prepare the unit. What do I do?',
+            a: 'Tenant preparation is your responsibility to ensure, even if the tenant is resistant. Send written preparation instructions (certified mail) and document that they were delivered. If a tenant actively prevents treatment, you can seek an access order from Housing Court. Throughout this process, continue documenting your attempts — this is your primary defence against fine liability while the access issue is being resolved.',
+          },
+          {
+            q: 'How long does it take for an HPD pest violation reinspection to occur?',
+            a: 'After you file your Certification of Correction, HPD typically schedules a reinspection within 21 days. During peak complaint periods this can extend to 30 days. The violation will continue to show as open until the inspector visits and marks it complied. Do not assume the violation is cleared just because you filed — continue monitoring HPD Online until the status changes.',
+          },
+        ],
+      },
     ],
   },
 
@@ -459,6 +540,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'hvac-repair',
     serviceName: 'HVAC Repair',
     leadBaitCta: 'Get a fast, free quote from a licensed NYC HVAC specialist — available 24/7 for heat emergencies.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['clear-hpd-mold-violation-nyc', 'clear-hpd-pest-violation-nyc', 'hire-plumber-nyc-hpd-violation'],
     relatedServicePages: [
       { label: 'HVAC Repair in Brooklyn', href: '/services/hvac-repair/brooklyn' },
@@ -482,6 +565,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "A heat or hot water violation from HPD is classified as a Class C — Immediately Hazardous — violation. That is the most serious category HPD issues, and it demands action within 24 hours, not 30 days. During heat season, which runs from October 1 through May 31, NYC law imposes strict minimum temperature requirements on every residential landlord in the city. Missing those requirements even once is grounds for a violation. Missing them repeatedly puts your building on the HPD Heat Watch list, triggers daily fines of up to $1,000 per day, and can result in the city sending its own contractors to fix your boiler and billing you at a significant premium. This guide explains every legal obligation and the exact steps to clear a heat violation before it destroys your operating budget.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '24 hrs', label: 'Maximum time to restore heat after a Class C violation — not 30 days', source: 'NYC HPD' },
+          { value: '68°F', label: 'Minimum daytime indoor temp required (6am–10pm) when it\'s below 55°F outside', source: 'NYC Admin Code §27-2029' },
+          { value: '$1,000', label: 'Per day maximum fine for repeat heat violations during a single heat season', source: 'NYC HPD' },
+        ],
       },
       {
         type: 'h2',
@@ -541,9 +632,7 @@ export const GUIDES: GuidePost[] = [
           "Hot water heater failure: Separate from the heating system in most buildings — a failed domestic hot water heater creates a hot water violation even during summer when heating is not at issue.",
         ],
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: 'Step 2: Provide Temporary Heat While the System Is Being Repaired',
@@ -601,6 +690,36 @@ export const GUIDES: GuidePost[] = [
         type: 'warning',
         body: "Buildings that accumulate three or more heat complaints in a single heat season are automatically flagged for the HPD Heat Watch designation. Heat Watch buildings receive proactive inspection calls during cold weather events, and any failure results in immediate violation issuance with shortened correction windows. The only reliable way to avoid Heat Watch status is preventive boiler maintenance performed before October 1 each year.",
       },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about HPD heat violations',
+        items: [
+          {
+            q: 'What is the NYC heat season and when does it start?',
+            a: 'NYC\'s heat season runs from October 1 through May 31 each year. During this period, landlords must maintain minimum indoor temperatures of 68°F between 6am and 10pm (when outside temperatures drop below 55°F) and 62°F at all times overnight. Hot water at a minimum of 120°F is required year-round, not just during heat season.',
+          },
+          {
+            q: 'My boiler broke in the evening — do I have to wait until the morning to call someone?',
+            a: 'No. A heat failure during the heating season is a Class C immediately hazardous violation the moment HPD becomes aware of it — the correction window is 24 hours. You need a licensed HVAC technician on-site as soon as possible, and you must provide electric space heaters to affected tenants in the meantime. After-hours emergency HVAC rates are expensive, but they are far cheaper than ERP intervention or daily fines.',
+          },
+          {
+            q: 'Can a tenant call 311 about heat even if the outside temperature is above 55°F?',
+            a: 'Yes. The overnight requirement (62°F from 10pm to 6am) applies regardless of outside temperature during the heat season. A tenant who is cold at 2am on a 58°F October night can file a valid complaint, and if an inspector finds the temperature below 62°F, a violation will be issued. The daytime threshold only triggers when outside temperatures drop below 55°F.',
+          },
+          {
+            q: 'What is the HPD Heat Line and how does it help?',
+            a: 'The HPD Heat Line (718-840-4200) is a direct reporting line for landlords to notify HPD that heat has been restored after a failure. Calling it as soon as heat is restored can help stop the fine accrual clock while your formal eCertification is processed. It does not replace the eCertification filing — you still need to file online — but it creates a contemporaneous record of restoration that is useful at ECB hearings.',
+          },
+          {
+            q: 'Do I need a DOB permit to replace my boiler?',
+            a: 'Yes. Boiler replacements always require a NYC Department of Buildings boiler permit and a post-installation inspection. The licensed HVAC contractor must file the permit before work begins. After installation, a DOB boiler inspector visits to sign off. This process typically takes 5–15 business days for inspection scheduling. Without the DOB sign-off, HPD may reject your certification for major boiler work.',
+          },
+          {
+            q: 'How do I prevent my building from being placed on HPD Heat Watch?',
+            a: 'Buildings with three or more heat complaints in a single heat season are flagged for Heat Watch designation. The most effective prevention is annual boiler servicing before October 1 — replacing worn parts, bleeding the system, testing all zone valves and thermostats, and ensuring adequate fuel supply. Many HVAC companies offer pre-season boiler tune-ups specifically for this purpose. Keep records of all maintenance to show HPD proactive compliance.',
+          },
+        ],
+      },
     ],
   },
 
@@ -618,6 +737,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'plumbers',
     serviceName: 'Plumbers',
     leadBaitCta: 'Get free quotes from NYC-licensed plumbers who specialise in HPD violation work.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['clear-hpd-mold-violation-nyc', 'clear-hpd-heat-violation-nyc', 'clear-hpd-electrical-violation-nyc'],
     relatedServicePages: [
       { label: 'Plumbers in Brooklyn', href: '/services/plumbers/brooklyn' },
@@ -641,6 +762,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "Receiving an HPD plumbing violation — whether for a leaking pipe, defective faucet, failed drain, inadequate water pressure, or sewer backup — means you need a licensed plumber, not a handyman, not a general contractor, and not your building's maintenance staff. NYC has some of the most stringent plumbing licensing requirements in the country, and work performed without the correct license cannot be certified through HPD's portal, cannot receive a DOB sign-off, and will generate additional violations on top of the one you are already trying to clear. Hiring wrong is more expensive than hiring right. This guide tells you exactly what to look for, what to pay, and how the certification process works.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '90 days', label: 'To correct a Class A plumbing violation (minor leaks, dripping faucets)', source: 'NYC HPD' },
+          { value: '24 hrs', label: 'To correct a Class C plumbing violation (sewer backup, no water supply)', source: 'NYC HPD' },
+          { value: '$150/day', label: 'Maximum daily fine for an uncorrected Class C plumbing violation', source: 'NYC Admin Code' },
+        ],
       },
       {
         type: 'h2',
@@ -674,16 +803,14 @@ export const GUIDES: GuidePost[] = [
           "DOB permit filing capability: Confirm the Master Plumber is registered with NYC DOB to file permit applications. Some plumbers are licensed but not currently registered to file — this will prevent you from obtaining the required sign-off.",
         ],
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: 'Step 2: DOB Permit Requirements — When You Need One and Why',
       },
       {
         type: 'body',
-        body: "This is the most misunderstood aspect of HPD plumbing violation clearance. Most landlords assume that hiring a licensed plumber and doing the work is sufficient. It is not. Most plumbing repairs that address an HPD violation require a NYC Department of Buildings (DOB) plumbing permit to be filed before work begins. Work performed without a required permit creates a compounding problem:",
+        body: "This is the most misunderstood aspect of HPD plumbing violation clearance. Most landlords assume that hiring a licensed plumber and doing the work is sufficient. It is not. Most plumbing repairs that address an HPD violation require a NYC Department of Buildings (DOB) plumbing permit to be filed before work begins. Work performed without a permit that required one creates a compounding problem:",
       },
       {
         type: 'list',
@@ -746,6 +873,32 @@ export const GUIDES: GuidePost[] = [
         type: 'warning',
         body: "Never attempt to certify an HPD plumbing violation without confirming DOB sign-off first if a permit was required. HPD cross-references DOB records. A certification filed without the corresponding DOB sign-off will be rejected, the violation will remain open, and fines will continue to accrue.",
       },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about HPD plumbing violations',
+        items: [
+          {
+            q: 'Can a general contractor do the plumbing work to clear an HPD violation?',
+            a: 'No. All plumbing work in NYC multi-unit residential buildings must be performed by or under the direct supervision of a licensed NYC Master Plumber. A general contractor can manage the overall project but cannot perform or certify the plumbing work itself. HPD will ask for the Master Plumber\'s license number when you file your certification — if you cannot provide one, your filing will be rejected.',
+          },
+          {
+            q: 'What is the difference between a Master Plumber and a journeyman plumber in NYC?',
+            a: 'A Master Plumber holds a NYC DOB-issued license allowing them to operate independently, file permits, and take legal responsibility for plumbing work. A journeyman (or licensed plumber) can perform plumbing work but must work under a Master Plumber\'s supervision and cannot file permits independently. When hiring for HPD violation work, always confirm the contractor holds an active Master Plumber license, not just a journeyman license.',
+          },
+          {
+            q: 'How long does a DOB plumbing permit inspection take?',
+            a: 'After the work is complete and your Master Plumber files for inspection through DOB NOW, the inspection is typically scheduled within 3–10 business days. During busy periods (post-storm, late fall) this can extend to 2 weeks. Your Master Plumber can request expedited inspection in urgent cases by paying an expedite fee, which is worth considering for violations with tight deadlines.',
+          },
+          {
+            q: 'My HPD violation says "defective plumbing" but the leak was caused by the tenant. Am I still responsible?',
+            a: 'Yes. As the landlord of record, you are legally responsible for the condition regardless of how it occurred. HPD does not adjudicate between landlord and tenant fault — the violation is against the building owner. You may have a civil claim against the tenant for the cost of repairs if you can document they caused the damage, but you must still fix the plumbing and certify the correction on your HPD timeline regardless.',
+          },
+          {
+            q: 'Do I need a permit to replace a toilet or sink in a rental apartment?',
+            a: 'A like-for-like replacement of a toilet or sink in the same location, without modifying the supply or drain connections, generally does not require a DOB permit. However, if the fixture is being relocated or the connections are being extended or rerouted, a permit is required. When in doubt, ask your licensed Master Plumber before work begins — they are responsible for knowing what requires a permit and must not perform work that triggers permit requirements without filing.',
+          },
+        ],
+      },
     ],
   },
 
@@ -763,6 +916,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'building-inspectors',
     serviceName: 'Building Inspectors',
     leadBaitCta: 'Want a professional inspection before you sign? Get a certified NYC building inspector.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['clear-hpd-mold-violation-nyc', 'clear-hpd-pest-violation-nyc', 'clear-hpd-heat-violation-nyc'],
     relatedServicePages: [
       { label: 'Building Inspectors in Manhattan', href: '/services/building-inspectors/manhattan' },
@@ -787,6 +942,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "In NYC's rental market, tenants are frequently pressured to sign immediately or lose the apartment. That urgency is manufactured. The reality is that every residential building in New York City has years of public data available within minutes — violation history, complaint records, landlord court filings, ownership changes, and financial health indicators. A landlord who discourages you from doing this research is a landlord with something to hide. This checklist tells you every public database you should check, what red flags look like, and what you can legitimately use as leverage before signing.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '6 min', label: 'Average time to pull a building\'s complete HPD violation and complaint history on BHX', source: 'Building Health X' },
+          { value: '250K+', label: 'Open HPD violations across NYC at any given time — many in buildings being actively marketed', source: 'NYC HPD' },
+          { value: '$0', label: 'Cost to check HPD Online, Who Owns What, ACRIS, and Housing Court records before signing', source: 'NYC Open Data' },
+        ],
       },
       {
         type: 'h2',
@@ -817,9 +980,7 @@ export const GUIDES: GuidePost[] = [
           "Complaint-to-violation ratio: A building with 200 complaints and 3 violations does not have a good landlord — it has an unresponsive landlord who didn't fix things until the inspector showed up. High complaint volumes with low violation counts are a red flag, not a green one.",
         ],
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: '3. 311 Complaint Data — What Tenants Actually Reported',
@@ -897,6 +1058,36 @@ export const GUIDES: GuidePost[] = [
         type: 'warning',
         body: "If a landlord refuses to let you see the unit before signing, claims the current tenant is still in residence and cannot be disturbed, or pressures you to sign a lease contingent on viewing later — walk away. This is a textbook tactic used to hide unit conditions that would cause you to renegotiate or decline. NYC law does not require you to sign without viewing, regardless of market competition.",
       },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about NYC lease due diligence',
+        items: [
+          {
+            q: 'Is it legal for a landlord to rent an apartment with open HPD violations?',
+            a: 'Technically yes — there is no blanket prohibition on renting a unit with open violations. However, a landlord with open Class C (immediately hazardous) violations is in ongoing breach of their legal obligations. More importantly, signing a lease does not protect you from those conditions — it means you will live with them. Always check HPD Online before signing and negotiate remediation of any open violations as a lease condition.',
+          },
+          {
+            q: 'What is the BHX Score and how is it calculated?',
+            a: 'The Building Health X Score is a 0–100 composite rating that aggregates data from multiple NYC open data sources: HPD violation counts and classes, 311 complaint history and trends, landlord housing court litigation records, pest inspection results, eviction filings, and neighbourhood context. Category sub-scores show how a building performs in specific dimensions — pest control, heat reliability, water safety, and building stability — which are often more useful than the overall composite.',
+          },
+          {
+            q: 'How do I check if an NYC apartment is rent-stabilised?',
+            a: 'Search the building address at apps.hcr.ny.gov (DHCR\'s Building Search). You can also request the official rent history for a specific apartment from DHCR, which will show all registered legal rents going back to 1984. If the landlord claims an apartment is market-rate but the building was built before 1974 and has six or more units, treat that claim with scepticism and verify through DHCR.',
+          },
+          {
+            q: 'What is the Alternative Enforcement Program (AEP) and should I avoid AEP buildings?',
+            a: 'The AEP is an HPD designation for buildings with persistently high violation rates. AEP buildings are legally required to post this designation at the building entrance. While AEP buildings are under heightened oversight — which theoretically pushes landlords to improve — the designation indicates chronic problems. Whether to rent in an AEP building depends on whether violations are being actively cleared. Check the trend in violation counts, not just the total.',
+          },
+          {
+            q: 'Can I negotiate with a landlord based on HPD violation records?',
+            a: 'Yes, and you should. Open violations — especially Class B and C — give you legitimate leverage for rent reductions, free months, or lease conditions requiring the landlord to remediate specific issues before move-in. Frame the negotiation around the risk the violations pose to you as a tenant rather than as criticism of the landlord. A written addendum to the lease specifying conditions that must be resolved is enforceable and protects you if the landlord fails to follow through.',
+          },
+          {
+            q: 'Is a landlord required to give me the bedbug history of the apartment before I sign?',
+            a: 'Yes. Under Local Law 69 of 2017, landlords must provide a written disclosure of the bedbug infestation history for both the specific apartment and the entire building for the 12 months prior to the new tenancy. This disclosure must be provided at lease signing. If your landlord does not provide it, they are in violation of NYC law. Do not sign without this disclosure — request it in writing and keep a copy.',
+          },
+        ],
+      },
     ],
   },
 
@@ -914,6 +1105,8 @@ export const GUIDES: GuidePost[] = [
     serviceSlug: 'electricians',
     serviceName: 'Electricians',
     leadBaitCta: 'Get free quotes from NYC-licensed electricians who specialise in HPD violation clearance.',
+    datePublished: '2024-09-01',
+    dateModified: '2025-03-01',
     relatedSlugs: ['hire-plumber-nyc-hpd-violation', 'clear-hpd-mold-violation-nyc', 'what-to-check-before-signing-nyc-lease'],
     relatedServicePages: [
       { label: 'Electricians in Brooklyn', href: '/services/electricians/brooklyn' },
@@ -937,6 +1130,14 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'intro',
         body: "Electrical violations in NYC buildings come from two different agencies — HPD and DOB — and the correction process for each is distinct. HPD issues electrical violations under the Housing Maintenance Code for conditions that directly affect tenant safety: faulty outlets, exposed wiring, missing smoke detectors, inoperative CO detectors, and overloaded circuits. DOB issues electrical violations under the Building Code for structural electrical issues: outdated panels, unpermitted electrical work, failed inspections, and code non-compliance. Both carry significant financial penalties if not corrected correctly and on time, and both require a licensed Master Electrician to perform the work. Using anyone else — including a journeyman working independently, a general contractor, or maintenance staff — will result in your certification being rejected and your fine clock continuing to run.",
+      },
+      {
+        type: 'statrow',
+        stats: [
+          { value: '21 days', label: 'To correct a Class C HPD electrical violation (exposed wiring, faulty outlets)', source: 'NYC HPD' },
+          { value: '$25,000', label: 'Maximum ECB penalty for wilful or repeat electrical non-compliance', source: 'NYC Admin Code' },
+          { value: '10 ft', label: 'Maximum distance from any bedroom where a working smoke detector must be installed', source: 'NYC FDNY' },
+        ],
       },
       {
         type: 'h2',
@@ -975,7 +1176,7 @@ export const GUIDES: GuidePost[] = [
       },
       {
         type: 'h2',
-        heading: 'Step 1: Verify Your Electrician\'s License — Two Layers',
+        heading: "Step 1: Verify Your Electrician's License — Two Layers",
       },
       {
         type: 'body',
@@ -990,9 +1191,7 @@ export const GUIDES: GuidePost[] = [
           "Experience with HPD violations specifically: Ask whether the electrician has filed HPD violation certifications before. The certification process is separate from the physical work, and inexperienced contractors often complete the work but fail to file correctly.",
         ],
       },
-      {
-        type: 'leadbait',
-      },
+      { type: 'leadbait' },
       {
         type: 'h2',
         heading: 'Step 2: DOB Electrical Permit — Required for Most Work',
@@ -1067,6 +1266,32 @@ export const GUIDES: GuidePost[] = [
       {
         type: 'warning',
         body: "Smoke detector and CO detector violations are among the most commonly missed HPD violations because landlords treat them as minor. They are not. Missing or inoperative detectors are Class B violations that escalate to Class C if a tenant files a follow-up complaint. NYC law requires working smoke detectors within 10 feet of every bedroom, and CO detectors within 15 feet of sleeping areas in any building with gas appliances or an attached garage.",
+      },
+      {
+        type: 'faq',
+        heading: 'Frequently asked questions about HPD electrical violations',
+        items: [
+          {
+            q: 'What is the difference between an HPD electrical violation and a DOB electrical violation?',
+            a: 'HPD violations are issued under the Housing Maintenance Code and typically relate to immediate tenant safety issues — faulty outlets, exposed wiring, missing or broken smoke/CO detectors. DOB violations relate to building code compliance — unpermitted electrical work, outdated panels, failed inspections. Both use the ECB system for fines, but they have separate correction portals and separate hearing processes. A single electrical problem can result in violations from both agencies simultaneously.',
+          },
+          {
+            q: 'Do I need a permit to replace a smoke detector in NYC?',
+            a: 'A direct like-for-like replacement of a smoke or CO detector in the same location generally does not require a DOB electrical permit. However, if you are adding new detectors, relocating existing ones, or wiring them into the building\'s electrical system (hardwired units), a permit is required. Given that smoke detector violations are a common HPD compliance issue, it is worth having a licensed electrician assess your entire building\'s detector situation rather than replacing units piecemeal.',
+          },
+          {
+            q: 'Can I use an out-of-state licensed electrician for HPD violation work in NYC?',
+            a: 'No. New York City requires a NYC DOB-issued Master Electrician license for electrical work in residential buildings. An out-of-state license — even from New Jersey, Connecticut, or another state — does not satisfy this requirement. The NYC Master Electrician license is issued separately from any state license. Verify the specific NYC DOB license number through the DOB\'s online verification portal before hiring.',
+          },
+          {
+            q: 'How do ECB hearings work and can I reduce my fine?',
+            a: 'ECB hearings at the OATH Tribunal are administrative proceedings, not criminal court. You present evidence and the hearing officer decides on dismissal, reduced penalty, or full penalty. The most effective arguments for reduction are: the violation was corrected promptly (ideally within the original window); you acted in good faith; you have no prior violations of this type; and the violation was minor. Bring all documentation — permit sign-offs, contractor invoices, dated photos. Judges routinely reduce fines by 50–75% for first-time landlords who corrected promptly.',
+          },
+          {
+            q: 'What happens if I do the electrical work myself to save money?',
+            a: 'Do not do this. Unlicensed electrical work in a residential building with multiple units is illegal in NYC, voids your insurance, and will result in HPD rejecting your certification. If an inspector discovers the work was done without a licensed Master Electrician, you will receive a new violation for the unlicensed work on top of the original violation. The cost savings are entirely illusory — one rejected certification plus the resulting fine escalation will cost more than any legitimate electrician would have charged.',
+          },
+        ],
       },
     ],
   },
