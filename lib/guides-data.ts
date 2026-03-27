@@ -108,7 +108,7 @@ export const GUIDES: GuidePost[] = [
       { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your Certification of Correction for HPD violations online.' },
       { label: 'NYS DOL Mold Contractor Lookup', url: 'https://labor.ny.gov/workerprotection/safetyhealth/mold_contractor_cert.shtm', description: 'Verify a mold assessor or remediator licence is valid under NYS Labor Law Article 32.' },
       { label: 'Local Law 55 (NYC Admin Code §27-2017.1)', url: 'https://www.nyc.gov/site/hpd/services-and-information/mold.page', description: "HPD's official guidance on Local Law 55 mold obligations for landlords." },
-      { label: 'NYC HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: 'Look up any building's full HPD violation history by address.' },
+      { label: 'NYC HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: "Look up any building's full HPD violation history by address." },
       { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Office of Administrative Trials and Hearings — manage ECB fines and hearings.' },
     ],
     content: [
