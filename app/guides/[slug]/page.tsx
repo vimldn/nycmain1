@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+// leadBaitRendered tracks whether we have already injected the form once
+let leadBaitRendered = false
+
 function renderSection(section: GuideSection, guide: { serviceSlug: string; serviceName: string; leadBaitCta: string }, index: number) {
   switch (section.type) {
     case 'intro':
@@ -33,10 +36,47 @@ function renderSection(section: GuideSection, guide: { serviceSlug: string; serv
       )
 
     case 'heading':
+    case 'h2':
       return (
-        <h2 key={index} className="text-xl font-black mt-10 mb-4">
+        <h2 key={index} className="text-xl font-black mt-10 mb-4 text-[#e2e8f0]">
           {section.heading}
         </h2>
+      )
+
+    case 'body':
+      return (
+        <p key={index} className="text-[var(--text-secondary)] leading-relaxed mb-5">
+          {section.body}
+        </p>
+      )
+
+    case 'table':
+      if (!section.rows || section.rows.length < 2) return null
+      return (
+        <div key={index} className="my-6 overflow-x-auto rounded-xl border border-[var(--border-primary)]">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-[#111827]">
+                {section.rows[0].map((cell, ci) => (
+                  <th key={ci} className="px-4 py-3 text-left text-xs font-semibold text-[#94a3b8] uppercase tracking-wide border-b border-[#1e293b]">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.rows.slice(1).map((row, ri) => (
+                <tr key={ri} className={ri % 2 === 0 ? 'bg-[#0d1321]' : 'bg-[#111827]/50'}>
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-4 py-3 text-[var(--text-secondary)] border-b border-[#1e293b]/50 last:border-b-0">
+                      {ci === 0 ? <span className="font-medium text-[#e2e8f0]">{cell}</span> : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
 
     case 'step':
@@ -102,6 +142,8 @@ function renderSection(section: GuideSection, guide: { serviceSlug: string; serv
       )
 
     case 'leadbait':
+      if (leadBaitRendered) return null
+      leadBaitRendered = true
       return (
         <ContextualLeadBait
           key={index}
@@ -122,6 +164,8 @@ export default function GuidePage({ params }: Props) {
 
   const category = getCategoryBySlug(guide.category)
   const related = getRelatedGuides(guide.relatedSlugs)
+  // Reset so the single-render guard works per page load
+  leadBaitRendered = false
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -220,15 +264,22 @@ export default function GuidePage({ params }: Props) {
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-5">
 
-              {/* Lead form */}
-              <div className="p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
-                <div className="text-sm font-semibold mb-1">{guide.leadBaitCta}</div>
-                <div className="text-xs text-[#64748b] mb-4">Free quotes · NYC-certified only · No obligation</div>
-                <ContextualLeadBait
-                  serviceSlug={guide.serviceSlug}
-                  serviceName={guide.serviceName}
-                  cta={guide.leadBaitCta}
-                />
+              {/* Sidebar CTA — static, no form duplication */}
+              <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
+                <div className="h-1 w-full bg-gradient-to-r from-blue-600 to-blue-400" />
+                <div className="p-5">
+                  <div className="text-sm font-semibold mb-1 text-[#e2e8f0]">{guide.leadBaitCta}</div>
+                  <div className="text-xs text-[#64748b] mb-4">Free quotes · NYC-certified only · No obligation</div>
+                  <Link
+                    href={`/services/${guide.serviceSlug}`}
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white"
+                  >
+                    Find {guide.serviceName} in NYC
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                  </Link>
+                </div>
               </div>
 
               {/* BHX tool CTA */}
