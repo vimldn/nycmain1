@@ -336,7 +336,7 @@ export default function BuildingPage() {
   return (
     <div className="min-h-screen bg-[#0a0e17]">
 
-      <Header showSearch />
+      <Header />
 
       <main className="max-w-7xl mx-auto px-4 pt-28 pb-10">
 
