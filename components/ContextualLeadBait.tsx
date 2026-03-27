@@ -17,6 +17,7 @@ export default function ContextualLeadBait({ serviceSlug, serviceName, cta }: Co
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const [message, setMessage] = useState('')
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
@@ -31,7 +32,7 @@ export default function ContextualLeadBait({ serviceSlug, serviceName, cta }: Co
           name,
           email,
           phone,
-          message: `Requesting quotes for ${serviceName} — referred from guide page.`,
+          message: message || `Requesting quotes for ${serviceName} — referred from guide page.`,
           serviceType: serviceName,
           serviceSlug,
           location: 'NYC',
@@ -66,24 +67,14 @@ export default function ContextualLeadBait({ serviceSlug, serviceName, cta }: Co
 
   return (
     <div className="my-10 rounded-xl border border-[#1e293b] bg-[#111827] overflow-hidden">
-      {/* Top accent bar */}
       <div className="h-1 w-full bg-gradient-to-r from-blue-600 to-blue-400" />
 
       <div className="p-6">
         {status === 'idle' && (
           <>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.56 3.47 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-semibold text-[#e2e8f0] text-sm mb-1">{cta}</p>
-                <p className="text-xs text-[#64748b]">Free quotes · No obligation · NYC-certified professionals only</p>
-              </div>
-            </div>
-            <div className="mt-5 flex flex-col sm:flex-row gap-3">
+            <p className="font-semibold text-[#e2e8f0] text-sm mb-1">{cta}</p>
+            <p className="text-xs text-[#64748b] mb-5">Free quotes · No obligation · NYC-certified professionals only</p>
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setStatus('open')}
                 className="flex-1 py-2.5 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white"
@@ -100,7 +91,7 @@ export default function ContextualLeadBait({ serviceSlug, serviceName, cta }: Co
           </>
         )}
 
-        {status === 'open' && (
+        {(status === 'open' || status === 'submitting' || status === 'error') && (
           <>
             <div className="flex items-center justify-between mb-5">
               <div>
@@ -116,42 +107,66 @@ export default function ContextualLeadBait({ serviceSlug, serviceName, cta }: Co
                 </svg>
               </button>
             </div>
+
             <form onSubmit={submit} className="space-y-3">
               <div className="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-[#94a3b8] mb-1">Your name</label>
+                  <input
+                    required
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    placeholder="John Smith"
+                    autoComplete="name"
+                    className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-[#94a3b8] mb-1">Phone number</label>
+                  <input
+                    required
+                    type="tel"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                    placeholder="(212) 555-0123"
+                    autoComplete="tel"
+                    className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-[#94a3b8] mb-1">Email address</label>
                 <input
                   required
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  placeholder="Your name"
-                  autoComplete="name"
-                  className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors"
-                />
-                <input
-                  required
-                  type="tel"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  placeholder="Phone number"
-                  autoComplete="tel"
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  autoComplete="email"
                   className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors"
                 />
               </div>
-              <input
-                required
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Email address"
-                autoComplete="email"
-                className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors"
-              />
+
+              <div>
+                <label className="block text-xs font-medium text-[#94a3b8] mb-1">What do you need?</label>
+                <textarea
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  rows={3}
+                  placeholder={`E.g., I have an HPD violation for ${serviceName.toLowerCase()} and need it cleared urgently — share any details about size, location, timeline...`}
+                  className="w-full rounded-lg bg-[#0d1321] border border-[#1e293b] px-3 py-2.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
+                />
+              </div>
+
               {error && <p className="text-xs text-red-400">{error}</p>}
+
               <button
                 type="submit"
                 disabled={status === 'submitting'}
                 className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-60 transition-colors text-sm font-semibold text-white"
               >
-                {status === 'submitting' ? 'Sending…' : 'Get free quotes'}
+                {status === 'submitting' ? 'Sending…' : 'Get free quotes →'}
               </button>
               <p className="text-[10px] text-[#475569] text-center">We never sell your data or spam your inbox.</p>
             </form>

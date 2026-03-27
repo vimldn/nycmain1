@@ -493,11 +493,13 @@ export default function GuidePage({ params }: Props) {
               <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
                 <div className="h-1 w-full bg-gradient-to-r from-blue-600 to-blue-400" />
                 <div className="p-5">
-                  <div className="text-sm font-semibold mb-1 text-[#e2e8f0]">{guide.leadBaitCta}</div>
-                  <div className="text-xs text-[#64748b] mb-4">Free quotes · NYC-certified only · No obligation</div>
+                  <p className="text-sm font-semibold text-[#e2e8f0] leading-snug mb-1">
+                    Get free quotes from NYC-certified {guide.serviceName.toLowerCase()} today
+                  </p>
+                  <p className="text-xs text-[#64748b] mb-4">Free · No obligation · Response within 24 hours</p>
                   <Link
                     href={`/services/${guide.serviceSlug}`}
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white w-full"
                   >
                     Find {guide.serviceName} in NYC
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
