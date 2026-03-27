@@ -21,66 +21,72 @@ const BUCKETS = [
     emoji: '🔍',
     label: 'Researching',
     headline: 'Before You Sign',
-    description: 'Do your homework before handing over a deposit. These guides help you spot a bad building — and a worse landlord — before you\'re locked in.',
+    description: 'Do your homework before handing over a deposit. These guides help you spot a bad building, a dodgy broker, and an overpriced apartment before you\'re locked in.',
     cta: { label: 'Check any building free', href: '/' },
-    ctaNote: 'Our building search tool shows HPD violations, pest history, and landlord court records instantly.',
+    ctaNote: 'Our building search tool shows HPD violations, pest history, rent records, and landlord court filings instantly.',
     slugs: [
       'what-to-check-before-signing-nyc-lease',
       'is-my-nyc-apartment-secretly-rent-stabilised',
+      'avoid-broker-fee-scams-fake-listings-nyc',
     ],
     accentColor: 'blue',
+  },
+  {
+    id: 'settling-in',
+    emoji: '🔑',
+    label: 'Settling In',
+    headline: 'You Signed. Now What?',
+    description: 'The week between signing and moving in is the most important of your tenancy. Change the locks, document damage, set up utilities, and understand what you can and can\'t customise.',
+    cta: { label: 'Find a locksmith, painter, or electrician', href: '/services' },
+    ctaNote: 'Get free quotes from vetted NYC locksmiths, internet providers, and apartment contractors.',
+    slugs: [
+      'just-signed-nyc-lease-5-things-before-moving-in',
+      'can-i-paint-my-nyc-apartment',
+      'nyc-renters-insurance-what-landlords-require',
+    ],
+    accentColor: 'emerald',
   },
   {
     id: 'fighting',
     emoji: '🚨',
     label: 'Fighting',
     headline: 'Your Landlord Isn\'t Fixing It',
-    description: 'Mold, no heat, roaches, water damage — your landlord has a legal deadline and daily fines if they miss it. Here\'s how to force their hand.',
+    description: 'Mold, no heat, roaches, water damage, eviction threats — your landlord has legal deadlines and daily fines if they miss them. Here\'s how to force their hand.',
     cta: { label: 'Find a certified NYC contractor', href: '/services' },
-    ctaNote: 'Get free quotes from licensed NYC professionals who specialise in emergency repairs.',
+    ctaNote: 'Get free quotes from licensed NYC pest control, HVAC, and mold remediation professionals.',
     slugs: [
       'landlord-wont-fix-roaches-bedbugs',
+      'who-pays-pipe-burst-nyc-apartment',
       'eviction-notice-nyc-rights-next-steps',
     ],
     accentColor: 'red',
-  },
-  {
-    id: 'disasters',
-    emoji: '💧',
-    label: 'Disasters',
-    headline: 'When Something Goes Wrong',
-    description: 'Burst pipes, a neighbour\'s flood, smoke damage from the unit above. These guides explain who is legally responsible and how to protect yourself financially.',
-    cta: { label: 'Get renters insurance quotes', href: '/services/renters-insurance' },
-    ctaNote: 'NYC renters insurance starts at under $15/month. Get 3 instant quotes before the next disaster.',
-    slugs: [
-      'who-pays-pipe-burst-nyc-apartment',
-    ],
-    accentColor: 'yellow',
   },
   {
     id: 'escaping',
     emoji: '📦',
     label: 'Escaping',
     headline: 'Getting Out Clean',
-    description: 'Ready to leave — whether over violations, a noisy neighbour, or just a bad situation? These guides walk you through every step so you leave without liability.',
-    cta: { label: 'Find NYC movers & cleaners', href: '/services' },
-    ctaNote: 'Get free quotes from vetted NYC movers and move-out cleaning companies.',
+    description: 'Ready to leave — over violations, a noisy neighbour, or just a bad situation? Get your deposit back, lose the furniture, and handle the gap week without losing your mind.',
+    cta: { label: 'Find NYC movers, storage & cleaners', href: '/services' },
+    ctaNote: 'Get free quotes from vetted NYC movers, move-out cleaners, storage facilities, and junk removal.',
     slugs: [
       'how-to-break-lease-nyc-violations',
       'break-lease-noisy-neighbor-nyc',
       'get-security-deposit-back-nyc',
+      'get-rid-of-furniture-fast-moving-out-nyc',
+      'between-leases-gap-week-nyc',
     ],
-    accentColor: 'emerald',
+    accentColor: 'purple',
   },
 ] as const
 
-type AccentColor = 'blue' | 'red' | 'yellow' | 'emerald'
+type AccentColor = 'blue' | 'emerald' | 'red' | 'purple'
 
 const ACCENT: Record<AccentColor, { pill: string; icon: string; border: string; label: string }> = {
   blue:    { pill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',       icon: 'text-blue-400',    border: 'border-blue-500/20',    label: 'text-blue-400'    },
-  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',          icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400'     },
-  yellow:  { pill: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/20', icon: 'text-yellow-400',  border: 'border-yellow-500/20',  label: 'text-yellow-400'  },
   emerald: { pill: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20', icon: 'text-emerald-400', border: 'border-emerald-500/20', label: 'text-emerald-400' },
+  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',          icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400'     },
+  purple:  { pill: 'bg-purple-500/10 text-purple-300 border-purple-500/20', icon: 'text-purple-400',  border: 'border-purple-500/20',  label: 'text-purple-400'  },
 }
 
 // ItemList schema for the whole guides hub

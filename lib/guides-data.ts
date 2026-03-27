@@ -2511,3 +2511,923 @@ GUIDES.push({
     },
   ],
 })
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SETTLING IN 1: Just signed — 5 things to do before moving in
+// Bucket: Settling In | Services: Locksmith + Internet Providers
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'just-signed-nyc-lease-5-things-before-moving-in',
+  category: 'inspections-leasing',
+  title: 'Just Signed an NYC Lease? Do These 5 Things Before Moving In',
+  metaTitle: 'Just Signed an NYC Lease? Do These 5 Things Before Moving In | Building Health X',
+  metaDescription: 'Signed your NYC lease? Before you move a single box, change the locks, document existing damage, check HPD violations, set up utilities, and arrange renters insurance. Here\'s the complete checklist.',
+  headline: 'Just Signed an NYC Lease? Do These 5 Things Before You Move In',
+  subheadline: 'Most tenants skip all five. The ones who don\'t save themselves thousands in deposit disputes, utility headaches, and security nightmares.',
+  serviceSlug: 'locksmith',
+  serviceName: 'Locksmiths',
+  leadBaitCta: 'Don\'t trust the old tenant\'s keys. Get a licensed NYC locksmith to change your cylinder today.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['what-to-check-before-signing-nyc-lease', 'get-security-deposit-back-nyc', 'who-pays-pipe-burst-nyc-apartment'],
+  relatedServicePages: [
+    { label: 'Locksmiths in Manhattan', href: '/services/locksmith/manhattan' },
+    { label: 'Locksmiths in Brooklyn', href: '/services/locksmith/brooklyn' },
+    { label: 'Locksmiths in Queens', href: '/services/locksmith/queens' },
+    { label: 'Locksmiths in the Bronx', href: '/services/locksmith/bronx' },
+    { label: 'Internet providers in NYC', href: '/services/internet-providers' },
+  ],
+  furtherReading: [
+    { slug: 'what-to-check-before-signing-nyc-lease', title: 'What to Check Before Signing an NYC Lease' },
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+    { slug: 'who-pays-pipe-burst-nyc-apartment', title: 'Who Pays When a Pipe Bursts in Your NYC Apartment?' },
+  ],
+  govLinks: [
+    { label: 'NYC Admin Code §27-2043 — Tenant Lock Rights', url: 'https://www.nyc.gov/site/hpd/services-and-information/tenants.page', description: 'NYC law gives tenants the right to install and change their own door locks without landlord interference.' },
+    { label: 'Con Edison — New Service Setup', url: 'https://www.coned.com/en/accounts-billing/start-stop-transfer-service', description: 'Start or transfer Con Edison electricity or gas service to your new address.' },
+    { label: 'National Grid — NYC Gas Service', url: 'https://www.nationalgridus.com/ny-home/account-and-billing/start-service', description: 'Set up National Grid gas service for NYC addresses.' },
+    { label: 'DHCR Move-In Letter Requirements', url: 'https://hcr.ny.gov/system/files/documents/2020/02/op-c1.pdf', description: 'Rent-stabilised tenants must receive a move-in letter with the legal regulated rent — what to check for.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Signing your lease feels like the finish line. It is actually the starting gun. The days between signing and moving in are the most important window in your entire tenancy — and most tenants waste them. The five steps in this guide take less than a week total, cost under $500 combined, and protect you from the most common and expensive problems NYC renters face: deposit disputes, security incidents, utility chaos, and building surprises. Do them in order.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '$0', label: 'Cost to document existing damage before move-in — worth thousands in deposit protection at move-out', source: 'Building Health X' },
+        { value: '2–4 hrs', label: 'Time for a licensed locksmith to replace your cylinder and re-key your apartment in NYC', source: 'NYC locksmith industry average' },
+        { value: '2–6 wks', label: 'Lead time some NYC internet providers need to schedule installation — book before you move in', source: 'Provider data' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Thing 1: Change Your Locks (You Have the Legal Right)',
+    },
+    {
+      type: 'body',
+      body: "In New York City, tenants have a legal right to change or add their own locks without landlord permission under NYC Admin Code. The previous tenant had your keys. Their friends, ex-partners, delivery contacts, and anyone they gave a spare to also had your keys. You have no idea how many copies exist. Changing the cylinder is not optional — it is basic security.",
+    },
+    {
+      type: 'list',
+      items: [
+        "You do not need landlord permission to replace the lock cylinder — NYC law is explicit on this. You do need to provide the landlord with a copy of the new key upon request.",
+        "Do not replace the entire lock body — just the cylinder. This preserves the door hardware the landlord owns while giving you control of who has access.",
+        "Use a licensed NYC locksmith rather than a hardware store DIY job — a professional will ensure the new cylinder is the same grade or better, properly fitted, and comes with documented key control.",
+        "Re-key all entrance doors on day one: front door, any back or side doors, mailbox if it uses a separate key.",
+        "If your building has a doorman or key fob system, verify how building-level access is managed and whether you can request deactivation of old access credentials.",
+      ],
+    },
+    {
+      type: 'leadbait',
+    },
+    {
+      type: 'h2',
+      heading: 'Thing 2: Do a Damage Walkthrough — On Video, Before Any Furniture Arrives',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'Record every existing imperfection before your first box comes in',
+      body: 'This is the single most important thing you can do to protect your security deposit. NYC landlords routinely attempt to deduct for damage that existed before the tenant moved in. Your only defence is a timestamped record created before you took possession.',
+      items: [
+        "Record a continuous, narrated video walkthrough of every room. Open every cabinet, check under the sink, pan slowly across every wall and ceiling.",
+        "Call out and close-up every mark, scratch, stain, chip, crack, and imperfection. Say the date and time aloud at the start of the recording.",
+        "Check every fixture: test all light switches, run all taps, flush toilets, check that all windows open and lock, test the stove, run the shower.",
+        "Photograph the inside of appliances — fridges and ovens are common deduction targets. Also photograph the inside of closets and the condition of the flooring under where furniture will go.",
+        "Email the video to yourself and a cloud backup the same day. The metadata timestamp is your legal evidence — never edit the file after this point.",
+        "Send a written summary of major pre-existing issues to your landlord by email immediately. This creates a record that they knew about the conditions from day one.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Thing 3: Pull the Building\'s HPD Record Right Now',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Check for violations and complaints you didn\'t know about',
+      body: 'You probably checked the building before signing — but run it again now that you have the specific unit number. Unit-level violations matter more than building-level summary data.',
+      items: [
+        "Search hpdonline.nyc.gov for your exact address. Look specifically for violations on your unit number — not just the building.",
+        "Check the complaint tab as well as the violations tab. Complaints show what tenants reported even if an inspector never came.",
+        "Look for any open violations in your unit. If there are open Class B or C violations, notify your landlord in writing before move-in that you are aware of them and expect them to be resolved.",
+        "Check the BHX Score for your building — the pest history and heat reliability sub-scores are the most predictive of problems you will experience as a tenant.",
+        "Screenshot everything with the date visible. This document proves you reported pre-existing violations and cannot be held responsible for them later.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Thing 4: Set Up Utilities and Internet Before Move-In Day',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'Book internet installation before you move in — not after',
+      body: 'This is the most consistently underestimated task. Internet installation in NYC buildings can take 2–6 weeks depending on provider and building infrastructure. Moving in with no internet and working from a hotspot for a month is entirely avoidable.',
+      items: [
+        "Electricity (Con Edison): Transfer or start service at coned.com at least 5 business days before move-in. It takes minutes online.",
+        "Gas (Con Edison or National Grid): Call to transfer gas service — do not assume it transfers automatically with electricity. Gas requires a separate account.",
+        "Internet: Check which providers service your building first — not all are available in all buildings. Options vary by building: Spectrum, Verizon Fios (if your building has fiber), Astound/RCN, or building-managed providers. Book installation the same day you sign your lease.",
+        "If your building has a managed internet provider (common in newer buildings), check whether service is included in rent or billed separately — read the lease clause.",
+        "Renters insurance: Many NYC leases require it. Even those that don\'t should — NYC renters insurance starts at ~$15/month. Set this up before move-in so you\'re covered from day one.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Thing 5: Get Your Move-In Letter (Rent-Stabilised Tenants Only)',
+    },
+    {
+      type: 'step',
+      stepNumber: 5,
+      heading: 'Request your stabilisation documents if you\'re in a regulated apartment',
+      body: 'If your building is rent-stabilised, your landlord is legally required to give you a move-in letter stating the legal regulated rent, the previous tenant\'s rent, and a copy of the DHCR lease rider. Many don\'t provide it without being asked.',
+      items: [
+        "Request the move-in letter in writing before or at lease signing. State that you are requesting it pursuant to the Rent Stabilization Code.",
+        "Verify that the rent stated in your lease matches the registered legal rent in the DHCR system — search at apps.hcr.ny.gov.",
+        "If the numbers don\'t match, this is a red flag for illegal deregulation or overcharging. Do not ignore it — request the full rent history.",
+        "If the landlord refuses to provide the move-in letter, this itself is a violation you can report to DHCR.",
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about moving into an NYC apartment',
+      items: [
+        {
+          q: 'Can my landlord refuse to let me change the locks?',
+          a: 'No. NYC Administrative Code gives tenants the right to change their apartment door locks. The only requirement is that you must provide the landlord with a copy of the new key upon request. If your landlord threatens lease termination or makes any threat over you changing the locks, document it in writing — this is a tenant rights violation.',
+        },
+        {
+          q: 'Which internet provider is best for NYC apartments?',
+          a: 'Availability depends entirely on your building. Verizon Fios is considered best-in-class for speed and reliability but is only available in buildings already wired for fiber — check at verizon.com. Spectrum (formerly Charter/TWC) is the widest-coverage cable provider and available in most NYC buildings. Astound (formerly RCN) is available in parts of Manhattan, Brooklyn, and the Bronx and is often cheaper than Spectrum. Always check availability for your specific address rather than the neighbourhood generally.',
+        },
+        {
+          q: 'Do I need renters insurance if my lease doesn\'t require it?',
+          a: 'Yes — not legally, but practically. Your landlord\'s building insurance covers the structure; nothing covers your belongings, your liability, or your temporary housing costs if the apartment becomes uninhabitable. NYC renters insurance typically costs $12–$20/month for $25,000–$50,000 of personal property coverage plus $100,000+ in liability. The cost of not having it after a fire, flood, or theft is devastating.',
+        },
+        {
+          q: 'What happens if I find serious damage after I move in?',
+          a: 'Notify the landlord in writing immediately — the same day if possible. If the damage was not disclosed before move-in and makes the apartment uninhabitable, you have a warranty of habitability claim regardless of how long ago you moved in. For conditions that were pre-existing but the landlord denied: your move-in video documentation becomes critical evidence that the condition was there before you arrived.',
+        },
+        {
+          q: 'How do I set up electricity in NYC if I\'ve never done it before?',
+          a: 'Go to coned.com and select "Start Service." You will need your new address, move-in date, Social Security Number or ITIN, and a payment method. The process takes about 10 minutes online. If your apartment uses gas for cooking or heating, you need to set up gas service separately — either with Con Edison (for most of Manhattan and parts of Brooklyn) or National Grid (for most of Brooklyn, Queens, Staten Island, and parts of the Bronx). Call the provider — gas setup requires a phone call, not just online signup.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SETTLING IN 2: Can I paint my NYC apartment?
+// Bucket: Settling In | Services: Painters + Electricians + Furniture Assembly
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'can-i-paint-my-nyc-apartment',
+  category: 'inspections-leasing',
+  title: 'Can I Paint My NYC Apartment? Rules for Customizing Your Rental',
+  metaTitle: 'Can I Paint My NYC Apartment? NYC Rental Customization Rules | Building Health X',
+  metaDescription: 'NYC renters can paint walls, hang fixtures, and customize their apartment — within limits. Here\'s exactly what the law allows, what requires landlord permission, and how to avoid deposit deductions when you leave.',
+  headline: 'Can I Paint My NYC Apartment? The Complete Rules for Customizing Your Rental',
+  subheadline: 'Walls, fixtures, shelves, and light fittings — what you can change without asking, what needs permission, and how to do it without losing your deposit.',
+  serviceSlug: 'painters',
+  serviceName: 'Painters',
+  leadBaitCta: 'Get a quote from a renter-friendly NYC painter who knows how to restore walls at move-out.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['just-signed-nyc-lease-5-things-before-moving-in', 'get-security-deposit-back-nyc', 'what-to-check-before-signing-nyc-lease'],
+  relatedServicePages: [
+    { label: 'Painters in Manhattan', href: '/services/painters/manhattan' },
+    { label: 'Painters in Brooklyn', href: '/services/painters/brooklyn' },
+    { label: 'Painters in Queens', href: '/services/painters/queens' },
+    { label: 'Electricians in Manhattan', href: '/services/electricians/manhattan' },
+    { label: 'Furniture assembly in NYC', href: '/services/furniture-assembly' },
+  ],
+  furtherReading: [
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+    { slug: 'just-signed-nyc-lease-5-things-before-moving-in', title: 'Just Signed an NYC Lease? Do These 5 Things Before Moving In' },
+    { slug: 'clear-hpd-electrical-violation-nyc', title: 'How to Clear an HPD Electrical Violation in NYC' },
+  ],
+  govLinks: [
+    { label: 'NYC HPD — Landlord Painting Obligations', url: 'https://www.nyc.gov/site/hpd/services-and-information/painting.page', description: 'NYC law requires landlords to paint apartments every 3 years and between tenancies.' },
+    { label: 'NYC DOB — Electrical Permit Requirements', url: 'https://www.nyc.gov/site/buildings/permits/permits-overview.page', description: 'Overview of what electrical work requires a DOB permit in NYC residential buildings.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Your apartment is your home — even if you rent it. New York City law and most standard leases give you more customization rights than most tenants realise, and far fewer restrictions than most landlords imply. The question of whether you can paint, hang a shelf, or swap out a light fixture is not simply 'whatever your landlord says\' — there is actual law here. This guide explains what you can do without permission, what requires a conversation, what requires a licensed professional, and how to ensure that whatever you change doesn\'t cost you your deposit when you leave.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Customization', 'Permission needed?', 'Restore at move-out?', 'Notes'],
+        ['Painting walls a non-white colour', 'Check lease — most require it', 'Yes — back to white or original', 'Landlord must repaint every 3 years regardless'],
+        ['Painting walls white', 'Generally no', 'No', 'You\'re doing the landlord\'s job for them'],
+        ['Small nail holes for pictures', 'No', 'Fill with spackling at move-out', 'Courts consider this normal wear and tear'],
+        ['Large wall anchors or bolts', 'Technically a lease violation', 'Patch and paint', 'Fill and paint before leaving'],
+        ['Swapping light fixture / chandelier', 'No for like-for-like; Yes if electrical work', 'Store and reinstall original at move-out', 'Must use licensed electrician for any wiring'],
+        ['Installing shelving (wall-mounted)', 'Check lease', 'Remove and patch', 'Use proper anchors — don\'t leave gaps in walls'],
+        ['Changing cabinet hardware', 'Generally no', 'Store originals, reinstall at move-out', 'Keep every screw in a labelled bag'],
+        ['Window AC unit installation', 'Usually requires notification', 'Remove at move-out', 'May need landlord-provided bracket in some buildings'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Painting: Your Rights and the 3-Year Rule',
+    },
+    {
+      type: 'body',
+      body: "NYC Administrative Code requires landlords of multiple dwellings to repaint apartments at least every three years and between every tenancy. This means if you moved into a freshly painted white apartment, your landlord cannot deduct painting costs from your deposit simply because you lived there normally — they were going to repaint anyway. However, if you painted the walls a dark colour, you are responsible for restoring them to the original state (or a neutral white) before leaving.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Check your lease's painting clause before you pick up a roller. Many leases require written permission for any colour other than white. A clause saying 'tenant may not alter the apartment' without specifics is generally interpreted to include painting.",
+        "If your lease is silent on painting, you are in a greyer area — technically you have a right to 'quiet enjoyment\' of the apartment, which some courts have interpreted to include painting. When in doubt, ask in writing so you have a record.",
+        "The safest approach: email your landlord asking permission to paint a specific colour, and ask them to confirm in writing. Most reasonable landlords agree, especially if you commit to repainting at move-out.",
+        "If you do paint: keep the paint brand, colour code, and finish so you can touch up or restore accurately. Paint the original colour on a piece of cardboard and photograph it before covering it.",
+        "At move-out: you are responsible for a 'broom clean\' condition. If you painted a deep colour, you may need 2 coats of white primer plus 1–2 coats of white paint to fully cover it. Budget for this if you go bold.",
+      ],
+    },
+    {
+      type: 'leadbait',
+    },
+    {
+      type: 'h2',
+      heading: 'Light Fixtures and Electrical Changes',
+    },
+    {
+      type: 'body',
+      body: "Swapping out a light fixture is one of the most effective and reversible ways to personalise a rental. The legal and safety rules are straightforward: you can swap a fixture for a like-for-like replacement without a permit. Any work that involves the building\'s wiring — adding circuits, relocating junction boxes, installing ceiling fans with new wiring — requires a licensed Master Electrician and likely a DOB permit.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Always store the original fixture carefully — box it with the mounting hardware, label it with the room, and keep it in a closet. Reinstalling the original at move-out takes 20 minutes and avoids any deduction.",
+        "Turn off the circuit breaker before touching any wiring — and verify the circuit is off with a non-contact voltage tester before touching wires.",
+        "Ceiling fan installation: if you are replacing a light fixture with a ceiling fan, you need a fan-rated junction box (not just a light-rated box), which typically requires an electrician to install. If the existing box is already fan-rated, it\'s a straightforward swap.",
+        "Dimmers and smart switches: replacing a standard switch with a dimmer or smart switch is generally a no-permit job on an existing circuit. Store the original switches and reinstall at move-out.",
+        "Any work beyond these simple swaps — adding outlets, running new circuits, installing new junction boxes — requires a NYC Master Electrician and likely a DOB permit.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Furniture Assembly and Wall-Mounted Items',
+    },
+    {
+      type: 'body',
+      body: "Flat-pack furniture assembly is the universal NYC rental experience. Beyond standalone furniture, wall-mounted items — shelves, TV mounts, pegboards, and picture rails — require some thought about how they attach and what traces they leave.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Small nail holes (up to 1/8 inch) for picture hanging are universally considered normal wear and tear in NYC courts — no landlord can deduct for these.",
+        "Larger anchors and bolts leave 1/2–3/4 inch holes that require spackling and painting. This is your responsibility at move-out — it is a 20-minute job per hole with the right materials.",
+        "For heavy wall-mounted items like TV mounts or floating shelves: use proper toggle bolts or locate studs. The structural repair obligation is the same regardless of size, but improper anchoring creates safety risks during the tenancy.",
+        "Command strips and adhesive hooks are the safest approach for lighter items — they leave no holes. Always check the weight rating and remove them slowly and correctly (pull the tab parallel to the wall, not away from it) to avoid paint damage.",
+        "For complex furniture assembly — modular systems, Murphy beds, large bookshelves — a professional furniture assembly service saves time and ensures the piece is properly secured.",
+      ],
+    },
+    {
+      type: 'tip',
+      body: "Create a 'restoration kit\' on day one: buy a small can of white touch-up paint (same sheen as your walls — typically flat or eggshell for NYC apartments), a tube of spackling compound, a putty knife, and a small foam roller. Keep it in a closet. At move-out, you can patch and touch up minor wall imperfections in under an hour, eliminating the most common deposit deductions.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about customizing your NYC rental',
+      items: [
+        {
+          q: 'My landlord says I can\'t hang anything on the walls. Is that enforceable?',
+          a: 'A blanket prohibition on hanging anything — including small picture hooks — is difficult to enforce and courts rarely uphold it against tenants who leave walls in normal condition. Small nail holes for pictures are universally considered normal wear and tear in NYC. A lease clause prohibiting all wall modifications may be enforceable for large-scale alterations, but should not prevent you from hanging a few frames. That said, read your specific lease — if it has an explicit clause, document any holes you make and patch them perfectly before leaving.',
+        },
+        {
+          q: 'Can I install a ceiling fan in my NYC apartment?',
+          a: 'Yes, if you replace an existing light fixture and the junction box is fan-rated. The key check is the ceiling junction box — a standard light-rated box is not rated for the weight and torque of a ceiling fan. If the existing box is not fan-rated, a licensed electrician needs to replace it (usually a 1–2 hour job). Store the original light fixture and reinstall it at move-out. The fan itself goes with you.',
+        },
+        {
+          q: 'What paint finish should I use for NYC apartment walls?',
+          a: 'Most NYC apartments use flat or matte finish on walls and semi-gloss on trim. Flat hides imperfections better but is harder to clean. Eggshell is a popular compromise — slightly washable while still hiding the bumps common in older plaster walls. If you\'re painting over existing paint, use the same finish to avoid sheen inconsistencies. For bathrooms and kitchens where moisture is an issue, use satin or semi-gloss.',
+        },
+        {
+          q: 'Do I need permission to install a floating shelf?',
+          a: 'Check your lease for any prohibition on "alterations." For a wall-mounted floating shelf, you are drilling into the wall — this arguably constitutes an alteration. Most landlords do not object to reasonable shelving, but asking via email first protects you. At move-out, remove the shelf, fill the holes with spackling, let it dry, sand smooth, and touch up with paint. Done properly, the wall looks original.',
+        },
+        {
+          q: 'My apartment has ugly light fixtures. Can I just swap them out?',
+          a: 'Yes — this is one of the easiest and most impactful rental upgrades. Turn off the circuit breaker, verify the power is off, unscrew the existing fixture, note which wires connect where (photograph it), connect the new fixture in the same configuration, and mount it. Store the original fixture with all its hardware. At move-out, you reinstall the original in 20 minutes and take your nicer fixture with you. No landlord permission required for a like-for-like replacement at the same junction box.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SETTLING IN 3: Renters insurance — what NYC landlords require
+// Bucket: Settling In | Service: Renters Insurance
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'nyc-renters-insurance-what-landlords-require',
+  category: 'inspections-leasing',
+  title: 'What NYC Landlords Require for Renters Insurance (And What It Actually Costs)',
+  metaTitle: 'What NYC Landlords Require for Renters Insurance | Building Health X',
+  metaDescription: 'Most NYC leases require renters insurance. Here\'s exactly what landlords can legally demand, what coverage you actually need, and how to get the right policy for under $20/month.',
+  headline: 'What NYC Landlords Require for Renters Insurance — And What You Actually Need',
+  subheadline: 'The lease clause decoded: what landlords can legally require, what coverage limits make sense in NYC, and how to buy the right policy without overpaying.',
+  serviceSlug: 'renters-insurance',
+  serviceName: 'Renters Insurance',
+  leadBaitCta: 'Get 3 instant NYC renters insurance quotes — most policies approved same day.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['who-pays-pipe-burst-nyc-apartment', 'just-signed-nyc-lease-5-things-before-moving-in', 'get-security-deposit-back-nyc'],
+  relatedServicePages: [
+    { label: 'Renters insurance in Manhattan', href: '/services/renters-insurance/manhattan' },
+    { label: 'Renters insurance in Brooklyn', href: '/services/renters-insurance/brooklyn' },
+    { label: 'Renters insurance in Queens', href: '/services/renters-insurance/queens' },
+    { label: 'Renters insurance in the Bronx', href: '/services/renters-insurance/bronx' },
+    { label: 'Renters insurance in Staten Island', href: '/services/renters-insurance/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'who-pays-pipe-burst-nyc-apartment', title: 'Who Pays When a Pipe Bursts in Your NYC Apartment?' },
+    { slug: 'just-signed-nyc-lease-5-things-before-moving-in', title: 'Just Signed an NYC Lease? Do These 5 Things Before Moving In' },
+    { slug: 'how-to-break-lease-nyc-violations', title: 'How to Break Your NYC Lease Due to Landlord Violations' },
+  ],
+  govLinks: [
+    { label: 'NY Department of Financial Services — Renters Insurance Guide', url: 'https://www.dfs.ny.gov/consumers/property_insurance/renters', description: 'State regulator\'s guide to renters insurance in New York, including your rights as a policyholder.' },
+    { label: 'NY DFS — Insurance Company License Lookup', url: 'https://myportal.dfs.ny.gov/web/guest-applications/ins-co-search', description: 'Verify that any insurance company offering you a policy is licensed to operate in New York State.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "More than half of all NYC leases contain a renters insurance clause. Most tenants sign without fully understanding what they are agreeing to, buy the cheapest policy they can find, and discover years later that their coverage was inadequate or the landlord\'s specific requirements were not met. This guide decodes the standard NYC renters insurance lease clause, explains what landlords can and cannot legally require, and tells you exactly what to buy and why.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '$15–$20', label: 'Average monthly cost of renters insurance in NYC for $30,000 personal property + $100,000 liability', source: 'NY DFS 2024' },
+        { value: '$100K', label: 'Minimum liability coverage most NYC landlords and co-op/condo boards require in the lease', source: 'NYC lease standard' },
+        { value: 'Same day', label: 'How quickly most NYC renters insurance policies can be bound — critical if your lease requires proof before key handover', source: 'Insurance industry' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'What the Lease Clause Actually Says — and What It Means',
+    },
+    {
+      type: 'body',
+      body: "A standard NYC renters insurance clause typically requires the tenant to maintain renters/personal liability insurance throughout the tenancy, name the landlord as an 'additional interested party\' or 'additional insured,\' and provide proof of insurance upon request. Here\'s what each term means in practice.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Lease term', 'What it means', 'What you need to do'],
+        ['"Maintain renters insurance"', 'You must have active coverage for the full tenancy — not just at move-in', 'Set up auto-renewal and never let the policy lapse'],
+        ['"Minimum $100,000 liability"', 'Your policy\'s personal liability coverage must be at least $100,000', 'Standard policies include $100K–$300K liability — confirm the limit'],
+        ['"Name landlord as additional interested party"', 'Landlord gets notified if the policy lapses or is cancelled', 'Ask your insurer to add the landlord — provide their legal entity name and address'],
+        ['"Additional insured"', 'Stronger requirement — landlord can make a claim on your policy', 'Less common; confirm exactly what the lease says before purchasing'],
+        ['"Provide proof of insurance"', 'You must show a certificate of insurance (COI) on request', 'Your insurer issues a COI — request one immediately after binding the policy'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'What Can a Landlord Legally Require?',
+    },
+    {
+      type: 'body',
+      body: "Landlords in NYC can contractually require you to maintain renters insurance as a lease condition — this is enforceable. They can specify minimum coverage limits (most commonly $100,000 in liability). They can require to be named as an additional interested party.",
+    },
+    {
+      type: 'body',
+      body: "What they cannot legally require: they cannot force you to buy insurance from a specific provider or through their preferred agent (this would constitute illegal tied selling). They cannot require coverage limits that are unreasonably high — courts have found requirements for $1M+ in liability on a standard rental to be unenforceable. They cannot charge you a separate fee in lieu of insurance without it being an explicit, separately agreed lease addendum.",
+    },
+    {
+      type: 'h2',
+      heading: 'What Coverage Do You Actually Need in NYC?',
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Coverage type', 'Recommended limit for NYC', 'Why'],
+        ['Personal property', '$25,000–$50,000', 'Electronics, furniture, clothing add up fast in a furnished apartment'],
+        ['Personal liability', '$100,000 minimum; $300,000 recommended', 'If you accidentally flood your downstairs neighbour, $100K covers most claims; $300K protects against serious injury claims'],
+        ['Loss of use / ALE', '20–30% of property limit or $10,000+', 'NYC hotel costs are high — you need this if your unit becomes uninhabitable'],
+        ['Medical payments', '$1,000–$5,000', 'Covers minor medical expenses for guests injured in your apartment'],
+        ['Deductible', '$250–$500', 'Lower deductibles mean higher premiums — $500 is a reasonable middle ground'],
+      ],
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Replacement Cost vs. Actual Cash Value — This Matters',
+    },
+    {
+      type: 'body',
+      body: "This is the most important policy detail most tenants do not understand until they file a claim. Renters insurance personal property coverage comes in two versions:",
+    },
+    {
+      type: 'list',
+      items: [
+        "Replacement Cost Value (RCV): pays what it costs to buy a new equivalent item today. Your 3-year-old laptop stolen in a burglary? The policy pays what a similar laptop costs new.",
+        "Actual Cash Value (ACV): pays the depreciated value of the item. Your 3-year-old laptop? The policy pays what it would sell for used — often a fraction of replacement cost.",
+        "RCV policies cost 10–15% more per month but are vastly superior for expensive items like electronics, jewellery, and appliances.",
+        "Always choose Replacement Cost Value coverage, especially in NYC where replacing electronics and furniture at current prices is expensive.",
+        "High-value items like jewellery, cameras, or musical instruments above $1,500–$2,000 typically require a separate 'scheduled personal property\' rider — standard policies have sublimits for these categories.",
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about renters insurance in NYC',
+      items: [
+        {
+          q: 'Can my landlord evict me for not having renters insurance if it\'s in my lease?',
+          a: 'Technically, failing to maintain renters insurance as required by your lease is a lease violation that could be cited in a holdover proceeding. In practice, most landlords use this as leverage rather than as an eviction trigger — they will demand proof of coverage before the situation escalates. If your landlord sends a notice about the insurance requirement, respond with a COI promptly. Get the policy the same day if necessary.',
+        },
+        {
+          q: 'What does "name the landlord as additional insured" actually mean?',
+          a: '"Additional interested party\' means the landlord gets notified of policy changes or cancellations — this is standard and easy to arrange. "Additional insured" is a stronger status that allows the landlord to make claims on your policy — this is less common and more expensive. Read your lease carefully to determine which is required, since they are legally distinct. Most standard NYC residential leases require additional interested party status, not full additional insured.',
+        },
+        {
+          q: 'My roommate has renters insurance. Am I covered under their policy?',
+          a: 'Only if you are specifically named on the policy as an additional insured. A roommate\'s standard renters insurance covers their personal property and their liability — not yours. If you are not named on the policy and you have a claim (your laptop is stolen, you accidentally flood the unit below), you have no coverage. You need your own policy or need to be explicitly added to theirs.',
+        },
+        {
+          q: 'What\'s not covered by standard renters insurance in NYC?',
+          a: 'Common exclusions: flood damage from external sources (rising groundwater, street flooding — requires separate flood insurance), earthquake damage, intentional damage by the policyholder, pest damage (bed bugs, rodents), gradual water damage from a leak you knew about but ignored, and high-value items above sublimits (jewellery, fine art, musical instruments) without a scheduled rider. Read the exclusions section of your specific policy — they vary by insurer.',
+        },
+        {
+          q: 'How quickly can I get renters insurance in NYC?',
+          a: 'Most major renters insurance providers (Lemonade, State Farm, Allstate, Jetty, and others) can bind a policy and issue a Certificate of Insurance within 24 hours, and often within minutes online. If your landlord requires proof before key handover, apply the morning of your lease signing. Lemonade in particular is popular with NYC renters for its fast app-based approval process, though you should compare quotes across multiple providers before deciding.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RESEARCHING +: Avoid broker fee scams
+// Bucket: Researching | Service: Real Estate Agents
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'avoid-broker-fee-scams-fake-listings-nyc',
+  category: 'inspections-leasing',
+  title: 'How to Avoid Broker Fee Scams and Fake Listings in NYC',
+  metaTitle: 'How to Avoid Broker Fee Scams and Fake Listings in NYC | Building Health X',
+  metaDescription: 'Bait-and-switch listings, illegal broker fees, and ghost apartments are rampant in NYC. Here\'s how to verify a broker\'s license, spot fake listings, and know your legal rights on fees.',
+  headline: 'How to Avoid Broker Fee Scams and Fake Listings in NYC',
+  subheadline: 'Bait-and-switch apartments, illegal fees, unlicensed brokers, and ghost listings — how to spot each one before you\'re out $5,000 and stuck in a lease you didn\'t want.',
+  serviceSlug: 'real-estate-agents',
+  serviceName: 'Real Estate Agents',
+  leadBaitCta: 'Tired of StreetEasy games? Get matched with a vetted, tenant-first NYC broker who negotiates for you.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['what-to-check-before-signing-nyc-lease', 'is-my-nyc-apartment-secretly-rent-stabilised', 'just-signed-nyc-lease-5-things-before-moving-in'],
+  relatedServicePages: [
+    { label: 'Real estate agents in Manhattan', href: '/services/real-estate-agents/manhattan' },
+    { label: 'Real estate agents in Brooklyn', href: '/services/real-estate-agents/brooklyn' },
+    { label: 'Real estate agents in Queens', href: '/services/real-estate-agents/queens' },
+  ],
+  furtherReading: [
+    { slug: 'what-to-check-before-signing-nyc-lease', title: 'What to Check Before Signing an NYC Lease' },
+    { slug: 'is-my-nyc-apartment-secretly-rent-stabilised', title: 'Is Your NYC Apartment Secretly Rent-Stabilised?' },
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+  ],
+  govLinks: [
+    { label: 'NY DOS — Real Estate Broker License Lookup', url: 'https://www.dos.ny.gov/licensing/lookup.html', description: 'Verify any NYC real estate broker or agent holds a valid NYS license before paying a fee.' },
+    { label: 'NY Homes and Community Renewal — FARE Act', url: 'https://hcr.ny.gov/', description: 'NYC\'s Fairness in Apartment Rental Expenses Act — landlords must pay broker fees when they hire the broker.' },
+    { label: 'NYC Consumer and Worker Protection — Report a Scam', url: 'https://www.nyc.gov/site/dca/consumers/file-complaint.page', description: 'File a complaint about illegal broker fees or fraudulent rental listings with NYC DCWP.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "New York City has the most competitive and most scam-ridden rental market in the country. Fake listings designed to harvest your information, bait-and-switch apartments that don\'t exist, unlicensed 'brokers\' charging fees they have no right to collect, and illegal landlord-side fees being passed to tenants are all common. The NYC FARE Act, which took effect in 2025, changed who pays broker fees — but enforcement is uneven and many tenants are still being charged illegally. This guide gives you the tools to protect yourself at every step.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: 'FARE Act', label: 'NYC law effective 2025 — when a landlord hires the broker, the landlord pays the fee, not the tenant', source: 'NYC FARE Act 2025' },
+        { value: '15%', label: 'Maximum legal broker fee when a tenant hires their own broker — one month\'s rent or 15% of annual rent, whichever applies', source: 'NYC DOS' },
+        { value: '$0', label: 'What you owe a broker who was hired by your landlord — under the FARE Act, this fee must be paid by the landlord', source: 'NYC FARE Act 2025' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'The NYC FARE Act: The Broker Fee Rule That Changed Everything',
+    },
+    {
+      type: 'body',
+      body: "The Fairness in Apartment Rental Expenses (FARE) Act took effect in NYC in 2025 and fundamentally changed the broker fee landscape. The core rule: if the landlord or management company hires the broker to find a tenant, the landlord pays the broker fee — not the tenant. You only owe a broker fee if you, the tenant, specifically hired and engaged that broker to represent you.",
+    },
+    {
+      type: 'list',
+      items: [
+        "If you find a listing on StreetEasy, Zillow, Apartments.com, or a building\'s own website, and a broker reaches out to show you the apartment — that broker was likely hired by the landlord. You may owe nothing.",
+        "If you called a brokerage and specifically asked them to search for apartments on your behalf and represent you in negotiations — you hired that broker and the fee applies.",
+        "Many landlords and brokers are not complying with the FARE Act and are still trying to charge tenants. Knowing the law is your first defence.",
+        "If a landlord-side broker asks you to pay the fee, get it in writing, then consult NYC DCWP (Department of Consumer and Worker Protection) or a tenant attorney.",
+        "Some landlords are responding to the FARE Act by raising list rents to offset the cost — compare net effective rents across multiple listings rather than focusing solely on the advertised rent.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'How to Spot a Fake or Bait-and-Switch Listing',
+    },
+    {
+      type: 'body',
+      body: "Fake listings and bait-and-switch tactics are epidemic on NYC rental platforms. The tell-tale signs:",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Red flag', 'What it means', 'What to do'],
+        ['Price significantly below comparable apartments', 'Ghost listing to harvest contact info', 'Search the address on HPD Online and Google Street View before contacting anyone'],
+        ['"Sorry, that one just rented — but I have similar ones"', 'Classic bait-and-switch', 'Decline and report the listing to the platform'],
+        ['Photos show a luxury apartment; actual unit looks nothing like it', 'Stock photos or photos from a different unit', 'Demand to see the specific unit before any payment'],
+        ['Requests payment before you see the apartment', 'Scam', 'Never pay anything before a signed lease on a viewed unit'],
+        ['Broker cannot tell you the owner\'s name or building address upfront', 'Ghost listing or unverified property', 'Require full address before any viewing'],
+        ['Unusually fast pressure to sign immediately or "lose it"', 'Manufactured urgency', 'Real apartments wait 24–48 hours for a reasonable decision'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'How to Verify a Broker\'s License in 60 Seconds',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Check the NY DOS license lookup before paying anyone anything',
+      body: 'Every legitimate real estate broker and agent in New York must hold a valid NYS Department of State license. Unlicensed individuals posing as brokers cannot legally collect fees — and you can report them to NYC DCWP.',
+      items: [
+        "Go to dos.ny.gov/licensing/lookup.html and search by the broker\'s name or the brokerage firm\'s name.",
+        "Verify: the license is 'Active\' (not expired or suspended), the license type matches (Real Estate Broker for firms, Real Estate Salesperson for individual agents), and the name matches the person you are dealing with.",
+        "If an individual cannot produce a license number and it does not appear in the DOS lookup, they are operating illegally. Do not pay them anything.",
+        "A brokerage firm must also be licensed separately from the individual agents within it — check both.",
+      ],
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Illegal Fees to Watch For (Beyond Broker Fees)',
+    },
+    {
+      type: 'body',
+      body: "Beyond illegal broker fees, NYC tenants are regularly charged fees that have no legal basis. Know what is and is not legitimate:",
+    },
+    {
+      type: 'list',
+      items: [
+        "'Application fees\': Landlords can charge a reasonable application fee to cover a credit check — typically $20–$50. Anything significantly higher is likely illegal profiteering and should be refused.",
+        "'Move-in fees\': One-time move-in fees charged by management companies in addition to the security deposit are not legal in NYC — security deposits are the only upfront payment landlords are entitled to beyond first month\'s rent.",
+        "'Admin fees\' or 'processing fees\': Invented charges that appear in some newer building leases. These are not permitted under NYC law as separate fees — push back and request their legal basis.",
+        "'Key deposit\': A deposit for keys or fobs is legal only if it is returned in full when you return the keys. If it is non-refundable, it is effectively an additional security deposit, which is illegal beyond one month\'s rent.",
+        "Always get an itemised receipt for every payment made before or at lease signing. If you cannot get a receipt, do not pay.",
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about broker fees and rental scams in NYC',
+      items: [
+        {
+          q: 'Under the FARE Act, do I ever have to pay a broker fee?',
+          a: 'Yes — if you specifically hire and engage a broker to represent you as a tenant\'s agent. If you call a brokerage, ask them to find you apartments, and they spend time and expertise negotiating on your behalf, a fee is appropriate. The FARE Act targets the historical practice of landlords hiring brokers and then charging the fee to applicants who had no choice. When you hire a broker for yourself, you enter the agreement voluntarily and knowingly.',
+        },
+        {
+          q: 'A broker told me the apartment was "no fee" but now wants a fee at signing. What do I do?',
+          a: 'Get the "no fee" representation in writing — a screenshot of the listing or an email from the broker. If a fee is now being demanded after a "no fee" representation, this may be a deceptive trade practice under NYC law. Contact NYC DCWP (nyc.gov/dca) and the NY Department of State. Do not sign the lease until the fee issue is resolved — signing under protest of an illegal fee claim is legally complicated.',
+        },
+        {
+          q: 'How do I know if a rental listing is real before I spend time on it?',
+          a: 'Before contacting anyone: search the address on Google Maps Street View to confirm the building exists and matches the photos. Search the address on HPD Online to verify it is a residential building. Reverse image search the listing photos to see if they appear on other listings for different addresses. Search the address on NYC ACRIS to verify the ownership and that the listed landlord or management company actually controls the property.',
+        },
+        {
+          q: 'Is a no-fee apartment actually free to rent?',
+          a: '"No-fee\' in NYC traditionally meant the tenant does not pay a broker fee. It does not mean the apartment is free. Under the FARE Act, the fee is now owed by the landlord to the broker — many landlords have responded by raising advertised rents to offset this cost. A no-fee apartment at $3,200/month may cost more than a fee apartment at $2,900/month when you consider the total annual cost. Calculate the 12-month total, not just the monthly rate.',
+        },
+        {
+          q: 'I paid an illegal fee. How do I get it back?',
+          a: 'File a complaint with NYC DCWP (Department of Consumer and Worker Protection) at nyc.gov/dca. DCWP can investigate and order the fee returned. You can also file in Small Claims Court for amounts up to $10,000. For larger amounts, consult a tenant attorney. Keep all documentation — listing screenshots, emails, receipts, and any written or digital communications about the fee.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ESCAPING +: Get rid of furniture fast
+// Bucket: Escaping | Service: Junk Removal
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'get-rid-of-furniture-fast-moving-out-nyc',
+  category: 'inspections-leasing',
+  title: 'How to Get Rid of Furniture Fast When Moving Out of NYC',
+  metaTitle: 'How to Get Rid of Furniture Fast When Moving Out of NYC | Building Health X',
+  metaDescription: 'Moving out of NYC and can\'t take everything? Here are the fastest legal ways to dispose of furniture — DSNY bulk pickup, donation centers, Facebook Marketplace, and junk removal — plus fines to avoid.',
+  headline: 'How to Get Rid of Furniture Fast When Moving Out of NYC',
+  subheadline: 'The DSNY rules, the donation options, the fines for getting it wrong, and when junk removal is faster than everything else combined.',
+  serviceSlug: 'junk-removal',
+  serviceName: 'Junk Removal',
+  leadBaitCta: 'Missed trash day? Need it gone today? Get an instant quote for eco-friendly NYC junk removal.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['get-security-deposit-back-nyc', 'how-to-break-lease-nyc-violations', 'between-leases-gap-week-nyc'],
+  relatedServicePages: [
+    { label: 'Junk removal in Manhattan', href: '/services/junk-removal/manhattan' },
+    { label: 'Junk removal in Brooklyn', href: '/services/junk-removal/brooklyn' },
+    { label: 'Junk removal in Queens', href: '/services/junk-removal/queens' },
+    { label: 'Junk removal in the Bronx', href: '/services/junk-removal/bronx' },
+    { label: 'Moving companies in NYC', href: '/services/moving-companies' },
+  ],
+  furtherReading: [
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+    { slug: 'between-leases-gap-week-nyc', title: 'Between Leases? How to Handle the Gap Week in NYC' },
+    { slug: 'how-to-break-lease-nyc-violations', title: 'How to Break Your NYC Lease Due to Landlord Violations' },
+  ],
+  govLinks: [
+    { label: 'DSNY — Bulk Item Disposal Rules', url: 'https://www.nyc.gov/site/dsny/residents/householders/bulk-items.page', description: 'Official NYC rules for placing bulk items including furniture for DSNY collection.' },
+    { label: 'DSNY — Schedule a Bulk Pickup', url: 'https://www.nyc.gov/site/dsny/residents/householders/schedule-a-bulky-item-pickup.page', description: 'Schedule a free DSNY bulk item pickup for items your regular sanitation service won\'t take.' },
+    { label: 'NYC311 — Illegal Dumping Report', url: 'https://portal.311.nyc.gov/', description: 'Report illegal dumping — and understand what puts you at risk of a fine.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Moving out of a New York City apartment is a study in constraints: time, money, space, and the very specific rules of what you can legally put on the kerb and when. Get it right and you can clear a full apartment for under $200. Get it wrong and you face DSNY fines of up to $1,500, a landlord claiming you abandoned property in the apartment, and the embarrassing experience of watching sanitation workers refuse your furniture because you put it out on the wrong day. This guide covers every option, from fastest to cheapest, with the rules you need to know.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '$1,500', label: 'Maximum DSNY fine for illegal dumping of bulk items in NYC — furniture left out on wrong days or without scheduling counts', source: 'NYC DSNY' },
+        { value: '$0', label: 'Cost of DSNY bulk item pickup — free for NYC residents, but must be scheduled and placed out correctly', source: 'NYC DSNY' },
+        { value: '2–5 hrs', label: 'Typical time for a professional NYC junk removal crew to clear a full apartment, same day', source: 'NYC junk removal industry' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Option 1: DSNY Bulk Item Pickup (Free — But Rules Apply)',
+    },
+    {
+      type: 'body',
+      body: "New York City\'s Department of Sanitation offers free bulk item pickup for large items that won\'t fit in your regular trash. This is the cheapest option — but it has specific rules that many people get wrong.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Schedule your pickup first at nyc.gov/dsny or by calling 311. You cannot simply leave furniture on the kerb and expect DSNY to take it without a scheduled appointment in most cases.",
+        "Place items out the night before your scheduled pickup — not multiple days in advance. Items left on the kerb for more than a day before collection are considered illegal dumping.",
+        "Label bed frames, mattresses, and upholstered furniture clearly as 'Bed Bug Free\' if they are free of infestation — DSNY requires this labelling. Infested mattresses must be bagged in heavy plastic before kerb placement.",
+        "What DSNY bulk pickup covers: furniture, appliances (without Freon), mattresses, electronics (on designated e-waste days or at e-waste drop-off sites).",
+        "What DSNY will not take: construction debris, hazardous materials, paint, and anything that should go to a special disposal facility.",
+        "DSNY bulk pickup works well for 1–3 items. For clearing an entire apartment, scheduling multiple pickups across several weeks may be required — which is impractical for a move-out timeline.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Option 2: Sell or Give Away on Facebook Marketplace and Buy Nothing Groups',
+    },
+    {
+      type: 'body',
+      body: "For furniture in good condition, Facebook Marketplace and neighbourhood Buy Nothing groups on Facebook can move items within 24–48 hours — sometimes within hours. The key is pricing aggressively if speed matters more than money.",
+    },
+    {
+      type: 'list',
+      items: [
+        "List items at 20–30% of retail if you need them gone fast — NYC buyers are experienced and know when they\'re getting a deal.",
+        "'Free\' listings move fastest of all. If you have a solid wood bookcase, IKEA dresser, or leather sofa, listing it free with a 'must be picked up today\' condition will have people messaging within minutes.",
+        "Join the Buy Nothing group for your specific neighbourhood — these are hyper-local groups where neighbours take items and carry them home themselves.",
+        "For large items, arrange buyer pickup — do not offer delivery. Provide the building address and unit floor only after confirming pickup time.",
+        "Beware of no-shows — NYC marketplace is notorious for them. Have a backup plan (a second interested buyer or a junk removal booking) for any item you absolutely need gone by a specific date.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Option 3: NYC Donation Centers (Best for Items in Good Condition)',
+    },
+    {
+      type: 'body',
+      body: "Several NYC non-profits accept furniture donations and will sometimes schedule a pickup for large items in good condition — though many require you to bring items to them:",
+    },
+    {
+      type: 'list',
+      items: [
+        "Housing Works (housingworks.org): accepts furniture, books, clothing, and housewares at their locations across Manhattan and Brooklyn. Large furniture pickup available for eligible items — call first.",
+        "Salvation Army: accepts furniture and appliances and offers free pickup scheduling in NYC — call your local branch and confirm availability for your specific items.",
+        "Habitat for Humanity ReStore (NYC chapter): accepts working appliances, tools, and building materials. Call ahead for pickup availability.",
+        "Important: most donation centers will not accept mattresses (regardless of condition), severely damaged furniture, particle board items in poor condition, or anything with significant pet damage. Do not waste time trying to donate items that will be refused.",
+      ],
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Option 4: Professional Junk Removal (Fastest, Most Reliable)',
+    },
+    {
+      type: 'body',
+      body: "When time is the constraint — you have a lease end date, a storage unit waiting, or a new tenancy starting — professional junk removal is the only option that guarantees results. A crew of 2–3 can clear a full apartment in 2–4 hours, same day or next day in most cases.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Get quotes from 2–3 providers — pricing varies significantly in NYC. Ask for a flat rate based on volume (truck portion) rather than hourly, which is harder to predict.",
+        "Confirm they handle building logistics: COI requirements, freight elevator scheduling, staircase access. Professional NYC junk removal companies handle this routinely.",
+        "Ask whether they donate or recycle eligible items — reputable companies divert 40–60% of material from landfill through donation and recycling partnerships.",
+        "Prices for a full 1BR apartment clearance typically run $300–$700 depending on volume, floor, and access. This is often cheaper than the cost of your time spent on Marketplace and DSNY scheduling across multiple weeks.",
+        "Same-day service is available from most major NYC junk removal providers for an additional premium — worth it if you are against a lease deadline.",
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about furniture disposal when moving out of NYC',
+      items: [
+        {
+          q: 'Can I just leave furniture on the kerb without scheduling a DSNY pickup?',
+          a: 'Not for bulk items in most situations. While there is a perception that "leaving it on the kerb" is acceptable in NYC, DSNY rules require scheduling for most large items — and leaving furniture out for multiple days before collection constitutes illegal dumping, which carries fines of $100–$1,500. The exception is that some items placed neatly with a "free" sign will be taken by passersby before DSNY ever sees them — but this is not guaranteed and you bear legal responsibility if the item sits there.',
+        },
+        {
+          q: 'How do I dispose of a mattress legally in NYC?',
+          a: 'Mattresses require special handling. If bed-bug-free, they can be placed for DSNY bulk pickup after scheduling. If there is any possibility of bed bug infestation, the mattress must be fully enclosed in a sealed plastic bag before being placed on the kerb — NYC law requires this labelling and containment. Most NYC junk removal companies accept mattresses and handle the disposal for you, which is typically the easiest approach.',
+        },
+        {
+          q: 'My landlord is threatening to charge me for leaving furniture in the apartment. Can they?',
+          a: 'Yes. Leaving furniture or other personal property in the apartment at the end of your tenancy is abandonment of property under NYC law. The landlord can charge for the cost of removal, and these charges can be deducted from your security deposit. If the removal cost exceeds your deposit, they can sue you for the difference. Clear everything from the apartment before your final move-out walkthrough.',
+        },
+        {
+          q: 'What\'s the fastest way to get rid of a full apartment\'s worth of furniture in NYC?',
+          a: 'A combination approach works best: list high-value items on Facebook Marketplace 2–3 weeks before your move-out to maximize sale time, schedule DSNY bulk pickup for the items you want the city to take (scheduling fills up, so do this early), and book a junk removal company for everything that\'s left. Having a junk removal booking as a backstop means you are never scrambling on the final day regardless of how many Marketplace no-shows you get.',
+        },
+        {
+          q: 'Can I get a receipt for a furniture donation for tax purposes?',
+          a: 'Yes — most NYC non-profit donation centers (Housing Works, Salvation Army, Habitat ReStore) will provide a donation receipt for tax purposes. The deduction is based on the fair market value of the donated items, not the original purchase price. Keep a list of what you donated with your best estimate of fair market value and the receipt from the organization. For high-value items, photograph them before donation to support the valuation.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ESCAPING +: Between leases — the gap week
+// Bucket: Escaping | Services: Storage Facilities + Packing Services
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'between-leases-gap-week-nyc',
+  category: 'inspections-leasing',
+  title: 'Between Leases? How to Handle the Gap Week in NYC',
+  metaTitle: 'Between Leases in NYC? How to Handle the Gap Week | Building Health X',
+  metaDescription: 'Old lease ends the 31st. New one starts the 3rd. Here\'s how to handle the NYC gap week: short-term storage, staying somewhere for 3 nights, and packing services that move fast.',
+  headline: 'Between Leases in NYC? Here\'s How to Survive the Gap Week',
+  subheadline: 'Old lease ends the 31st. New one starts the 3rd. You have stuff, nowhere to put it, and a city that charges you for every hour. Here is the plan.',
+  serviceSlug: 'storage-facilities',
+  serviceName: 'Storage Facilities',
+  leadBaitCta: 'Need to stash your stuff for a week? Find secure short-term NYC storage with flexible start dates.',
+  datePublished: '2024-12-01',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['get-rid-of-furniture-fast-moving-out-nyc', 'get-security-deposit-back-nyc', 'just-signed-nyc-lease-5-things-before-moving-in'],
+  relatedServicePages: [
+    { label: 'Storage facilities in Manhattan', href: '/services/storage-facilities/manhattan' },
+    { label: 'Storage facilities in Brooklyn', href: '/services/storage-facilities/brooklyn' },
+    { label: 'Storage facilities in Queens', href: '/services/storage-facilities/queens' },
+    { label: 'Packing services in NYC', href: '/services/packing-services' },
+    { label: 'Moving companies in NYC', href: '/services/moving-companies' },
+  ],
+  furtherReading: [
+    { slug: 'get-rid-of-furniture-fast-moving-out-nyc', title: 'How to Get Rid of Furniture Fast When Moving Out of NYC' },
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+    { slug: 'just-signed-nyc-lease-5-things-before-moving-in', title: 'Just Signed an NYC Lease? Do These 5 Things Before Moving In' },
+  ],
+  govLinks: [
+    { label: 'NYC Short-Term Rental Rules (Airbnb)', url: 'https://www.nyc.gov/site/specialenforcement/short-term-rentals/short-term-rentals.page', description: 'NYC rules on short-term rentals — what\'s legal for a few nights\' accommodation between leases.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "The gap week is one of NYC\'s most reliable moving nightmares. Your lease ends on the last day of the month. Your new lease starts on the 1st — or the 3rd, or the 5th, because your new landlord needs time to prepare the apartment. You have a full household of belongings, no legal place to store them, possibly nowhere to sleep, and a moving company booked on a date that no longer works perfectly. This guide is the tactical plan for the gap week: where to put your stuff, where to sleep, and how to manage the logistics without spending a fortune.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '5×5', label: 'Smallest storage unit size (25 sq ft) — fits a studio apartment\'s worth of boxes and small furniture', source: 'Storage industry standard' },
+        { value: 'Month-to-month', label: 'Minimum commitment at most NYC self-storage facilities — no long-term lock-in required for a gap week', source: 'NYC self-storage industry' },
+        { value: '48 hrs', label: 'How far in advance most NYC storage facilities can be booked — don\'t wait until the day before your old lease ends', source: 'Building Health X' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'The 4-Part Gap Week Plan',
+    },
+    {
+      type: 'body',
+      body: "The gap week requires solving four separate problems simultaneously: where does your stuff go, where do you sleep, how do things move between locations, and how do you maintain access to essentials during the transition. Handle each piece separately and in advance.",
+    },
+    {
+      type: 'h2',
+      heading: 'Part 1: Storage — Your Stuff\'s Temporary Home',
+    },
+    {
+      type: 'body',
+      body: "NYC self-storage is surprisingly affordable and widely available for short-term gaps. The key is booking before your move-out date, not after.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Storage type', 'Best for', 'Typical NYC cost', 'Lead time needed'],
+        ['Self-storage unit (5×5)', 'Boxes, small items, essentials', '$80–$150/month', '48 hrs minimum; book earlier for prime sizes'],
+        ['Self-storage unit (10×10)', 'Full 1BR apartment', '$200–$350/month', '48–72 hrs for availability'],
+        ['Portable container (PODS type)', 'Keeps everything accessible; unit brought to you', '$300–$500 for 2 weeks', '3–5 days lead time for delivery'],
+        ['Valet storage (Clutter, Neighbor)', 'They pick up, store, and redeliver items', '$50–$150/month per room', '24–48 hrs but item-level tracking'],
+        ['Friend or family space', 'Free — but manage expectations carefully', '$0 + goodwill debt', 'Immediate if confirmed in advance'],
+      ],
+    },
+    {
+      type: 'list',
+      items: [
+        "For a studio or 1BR apartment, a 10×10 storage unit holds almost everything if packed efficiently — use mattress bags, disassemble bed frames, and stack boxes floor to ceiling.",
+        "Book month-to-month even if you only need 2 weeks — most facilities prorate or refund unused time, and having the flexibility avoids panic if your new move-in date shifts.",
+        "Climate-controlled units are worth the extra $20–$40/month for electronics, artwork, vinyl records, and anything sensitive to temperature or humidity changes.",
+        "Book a facility with 24-hour access if you will need to retrieve items during your gap — some facilities have access hours limitations that create logistical problems.",
+      ],
+    },
+    {
+      type: 'leadbait',
+    },
+    {
+      type: 'h2',
+      heading: 'Part 2: Packing — Do This Before, Not During',
+    },
+    {
+      type: 'body',
+      body: "The gap week move is a two-stage operation: from old apartment to storage, then from storage to new apartment. Two moves means double the packing and unpacking unless you plan carefully. A professional packing service the week before your move-out can save 8–12 hours of stress during the most logistically complicated period of your move.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Pack a 'gap bag\' separately from everything else: 3–7 days of clothing, toiletries, laptop, chargers, important documents (passport, lease, insurance), and any medication. This bag stays with you, not in storage.",
+        "Label storage boxes by destination room in your new apartment, not by their current location — makes the unpack dramatically faster.",
+        "Colour-code: use coloured tape (one colour per destination room) so movers and you can sort instantly at the new place.",
+        "Professional packing services are particularly valuable for fragile items, art, and electronics — they pack faster, use better materials, and their packing is generally accepted by moving insurance policies where DIY packing often is not.",
+        "Ask your moving company if they offer packing services — many do, and bundling is typically cheaper than separate contractors.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Part 3: Where to Sleep During the Gap',
+    },
+    {
+      type: 'body',
+      body: "NYC accommodation options for 3–10 nights, from cheapest to most convenient:",
+    },
+    {
+      type: 'list',
+      items: [
+        "Friends or family: the only free option and the most logistically flexible. The catch is that you are a houseguest, not a tenant — set clear expectations about timing and space.",
+        "Hotels: most flexible for access and comfort; expensive in NYC ($150–$350+/night for decent options). Use hotel points if you have them — this is exactly what they are for.",
+        "Extended-stay hotels: slightly cheaper than standard hotels for week-long stays. Look at Courtyard by Marriott, Residence Inn, or Hilton Garden Inn locations in outer borough neighbourhoods.",
+        "Furnished room rentals: sites like Furnished Finder, Sonder, or direct Airbnb (legal for 30+ night stays in NYC) can be cheaper than hotels for gaps longer than 5 nights.",
+        "Sublet from a friend: many NYC tenants have a spare room or know someone travelling. A week\'s informal sublet for $200–$400 is common and perfectly legal for short periods.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Part 4: Managing the Two-Move Logistics',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'Coordinate both moves with one mover where possible',
+      body: 'The most efficient gap week uses a single moving company for both legs: move from old apartment to storage on day 1, then from storage to new apartment on day N. Book both moves with the same company upfront — many offer a discount for back-to-back jobs, and you avoid the coordination overhead of two separate bookings.',
+      items: [
+        "Book move 1 (apartment to storage) and move 2 (storage to new apartment) at the same time — schedule both when you book.",
+        "Confirm the storage facility allows your moving truck — some NYC storage locations have loading dock restrictions or require advance notice for moving trucks.",
+        "For the storage-to-new-apartment move, schedule it for the day your new lease begins or the day after — not before you have legal access to the unit.",
+        "Keep your moving company\'s contact on speed dial during gap week — schedule changes are common and a responsive mover is worth more than a cheap one.",
+        "Tip your movers well on a gap week move — two moves in a short period is a harder job than a single straight move, and good movers remembered for fair treatment tend to prioritise your next-day call if anything goes wrong.",
+      ],
+    },
+    {
+      type: 'tip',
+      body: "Ask your new landlord if you can have early access — even just to store boxes — a few days before your official start date. Many will agree if you have already paid first month\'s rent and the apartment is empty. This can eliminate storage entirely if the gap is short.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about the NYC lease gap week',
+      items: [
+        {
+          q: 'My old landlord says I need to be fully out by midnight on my lease end date. Is that enforceable?',
+          a: 'Technically yes — your legal right to possession ends at the end of your lease term. However, in practice, most NYC landlords are reasonable about a same-day or next-morning exit if you communicate in advance. If you need an extra day, ask in writing early — many will agree rather than deal with the paperwork of a holdover proceeding for one extra day. Never assume you can stay past your lease end date without explicit written permission.',
+        },
+        {
+          q: 'Can I ask my new landlord to start my lease a few days earlier to avoid the gap?',
+          a: 'Yes, and it is worth asking. Many landlords will agree to move the start date by 2–5 days, especially if the apartment is already vacant. Frame it as a convenience for both parties — you avoid a gap and they have a paying tenant a few days earlier. If they agree, make sure the new start date is reflected in the signed lease, not just a verbal agreement.',
+        },
+        {
+          q: 'How much should I budget for a gap week in NYC?',
+          a: 'A typical gap week budget for a 1BR apartment: storage unit $200–$350 (one month prorated), professional packing service $400–$800, two-leg moving company $600–$1,200, and accommodation $300–$1,500 depending on whether you stay with friends or in a hotel. Total range: $1,500–$4,000. Compare this against the cost of negotiating overlapping leases (paying two rents for a month, typically $3,000–$6,000) — the gap week approach is almost always cheaper.',
+        },
+        {
+          q: 'What if my new apartment isn\'t ready on the date my new landlord promised?',
+          a: 'This is unfortunately common — prior tenants delay their move-out, cleaning takes longer, or repairs are needed. Have a contingency plan: know in advance that your storage booking is flexible and your accommodation can be extended. If your new landlord\'s delay is their breach of contract (they gave you a specific move-in date in the lease), they may owe you a rent abatement for the delayed days or reimbursement of your storage and accommodation costs. Document the delay in writing.',
+        },
+        {
+          q: 'Is there a way to avoid the gap week entirely?',
+          a: 'Three approaches: (1) negotiate your new lease start date to match your old lease end date exactly — this requires coordination but is the cleanest solution; (2) negotiate a brief overlap where you pay rent on both apartments for a few days — expensive but stress-free; (3) ask your old landlord for a written licence to stay a few days after your lease ends, often at a prorated daily rate. The overlap approach is the most reliable if cost is not the primary constraint.',
+        },
+      ],
+    },
+  ],
+})
