@@ -1,162 +1,126 @@
-// Maps HPD/DOB violation categories to the most relevant blog posts.
-// Category strings match what the API's categorize() function returns:
-// 'Heat/Hot Water' | 'Pests' | 'Lead Paint' | 'Mold' | 'Fire Safety' |
-// 'Electrical' | 'Plumbing' | 'Security' | 'Elevator' | 'Gas' |
-// 'Structural' | 'Sanitation' | 'Other'
+// One featured guide article per violation category.
+// Category strings match the API's categorize() output.
 
-export type ViolationBlogLink = {
+export type ViolationGuide = {
   slug: string
   title: string
+  excerpt: string
+  image: string
 }
 
-export type ViolationGuideCategory = {
-  icon: string
-  links: ViolationBlogLink[]
-}
-
-export const VIOLATION_BLOG_MAP: Record<string, ViolationGuideCategory> = {
+export const VIOLATION_GUIDE_MAP: Record<string, ViolationGuide> = {
   'Pests': {
-    icon: '🐛',
-    links: [
-      { slug: 'what-does-a-bed-bug-violation-mean-on-nyc-building-records', title: 'What does a bed bug violation mean on NYC building records?' },
-      { slug: 'is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc', title: 'Is my landlord required to pay for bed bug treatment?' },
-      { slug: 'how-to-check-for-mouse-and-rat-complaints-in-nyc-buildings', title: 'How to check for mouse & rat complaints in NYC buildings' },
-      { slug: 'what-do-dohmh-pest-inspection-results-mean', title: 'What do DOHMH pest inspection results mean?' },
-    ],
+    slug: 'what-does-a-bed-bug-violation-mean-on-nyc-building-records',
+    title: 'What does a bed bug violation mean on NYC building records?',
+    excerpt: 'HPD enforcement, Local Law 69 rules, inspection triggers, and what it means for tenants and buyers.',
+    image: 'https://files.autoblogging.ai/images/what-does-a-bed-bug-violation-mean-on-nyc-building-records(ss2h)_4.jpeg',
   },
   'Heat/Hot Water': {
-    icon: '🔥',
-    links: [
-      { slug: 'how-to-check-heat-complaints-before-renting-in-nyc', title: 'How to check heat complaints before renting in NYC' },
-      { slug: 'what-temperature-must-nyc-landlords-maintain', title: 'What temperature must NYC landlords maintain?' },
-      { slug: 'how-long-can-an-nyc-apartment-go-without-heat-legally', title: 'How long can an NYC apartment go without heat legally?' },
-      { slug: 'how-to-file-a-311-heat-complaint-in-nyc', title: 'How to file a 311 heat complaint in NYC' },
-    ],
+    slug: 'how-to-check-heat-complaints-before-renting-in-nyc',
+    title: 'How to check heat complaints before renting in NYC',
+    excerpt: 'Use 311, HPD, and Open Data to spot buildings with chronic heating failures before you sign a lease.',
+    image: 'https://files.autoblogging.ai/images/how-to-check-heat-complaints-before-renting-in-nyc(j5e2)_4.jpeg',
   },
   'Lead Paint': {
-    icon: '🎨',
-    links: [
-      { slug: 'should-i-avoid-buildings-with-lead-paint-violations', title: 'Should I avoid buildings with lead paint violations?' },
-      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What are Class A, B and C violations in NYC?' },
-    ],
+    slug: 'should-i-avoid-buildings-with-lead-paint-violations',
+    title: 'Should I avoid buildings with lead paint violations?',
+    excerpt: 'Health risks, violation details, and what landlords are legally required to do about lead paint in NYC.',
+    image: 'https://files.autoblogging.ai/images/should-i-avoid-buildings-with-lead-paint-violations(lmcy)_4.jpeg',
   },
   'Mold': {
-    icon: '💧',
-    links: [
-      { slug: 'what-do-i-do-if-my-nyc-apartment-has-mold', title: 'What do I do if my NYC apartment has mold?' },
-      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What are immediately hazardous violations in NYC?' },
-    ],
+    slug: 'what-do-i-do-if-my-nyc-apartment-has-mold',
+    title: 'What do I do if my NYC apartment has mold?',
+    excerpt: 'Your rights, the landlord\'s obligations, and step-by-step guidance on getting mold properly remediated.',
+    image: 'https://files.autoblogging.ai/images/what-does-an-open-hpd-violation-mean(b3xt)_4.jpeg',
   },
   'Fire Safety': {
-    icon: '🚒',
-    links: [
-      { slug: 'how-to-check-fire-safety-violations-before-renting', title: 'How to check fire safety violations before renting' },
-      { slug: 'how-to-check-if-smoke-detectors-are-code-compliant', title: 'How to check if smoke detectors are code compliant' },
-      { slug: 'what-are-sprinkler-system-violations', title: 'What are sprinkler system violations?' },
-      { slug: 'how-to-find-buildings-with-working-fire-escapes', title: 'How to find buildings with working fire escapes' },
-    ],
+    slug: 'how-to-check-fire-safety-violations-before-renting',
+    title: 'How to check fire safety violations before renting',
+    excerpt: 'How to probe government databases and spot hazards like faulty detectors, blocked escapes, and sprinkler defects.',
+    image: 'https://files.autoblogging.ai/images/how-to-check-fire-safety-violations-before-renting(r4x1)_4.jpeg',
   },
   'Electrical': {
-    icon: '⚡',
-    links: [
-      { slug: 'how-to-look-up-gas-and-electrical-safety-violations', title: 'How to look up gas & electrical safety violations' },
-      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What are immediately hazardous violations in NYC?' },
-    ],
+    slug: 'how-to-look-up-gas-and-electrical-safety-violations',
+    title: 'How to look up gas and electrical safety violations',
+    excerpt: 'A practical guide to finding electrical and gas violations using NYC Open Data and DOB records.',
+    image: 'https://files.autoblogging.ai/images/how-to-look-up-gas-and-electrical-safety-violations(qcg3)_4.jpeg',
   },
   'Gas': {
-    icon: '🔆',
-    links: [
-      { slug: 'how-to-look-up-gas-and-electrical-safety-violations', title: 'How to look up gas & electrical safety violations' },
-      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What are immediately hazardous violations in NYC?' },
-    ],
+    slug: 'how-to-look-up-gas-and-electrical-safety-violations',
+    title: 'How to look up gas and electrical safety violations',
+    excerpt: 'A practical guide to finding electrical and gas violations using NYC Open Data and DOB records.',
+    image: 'https://files.autoblogging.ai/images/how-to-look-up-gas-and-electrical-safety-violations(qcg3)_4.jpeg',
   },
   'Elevator': {
-    icon: '🛗',
-    links: [
-      { slug: 'how-to-look-up-elevator-violations-in-nyc', title: 'How to look up elevator violations in NYC' },
-      { slug: 'how-many-elevators-should-a-nyc-high-rise-have', title: 'How many elevators should a NYC high-rise have?' },
-      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What are immediately hazardous violations in NYC?' },
-    ],
+    slug: 'how-to-look-up-elevator-violations-in-nyc',
+    title: 'How to look up elevator violations in NYC',
+    excerpt: 'Search DOB BIS, PropertyShark, and NYC Open Data to find elevator inspection failures by address.',
+    image: 'https://files.autoblogging.ai/images/how-to-look-up-elevator-violations-in-nyc(25x5)_4.jpeg',
   },
   'Plumbing': {
-    icon: '🔧',
-    links: [
-      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What are Class A, B and C violations in NYC?' },
-      { slug: 'how-long-do-landlords-have-to-fix-hpd-violations', title: 'How long do landlords have to fix HPD violations?' },
-      { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to check if HPD violations were actually fixed' },
-      { slug: 'can-i-rent-an-apartment-with-active-hpd-violations', title: 'Can I rent an apartment with active HPD violations?' },
-    ],
+    slug: 'what-are-class-a-b-and-c-violations-in-nyc',
+    title: 'What are Class A, B and C violations in NYC?',
+    excerpt: 'Penalties up to $2,500, real examples from HPD records, and how each class affects tenants and landlords.',
+    image: 'https://files.autoblogging.ai/images/what-are-class-a-b-and-c-violations-in-nyc(wyqn)_4.jpeg',
   },
   'Security': {
-    icon: '🔒',
-    links: [
-      { slug: 'what-are-window-guard-laws-in-nyc', title: 'What are window guard laws in NYC?' },
-      { slug: 'does-my-nyc-building-need-to-have-a-doorman', title: 'Does my NYC building need to have a doorman?' },
-      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What are Class A, B and C violations in NYC?' },
-      { slug: 'how-long-do-landlords-have-to-fix-hpd-violations', title: 'How long do landlords have to fix HPD violations?' },
-    ],
+    slug: 'what-are-window-guard-laws-in-nyc',
+    title: 'What are window guard laws in NYC?',
+    excerpt: 'NYC landlords must install window guards in units with children under 11. Here\'s what the law requires.',
+    image: 'https://files.autoblogging.ai/images/what-are-window-guard-laws-in-nyc(36q2)_1.jpeg',
   },
   'Structural': {
-    icon: '🏚️',
-    links: [
-      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What are immediately hazardous violations in NYC?' },
-      { slug: 'should-i-worry-about-dob-emergency-declarations', title: 'Should I worry about DOB emergency declarations?' },
-      { slug: 'what-does-it-mean-if-my-building-has-open-dob-violations', title: 'What does it mean if my building has open DOB violations?' },
-      { slug: 'what-are-ecb-violations-and-should-i-care', title: 'What are ECB violations and should I care?' },
-    ],
+    slug: 'should-i-worry-about-dob-emergency-declarations',
+    title: 'Should I worry about DOB emergency declarations?',
+    excerpt: 'What triggers a DOB emergency, what stop-work orders mean, and how to assess risk before renting.',
+    image: 'https://files.autoblogging.ai/images/should-i-worry-about-dob-emergency-declarations(qyub)_4.jpeg',
   },
   'Sanitation': {
-    icon: '🗑️',
-    links: [
-      { slug: 'how-many-pest-violations-are-too-many-in-an-nyc-building', title: 'How many pest violations are too many in an NYC building?' },
-      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What are Class A, B and C violations in NYC?' },
-    ],
+    slug: 'how-many-pest-violations-are-too-many-in-an-nyc-building',
+    title: 'How many pest violations are too many in an NYC building?',
+    excerpt: 'HPD Class A, B, and C pest rules explained — and at what point a building\'s record should be a dealbreaker.',
+    image: 'https://files.autoblogging.ai/images/how-many-pest-violations-are-too-many-in-an-nyc-building(9k2m)_4.jpeg',
   },
   'Other': {
-    icon: '📋',
-    links: [
-      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What are Class A, B and C violations in NYC?' },
-      { slug: 'what-does-an-open-hpd-violation-mean', title: 'What does an open HPD violation mean?' },
-      { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to check if HPD violations were actually fixed' },
-      { slug: 'can-i-rent-an-apartment-with-active-hpd-violations', title: 'Can I rent an apartment with active HPD violations?' },
-    ],
+    slug: 'what-does-an-open-hpd-violation-mean',
+    title: 'What does an open HPD violation mean?',
+    excerpt: 'What open, certified, and dismissed statuses mean on HPD records — and how long violations stay on file.',
+    image: 'https://files.autoblogging.ai/images/what-does-an-open-hpd-violation-mean(b3xt)_4.jpeg',
   },
 }
 
 /**
- * Return up to `max` blog links for a violation category.
+ * Returns the single featured guide for a violation category.
  * Falls back to 'Other' if not found.
  */
-export function getBlogLinksForCategory(
-  category: string,
-  max = 2,
-): ViolationBlogLink[] {
-  const entry = VIOLATION_BLOG_MAP[category] ?? VIOLATION_BLOG_MAP['Other']
-  return entry.links.slice(0, max)
+export function getGuideForCategory(category: string): ViolationGuide {
+  return VIOLATION_GUIDE_MAP[category] ?? VIOLATION_GUIDE_MAP['Other']
 }
 
 /**
- * Returns full guide entry (icon + all links) for a category.
- */
-export function getGuideForCategory(category: string): ViolationGuideCategory {
-  return VIOLATION_BLOG_MAP[category] ?? VIOLATION_BLOG_MAP['Other']
-}
-
-/**
- * Given a list of violation objects, returns unique categories found,
- * each with their icon and full link list — ready to render as a guide panel.
+ * Given a list of violations, returns one featured guide per unique category.
+ * Deduplicates so the same guide never appears twice.
  */
 export function buildGuidePanel(
   violations: { category?: string }[],
-): { category: string; icon: string; links: ViolationBlogLink[] }[] {
-  const seen = new Set<string>()
-  const result: { category: string; icon: string; links: ViolationBlogLink[] }[] = []
+): { category: string; guide: ViolationGuide }[] {
+  const seenCats = new Set<string>()
+  const seenSlugs = new Set<string>()
+  const result: { category: string; guide: ViolationGuide }[] = []
   for (const v of violations) {
     const cat = v.category || 'Other'
-    if (seen.has(cat)) continue
-    seen.add(cat)
-    const entry = VIOLATION_BLOG_MAP[cat] ?? VIOLATION_BLOG_MAP['Other']
-    result.push({ category: cat, icon: entry.icon, links: entry.links })
+    if (seenCats.has(cat)) continue
+    seenCats.add(cat)
+    const guide = VIOLATION_GUIDE_MAP[cat] ?? VIOLATION_GUIDE_MAP['Other']
+    if (seenSlugs.has(guide.slug)) continue
+    seenSlugs.add(guide.slug)
+    result.push({ category: cat, guide })
   }
   return result
+}
+
+// Legacy compat — some callers still use this signature
+export function getBlogLinksForCategory(category: string, max = 2) {
+  const guide = VIOLATION_GUIDE_MAP[category] ?? VIOLATION_GUIDE_MAP['Other']
+  return [{ slug: guide.slug, title: guide.title }].slice(0, max)
 }

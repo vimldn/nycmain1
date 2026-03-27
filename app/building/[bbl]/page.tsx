@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, AlertTriangle, CheckCircle, XCircle, Search, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
-import { getBlogLinksForCategory, buildGuidePanel } from '@/lib/violation-blog-map'
+import { buildGuidePanel } from '@/lib/violation-blog-map'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
@@ -494,7 +494,7 @@ export default function BuildingPage() {
                 <span className="ml-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-400">{data.violations.hpd.classC}C</span>
               )}
               {t.id === 'complaints' && (data?.complaints?.hpd?.heatHotWater ?? 0) > 5 && (
-                <span className="ml-0.5 text-orange-400" style={{ fontSize: 11 }}>🔥</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5 text-orange-400"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
               )}
             </button>
           ))}
@@ -639,37 +639,66 @@ export default function BuildingPage() {
               </div>
             </div>
 
-            {/* ── Guide Panel ── */}
+            {/* ── Guide Panel — one article card per violation category ── */}
             {data.violations.recent?.length > 0 && (() => {
               const guides = buildGuidePanel(data.violations.recent)
               if (!guides.length) return null
+
+              // SVG icons per category — no emojis
+              const catIcon: Record<string, React.ReactNode> = {
+                'Security':     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+                'Plumbing':     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>,
+                'Lead Paint':   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
+                'Structural':   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+                'Pests':        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg>,
+                'Heat/Hot Water':<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>,
+                'Mold':         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>,
+                'Fire Safety':  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>,
+                'Electrical':   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+                'Gas':          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>,
+                'Elevator':     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 9l3-3 3 3"/><path d="M9 15l3 3 3-3"/></svg>,
+                'Sanitation':   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>,
+                'Other':        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
+              }
+              const defaultIcon = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+
               return (
                 <div className="card p-6">
-                  <div className="flex items-center gap-2 mb-5">
-                    <span className="text-base">📚</span>
-                    <h3 className="font-bold text-base">Guides for this building's violations</h3>
-                  </div>
+                  <h3 className="font-bold text-base mb-5">Guides for this building</h3>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {guides.map(g => (
-                      <div key={g.category} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span style={{ fontSize: 16 }}>{g.icon}</span>
-                          <span className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide">{g.category}</span>
+                    {guides.map(({ category, guide }) => (
+                      <Link
+                        key={category}
+                        href={`/blog/${guide.slug}`}
+                        className="group flex flex-col bg-[#111827] rounded-xl border border-[#1e293b] hover:border-[#334155] overflow-hidden transition-colors"
+                      >
+                        {/* Image */}
+                        <div className="relative w-full h-36 bg-[#0d1321] flex-shrink-0 overflow-hidden">
+                          <img
+                            src={guide.image}
+                            alt={guide.title}
+                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                            loading="lazy"
+                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                          />
+                          {/* Category pill over image */}
+                          <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 px-2 py-1 rounded-md bg-[#0d1321]/80 text-[#94a3b8] text-[10px] font-semibold uppercase tracking-wider backdrop-blur-sm">
+                            <span className="text-[#64748b]">{catIcon[category] ?? defaultIcon}</span>
+                            {category}
+                          </div>
                         </div>
-                        <ul className="space-y-2">
-                          {g.links.map(link => (
-                            <li key={link.slug}>
-                              <Link
-                                href={`/blog/${link.slug}`}
-                                className="flex items-start gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors group"
-                              >
-                                <span className="mt-0.5 flex-shrink-0 w-1 h-1 rounded-full bg-blue-500/50 group-hover:bg-blue-400 transition-colors" style={{ marginTop: 7 }} />
-                                <span className="leading-snug">{link.title}</span>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                        {/* Text */}
+                        <div className="p-4 flex flex-col flex-1">
+                          <p className="text-sm font-semibold text-[#e2e8f0] leading-snug mb-2 group-hover:text-white transition-colors">
+                            {guide.title}
+                          </p>
+                          <p className="text-xs text-[#64748b] leading-relaxed flex-1">{guide.excerpt}</p>
+                          <div className="mt-3 flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 font-medium transition-colors">
+                            Read guide
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                          </div>
+                        </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -679,38 +708,9 @@ export default function BuildingPage() {
             <div className="card p-6" id="section-building-violations">
               <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
 
-              {/* Guide strip — one link per unique violation category found in this building */}
-              {data.violations.recent?.length > 0 && (() => {
-                const seen = new Set<string>()
-                const guides: { slug: string; title: string; category: string }[] = []
-                data.violations.recent.forEach((v: any) => {
-                  if (v.category && !seen.has(v.category)) {
-                    seen.add(v.category)
-                    const links = getBlogLinksForCategory(v.category, 1)
-                    if (links.length > 0) guides.push({ ...links[0], category: v.category })
-                  }
-                })
-                return guides.length > 0 ? (
-                  <div className="mb-4 p-4 rounded-xl border border-blue-500/20" style={{ background: 'rgba(59,130,246,0.06)' }}>
-                    <div className="text-xs font-semibold text-blue-400 mb-2.5">Relevant guides for this building</div>
-                    <div className="flex flex-wrap gap-2">
-                      {guides.map(g => (
-                        <Link
-                          key={g.slug}
-                          href={`/blog/${g.slug}`}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#111827] border border-blue-500/20 rounded-lg text-xs text-blue-300 hover:text-blue-200 hover:border-blue-400/40 transition-colors"
-                        >
-                          <span className="text-[#475569]">{g.category}:</span>&nbsp;{g.title}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : null
-              })()}
 
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
-                  const blogLinks = getBlogLinksForCategory(v.category, 1)
                   return (
                     <div key={v.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
                       <div className="flex items-start justify-between gap-4">
@@ -731,16 +731,6 @@ export default function BuildingPage() {
                           <p className="text-xs text-[#4a5568] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
                         </div>
                       </div>
-                      {blogLinks.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-[#1e293b] flex flex-wrap gap-2 items-center">
-                          <span className="text-[10px] text-[#475569]">Guide:</span>
-                          {blogLinks.map(link => (
-                            <Link key={link.slug} href={`/blog/${link.slug}`} className="text-[11px] text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors">
-                              {link.title}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   )
                 }) : (
@@ -1033,13 +1023,18 @@ export default function BuildingPage() {
               {data.neighborhoodScore > 0 && <div className="mb-5"><ScoreBar score={data.neighborhoodScore} height={6} /></div>}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { emoji: '🚔', label: 'Crime level', val: data.crime?.level || 'N/A', color: sc(data.crime?.score ?? 50) },
-                  { emoji: '🔫', label: 'Violent crime', val: data.shootings?.level || 'N/A', color: sc(data.shootings?.score ?? 50) },
-                  { emoji: '🚶', label: 'Pedestrian safety', val: data.trafficSafety?.level || 'N/A', color: sc(data.trafficSafety?.score ?? 50) },
-                  { emoji: '💧', label: 'Flood risk', val: data.flood?.floodRisk || 'LOW', color: data.flood?.floodRisk === 'LOW' ? '#10b981' : data.flood?.floodRisk === 'MODERATE' ? '#f59e0b' : '#ef4444' },
+                  { emoji: 'crime', label: 'Crime level', val: data.crime?.level || 'N/A', color: sc(data.crime?.score ?? 50) },
+                  { emoji: 'violent', label: 'Violent crime', val: data.shootings?.level || 'N/A', color: sc(data.shootings?.score ?? 50) },
+                  { emoji: 'pedestrian', label: 'Pedestrian safety', val: data.trafficSafety?.level || 'N/A', color: sc(data.trafficSafety?.score ?? 50) },
+                  { emoji: 'flood', label: 'Flood risk', val: data.flood?.floodRisk || 'LOW', color: data.flood?.floodRisk === 'LOW' ? '#10b981' : data.flood?.floodRisk === 'MODERATE' ? '#f59e0b' : '#ef4444' },
                 ].map(({ emoji, label, val, color }) => (
                   <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
-                    <div className="text-xl mb-1">{emoji}</div>
+                    <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[#1e293b] mb-2 mx-auto">
+                      {emoji === 'crime' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>}
+                      {emoji === 'violent' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>}
+                      {emoji === 'pedestrian' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>}
+                      {emoji === 'flood' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>}
+                    </div>
                     <div className="text-base font-black" style={{ color }}>{val}</div>
                     <div className="text-xs text-[#475569] mt-1">{label}</div>
                   </div>
@@ -1050,7 +1045,7 @@ export default function BuildingPage() {
             {/* HUD Fair Market Rent */}
             {data.rentFairness?.hudFMR && (
               <div className="card p-6 border border-blue-500/20">
-                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span>💰</span> Rent Fairness Meter (HUD FY2025)</h3>
+                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Rent Fairness Meter (HUD FY2025)</h3>
                 <p className="text-xs text-[#64748b] mb-4">HUD Fair Market Rent benchmarks — 40th percentile of NYC area rents</p>
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                   {[['Studio', data.rentFairness.hudFMR.studio], ['1 BR', data.rentFairness.hudFMR.oneBr], ['2 BR', data.rentFairness.hudFMR.twoBr], ['3 BR', data.rentFairness.hudFMR.threeBr], ['4 BR', data.rentFairness.hudFMR.fourBr]].map(([label, val]: any) => (
@@ -1066,7 +1061,7 @@ export default function BuildingPage() {
 
             {/* Shootings */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🔫</span> Shooting incidents (500m, 3 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Shooting incidents (500m, 3 years)</h3>
               <div className="grid sm:grid-cols-4 gap-3 mb-4">
                 <InlineScore value={data.shootings?.score || 100} label="Safety BHX Score" />
                 <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
@@ -1082,12 +1077,12 @@ export default function BuildingPage() {
                   <div className="text-xs text-[#475569] mt-1">Risk level</div>
                 </div>
               </div>
-              {data.shootings?.total === 0 && <p className="text-sm text-green-400">✓ No shooting incidents nearby in the last 3 years</p>}
+              {data.shootings?.total === 0 && <p className="text-sm text-green-400">No shooting incidents nearby in the last 3 years</p>}
             </div>
 
             {/* Pedestrian safety */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🚶</span> Pedestrian & traffic safety (300m, 2 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span>Pedestrian & traffic safety (300m, 2 years)</h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-3">
                 <InlineScore value={data.trafficSafety?.score || 100} label="Safety BHX Score" />
                 {[
@@ -1107,7 +1102,7 @@ export default function BuildingPage() {
 
             {/* Crime */}
             <div className="card p-6" id="section-crime">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🚔</span> All crime (500m radius, last year)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></span>All crime (500m radius, last year)</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 <InlineScore value={data.crime?.score || 0} label="Safety BHX Score" />
                 <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
@@ -1134,7 +1129,7 @@ export default function BuildingPage() {
             {/* Noise */}
             {data.noise && (
               <div className="card p-6" id="section-noise">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🔊</span> Noise complaints (3 years)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>Noise complaints (3 years)</h3>
                 <div className="grid sm:grid-cols-2 gap-3 mb-4">
                   <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
                     <div className="text-2xl font-black" style={{ color: data.noise.level === 'LOW' ? '#10b981' : data.noise.level === 'MODERATE' ? '#f59e0b' : '#ef4444' }}>{data.noise.total || 0}</div>
@@ -1160,14 +1155,14 @@ export default function BuildingPage() {
 
             {/* Transit */}
             <div className="card p-6" id="section-transit">
-              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span>🚇</span> Transit & accessibility</h3>
+              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg></span>Transit & accessibility</h3>
               <p className="text-sm text-[#94a3b8]">Transit scoring is coming soon. For now, use the Building Health X report to sanity-check the building itself (heat/hot water, pests, noise, safety hazards) and treat commute details as a separate decision layer.</p>
             </div>
 
             {/* Pest control */}
             {data.pests && (
               <div className="card p-6" id="section-pest-control">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🐛</span> Pest control BHX Score</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg></span>Pest control BHX Score</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-4">
                   <InlineScore value={data.pests.score} label="Pest BHX Score" />
                   {[
@@ -1190,7 +1185,7 @@ export default function BuildingPage() {
             {/* Restaurants */}
             {data.restaurants && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🍽️</span> Nearby restaurant inspections (100m)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>Nearby restaurant inspections (100m)</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-3">
                   {[
                     { label: 'Restaurants', val: data.restaurants.nearbyCount, cls: 'text-white' },
@@ -1211,7 +1206,7 @@ export default function BuildingPage() {
             {/* Cooling towers */}
             {data.coolingTowers && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🏭</span> Cooling towers (Legionella risk)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-8 6 8v10"/><path d="M10 20v-6h4v6"/></svg></span>Cooling towers (Legionella risk)</h3>
                 <div className={`p-4 rounded-xl ${data.coolingTowers.hasTower ? 'bg-yellow-500/10 border border-yellow-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Cooling tower present</span>
@@ -1226,7 +1221,7 @@ export default function BuildingPage() {
             {/* Tax exemptions */}
             {data.taxExemptions && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🏛️</span> Tax exemptions & rent stabilization</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>Tax exemptions & rent stabilization</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   {[
                     { label: '421-a Exemption', val: data.taxExemptions.has421a ? 'YES' : 'NO', active: data.taxExemptions.has421a },
@@ -1242,14 +1237,14 @@ export default function BuildingPage() {
                   ))}
                 </div>
                 {data.taxExemptions.note && <p className="text-sm text-blue-400 mb-2">{data.taxExemptions.note}</p>}
-                {data.taxExemptions.exemptionExpiration && <p className="text-sm text-yellow-400">⚠️ Exemption expires: {data.taxExemptions.exemptionExpiration} — rent may increase after</p>}
+                {data.taxExemptions.exemptionExpiration && <p className="text-sm text-yellow-400">Exemption expires: {data.taxExemptions.exemptionExpiration} — rent may increase after</p>}
               </div>
             )}
 
             {/* Financial health */}
             {data.financialHealth && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>💰</span> Building financial health</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Building financial health</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   <InlineScore value={data.financialHealth.score} label="Financial BHX Score" />
                   <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
@@ -1267,7 +1262,7 @@ export default function BuildingPage() {
 
             {/* Flood */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>💧</span> Flood & hurricane risk</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Flood & hurricane risk</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className={`p-4 rounded-xl ${data.flood?.inFloodZone ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
@@ -1288,7 +1283,7 @@ export default function BuildingPage() {
 
             {/* Parks */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span>🌳</span> Parks & green space</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14l-5-5-5 5"/><path d="M17 8l-5-5-5 5"/><path d="M12 19v-8"/></svg></span>Parks & green space</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 {[
                   { label: 'Parks nearby', val: data.parks?.count || 0, cls: 'text-green-400' },
