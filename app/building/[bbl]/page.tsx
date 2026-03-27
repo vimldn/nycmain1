@@ -639,6 +639,41 @@ export default function BuildingPage() {
               </div>
             </div>
 
+            <div className="card p-6" id="section-building-violations">
+              <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
+
+
+              <div className="space-y-3 max-h-[600px] overflow-y-auto">
+                {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
+                  return (
+                    <div key={v.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-start gap-3 flex-1 min-w-0">
+                          <span className={`px-2 py-1 rounded text-xs font-bold flex-shrink-0 ${v.class === 'C' ? 'violation-c' : v.class === 'B' ? 'violation-b' : v.source === 'DOB' ? 'badge-orange' : 'violation-a'}`}>
+                            {v.source}{v.class ? ` ${v.class}` : ''}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="text-sm">{v.description}</p>
+                            <div className="flex gap-3 mt-1 text-xs text-[#64748b]">
+                              <span>{v.category}</span>
+                              {v.unit && <span>Unit: {v.unit}</span>}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <span className={`text-xs font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#64748b]'}`}>{v.status}</span>
+                          <p className="text-xs text-[#4a5568] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }) : (
+                  <div className="text-center py-10 text-[#64748b]">
+                    <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-2" />No violations
+                  </div>
+                )}
+              </div>
+
             {/* ── Guide Panel — one article card per violation category ── */}
             {data.violations.recent?.length > 0 && (() => {
               const guides = buildGuidePanel(data.violations.recent)
@@ -705,40 +740,6 @@ export default function BuildingPage() {
               )
             })()}
 
-            <div className="card p-6" id="section-building-violations">
-              <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
-
-
-              <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
-                  return (
-                    <div key={v.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex items-start gap-3 flex-1 min-w-0">
-                          <span className={`px-2 py-1 rounded text-xs font-bold flex-shrink-0 ${v.class === 'C' ? 'violation-c' : v.class === 'B' ? 'violation-b' : v.source === 'DOB' ? 'badge-orange' : 'violation-a'}`}>
-                            {v.source}{v.class ? ` ${v.class}` : ''}
-                          </span>
-                          <div className="min-w-0">
-                            <p className="text-sm">{v.description}</p>
-                            <div className="flex gap-3 mt-1 text-xs text-[#64748b]">
-                              <span>{v.category}</span>
-                              {v.unit && <span>Unit: {v.unit}</span>}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right flex-shrink-0">
-                          <span className={`text-xs font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#64748b]'}`}>{v.status}</span>
-                          <p className="text-xs text-[#4a5568] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                }) : (
-                  <div className="text-center py-10 text-[#64748b]">
-                    <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-2" />No violations
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         )}
