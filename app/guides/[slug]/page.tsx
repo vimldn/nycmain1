@@ -121,7 +121,7 @@ function renderSection(
   switch (section.type) {
     case 'intro':
       return (
-        <p key={index} className="text-base text-[var(--text-secondary)] leading-relaxed mb-8">
+        <p key={index} className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">
           {section.body}
         </p>
       )
@@ -135,7 +135,7 @@ function renderSection(
 
     case 'body':
       return (
-        <p key={index} className="text-[var(--text-secondary)] leading-relaxed mb-5">
+        <p key={index} className="text-base text-[var(--text-secondary)] leading-relaxed mb-5">
           {section.body}
         </p>
       )
@@ -158,7 +158,7 @@ function renderSection(
               {section.rows.slice(1).map((row, ri) => (
                 <tr key={ri} className={ri % 2 === 0 ? 'bg-[#0d1321]' : 'bg-[#111827]/50'}>
                   {row.map((cell, ci) => (
-                    <td key={ci} className="px-4 py-3 text-[var(--text-secondary)] border-b border-[#1e293b]/50 last:border-b-0">
+                    <td key={ci} className="px-4 py-3 text-base text-[var(--text-secondary)] border-b border-[#1e293b]/50 last:border-b-0">
                       {ci === 0 ? <span className="font-medium text-[#e2e8f0]">{cell}</span> : cell}
                     </td>
                   ))}
@@ -176,19 +176,19 @@ function renderSection(
             <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-xs font-black text-blue-400">
               {section.stepNumber}
             </span>
-            <h2 className="text-lg font-black">{section.heading}</h2>
+            <h2 className="text-xl font-black">{section.heading}</h2>
           </div>
           {section.body && (
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-4 pl-10">
+            <p className="text-base text-[var(--text-secondary)] leading-relaxed mb-4 pl-10">
               {section.body}
             </p>
           )}
           {section.items && (
-            <ul className="space-y-2 pl-10">
+            <ul className="space-y-3 pl-10">
               {section.items.map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--text-secondary)]">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/50 flex-shrink-0" />
-                  <span>{item}</span>
+                <li key={i} className="flex items-start gap-3 text-base text-[var(--text-secondary)]">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500/50 flex-shrink-0" />
+                  <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
@@ -199,33 +199,33 @@ function renderSection(
     case 'warning':
       return (
         <div key={index} className="my-6 flex items-start gap-3 p-4 rounded-xl bg-yellow-500/8 border border-yellow-500/25">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-yellow-400 flex-shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-yellow-400 flex-shrink-0 mt-1">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          <p className="text-sm text-yellow-300/90 leading-relaxed">{section.body}</p>
+          <p className="text-base text-yellow-300/90 leading-relaxed">{section.body}</p>
         </div>
       )
 
     case 'tip':
       return (
         <div key={index} className="my-6 flex items-start gap-3 p-4 rounded-xl bg-blue-500/8 border border-blue-500/20">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0 mt-1">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="12"/>
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <p className="text-sm text-blue-300/90 leading-relaxed">{section.body}</p>
+          <p className="text-base text-blue-300/90 leading-relaxed">{section.body}</p>
         </div>
       )
 
     case 'list':
       return (
-        <ul key={index} className="my-6 space-y-2">
+        <ul key={index} className="my-6 space-y-3">
           {section.items?.map((item, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--text-secondary)]">
-              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#334155] flex-shrink-0" />
-              <span>{item}</span>
+            <li key={i} className="flex items-start gap-3 text-base text-[var(--text-secondary)]">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#334155] flex-shrink-0" />
+              <span className="leading-relaxed">{item}</span>
             </li>
           ))}
         </ul>
@@ -305,7 +305,7 @@ function renderSection(
                   </svg>
                 </summary>
                 <div className="px-5 pb-5 pt-2 border-t border-[var(--border-primary)]">
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.a}</p>
+                  <p className="text-base text-[var(--text-secondary)] leading-relaxed">{item.a}</p>
                 </div>
               </details>
             ))}
