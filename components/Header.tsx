@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   Building2, ChevronDown, ChevronRight,
-  Search, Home, Truck, Settings, X, Menu, Newspaper, BookOpen, MapPin
+  Search, Home, Truck, Settings, X, Menu, Newspaper, BookOpen, MapPin, BookMarked
 } from 'lucide-react'
 
 interface HeaderProps {
@@ -197,6 +197,9 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
               <Link href="/blog" className="px-3 lg:px-4 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg transition">
                 Blog
               </Link>
+              <Link href="/guides" className="px-3 lg:px-4 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg transition">
+                Guides
+              </Link>
               <Link href="/news" className="px-3 lg:px-4 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg transition">
                 News
               </Link>
@@ -379,6 +382,17 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                   <BookOpen className="w-5 h-5 text-purple-400" />
                 </div>
                 <span className="font-medium">Blog</span>
+              </Link>
+
+              <Link 
+                href="/guides" 
+                className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-hover)] transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                  <BookMarked className="w-5 h-5 text-blue-400" />
+                </div>
+                <span className="font-medium">Guides</span>
               </Link>
 
               <Link 
