@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { AlertTriangle, CheckCircle, XCircle, ChevronRight, ChevronLeft, Home, FileText, Users, History, Hammer, MapPin, DollarSign, Clock, Star, ThumbsUp, MessageSquare, Flame, Bug, Volume2, ShieldAlert, ExternalLink } from 'lucide-react'
 import { buildGuidePanel, VIOLATION_GUIDE_LINK_MAP } from '@/lib/violation-blog-map'
