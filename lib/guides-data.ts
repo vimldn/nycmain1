@@ -1840,3 +1840,674 @@ GUIDES.push({
     },
   ],
 })
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW 1: Who pays when a pipe bursts
+// Intent bucket: Disasters | Service: Renters Insurance
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'who-pays-pipe-burst-nyc-apartment',
+  category: 'plumbing-electrical',
+  title: 'Who Pays When a Pipe Bursts in Your NYC Apartment?',
+  metaTitle: 'Who Pays When a Pipe Bursts in Your NYC Apartment? | Building Health X',
+  metaDescription: 'Burst pipe in your NYC apartment? Find out exactly who is legally responsible for repairs and your damaged belongings — and why renters insurance is the only real protection you have.',
+  headline: 'Who Pays When a Pipe Bursts in Your NYC Apartment?',
+  subheadline: 'The landlord fixes the building. Nobody replaces your stuff — unless you have renters insurance. Here\'s the full legal breakdown of liability, claims, and your rights.',
+  serviceSlug: 'renters-insurance',
+  serviceName: 'Renters Insurance',
+  leadBaitCta: 'Don\'t get stuck paying for your neighbour\'s flood. Get 3 instant NYC renters insurance quotes.',
+  datePublished: '2024-11-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['what-to-check-before-signing-nyc-lease', 'hire-plumber-nyc-hpd-violation', 'get-security-deposit-back-nyc'],
+  relatedServicePages: [
+    { label: 'Renters insurance in Manhattan', href: '/services/renters-insurance/manhattan' },
+    { label: 'Renters insurance in Brooklyn', href: '/services/renters-insurance/brooklyn' },
+    { label: 'Renters insurance in Queens', href: '/services/renters-insurance/queens' },
+    { label: 'Renters insurance in the Bronx', href: '/services/renters-insurance/bronx' },
+    { label: 'Renters insurance in Staten Island', href: '/services/renters-insurance/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+    { slug: 'hire-plumber-nyc-hpd-violation', title: 'How to Hire a Licensed Plumber for an HPD Violation' },
+    { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to Check If HPD Violations Were Actually Fixed' },
+  ],
+  govLinks: [
+    { label: 'NY Real Property Law §235-b — Warranty of Habitability', url: 'https://codes.findlaw.com/ny/real-property-law/rpy-sect-235-b.html', description: 'Your landlord\'s legal obligation to maintain plumbing and building systems.' },
+    { label: 'HPD Online — Plumbing Violation Search', url: 'https://hpdonline.nyc.gov', description: 'Check if your building has open plumbing violations before disaster strikes.' },
+    { label: 'NY Department of Financial Services — Renters Insurance', url: 'https://www.dfs.ny.gov/consumers/property_insurance/renters', description: 'State guidance on what renters insurance covers and your rights as a policyholder.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "A pipe bursts in the apartment above you. Water pours through your ceiling, soaks your mattress, ruins your laptop, and warps your floors. Two hours later, the landlord sends someone to fix the pipe. Nobody sends anyone for your stuff. This scenario happens thousands of times a year in NYC buildings — and most tenants discover too late that the landlord's legal obligation covers the building, not their belongings. This guide breaks down exactly who is responsible for what, what you can and cannot recover, and why renters insurance is the only protection that actually covers you.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '$0', label: 'What your landlord is typically required to pay for your damaged personal belongings after a pipe burst', source: 'NY Real Property Law' },
+        { value: '$15/mo', label: 'Average cost of renters insurance in NYC — less than a monthly MetroCard top-up', source: 'NY DFS' },
+        { value: '72 hrs', label: 'Window you have to document water damage before evidence degrades — photograph everything immediately', source: 'Insurance best practice' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'The Key Distinction: Building vs. Belongings',
+    },
+    {
+      type: 'body',
+      body: "New York landlord-tenant law draws a clear line that most tenants do not know about until it is too late. Your landlord is responsible for the physical building — pipes, plumbing systems, ceilings, floors, and structural elements. They are not responsible for your personal property, even when their negligence or a building failure caused the damage.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['What was damaged', 'Who is responsible', 'How it gets paid'],
+        ['The burst pipe itself', 'Landlord', 'Landlord must repair under HPD code and warranty of habitability'],
+        ['Water-damaged ceiling or floor in your unit', 'Landlord', 'Landlord must restore building fabric — file HPD complaint if they don\'t'],
+        ['Your furniture, clothing, electronics', 'You (unless landlord was negligent)', 'Your renters insurance personal property coverage'],
+        ['Your neighbour\'s belongings (if your pipe burst)', 'Potentially you — or your renters insurance', 'Renters insurance liability coverage protects you here'],
+        ['Temporary accommodation if unit is uninhabitable', 'Landlord may owe rent reduction; your insurance may cover hotel', 'Renters insurance loss-of-use coverage'],
+        ['Mold from unaddressed water damage', 'Landlord — file HPD violation immediately', 'HPD enforcement + potential rent abatement claim'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'When Is the Landlord Liable for Your Belongings?',
+    },
+    {
+      type: 'body',
+      body: "There is one exception to the 'landlord doesn\'t cover your stuff\' rule, and it matters: if the landlord was negligent, and that negligence directly caused the damage, they can be held liable for your personal property losses. Negligence in a plumbing context means they knew about a problem and failed to fix it.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Prior written complaints: If you reported a leaking pipe to the landlord in writing and they ignored it, and that pipe later burst and damaged your belongings, you have a strong negligence claim. This is why every maintenance request should be sent via email or text — not verbal.",
+        "Open HPD violations: If the building had an open HPD plumbing violation for the same system that failed, that violation is documented evidence of known-and-ignored conditions. Pull the building\'s HPD record immediately after any water incident.",
+        "Deferred maintenance patterns: A pattern of unresolved plumbing complaints in the building (visible on HPD Online and 311 complaint history) supports a negligence narrative even without a specific prior complaint from you.",
+        "Important caveat: Even if you have a strong negligence claim, collecting on it requires either a settlement with the landlord or a court judgment. That process takes time and money. Renters insurance pays immediately and then pursues the landlord on your behalf — this is called subrogation.",
+      ],
+    },
+    {
+      type: 'tip',
+      body: "Within 24 hours of any water incident, send the landlord a written notice (email) documenting the date, time, cause if known, and every item of yours that was damaged. Include photos. This creates the timestamped record you need for both a negligence claim and an insurance claim.",
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'What Renters Insurance Actually Covers in a Water Incident',
+    },
+    {
+      type: 'body',
+      body: "Standard renters insurance in NYC covers three things relevant to a burst pipe situation. Understanding each one tells you exactly what protection you have.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Coverage type', 'What it pays for', 'Typical limit'],
+        ['Personal property', 'Furniture, electronics, clothing, appliances damaged by water', '$15,000–$50,000 (your choice at signup)'],
+        ['Loss of use / ALE', 'Hotel or temporary housing if your unit is uninhabitable', '$5,000–$20,000 or 20–30% of property limit'],
+        ['Liability', 'If your overflowing tub damages a neighbour\'s apartment below', '$100,000–$300,000 standard'],
+        ['Medical payments', 'If someone is injured in your apartment due to the incident', '$1,000–$5,000'],
+      ],
+    },
+    {
+      type: 'warning',
+      body: "Flood damage from external sources — rising groundwater, street flooding entering through windows or basement walls — is almost always excluded from standard renters insurance. 'Sudden and accidental' discharge from a burst pipe is typically covered. Gradual leaks you knew about and ignored are typically not. Read your policy\'s water damage exclusions before you need them.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step-by-Step: What to Do in the First 48 Hours',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Stop the water and photograph everything before cleanup',
+      body: 'Before moving a single item, take a comprehensive video walking through every affected area. Photograph every damaged item in place. This is your evidence for both the insurance claim and any landlord negligence claim. Do not throw anything away until an adjuster has seen it.',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'Notify your landlord in writing immediately',
+      body: 'Send an email (or text if that\'s your communication method) documenting the incident, the time, and every item damaged. If there\'s visible mold growth within 24–48 hours, photograph and note it — this signals a pre-existing moisture problem and strengthens a negligence argument.',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'File a claim with your renters insurance provider',
+      body: 'Call your insurer\'s claims line within 24 hours. They will assign an adjuster and walk you through the documentation they need. Keep every receipt for any emergency expenses — temporary storage, hotel nights, replacement essentials. These may be reimbursable under loss-of-use coverage.',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'File a 311 complaint if the landlord doesn\'t repair the building damage promptly',
+      body: 'Water damage to ceilings, floors, and walls is the landlord\'s legal obligation to repair under the warranty of habitability. If they do not act within a reasonable time (24–72 hours for active leaks, 30 days for resulting structural damage), file a 311 complaint. The HPD violation creates a paper trail and enforcement pressure simultaneously.',
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about water damage liability in NYC apartments',
+      items: [
+        {
+          q: 'My upstairs neighbour\'s bathtub overflowed and ruined my ceiling. Who pays?',
+          a: 'The liability picture depends on why the overflow happened. If your neighbour was negligent (left the tap running, ignored a known problem), their renters insurance liability coverage should cover your losses — if they have it. If they don\'t have renters insurance, you would need to sue them personally, which is often impractical. If the overflow was caused by a building plumbing failure rather than neighbour negligence, the landlord\'s building insurance may be involved. Your fastest and most reliable path to recovery in all these scenarios is your own renters insurance.',
+        },
+        {
+          q: 'Can I withhold rent if my apartment has water damage the landlord won\'t fix?',
+          a: 'You cannot simply stop paying rent — that exposes you to eviction proceedings. The correct approach is to file an HP proceeding in Housing Court, which allows you to pay rent into a court escrow account while forcing the landlord to make repairs. For severe water damage that makes the apartment uninhabitable, you may also be entitled to a rent abatement for the period the unit was below the habitable standard. Document everything and consult Legal Aid if the landlord is unresponsive.',
+        },
+        {
+          q: 'Does renters insurance cover mold damage from a burst pipe?',
+          a: 'Coverage for mold is policy-specific and often limited. Most standard policies cover mold that results directly from a covered water event (like a burst pipe) but exclude mold from gradual or repeated leakage, high humidity, or pre-existing conditions. Some policies have a specific mold sublimit (e.g., $10,000) even when the triggering event is covered. Check your policy\'s mold language specifically — it is usually in the exclusions section.',
+        },
+        {
+          q: 'My landlord says I caused the pipe to burst and won\'t make repairs. What do I do?',
+          a: 'The burden of proof is on the landlord to demonstrate tenant fault. Building pipe failures are almost never caused by tenant action — they result from aging infrastructure, deferred maintenance, or thermal stress. File a 311 complaint regardless of the landlord\'s claim. The HPD inspector will assess the condition and issue a violation if the building is responsible. The landlord\'s claim does not relieve them of their obligation to maintain habitable conditions.',
+        },
+        {
+          q: 'I don\'t have renters insurance. Can I still recover my losses from the landlord?',
+          a: 'Potentially, if you can prove landlord negligence — prior written complaints, open HPD violations for the same system, or a documented pattern of deferred maintenance. You would pursue this through Small Claims Court (up to $10,000) or Civil Court for larger amounts. The process is slower and less certain than an insurance claim. Going forward, NYC renters insurance typically costs $12–$18/month and covers $25,000+ in personal property — it is almost certainly worth it.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW 2: Rent stabilisation check
+// Intent bucket: Researching | Service: Building Search (→ homepage)
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'is-my-nyc-apartment-secretly-rent-stabilised',
+  category: 'inspections-leasing',
+  title: 'How to Find Out if Your NYC Apartment Is Secretly Rent-Stabilised',
+  metaTitle: 'Is My NYC Apartment Secretly Rent-Stabilised? How to Check | Building Health X',
+  metaDescription: 'Millions of NYC apartments are rent-stabilised and tenants don\'t know it. Here\'s how to request your DHCR rent history, check for illegal deregulation, and recover overcharged rent going back 6 years.',
+  headline: 'Is Your NYC Apartment Secretly Rent-Stabilised? Here\'s How to Find Out.',
+  subheadline: 'Millions of NYC renters are paying more than the legal limit and don\'t know it. The DHCR rent history check takes 5 minutes and could uncover years of overcharges.',
+  serviceSlug: 'building-inspectors',
+  serviceName: 'Building Inspectors',
+  leadBaitCta: 'Check your building\'s full history — violations, rent records, and court filings — in seconds.',
+  datePublished: '2024-11-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['what-to-check-before-signing-nyc-lease', 'how-to-break-lease-nyc-violations', 'get-security-deposit-back-nyc'],
+  relatedServicePages: [
+    { label: 'Building inspectors in Manhattan', href: '/services/building-inspectors/manhattan' },
+    { label: 'Building inspectors in Brooklyn', href: '/services/building-inspectors/brooklyn' },
+    { label: 'Building inspectors in Queens', href: '/services/building-inspectors/queens' },
+  ],
+  furtherReading: [
+    { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+    { slug: 'can-i-rent-an-apartment-with-active-hpd-violations', title: 'Can I Rent an Apartment with Active HPD Violations?' },
+    { slug: 'how-to-check-if-an-nyc-apartment-is-rent-stabilized', title: 'How to Check If an NYC Apartment Is Rent Stabilised' },
+  ],
+  govLinks: [
+    { label: 'DHCR Rent History Request (HCR)', url: 'https://apps.hcr.ny.gov/BuildingSearch/', description: 'Request the official rent registration history for your specific apartment going back to 1984.' },
+    { label: 'NYC Rent Guidelines Board', url: 'https://rentguidelinesboard.cityofnewyork.us/', description: 'The official board that sets legal rent increase limits for stabilised apartments each year.' },
+    { label: 'DHCR Overcharge Complaint Form', url: 'https://hcr.ny.gov/system/files/documents/2020/02/ra-89.pdf', description: 'File a formal rent overcharge complaint with DHCR if you discover you\'ve been overcharged.' },
+    { label: 'NY Housing Stability & Tenant Protection Act 2019', url: 'https://www.nysenate.gov/legislation/bills/2019/S6458', description: 'The 2019 law that closed major loopholes landlords used to illegally deregulate stabilised apartments.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Approximately one million apartments in New York City are rent-stabilised. Hundreds of thousands of tenants living in them do not know it — and a significant fraction of those are paying above the legal regulated rent. This is not a small oversight. Illegal deregulation and rent overcharges are among the most common forms of tenant exploitation in NYC, and since the Housing Stability and Tenant Protection Act of 2019 closed the major loopholes, tenants can now recover overcharged rent going back six years. This guide shows you exactly how to find out if your apartment is stabilised, what your legal rent should be, and what to do if you have been overcharged.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '~1M', label: 'Rent-stabilised apartments in NYC — roughly half of all rental units in the city', source: 'NYC Rent Guidelines Board' },
+        { value: '6 years', label: 'How far back a tenant can recover overcharged rent under the 2019 HSTPA', source: 'NY Housing Stability & Tenant Protection Act 2019' },
+        { value: '3×', label: 'Treble damages — what you can recover per year of wilful overcharging, on top of the overcharged amount', source: 'NY Rent Stabilization Law' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Check If Your Building Is Covered',
+    },
+    {
+      type: 'body',
+      body: "Rent stabilisation applies to apartments in buildings with 6 or more units, built before 1974, in New York City — unless the building received a tax exemption (like 421-a or J-51) that brought it under stabilisation regardless of age. The fastest way to check your specific building:",
+    },
+    {
+      type: 'list',
+      items: [
+        "Search your address on BuildingHealthX — the building profile shows rent stabilisation status derived from DHCR registration data.",
+        "Search the DHCR Building Search at apps.hcr.ny.gov — enter your address and see if the building is registered as stabilised.",
+        "Check your lease: rent-stabilised leases must use the DHCR standard lease rider and state that the apartment is rent-stabilised. If yours does not mention stabilisation and your building qualifies, that is a red flag.",
+        "Look at your rent history: if the legal regulated rent is not shown in your lease, that is another indicator something may be wrong.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: Request Your Official DHCR Rent History',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'Get the apartment\'s complete registered rent history',
+      body: 'Even if you know the building is stabilised, you need the specific apartment\'s rent history to verify whether you are being charged the legal regulated rent. This history goes back to 1984 and is your most powerful document.',
+      items: [
+        "Go to apps.hcr.ny.gov/BuildingSearch and search your building address.",
+        "Once the building appears, look for your specific unit number and request the rent history — it is free and you will receive it by mail within a few weeks.",
+        "Alternatively, call DHCR directly at (718) 739-6400 to request a rent history over the phone.",
+        "The rent history will show every registered legal rent for your apartment going back to the earliest registration, and any major capital improvement (MCI) increases or individual apartment improvement (IAI) increases that were used to raise the rent.",
+      ],
+    },
+    {
+      type: 'tip',
+      body: "Request the rent history before you sign a new lease, not after. Once you have signed and moved in, discovering an overcharge becomes a dispute process. Before signing, a discrepancy gives you negotiating power — or a reason to walk away.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step 3: How to Spot an Illegal Overcharge',
+    },
+    {
+      type: 'body',
+      body: "Compare the registered rent history against your current lease rent. Allowable increases between tenancies are set annually by the NYC Rent Guidelines Board (RGB) — the board publishes the legal percentages going back decades. Any increase that exceeds the RGB guidelines without a documented MCI or IAI application is potentially an overcharge.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Legal reason for rent increase', 'What it requires', 'Red flag'],
+        ['Annual RGB guidelines (renewal)', 'Set each year — typically 1–4%', 'Any increase above the RGB number without documentation'],
+        ['Vacancy bonus (pre-2019)', 'Was allowed before HSTPA 2019 — now eliminated', 'Any vacancy increase claimed after June 2019 is illegal'],
+        ['Major Capital Improvement (MCI)', 'Requires DHCR approval and a filed application', 'Increase claimed without a DHCR MCI order on record'],
+        ['Individual Apartment Improvement (IAI)', 'Post-2019: limited to $15,000 over 15 years max', 'Any IAI increase without documented renovation receipts'],
+        ['High-rent deregulation', 'Eliminated by HSTPA 2019 — previously allowed at $2,774+', 'Any apartment claimed as deregulated via high-rent threshold after June 2019'],
+      ],
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 4: Filing an Overcharge Complaint',
+    },
+    {
+      type: 'step',
+      stepNumber: 4,
+      heading: 'File a DHCR overcharge complaint',
+      body: 'If you have identified that you are being charged more than the legal regulated rent, file a rent overcharge complaint with DHCR using Form RA-89. You do not need an attorney to file, and there is no filing fee.',
+      items: [
+        "Download Form RA-89 from hcr.ny.gov or pick it up at any DHCR borough office.",
+        "Attach: your rent history printout, copies of all lease renewals showing rent amounts, and any DHCR correspondence you have received.",
+        "DHCR will investigate and calculate the legal regulated rent. If they find an overcharge, they can order the landlord to refund up to 6 years of excess payments.",
+        "For wilful overcharges (where DHCR finds the landlord deliberately overcharged), you may be entitled to treble damages — three times the amount overcharged per year.",
+        "You can also file in Housing Court instead of DHCR, which is sometimes faster. A tenant attorney can advise on the better route for your specific situation.",
+      ],
+    },
+    {
+      type: 'warning',
+      body: "If your landlord has told you the apartment is 'market rate' or 'deregulated,' do not simply accept this without verifying. The 2019 HSTPA made most high-rent deregulation illegal going forward, and apartments that were improperly deregulated before 2019 are being restored to stabilisation by DHCR and Housing Court decisions regularly. The DHCR rent history is the ground truth — your landlord\'s claim is not.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about rent stabilisation in NYC',
+      items: [
+        {
+          q: 'How do I know if my apartment is rent-stabilised if my lease doesn\'t say so?',
+          a: 'Request the DHCR rent history for your apartment at apps.hcr.ny.gov. If the apartment is registered as rent-stabilised, the history will show it. Additionally, search your building address on HPD Online — buildings with six or more units built before 1974 are generally covered unless they received specific exemptions. A missing stabilisation rider in your lease when the apartment should be covered is itself a potential violation worth pursuing.',
+        },
+        {
+          q: 'My landlord says the apartment was deregulated because the rent was above $2,774. Is that valid?',
+          a: 'It depends on when the alleged deregulation occurred. The high-rent vacancy deregulation threshold was eliminated by the Housing Stability and Tenant Protection Act of 2019. Any deregulation claimed to have occurred after June 14, 2019 based on rent level is invalid. If the landlord claims deregulation happened before 2019, you can still challenge whether it was properly done — DHCR records and rent histories are the verification tool.',
+        },
+        {
+          q: 'I\'ve been overcharged for 3 years. How much can I recover?',
+          a: 'You can recover overcharged rent going back up to 6 years. For each year, you get the overcharged amount. If DHCR finds the overcharge was wilful, you receive treble damages — three times the annual overcharge per year of wilful violation. The landlord is also required to roll your rent back to the legal regulated amount going forward. Depending on the scale of the overcharge, this can be a significant recovery — some tenants have recovered $20,000–$50,000+ in overcharged rent.',
+        },
+        {
+          q: 'Can my landlord evict me for filing a rent overcharge complaint?',
+          a: 'No. Retaliatory eviction in response to a rent overcharge complaint is illegal under New York Real Property Law §223-b. If your landlord attempts eviction, raises your rent, or reduces services within 180 days of your complaint, there is a legal presumption of retaliation. Document everything. A retaliatory eviction attempt after a DHCR complaint often strengthens your overall case.',
+        },
+        {
+          q: 'My building got a 421-a tax exemption when it was built. Does that mean I\'m rent-stabilised?',
+          a: 'Possibly, yes. Buildings that received 421-a tax exemptions are required to register their apartments as rent-stabilised for the duration of the exemption period — which can be 10, 15, 25, or 35 years depending on the specific exemption granted. Many newer luxury buildings in NYC have rent-stabilised apartments because of 421-a, even if the landlord markets them as luxury market-rate units. Check the DHCR registration and HPD\'s 421-a compliance records for your building.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW 3: Eviction notice — rights and next steps
+// Intent bucket: Fighting | Service: Moving Companies + Storage
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'eviction-notice-nyc-rights-next-steps',
+  category: 'inspections-leasing',
+  title: 'Received an Eviction Notice in NYC? Your Rights and Next Steps',
+  metaTitle: 'Received an Eviction Notice in NYC? Rights & Next Steps | Building Health X',
+  metaDescription: 'Got a notice to quit or petition in NYC? You have more rights and time than you think. Here\'s the difference between holdover and non-payment cases, Housing Court timelines, and what to do right now.',
+  headline: 'Got an Eviction Notice in NYC? Read This Before You Do Anything Else.',
+  subheadline: 'A notice to quit is not an eviction. You have rights, you have time, and in many cases you have defences your landlord is hoping you don\'t know about.',
+  serviceSlug: 'moving-companies',
+  serviceName: 'Moving Companies',
+  leadBaitCta: 'Need to move fast? Get emergency quotes from NYC movers — 24-hour turnaround.',
+  datePublished: '2024-11-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['how-to-break-lease-nyc-violations', 'get-security-deposit-back-nyc', 'is-my-nyc-apartment-secretly-rent-stabilised'],
+  relatedServicePages: [
+    { label: 'Moving companies in Manhattan', href: '/services/moving-companies/manhattan' },
+    { label: 'Moving companies in Brooklyn', href: '/services/moving-companies/brooklyn' },
+    { label: 'Moving companies in Queens', href: '/services/moving-companies/queens' },
+    { label: 'Moving companies in the Bronx', href: '/services/moving-companies/bronx' },
+    { label: 'Storage facilities in NYC', href: '/services/storage-facilities' },
+  ],
+  furtherReading: [
+    { slug: 'how-to-break-lease-nyc-violations', title: 'How to Break Your NYC Lease Due to Landlord Violations' },
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+    { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+  ],
+  govLinks: [
+    { label: 'NYC Housing Court — Tenant Information', url: 'https://www.courts.state.ny.us/courts/nyc/housing/tenantinfo.shtml', description: 'Official Housing Court information for tenants, including how to answer a petition and what to expect at hearings.' },
+    { label: 'NYC Legal Aid Society', url: 'https://www.legalaidnyc.org/', description: 'Free legal representation for eligible tenants in Housing Court eviction cases.' },
+    { label: 'Right to Counsel NYC', url: 'https://www.righttocounselnyc.org/', description: 'NYC\'s Universal Access to Counsel programme — free attorneys for income-eligible tenants in Housing Court.' },
+    { label: 'Housing Court Answers (HCA)', url: 'https://hcanswers.org/', description: 'Non-profit staffing Housing Court help desks — free advice on answering petitions without an attorney.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "Receiving an eviction notice is one of the most stressful events in a tenant\'s life — and landlords know it. Many count on tenants panicking, not showing up to court, or vacating voluntarily without understanding their rights. The reality is that in New York City, actual eviction is a lengthy legal process that gives you significant time and multiple opportunities to resolve the situation or fight back. A piece of paper slipped under your door or handed to you is not an eviction. This guide explains exactly what you received, what it means, and what to do in the next 72 hours.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '0', label: 'Legal evictions that happen without a court order — a landlord cannot remove you without going through Housing Court', source: 'NY Real Property Actions and Proceedings Law' },
+        { value: 'Free', label: 'Legal representation available to income-eligible NYC tenants in Housing Court through Right to Counsel', source: 'NYC Universal Access to Counsel' },
+        { value: '3–6 mo', label: 'Typical Housing Court timeline from petition filing to potential eviction — you have more time than you think', source: 'NYC Housing Court data' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Identify What You Actually Received',
+    },
+    {
+      type: 'body',
+      body: "There are several different documents that get loosely called 'eviction notices.' What you actually received determines your next step and your timeline. Read it carefully.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Document', 'What it means', 'Your deadline'],
+        ['Notice to Cure', 'Landlord says you violated the lease — fix it within X days or face eviction proceedings', 'Typically 10 days — fix the alleged violation or dispute it in writing'],
+        ['Notice to Quit / Termination Notice', 'Landlord is terminating your tenancy — you must vacate by a stated date', 'Do NOT voluntarily vacate — wait for them to file in court'],
+        ['Rent Demand (3-Day Notice)', 'Landlord claims you owe rent — pay within 3 days or they will sue', 'Pay if you owe it; dispute in writing if the amount is wrong'],
+        ['Petition and Notice of Petition', 'Landlord has filed in Housing Court — you have been sued', 'You must respond by your court date — this is critical'],
+        ['Marshal\'s Notice / Warrant of Eviction', 'A court has already ruled against you — eviction is imminent', 'Seek emergency legal help immediately — you may still have options'],
+      ],
+    },
+    {
+      type: 'warning',
+      body: "Do NOT voluntarily vacate your apartment after receiving a notice to quit or termination notice before a court proceeding. A landlord\'s notice alone has no legal force to remove you — only a court order does. By leaving voluntarily, you forfeit any defences you had, lose your apartment, and may still owe rent. Stay put and let them take you to court if they intend to.",
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: The Two Types of Eviction Cases in NYC',
+    },
+    {
+      type: 'body',
+      body: "NYC Housing Court handles two main categories of eviction cases. Your rights and defences differ significantly between them.",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['', 'Non-Payment (NONPAY)', 'Holdover'],
+        ['Why filed', 'Landlord claims you owe unpaid rent', 'Landlord claims you have no right to remain (lease ended, violated terms, etc.)'],
+        ['Your primary defence', 'Pay the rent; or counterclaim for conditions (mold, pests, no heat) as rent abatement', 'Dispute the basis for termination; raise habitability issues; claim stabilisation rights'],
+        ['Typical resolution', 'Stipulation (payment plan) or dismissal if rent is paid', 'Settlement, trial, or lease renewal negotiation'],
+        ['Your biggest protection', 'Open HPD violations often reduce what you legally owe', 'If rent-stabilised, landlord must prove just cause for termination'],
+        ['Time to resolve', '1–4 months typically', '3–9 months for contested cases'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 3: Get Legal Help — It\'s Free in NYC',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Contact a tenant attorney before your court date',
+      body: 'NYC has one of the strongest right-to-counsel programmes in the country. Income-eligible tenants in Housing Court eviction cases are entitled to free legal representation through the Universal Access to Counsel programme. You should contact them immediately after receiving a court petition.',
+      items: [
+        "Call 311 and say you need a tenant attorney for a Housing Court eviction case — they will refer you to the Right to Counsel programme.",
+        "Show up early to your Housing Court date — Housing Court Help Centers are staffed by attorneys and non-profit advocates who provide free guidance, even if you don\'t qualify for full representation.",
+        "Housing Court Answers (hcanswers.org) staffs desks at multiple boroughs — they can help you draft an answer to the petition on the spot.",
+        "Even if you ultimately decide to move, having an attorney helps you negotiate exit terms — waived rent owed, deposit return, move-out timeline, no eviction on your record.",
+      ],
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 4: Raise Your Defences — Open Violations Are Powerful',
+    },
+    {
+      type: 'body',
+      body: "In non-payment cases, open HPD violations are one of the most effective defences available to tenants. If your landlord is suing you for unpaid rent but has open Class B or C HPD violations for conditions like no heat, mold, or pests, you have a counterclaim for rent abatement — a reduction in the rent you legally owed for the period during which conditions were substandard. Courts routinely reduce or eliminate the rent owed in non-payment cases where the landlord has ignored violations.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Pull your building\'s HPD violation record at hpdonline.nyc.gov before your court date and print it with all open violations highlighted.",
+        "Bring all your written complaints to the landlord about conditions — texts, emails, building app messages.",
+        "311 complaint records showing you reported conditions are additional evidence.",
+        "In a holdover case where the landlord claims you violated the lease, check whether the alleged violation is actually in the lease and whether it is enforceable under NYC rent laws.",
+        "If you are in a rent-stabilised apartment, the landlord must prove 'good cause\' for eviction — they cannot simply refuse to renew your lease without a specific legal reason.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'If You\'ve Decided to Move: Protect Yourself on the Way Out',
+    },
+    {
+      type: 'body',
+      body: "Sometimes the right decision is to negotiate an exit rather than fight a case you might lose. If you decide to move, your goal is to leave with no eviction record, your deposit back, and no judgment against you. An attorney can negotiate these terms in a stipulation — and many landlords prefer a clean exit over a contested case.",
+    },
+    {
+      type: 'list',
+      items: [
+        "Never agree to a stipulation without an attorney reviewing it — stipulations are binding court agreements.",
+        "Push for a 'no-record\' agreement: the case is withdrawn from Housing Court records, which protects you from tenant screening databases.",
+        "Negotiate the deposit return explicitly in the agreement — do not rely on the general law when you have leverage at the negotiating table.",
+        "Get a realistic move-out timeline — most landlords will give 30–60 days in exchange for a clean exit.",
+        "Once you have a move-out date, start getting quotes from movers immediately. NYC movers book up fast, especially for month-end moves.",
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about eviction notices in NYC',
+      items: [
+        {
+          q: 'Can my landlord change the locks or remove my belongings if I don\'t leave after a notice to quit?',
+          a: 'No. This is called an illegal lockout or self-help eviction, and it is a criminal offence in New York. A landlord cannot remove you from your apartment, change the locks, remove your belongings, or shut off your utilities to force you out — regardless of any notice they have served. Only a New York City Marshal, armed with a court-issued warrant of eviction, can legally carry out a physical eviction. If your landlord attempts any of these actions, call 911 and the Emergency Housing Court Part immediately.',
+        },
+        {
+          q: 'I missed my Housing Court date. What happens now?',
+          a: 'Missing your court date is serious — the judge will typically enter a default judgment against you, which means you lose automatically without any hearing. However, default judgments can often be vacated (overturned) if you act quickly and have a reasonable excuse for missing the date. Contact Housing Court Answers or Legal Aid immediately — same day if possible. Bring any evidence of why you missed (medical emergency, improper service of the petition, etc.). Courts are generally willing to vacate defaults for first-time absences with a reasonable explanation.',
+        },
+        {
+          q: 'Does an eviction case show up on my rental history and prevent me from renting again?',
+          a: 'A filed Housing Court case — even one that was resolved in your favour or dismissed — can appear in tenant screening reports. This is why negotiating a withdrawal of the case (rather than just a dismissal) is important if you are settling. Some tenant screening companies also report cases that were merely filed, not just adjudicated. NYC\'s Right to Counsel programme specifically focuses on helping tenants avoid eviction records, since they are often more damaging long-term than the eviction itself.',
+        },
+        {
+          q: 'My landlord says my lease ended and I need to leave. Do I have to go?',
+          a: 'Not immediately, and possibly not at all. If your apartment is rent-stabilised, your landlord must renew your lease unless they can prove one of the specifically enumerated just-cause grounds (non-payment, lease violations, owner use, etc.). If your apartment is market-rate, a holdover tenant (someone who stays after a lease ends) is still protected from self-help eviction — the landlord must take you to Housing Court. Additionally, if conditions in the apartment breach the warranty of habitability, you may have counterclaims that complicate or delay the holdover proceeding.',
+        },
+        {
+          q: 'I received a 3-day rent demand but I paid the rent. What do I do?',
+          a: 'Gather proof of payment immediately — bank statements, cancelled checks, wire transfer confirmations, money order receipts. Send the landlord a written response (email and certified mail) with proof attached, stating that rent was paid on date X and that the demand is in error. Keep a copy. If the landlord files in court anyway, your proof of payment is a complete defence to the non-payment petition. Courts dismiss these cases routinely when tenants present payment documentation.',
+        },
+      ],
+    },
+  ],
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW 4: Break lease over noisy neighbour
+// Intent bucket: Escaping | Service: Moving Companies
+// ─────────────────────────────────────────────────────────────────────────────
+GUIDES.push({
+  slug: 'break-lease-noisy-neighbor-nyc',
+  category: 'inspections-leasing',
+  title: 'How to Break Your Lease Over a Noisy Neighbour in NYC',
+  metaTitle: 'How to Break Your Lease Over a Noisy Neighbour in NYC | Building Health X',
+  metaDescription: 'Constant stomping, music, or secondhand smoke from a neighbour in NYC can constitute a warranty of habitability breach. Here\'s how to document it and break your lease without penalty.',
+  headline: 'How to Break Your NYC Lease Over a Noisy or Disruptive Neighbour',
+  subheadline: 'When your landlord refuses to act on a chronic nuisance neighbour, the law may give you a way out — without penalties, back rent, or a broken lease on your record.',
+  serviceSlug: 'moving-companies',
+  serviceName: 'Moving Companies',
+  leadBaitCta: 'Landlord won\'t fix it? Time to leave. Get free quotes from top-rated NYC movers.',
+  datePublished: '2024-11-15',
+  dateModified: '2025-03-01',
+  relatedSlugs: ['how-to-break-lease-nyc-violations', 'get-security-deposit-back-nyc', 'eviction-notice-nyc-rights-next-steps'],
+  relatedServicePages: [
+    { label: 'Moving companies in Manhattan', href: '/services/moving-companies/manhattan' },
+    { label: 'Moving companies in Brooklyn', href: '/services/moving-companies/brooklyn' },
+    { label: 'Moving companies in Queens', href: '/services/moving-companies/queens' },
+    { label: 'Moving companies in the Bronx', href: '/services/moving-companies/bronx' },
+    { label: 'Moving companies in Staten Island', href: '/services/moving-companies/staten-island' },
+  ],
+  furtherReading: [
+    { slug: 'how-to-break-lease-nyc-violations', title: 'How to Break Your NYC Lease Due to Landlord Violations' },
+    { slug: 'eviction-notice-nyc-rights-next-steps', title: 'Received an Eviction Notice in NYC? Your Rights and Next Steps' },
+    { slug: 'get-security-deposit-back-nyc', title: 'How to Get Your Security Deposit Back in NYC' },
+  ],
+  govLinks: [
+    { label: 'NY Real Property Law §235-b — Warranty of Habitability', url: 'https://codes.findlaw.com/ny/real-property-law/rpy-sect-235-b.html', description: 'The legal basis for quiet enjoyment and habitability — including protection from chronic nuisance conditions.' },
+    { label: 'NYC 311 — Noise Complaint Portal', url: 'https://portal.311.nyc.gov/', description: 'File noise complaints with 311 to create a documented record of the problem.' },
+    { label: 'NYC Housing Court', url: 'https://www.courts.state.ny.us/courts/nyc/housing/', description: 'File an HP proceeding to compel your landlord to take action against a nuisance neighbour.' },
+    { label: 'NYC Legal Aid Society', url: 'https://www.legalaidnyc.org/', description: 'Free legal help for eligible tenants pursuing lease termination or habitability claims.' },
+  ],
+  content: [
+    {
+      type: 'intro',
+      body: "A noisy or disruptive neighbour is one of the most common reasons people want to break a lease early in NYC — and one of the least understood in terms of legal options. Landlords often brush off noise complaints as 'not their problem,\' but that is not always legally accurate. Your lease includes an implicit covenant of quiet enjoyment under New York law, and if a neighbour\'s chronic behaviour makes your apartment effectively uninhabitable — and your landlord has the power to stop it and refuses — you may have grounds to terminate your lease without penalty. This guide explains when the law is on your side, how to build the documentation, and how to get out clean.",
+    },
+    {
+      type: 'statrow',
+      stats: [
+        { value: '§235-b', label: 'NY Real Property Law — your warranty of habitability covers more than physical defects; it covers any condition that materially affects your use of the apartment', source: 'NY Courts' },
+        { value: '3 mo', label: 'Minimum documentation period courts typically expect before accepting a chronic nuisance claim as a basis for lease termination', source: 'Housing Court precedent' },
+        { value: '$0', label: 'What you owe in penalties if you successfully establish constructive eviction from a nuisance condition — no remaining rent, no early termination fee', source: 'NY Real Property Law' },
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Does Neighbour Noise Actually Qualify as a Habitability Breach?',
+    },
+    {
+      type: 'body',
+      body: "The short answer is: sometimes, and it depends on severity, frequency, and whether your landlord had the power to stop it. Courts have found warranty of habitability breaches based on neighbour behaviour in the following circumstances:",
+    },
+    {
+      type: 'table',
+      rows: [
+        ['Nuisance type', 'Legal viability as habitability breach', 'Key requirement'],
+        ['Chronic loud music/stomping (30+ incidents documented)', 'Moderate — strengthens with volume and duration', 'Landlord must have been notified and failed to act'],
+        ['Secondhand smoke entering your unit', 'Strong in NYC since Local Law 147 of 2017', 'Landlord has legal duty to adopt a smoking policy'],
+        ['Harassment/threats from neighbour', 'Strong if documented and landlord is aware', 'Police report + written landlord notice required'],
+        ['Hoarding that creates pest infestation', 'Very strong — objective health/safety condition', 'HPD violation record for the infestation is powerful evidence'],
+        ['Occasional loud parties', 'Weak — courts expect occasional disturbance in dense city', 'Must be chronic, not isolated incidents'],
+        ['Construction noise from neighbouring building (not your landlord)', 'Very weak — landlord typically not responsible for external noise', 'Harder to establish landlord control or duty'],
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 1: Build a 90-Day Documentation Log',
+    },
+    {
+      type: 'step',
+      stepNumber: 1,
+      heading: 'Create a timestamped incident log starting today',
+      body: 'Courts expect to see a pattern of documented incidents, not a vague claim that a neighbour is noisy. A disciplined log covering at least 60–90 days is typically what separates a successful nuisance claim from one that gets dismissed.',
+      items: [
+        "Create a simple spreadsheet or note with columns: date, time, duration, description of noise/incident, how it affected you (sleep disruption, inability to work, guests unable to stay, etc.)",
+        "Supplement with recordings where possible — your phone placed on a table captures decibel levels and duration. NYC noise ordinance thresholds are 45 dB in bedrooms at night and 55 dB in living areas.",
+        "Note every instance you complained to building management — date, method (email/call/in person), and any response received.",
+        "File 311 noise complaints each time — call 311 or use the app. This creates city records with timestamps that you do not control and cannot be disputed.",
+        "If the noise involves secondhand smoke, photograph smoke entering under doorways or through vents, and note any health effects (headaches, respiratory irritation) with dates.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 2: Put Your Landlord on Notice — Repeatedly and in Writing',
+    },
+    {
+      type: 'step',
+      stepNumber: 2,
+      heading: 'Create a written notice trail with escalating urgency',
+      body: 'Your landlord\'s legal duty to address a chronic nuisance depends partly on whether they knew about it and had a reasonable opportunity to act. This means your written notice record is as important as the incident log itself.',
+      items: [
+        "Send an initial written notice (email) after the first significant cluster of incidents — describe the problem, the frequency, and the impact on your ability to use the apartment.",
+        "Follow up in writing every 2–3 weeks if the problem continues. Each notice should reference the previous ones and note that the situation has not improved.",
+        "Escalate in tone as the pattern continues: first notice is informational, second is a formal complaint, third explicitly references the warranty of habitability and your right to a habitable apartment.",
+        "If the landlord is a management company, CC both the building superintendent and the management company\'s main office — you want the written record to reach people who can actually act.",
+        "If the neighbour is a fellow tenant, your landlord may be able to proceed against them for breach of their own lease\'s nuisance clause — point this out explicitly.",
+      ],
+    },
+    {
+      type: 'tip',
+      body: "NYC Local Law 147 of 2017 requires all residential landlords with three or more units to adopt and distribute a written smoking policy. If secondhand smoke from a neighbour is the issue and your landlord has not adopted or enforced a smoking policy, they are in violation of the law. File a 311 complaint specifically for 'landlord failed to adopt smoking policy\' — this creates a separate legal lever.",
+    },
+    { type: 'leadbait' },
+    {
+      type: 'h2',
+      heading: 'Step 3: File an HP Proceeding to Compel Action',
+    },
+    {
+      type: 'step',
+      stepNumber: 3,
+      heading: 'Take the landlord to Housing Court',
+      body: 'If your written notices have produced no action, an HP (Housing Part) proceeding in NYC Housing Court can compel your landlord to take steps against the nuisance neighbour. This is a powerful escalation tool and it costs nothing to file.',
+      items: [
+        "File the HP proceeding at your borough\'s Housing Court — the Help Center can assist you with the paperwork.",
+        "Bring your full incident log, all written correspondence with the landlord, 311 complaint records, and any recordings.",
+        "The court will schedule a hearing. The judge can order the landlord to take specific action — issue a notice to cure to the nuisance neighbour, begin lease termination proceedings against them, or make physical modifications to reduce noise transfer.",
+        "An HP proceeding also creates a court record that strongly supports a subsequent constructive eviction claim if you decide to leave.",
+      ],
+    },
+    {
+      type: 'h2',
+      heading: 'Step 4: Terminating Your Lease — the Constructive Eviction Argument',
+    },
+    {
+      type: 'body',
+      body: "If your landlord has been formally notified, had reasonable time to act, and has still not addressed the chronic nuisance, you may have grounds to claim constructive eviction — the legal theory that allows you to terminate a lease when conditions make the apartment effectively uninhabitable. This is a significant legal step and the requirements are specific.",
+    },
+    {
+      type: 'list',
+      items: [
+        "The condition must be severe enough to substantially deprive you of the use of the apartment — courts require more than occasional inconvenience.",
+        "You must have given the landlord written notice and a reasonable opportunity to cure (typically 30 days minimum, often longer for chronic neighbour issues).",
+        "You should ideally have the HP proceeding record or at least a series of formal written complaints spanning multiple months.",
+        "Send a formal lease termination letter citing constructive eviction under NY RPL §235-b, referencing your documentation log, written notices to the landlord, and the landlord\'s failure to act. State your vacate date (typically 30 days out).",
+        "Importantly: consult a tenant attorney before sending this letter. Constructive eviction based on neighbour nuisance (rather than physical building defects) is a more complex claim, and the strength of your case depends heavily on how well your documentation supports it.",
+      ],
+    },
+    {
+      type: 'warning',
+      body: "Do not use constructive eviction as a first move. It requires that you vacate the apartment, and if a court later finds your claim was insufficient, you could be liable for remaining rent. Build your documentation, exhaust the landlord notice process, and get legal advice before invoking constructive eviction. The documentation ladder in this guide is designed to give you the strongest possible position before that final step.",
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions about breaking a lease over neighbour issues in NYC',
+      items: [
+        {
+          q: 'My landlord says noise is "not their problem" and to deal with it myself. Is that true?',
+          a: 'It depends on the nature and source of the noise. For building-related structural noise issues (thin floors, inadequate soundproofing in violation of code), the landlord does have direct responsibility. For neighbour-generated noise, the landlord\'s responsibility is more nuanced — they have a duty to enforce the lease\'s nuisance provisions against other tenants and to not allow conditions that make your apartment uninhabitable. "Not my problem" is not a legally accurate response if the noise is chronic, severe, and you have put them on notice in writing.',
+        },
+        {
+          q: 'How many 311 complaints do I need before I have a strong case?',
+          a: 'There is no magic number, but pattern is everything. Five or six 311 complaints clustered around the same time are less powerful than 15 complaints spread over 4 months showing a persistent, recurring problem. Courts look for chronicity and severity. The 311 record is most powerful as corroboration of your personal incident log, not as a standalone document.',
+        },
+        {
+          q: 'Can I sue my noisy neighbour directly instead of dealing with the landlord?',
+          a: 'Technically yes — you can file a private nuisance claim against a neighbour in Civil Court. In practice, suing a neighbour directly is slow, expensive, and uncertain, and even a judgment does not guarantee they stop the behaviour. The more effective path for most tenants is the landlord-pressure approach outlined in this guide, which uses the landlord\'s legal obligations to force action, or ultimately provides grounds to leave the apartment without penalty.',
+        },
+        {
+          q: 'My lease has an early termination clause with a fee. Does constructive eviction override it?',
+          a: 'Yes — if you successfully establish constructive eviction or a material breach of the warranty of habitability, you are entitled to terminate without the early termination fee. The basis for termination is not the early termination clause; it is the landlord\'s breach of their legal obligations. However, you will likely need to assert this as a defence if the landlord tries to collect the fee, either in a direct negotiation or in court. This is another reason to have an attorney involved before you leave.',
+        },
+        {
+          q: 'The noisy neighbour is a month-to-month tenant. Can\'t the landlord just not renew their lease?',
+          a: 'If the building is market-rate (not rent-stabilised), yes — the landlord can decline to renew a month-to-month tenancy with proper notice (typically 30 days). You can explicitly request this in writing as a solution. If the problem neighbour is in a rent-stabilised apartment, the landlord cannot simply decline to renew without just cause — they would need to pursue a holdover proceeding based on chronic nuisance, which is a longer process but is available to them if the conditions meet the legal threshold.',
+        },
+      ],
+    },
+  ],
+})

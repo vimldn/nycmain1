@@ -26,6 +26,7 @@ const BUCKETS = [
     ctaNote: 'Our building search tool shows HPD violations, pest history, and landlord court records instantly.',
     slugs: [
       'what-to-check-before-signing-nyc-lease',
+      'is-my-nyc-apartment-secretly-rent-stabilised',
     ],
     accentColor: 'blue',
   },
@@ -34,40 +35,51 @@ const BUCKETS = [
     emoji: '🚨',
     label: 'Fighting',
     headline: 'Your Landlord Isn\'t Fixing It',
-    description: 'Mold, no heat, roaches, a flooded bathroom. Your landlord has a legal deadline — and daily fines if they miss it. Here\'s how to force the issue.',
+    description: 'Mold, no heat, roaches, water damage — your landlord has a legal deadline and daily fines if they miss it. Here\'s how to force their hand.',
     cta: { label: 'Find a certified NYC contractor', href: '/services' },
-    ctaNote: 'Get free quotes from licensed NYC professionals who specialise in violation clearance.',
+    ctaNote: 'Get free quotes from licensed NYC professionals who specialise in emergency repairs.',
     slugs: [
       'landlord-wont-fix-roaches-bedbugs',
-      'clear-hpd-mold-violation-nyc',
-      'clear-hpd-pest-violation-nyc',
-      'clear-hpd-heat-violation-nyc',
-      'hire-plumber-nyc-hpd-violation',
-      'clear-hpd-electrical-violation-nyc',
+      'eviction-notice-nyc-rights-next-steps',
     ],
     accentColor: 'red',
+  },
+  {
+    id: 'disasters',
+    emoji: '💧',
+    label: 'Disasters',
+    headline: 'When Something Goes Wrong',
+    description: 'Burst pipes, a neighbour\'s flood, smoke damage from the unit above. These guides explain who is legally responsible and how to protect yourself financially.',
+    cta: { label: 'Get renters insurance quotes', href: '/services/renters-insurance' },
+    ctaNote: 'NYC renters insurance starts at under $15/month. Get 3 instant quotes before the next disaster.',
+    slugs: [
+      'who-pays-pipe-burst-nyc-apartment',
+    ],
+    accentColor: 'yellow',
   },
   {
     id: 'escaping',
     emoji: '📦',
     label: 'Escaping',
     headline: 'Getting Out Clean',
-    description: 'Ready to leave? Whether you\'re breaking a lease over violations or fighting for your deposit back, these guides walk you through every step.',
+    description: 'Ready to leave — whether over violations, a noisy neighbour, or just a bad situation? These guides walk you through every step so you leave without liability.',
     cta: { label: 'Find NYC movers & cleaners', href: '/services' },
     ctaNote: 'Get free quotes from vetted NYC movers and move-out cleaning companies.',
     slugs: [
       'how-to-break-lease-nyc-violations',
+      'break-lease-noisy-neighbor-nyc',
       'get-security-deposit-back-nyc',
     ],
     accentColor: 'emerald',
   },
 ] as const
 
-type AccentColor = 'blue' | 'red' | 'emerald'
+type AccentColor = 'blue' | 'red' | 'yellow' | 'emerald'
 
 const ACCENT: Record<AccentColor, { pill: string; icon: string; border: string; label: string }> = {
-  blue:    { pill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',    icon: 'text-blue-400',    border: 'border-blue-500/20',    label: 'text-blue-400' },
-  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',       icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400' },
+  blue:    { pill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',       icon: 'text-blue-400',    border: 'border-blue-500/20',    label: 'text-blue-400'    },
+  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',          icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400'     },
+  yellow:  { pill: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/20', icon: 'text-yellow-400',  border: 'border-yellow-500/20',  label: 'text-yellow-400'  },
   emerald: { pill: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20', icon: 'text-emerald-400', border: 'border-emerald-500/20', label: 'text-emerald-400' },
 }
 
