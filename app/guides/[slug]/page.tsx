@@ -258,6 +258,66 @@ export default function GuidePage({ params }: Props) {
                 </div>
               </div>
             )}
+
+            {/* Further Reading */}
+            {guide.furtherReading?.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-[var(--border-primary)]">
+                <h3 className="text-base font-black mb-5">Further reading</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {guide.furtherReading.map(post => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group flex items-start gap-3 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-blue-500/30 transition-colors"
+                    >
+                      <div className="flex-shrink-0 w-6 h-6 rounded-md bg-[#1e293b] flex items-center justify-center mt-0.5">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#64748b]">
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                      </div>
+                      <span className="text-sm text-[var(--text-secondary)] leading-snug group-hover:text-blue-300 transition-colors">
+                        {post.title}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Official Government Links */}
+            {guide.govLinks?.length > 0 && (
+              <div className="mt-10">
+                <h3 className="text-base font-black mb-5">Official resources</h3>
+                <div className="space-y-3">
+                  {guide.govLinks.map(link => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-start gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors"
+                    >
+                      <div className="flex-shrink-0 w-7 h-7 rounded-lg bg-[#1e293b] flex items-center justify-center mt-0.5">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#64748b]">
+                          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <span className="text-sm font-semibold text-[#e2e8f0] group-hover:text-blue-300 transition-colors">{link.label}</span>
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] flex-shrink-0">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                          </svg>
+                        </div>
+                        <p className="text-xs text-[#64748b] leading-relaxed">{link.description}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </article>
 
           {/* ── Sidebar ── */}

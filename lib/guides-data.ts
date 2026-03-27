@@ -25,6 +25,8 @@ export type GuidePost = {
   content: GuideSection[]
   relatedSlugs: string[]
   relatedServicePages: { label: string; href: string }[]
+  furtherReading: { slug: string; title: string }[]
+  govLinks: { label: string; url: string; description: string }[]
 }
 
 export type GuideSection = {
@@ -95,6 +97,19 @@ export const GUIDES: GuidePost[] = [
       { label: 'Mold Remediation in Brooklyn', href: '/services/mold-remediation/brooklyn' },
       { label: 'Mold Remediation in Manhattan', href: '/services/mold-remediation/manhattan' },
       { label: 'Mold Remediation in the Bronx', href: '/services/mold-remediation/bronx' },
+    ],
+    furtherReading: [
+      { slug: 'what-do-i-do-if-my-nyc-apartment-has-mold', title: 'What Do I Do If My NYC Apartment Has Mold?' },
+      { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+      { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to Check If HPD Violations Were Actually Fixed' },
+      { slug: 'can-i-get-a-rent-reduction-if-my-landlord-has-open-violations', title: 'Can I Get a Rent Reduction If My Landlord Has Open Violations?' },
+    ],
+    govLinks: [
+      { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your Certification of Correction for HPD violations online.' },
+      { label: 'NYS DOL Mold Contractor Lookup', url: 'https://labor.ny.gov/workerprotection/safetyhealth/mold_contractor_cert.shtm', description: 'Verify a mold assessor or remediator licence is valid under NYS Labor Law Article 32.' },
+      { label: 'Local Law 55 (NYC Admin Code §27-2017.1)', url: 'https://www.nyc.gov/site/hpd/services-and-information/mold.page', description: "HPD's official guidance on Local Law 55 mold obligations for landlords." },
+      { label: 'NYC HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: 'Look up any building's full HPD violation history by address.' },
+      { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Office of Administrative Trials and Hearings — manage ECB fines and hearings.' },
     ],
     content: [
       {
@@ -297,6 +312,19 @@ export const GUIDES: GuidePost[] = [
       { label: 'Pest Control in Manhattan', href: '/services/pest-control/manhattan' },
       { label: 'Pest Control in the Bronx', href: '/services/pest-control/bronx' },
     ],
+    furtherReading: [
+      { slug: 'what-does-a-bed-bug-violation-mean-on-nyc-building-records', title: 'What Does a Bed Bug Violation Mean on NYC Building Records?' },
+      { slug: 'is-my-landlord-required-to-pay-for-bed-bug-treatment-in-nyc', title: 'Is My Landlord Required to Pay for Bed Bug Treatment in NYC?' },
+      { slug: 'what-to-do-if-your-nyc-landlord-wont-treat-bed-bugs', title: "What to Do if Your NYC Landlord Won't Treat Bed Bugs" },
+      { slug: 'how-many-pest-violations-are-too-many-in-an-nyc-building', title: 'How Many Pest Violations Are Too Many in an NYC Building?' },
+    ],
+    govLinks: [
+      { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your Certification of Correction online.' },
+      { label: 'Local Law 69 — Bed Bug Disclosure', url: 'https://www.nyc.gov/site/hpd/services-and-information/bedbug.page', description: "HPD's official bed bug disclosure requirements for landlords under Local Law 69 of 2017." },
+      { label: 'NYS DEC Pesticide Applicator Licence Lookup', url: 'https://www.dec.ny.gov/chemical/8765.html', description: 'Verify a pest management professional holds a valid NYS DEC licence before hiring.' },
+      { label: 'NYC Bed Bug 311 Report', url: 'https://portal.311.nyc.gov/', description: 'File or check the status of a bed bug complaint with the city.' },
+      { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Manage ECB fines and hearings.' },
+    ],
     content: [
       {
         type: 'intro',
@@ -436,6 +464,19 @@ export const GUIDES: GuidePost[] = [
       { label: 'HVAC Repair in Brooklyn', href: '/services/hvac-repair/brooklyn' },
       { label: 'HVAC Repair in Manhattan', href: '/services/hvac-repair/manhattan' },
       { label: 'HVAC Repair in the Bronx', href: '/services/hvac-repair/bronx' },
+    ],
+    furtherReading: [
+      { slug: 'how-to-check-heat-complaints-before-renting-in-nyc', title: 'How to Check Heat Complaints Before Renting in NYC' },
+      { slug: 'what-temperature-must-nyc-landlords-maintain', title: 'What Temperature Must NYC Landlords Maintain?' },
+      { slug: 'how-to-file-a-311-heat-complaint-in-nyc', title: 'How to File a 311 Heat Complaint in NYC' },
+      { slug: 'how-to-check-if-a-building-has-chronic-heat-problems', title: 'How to Check if a Building Has Chronic Heat Problems' },
+    ],
+    govLinks: [
+      { label: 'HPD Heat Season Information', url: 'https://www.nyc.gov/site/hpd/services-and-information/heat-hot-water.page', description: "NYC's official heat season rules, tenant rights, and landlord obligations." },
+      { label: 'HPD Heat Complaint (311)', url: 'https://portal.311.nyc.gov/', description: 'Report a heat or hot water outage to 311 online.' },
+      { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your heat violation Certification of Correction.' },
+      { label: 'NYC DOB Boiler Inspection Records', url: 'https://a810-bisweb.nyc.gov/bisweb/bispi00.jsp', description: 'Check boiler permit history and inspection status for any building.' },
+      { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Manage ECB fines related to heat violations.' },
     ],
     content: [
       {
@@ -583,6 +624,19 @@ export const GUIDES: GuidePost[] = [
       { label: 'Plumbers in Manhattan', href: '/services/plumbers/manhattan' },
       { label: 'Plumbers in the Bronx', href: '/services/plumbers/bronx' },
     ],
+    furtherReading: [
+      { slug: 'what-are-class-a-b-and-c-violations-in-nyc', title: 'What Are Class A, B and C Violations in NYC?' },
+      { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+      { slug: 'how-to-check-if-hpd-violations-were-actually-fixed', title: 'How to Check If HPD Violations Were Actually Fixed' },
+      { slug: 'how-long-do-landlords-have-to-fix-hpd-violations', title: 'How Long Do Landlords Have to Fix HPD Violations?' },
+    ],
+    govLinks: [
+      { label: 'NYC DOB Licence Verification', url: 'https://a810-bisweb.nyc.gov/bisweb/LicenseQueryServlet', description: 'Verify a NYC Master Plumber licence is active before hiring.' },
+      { label: 'DOB NOW — Permit Filing', url: 'https://a810-bisweb.nyc.gov/bisweb/bispi00.jsp', description: 'Check permit status or verify a permit was filed for work at your building.' },
+      { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your plumbing violation Certification of Correction.' },
+      { label: 'NYC HPD Online — Violation Search', url: 'https://hpdonline.nyc.gov', description: "Search any building's full HPD violation and complaint history." },
+      { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Office of Administrative Trials and Hearings — dispute or pay ECB fines.' },
+    ],
     content: [
       {
         type: 'intro',
@@ -714,6 +768,20 @@ export const GUIDES: GuidePost[] = [
       { label: 'Building Inspectors in Manhattan', href: '/services/building-inspectors/manhattan' },
       { label: 'Building Inspectors in Brooklyn', href: '/services/building-inspectors/brooklyn' },
       { label: 'Building Inspectors in Queens', href: '/services/building-inspectors/queens' },
+    ],
+    furtherReading: [
+      { slug: 'what-does-an-open-hpd-violation-mean', title: 'What Does an Open HPD Violation Mean?' },
+      { slug: 'how-to-check-if-an-nyc-apartment-is-rent-stabilized', title: 'How to Check If an NYC Apartment Is Rent Stabilised' },
+      { slug: 'can-i-rent-an-apartment-with-active-hpd-violations', title: 'Can I Rent an Apartment with Active HPD Violations?' },
+      { slug: 'what-are-immediately-hazardous-violations-in-nyc', title: 'What Are Immediately Hazardous Violations in NYC?' },
+    ],
+    govLinks: [
+      { label: 'NYC HPD Online — Violation & Complaint Search', url: 'https://hpdonline.nyc.gov', description: "Search any building's full HPD violation and 311 complaint history by address." },
+      { label: 'Who Owns What — Landlord Portfolio Lookup', url: 'https://whoownswhat.justfix.org', description: "See a landlord's entire NYC portfolio and cross-building complaint rates." },
+      { label: 'ACRIS — Property Ownership Records', url: 'https://a836-acris.nyc.gov', description: 'Search NYC property ownership history, mortgage records, and deed transfers.' },
+      { label: 'NYC Housing Court Records', url: 'https://iapps.courts.state.ny.us/nyscef/HomePage', description: 'Search for eviction filings and HPD litigation by landlord name or address.' },
+      { label: 'DHCR Rent History Lookup', url: 'https://apps.hcr.ny.gov/BuildingSearch/', description: "Check whether an apartment is rent-stabilised and request its official rent history." },
+      { label: 'NYC DOB Certificate of Occupancy Search', url: 'https://a810-bisweb.nyc.gov/bisweb/COsByLocationServlet', description: "Verify a building's Certificate of Occupancy is current and matches the legal use." },
     ],
     content: [
       {
@@ -851,6 +919,19 @@ export const GUIDES: GuidePost[] = [
       { label: 'Electricians in Brooklyn', href: '/services/electricians/brooklyn' },
       { label: 'Electricians in Manhattan', href: '/services/electricians/manhattan' },
       { label: 'Electricians in the Bronx', href: '/services/electricians/bronx' },
+    ],
+    furtherReading: [
+      { slug: 'how-to-look-up-gas-and-electrical-safety-violations', title: 'How to Look Up Gas and Electrical Safety Violations' },
+      { slug: 'how-to-check-if-smoke-detectors-are-code-compliant', title: 'How to Check If Smoke Detectors Are Code Compliant' },
+      { slug: 'does-my-nyc-apartment-need-to-have-a-smoke-detector', title: 'Does My NYC Apartment Need to Have a Smoke Detector?' },
+      { slug: 'what-are-ecb-violations-and-should-i-care', title: 'What Are ECB Violations and Should I Care?' },
+    ],
+    govLinks: [
+      { label: 'NYC DOB Master Electrician Licence Lookup', url: 'https://a810-bisweb.nyc.gov/bisweb/LicenseQueryServlet', description: 'Verify a NYC Master Electrician licence is active and in good standing.' },
+      { label: 'DOB NOW — Electrical Permit Status', url: 'https://a810-bisweb.nyc.gov/bisweb/bispi00.jsp', description: 'Check whether an electrical permit was filed and inspect its status.' },
+      { label: 'HPD eCertification Portal', url: 'https://hpdonline.nyc.gov/hpdonline/selfcertify/', description: 'File your electrical violation Certification of Correction with HPD.' },
+      { label: 'ECB/OATH Tribunal', url: 'https://www.nyc.gov/site/oath/index.page', description: 'Contest or pay ECB fines for electrical violations at the OATH Tribunal.' },
+      { label: 'NYC Fire Department — Smoke Detector Rules', url: 'https://www.nyc.gov/site/fdny/fire-safety/safety-tips/smoke-detector.page', description: 'FDNY requirements for smoke and carbon monoxide detectors in NYC buildings.' },
     ],
     content: [
       {
