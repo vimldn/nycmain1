@@ -11,18 +11,18 @@ const today = new Date().toISOString().split('T')[0]
 export default function sitemap(): MetadataRoute.Sitemap {
   // ── Static pages ──────────────────────────────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${BASE_URL}/`,                priority: 1.0,  changeFrequency: 'daily'   },
-    { url: `${BASE_URL}/locations`,       priority: 0.9,  changeFrequency: 'weekly'  },
-    { url: `${BASE_URL}/services`,        priority: 0.9,  changeFrequency: 'weekly'  },
-    { url: `${BASE_URL}/blog`,            priority: 0.8,  changeFrequency: 'daily'   },
-    { url: `${BASE_URL}/blog/tags`,       priority: 0.6,  changeFrequency: 'weekly'  },
-    { url: `${BASE_URL}/guides`,          priority: 0.8,  changeFrequency: 'weekly'  },
-    { url: `${BASE_URL}/news`,            priority: 0.7,  changeFrequency: 'daily'   },
-    { url: `${BASE_URL}/data-sources`,    priority: 0.5,  changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/press`,           priority: 0.5,  changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/privacy-policy`,  priority: 0.3,  changeFrequency: 'yearly'  },
-    { url: `${BASE_URL}/terms-of-service`,priority: 0.3,  changeFrequency: 'yearly'  },
-  ].map(page => ({ ...page, lastModified: today }))
+    { url: `${BASE_URL}/`,                 lastModified: today, changeFrequency: 'daily'   as const, priority: 1.0 },
+    { url: `${BASE_URL}/locations`,        lastModified: today, changeFrequency: 'weekly'  as const, priority: 0.9 },
+    { url: `${BASE_URL}/services`,         lastModified: today, changeFrequency: 'weekly'  as const, priority: 0.9 },
+    { url: `${BASE_URL}/blog`,             lastModified: today, changeFrequency: 'daily'   as const, priority: 0.8 },
+    { url: `${BASE_URL}/blog/tags`,        lastModified: today, changeFrequency: 'weekly'  as const, priority: 0.6 },
+    { url: `${BASE_URL}/guides`,           lastModified: today, changeFrequency: 'weekly'  as const, priority: 0.8 },
+    { url: `${BASE_URL}/news`,             lastModified: today, changeFrequency: 'daily'   as const, priority: 0.7 },
+    { url: `${BASE_URL}/data-sources`,     lastModified: today, changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${BASE_URL}/press`,            lastModified: today, changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${BASE_URL}/privacy-policy`,   lastModified: today, changeFrequency: 'yearly'  as const, priority: 0.3 },
+    { url: `${BASE_URL}/terms-of-service`, lastModified: today, changeFrequency: 'yearly'  as const, priority: 0.3 },
+  ]
 
   // ── Location pages (/locations/[location]) ────────────────────────────────
   const locationSlugs = Object.keys(locations)
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const locationPages: MetadataRoute.Sitemap = locationSlugs.map(slug => ({
     url: `${BASE_URL}/locations/${slug}`,
     lastModified: today,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
 
