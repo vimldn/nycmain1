@@ -485,123 +485,120 @@ export default function ServiceLocationPage({ params }: Props) {
 
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-12">
-              {/* HERO */}
-              <section className="space-y-8">
-                {/* IMAGE FIRST */}
-                <div className="relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
-                  <Image
-                    src={`/services/${params.service}.png`}
-                    alt={`${noun} in ${location.name}`}
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17]/80 via-[#0a0e17]/40 to-transparent" />
+              {/* HERO — B layout: image as faint left-column bg texture, form visible above fold */}
+              <section className="rounded-2xl overflow-hidden border border-white/5 mb-4">
+                <div className="grid lg:grid-cols-3">
 
-                  {/* Badges on image */}
-                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-                    <span className="px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-sm rounded-lg text-emerald-300 text-sm font-medium">
-                      {service.category}
-                    </span>
-                    <span className="px-3 py-1.5 bg-blue-500/20 border border-blue-500/30 backdrop-blur-sm rounded-lg text-blue-300 text-sm font-medium">
-                      {location.name}
-                    </span>
-                    <span className="px-3 py-1.5 bg-purple-500/20 border border-purple-500/30 backdrop-blur-sm rounded-lg text-purple-300 text-sm font-medium">
-                      {location.borough}
-                    </span>
+                  {/* LEFT (2/3) — headline, pitch, trust, nav */}
+                  <div className="lg:col-span-2 relative px-8 py-10">
+                    {/* Faint image texture */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <Image
+                        src={`/services/${params.service}.png`}
+                        alt=""
+                        fill
+                        className="object-cover opacity-[0.07] scale-105"
+                        priority
+                        sizes="66vw"
+                        aria-hidden="true"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e17]/90 via-[#0a0e17]/85 to-[#0a0e17]/95" />
+                    </div>
+
+                    <div className="relative z-10">
+                      {/* Chips */}
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          {service.category}
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                          {location.name}
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                          {location.borough}
+                        </span>
+                        {vp && (
+                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${
+                            vp.pestRisk === 'High' ? 'bg-red-500/10 text-red-400 border-red-500/20' :
+                            vp.pestRisk === 'Medium' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
+                            'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                          }`}>
+                            Pest risk: {vp.pestRisk}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Headline */}
+                      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+                        {renderHeadlineWithGradientLocation(headline, location.name)}
+                      </h1>
+
+                      {/* Pitch */}
+                      <p className="text-lg text-slate-300 leading-relaxed mb-6">{pitch}</p>
+
+                      {/* Trust bullets */}
+                      <ul className="space-y-2 mb-6">
+                        <li className="flex items-center gap-3 text-sm text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          {service.timeline.split(';')[0]} · {service.costRange.split(',')[0]}
+                        </li>
+                        <li className="flex items-center gap-3 text-sm text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Local providers experienced with {location.name} buildings
+                        </li>
+                        <li className="flex items-center gap-3 text-sm text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Free · No commitment · Fast response
+                        </li>
+                      </ul>
+
+                      {/* VP renter tip — unique per location */}
+                      {vp && (
+                        <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 mb-6">
+                          <div className="text-xs font-semibold text-amber-300 mb-1">{location.name} renter tip</div>
+                          <p className="text-xs text-slate-400 leading-relaxed">{vp.rentersNote}</p>
+                        </div>
+                      )}
+
+                      {/* Secondary nav */}
+                      <div className="flex flex-wrap gap-2">
+                        <a href="#why-need" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">What you can request</a>
+                        <a href="#what-to-look-for" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">What to look for</a>
+                        <a href="#costs" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">Costs</a>
+                        <a href="#faq" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">FAQ</a>
+                        <Link href={`/services/${params.service}/questions-to-ask`} className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">Questions to ask</Link>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* RIGHT (1/3) — sticky form above fold */}
+                  <div className="bg-[#0d1117] border-l border-white/5 px-6 py-10">
+                    <div className="font-semibold text-sm text-white mb-1">Get quotes &amp; availability</div>
+                    <div className="text-xs text-slate-400 mb-5">Licensed providers · No commitment</div>
+                    <UniversalLeadForm
+                      locationName={location.name}
+                      locationSlug={params.location}
+                      serviceName={service.name}
+                      serviceSlug={params.service}
+                    />
+                  </div>
+
                 </div>
 
-                {/* THEN HEADLINE */}
-                <div className="space-y-4">
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                    {renderHeadlineWithGradientLocation(headline, location.name)}
-                  </h1>
-
-                  {/* THEN CTA buttons */}
-                  <div className="flex flex-wrap gap-3">
-                    <OpenModalButton variant="primary" className="lg:w-auto w-full sm:w-auto">
-                      Get Free Quotes
-                    </OpenModalButton>
-                    <a
-                      href="#faq"
-                      className="px-6 py-3 bg-transparent border-2 border-emerald-400/50 text-emerald-400 hover:bg-emerald-400/10 hover:border-emerald-400 font-semibold rounded-xl transition lg:w-auto w-full sm:w-auto inline-block text-center"
-                    >
-                      See How It Works ↓
-                    </a>
+                {/* Stats strip below hero */}
+                <div className="grid grid-cols-3 border-t border-white/5">
+                  <div className="px-6 py-3 border-r border-white/5 text-center">
+                    <div className="text-sm font-semibold text-emerald-400">{service.timeline.split(';')[0]}</div>
+                    <div className="text-[10px] text-slate-500">Typical timeline</div>
                   </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-lg text-slate-300 leading-relaxed mb-4">{pitch}</p>
-
-                <div className="space-y-4 mb-6">
-                  {seoIntro.split(/(?<=\.)\s+(?=[A-Z])/).reduce<string[][]>((acc, sentence, i) => {
-                    const chunkIndex = Math.floor(i / 3)
-                    if (!acc[chunkIndex]) acc[chunkIndex] = []
-                    acc[chunkIndex].push(sentence)
-                    return acc
-                  }, []).map((chunk, i) => (
-                    <p key={i} className="text-lg text-slate-300 leading-relaxed">
-                      {chunk.join(' ')}
-                    </p>
-                  ))}
-                </div>
-
-                {/* Quick stats badges */}
-                <div className="flex flex-wrap gap-6 mb-8">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">Experienced Pros</div>
-                      <div className="text-sm text-slate-500">Local availability</div>
-                    </div>
+                  <div className="px-6 py-3 border-r border-white/5 text-center">
+                    <div className="text-sm font-semibold text-blue-400">{service.costRange.split(',')[0]}</div>
+                    <div className="text-[10px] text-slate-500">Cost range</div>
                   </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-blue-400" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">{service.timeline.split(';')[0]}</div>
-                      <div className="text-sm text-slate-500">Typical timeline</div>
-                    </div>
+                  <div className="px-6 py-3 text-center">
+                    <div className="text-sm font-semibold text-purple-400">Free</div>
+                    <div className="text-[10px] text-slate-500">No commitment</div>
                   </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-purple-400" />
-                    </div>
-                    <div>
-                      <div className="font-semibold">{service.costRange.split(',')[0].split(' ')[0]}</div>
-                      <div className="text-sm text-slate-500">Starting cost</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Jump navigation */}
-                <div className="flex flex-wrap gap-2">
-                  <a href="#why-need" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
-                    What you can request
-                  </a>
-                  <a href="#what-to-look-for" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
-                    What to look for
-                  </a>
-                  <a href="#costs" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
-                    Costs
-                  </a>
-                  <a href="#faq" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
-                    FAQ
-                  </a>
-                  <Link
-                    href={`/services/${params.service}/questions-to-ask`}
-                    className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition"
-                  >
-                    Questions to ask
-                  </Link>
                 </div>
               </section>
 
