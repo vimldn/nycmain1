@@ -2,24 +2,16 @@ import React from "react";
 
 type AreaServed = {
   name: string;
-  /** Relative route, e.g. /locations/chelsea */
   url: string;
-  /** Optional description */
   description?: string;
 };
 
 type Props = {
-  /** Canonical site origin, e.g. https://www.buildinghealthx.com */
   siteUrl?: string;
-  /** Organization name (provider) */
   orgName?: string;
-  /** Service name shown to users */
   serviceName: string;
-  /** Relative route, e.g. /services/plumbers or /services/plumbers/chelsea */
   url: string;
-  /** Optional service description */
   description?: string;
-  /** Optional location (for /services/[service]/[location]) */
   areaServed?: AreaServed;
 };
 
@@ -34,16 +26,22 @@ export function ServiceJsonLd({
   serviceName,
   url,
   description,
-  areaServed
+  areaServed,
 }: Props) {
+  const absUrl = toAbs(siteUrl, url);
+
   const data: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${absUrl}#service`,
     name: serviceName,
-    url: toAbs(siteUrl, url),
+    url: absUrl,
     provider: {
+      "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-    }
+      name: orgName,
+      url: siteUrl,
+    },
   };
 
   if (description) data.description = description;
@@ -53,7 +51,7 @@ export function ServiceJsonLd({
       "@type": "Place",
       name: areaServed.name,
       url: toAbs(siteUrl, areaServed.url),
-      ...(areaServed.description ? { description: areaServed.description } : {})
+      ...(areaServed.description ? { description: areaServed.description } : {}),
     };
   }
 

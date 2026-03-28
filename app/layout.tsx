@@ -94,6 +94,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               alternateName: 'BuildingHealthX',
               url: 'https://www.buildinghealthx.com',
               publisher: { '@id': 'https://www.buildinghealthx.com/#organization' },
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://www.buildinghealthx.com/api/lookup?address={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
             }),
           }}
         />

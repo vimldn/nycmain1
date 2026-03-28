@@ -33,7 +33,7 @@ import Footer from '@/components/Footer'
 import UniversalLeadForm from '@/components/UniversalLeadForm'
 import { services } from '@/lib/services-data'
 import { locations } from '@/lib/locations-data'
-import { BreadcrumbJsonLd, LocationJsonLd } from '@/components/seo'
+import { BreadcrumbJsonLd, LocationJsonLd, FaqJsonLd } from '@/components/seo'
 
 const getServiceIcon = (service: string, size: string = 'w-6 h-6') => {
   const icons: Record<string, React.ReactNode> = {
@@ -129,6 +129,32 @@ export default function LocationPage({ params }: Props) {
           { name: location.name, url: `/locations/${params.location}` },
         ]}
       />
+      {vp && (
+        <FaqJsonLd
+          faqs={[
+            {
+              q: `What are the most common building violations in ${location.name}?`,
+              a: `The most common building violations in ${location.name} are: ${vp.topIssues.join(', ')}. ${vp.avgViolationsNote}`,
+            },
+            {
+              q: `What is the pest risk in ${location.name}?`,
+              a: `Pest risk in ${location.name} is rated ${vp.pestRisk}. ${vp.avgViolationsNote}`,
+            },
+            {
+              q: `What should renters know before signing a lease in ${location.name}?`,
+              a: vp.rentersNote,
+            },
+            {
+              q: `How old are the buildings in ${location.name}?`,
+              a: `${vp.buildingAge}. Building age is a key factor in violation risk — older buildings tend to have more heat, plumbing, and structural issues.`,
+            },
+            {
+              q: `How bad are heat complaints in ${location.name}?`,
+              a: `Heat complaint levels in ${location.name} are rated ${vp.heatComplaintLevel}. ${vp.avgViolationsNote}`,
+            },
+          ]}
+        />
+      )}
 
       <Header />
       <main className="pt-24 pb-16">

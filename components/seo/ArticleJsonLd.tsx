@@ -1,21 +1,13 @@
 import React from "react";
 
 type Props = {
-  /** Canonical site origin, e.g. https://www.buildinghealthx.com */
   siteUrl?: string;
-  /** Organization / publisher name */
   orgName?: string;
-  /** Article headline */
   headline: string;
-  /** Relative route, e.g. /news or /blog/some-post */
   url: string;
-  /** Optional description / excerpt */
   description?: string;
-  /** ISO date string, e.g. 2026-01-30 */
   datePublished?: string;
-  /** ISO date string */
   dateModified?: string;
-  /** Optional absolute image URL */
   imageUrl?: string;
 };
 
@@ -32,21 +24,25 @@ export function ArticleJsonLd({
   description,
   datePublished,
   dateModified,
-  imageUrl
+  imageUrl,
 }: Props) {
+  const absUrl = toAbs(siteUrl, url);
+
   const data: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${absUrl}#article`,
     headline,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": toAbs(siteUrl, url),
+      "@id": absUrl,
     },
     publisher: {
       "@id": `${siteUrl}/#organization`,
     },
     author: {
       "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
       name: orgName,
       url: siteUrl,
     },
