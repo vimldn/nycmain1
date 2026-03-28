@@ -168,142 +168,71 @@ export default function LocationPage({ params }: Props) {
             <span className="text-white">{location.name}</span>
           </nav>
 
-          {/* Hero — B layout: dashboard header + stats row + data columns */}
-
-          {/* Top bar: headline + CTA */}
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8 pb-8 border-b border-white/5">
-            <div className="flex-1">
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          {/* Hero */}
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            <div className="lg:col-span-2">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-cyan-500/10 text-cyan-400">
                   {location.borough}
                 </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                  {Object.keys(services).length} services available
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-blue-500/10 text-blue-400">
+                  {Object.keys(services).length} Services Available
                 </span>
                 {vp && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                    Building data available
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-purple-500/10 text-purple-400">
+                    Building Data Available
                   </span>
                 )}
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                {location.name}
-                <span className="block text-xl sm:text-2xl font-normal text-slate-400 mt-2">
-                  Building health &amp; renter services
-                </span>
-              </h1>
-              <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
-                {location.description}
-              </p>
+
+              <div className="flex items-start gap-6 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
+                  <MapPin className="w-8 h-8" />
+                </div>
+                <div>
+                  <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
+                    Renter services &amp; building research in{' '}
+                    <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                      {location.name}
+                    </span>
+                  </h1>
+                  <p className="text-xl text-slate-300 leading-relaxed">
+                    {location.description} Research any {location.name} building before you sign — then find trusted local service providers.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
+                  <div className="text-sm font-semibold text-white mb-1">Search any {location.name} address</div>
+                  <p className="text-sm text-slate-400">
+                    Pull HPD violations, 311 complaints, pest inspections, and ownership history for any building.
+                  </p>
+                </div>
+                <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
+                  <div className="text-sm font-semibold text-white mb-1">How service requests work</div>
+                  <p className="text-sm text-slate-400">
+                    Choose a service, share a few details, and we connect you with providers who serve {location.name}.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Compact form */}
-            <div className="lg:w-80 flex-shrink-0">
-              <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-5">
-                <div className="font-semibold text-sm mb-1">Get free service quotes</div>
-                <div className="text-xs text-slate-400 mb-4">Licensed providers · No commitment</div>
+            <div className="lg:col-span-1">
+              <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h2 className="font-semibold text-base">Get free quotes</h2>
+                    <p className="text-xs text-slate-400">Licensed providers · No commitment</p>
+                  </div>
+                </div>
                 <UniversalLeadForm locationName={location.name} locationSlug={params.location} />
               </div>
             </div>
           </div>
-
-          {/* Dashboard stats row */}
-          {vp && (
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-4">
-                <div className="text-xs text-slate-500 mb-2 flex items-center gap-1.5">
-                  <Bug className="w-3 h-3" /> Pest risk
-                </div>
-                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${
-                  vp.pestRisk === 'High' ? 'bg-red-500/10 text-red-400 border-red-500/20' :
-                  vp.pestRisk === 'Medium' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
-                  'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-                }`}>{vp.pestRisk}</span>
-              </div>
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-4">
-                <div className="text-xs text-slate-500 mb-2 flex items-center gap-1.5">
-                  <Thermometer className="w-3 h-3" /> Heat complaints
-                </div>
-                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${
-                  vp.heatComplaintLevel === 'High' ? 'bg-red-500/10 text-red-400 border-red-500/20' :
-                  vp.heatComplaintLevel === 'Medium' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
-                  'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-                }`}>{vp.heatComplaintLevel}</span>
-              </div>
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-4 col-span-2">
-                <div className="text-xs text-slate-500 mb-2 flex items-center gap-1.5">
-                  <Building2 className="w-3 h-3" /> Building stock
-                </div>
-                <div className="text-sm font-medium text-white leading-snug">{vp.buildingAge}</div>
-              </div>
-            </div>
-          )}
-
-          {/* Two-column data section: top issues + top services */}
-          {vp && (
-            <div className="grid lg:grid-cols-2 gap-4 mb-12">
-              {/* Top violations */}
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                <div className="flex items-center gap-2 mb-4">
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
-                  <div className="text-sm font-semibold">Most common issues in {location.name}</div>
-                </div>
-                <ul className="space-y-2.5">
-                  {vp.topIssues.map((issue, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
-                      <span className="w-5 h-5 rounded-full bg-amber-500/10 text-amber-400 text-xs flex items-center justify-center font-bold flex-shrink-0">{i + 1}</span>
-                      {issue}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 pt-4 border-t border-white/5">
-                  <p className="text-xs text-slate-500 leading-relaxed">{vp.avgViolationsNote}</p>
-                </div>
-              </div>
-
-              {/* Top services + renter tip */}
-              <div className="space-y-3">
-                <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-3">Top services in {location.name}</div>
-                  <div className="space-y-1.5">
-                    {Object.entries(services).slice(0, 5).map(([slug, svc]) => (
-                      <Link
-                        key={slug}
-                        href={`/services/${slug}/${params.location}`}
-                        className="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/5 group transition"
-                      >
-                        <span className="text-sm text-slate-300 group-hover:text-white transition">{svc.name}</span>
-                        <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 transition" />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-4">
-                  <div className="flex items-start gap-2.5">
-                    <FileSearch className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-semibold text-cyan-300 mb-1">Renter tip for {location.name}</div>
-                      <p className="text-xs text-slate-400 leading-relaxed">{vp.rentersNote}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* No VP fallback header */}
-          {!vp && (
-            <div className="grid gap-4 sm:grid-cols-2 mb-12">
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                <div className="text-sm font-semibold text-white mb-1">Search any {location.name} address</div>
-                <p className="text-sm text-slate-400">Pull HPD violations, 311 complaints, pest inspections, and ownership history for any building.</p>
-              </div>
-              <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                <div className="text-sm font-semibold text-white mb-1">How service requests work</div>
-                <p className="text-sm text-slate-400">Choose a service, share a few details, and we connect you with providers who serve {location.name}.</p>
-              </div>
-            </div>
-          )}
 
           {/* Violation Profile */}
           {vp && (

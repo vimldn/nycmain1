@@ -155,142 +155,99 @@ export default function ServicePage({ params }: Props) {
             <span className="text-white">{service.name}</span>
           </nav>
 
-          {/* HERO — B layout: two-column, image as faint left-column bg texture */}
+          {/* HERO - Full-width with centered content */}
           <section className="mb-16">
-            <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/5">
+            {/* Background image with overlay */}
+            <div className="relative h-[300px] sm:h-[350px] lg:h-[400px] rounded-3xl overflow-hidden mb-12">
+              <Image
+                src={`/services/${params.service}.png`}
+                alt={`${service.name} in NYC`}
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/40 via-[#0a0e17]/70 to-[#0a0e17]" />
+            </div>
 
-              {/* LEFT — headline, pitch, trust bullets, nav */}
-              <div className="relative px-8 py-10 lg:py-12">
-                {/* Faint image texture behind left column */}
-                <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src={`/services/${params.service}.png`}
-                    alt=""
-                    fill
-                    className="object-cover opacity-[0.06] scale-105"
-                    priority
-                    sizes="50vw"
-                    aria-hidden="true"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e17]/90 via-[#0a0e17]/80 to-[#0a0e17]/95" />
-                </div>
-
-                <div className="relative z-10">
-                  {/* Category chip */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                      {service.category}
-                    </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      All 5 boroughs
-                    </span>
-                  </div>
-
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                    {headline}
-                  </h1>
-
-                  <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                    {service.subHeadline || pitch}
-                  </p>
-
-                  {/* Trust bullets */}
-                  <ul className="space-y-2 mb-8">
-                    <li className="flex items-center gap-3 text-sm text-slate-400">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                      Local providers matched to your neighbourhood
-                    </li>
-                    <li className="flex items-center gap-3 text-sm text-slate-400">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                      {service.timeline} · {service.costRange}
-                    </li>
-                    {service.extraQuickFact && (
-                      <li className="flex items-center gap-3 text-sm text-slate-400">
-                        <ClipboardCheck className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                        {service.extraQuickFact.label}: {service.extraQuickFact.detail}
-                      </li>
-                    )}
-                    <li className="flex items-center gap-3 text-sm text-slate-400">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                      Free · No commitment · Fast response
-                    </li>
-                  </ul>
-
-                  {/* Primary CTA */}
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <OpenModalButton variant="primary" className="w-full sm:w-auto">
-                      Get {noun} quotes
-                    </OpenModalButton>
-                    <a href="#neighborhoods" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold text-sm transition">
-                      Browse neighbourhoods
-                      <ChevronRight className="w-4 h-4" />
-                    </a>
-                  </div>
-
-                  {/* Secondary nav */}
-                  <div className="flex flex-wrap gap-2">
-                    <a href="#requests" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">Common requests</a>
-                    <a href="#faqs" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">FAQs</a>
-                    <a href="#questions" className="px-3 py-1.5 text-xs text-slate-500 hover:text-slate-300 bg-white/5 rounded-lg transition">Questions to ask</a>
-                  </div>
-                </div>
+            {/* Headline + CTA (NOT inside the image) */}
+            <div className="max-w-5xl mx-auto mb-10">
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                  {headline}
+                </h1>
+                <OpenModalButton variant="primary" className="lg:w-auto w-full">
+                  Get {service.name} quotes
+                </OpenModalButton>
               </div>
+              {/* Sub-headline with trust signal */}
+              {service.subHeadline ? (
+                <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
+                  {service.subHeadline}
+                </p>
+              ) : (
+                <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
+                  {pitch}
+                </p>
+              )}
+            </div>
 
-              {/* RIGHT — location grid by borough */}
-              <div className="bg-[#0d1117] border-l border-white/5 px-6 py-10 lg:py-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-cyan-400" />
+            {/* Stats grid */}
+            <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+              <div className="bg-[#12161f] border border-emerald-500/20 rounded-2xl p-6 text-center">
+                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 className="w-7 h-7 text-emerald-400" />
+                </div>
+                <div className="font-semibold text-lg mb-1">Matched to availability</div>
+                <div className="text-sm text-slate-400">Local options that serve you</div>
+              </div>
+              
+              <div className="bg-[#12161f] border border-blue-500/20 rounded-2xl p-6 text-center">
+                <div className="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-7 h-7 text-blue-400" />
+                </div>
+                <div className="font-semibold text-lg mb-1">{service.timeline}</div>
+                <div className="text-sm text-slate-400">Typical timing</div>
+              </div>
+              
+              <div className="bg-[#12161f] border border-purple-500/20 rounded-2xl p-6 text-center">
+                <div className="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <DollarSign className="w-7 h-7 text-purple-400" />
+                </div>
+                <div className="font-semibold text-lg mb-1">{service.costRange}</div>
+                <div className="text-sm text-slate-400">Typical cost range</div>
+              </div>
+            </div>
+
+            {/* Extra quick fact (e.g. COI requirement for movers) */}
+            {service.extraQuickFact && (
+              <div className="max-w-5xl mx-auto mb-8">
+                <div className="bg-[#12161f] border border-amber-500/20 rounded-2xl p-6 flex items-start gap-4">
+                  <div className="w-14 h-14 bg-amber-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <ClipboardCheck className="w-7 h-7 text-amber-400" />
                   </div>
                   <div>
-                    <div className="font-semibold text-sm">Pick your neighbourhood</div>
-                    <div className="text-xs text-slate-500">{Object.keys(locations).length} areas covered</div>
+                    <div className="font-semibold text-lg mb-1">Requirements: {service.extraQuickFact.label}</div>
+                    <div className="text-sm text-slate-400">{service.extraQuickFact.detail}</div>
                   </div>
                 </div>
-
-                {/* Stats strip */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-3 text-center">
-                    <div className="text-sm font-semibold text-emerald-400">Free</div>
-                    <div className="text-[10px] text-slate-500">Always</div>
-                  </div>
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-3 text-center">
-                    <div className="text-sm font-semibold text-blue-400">{service.timeline.split(';')[0]}</div>
-                    <div className="text-[10px] text-slate-500">Timeline</div>
-                  </div>
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-3 text-center">
-                    <div className="text-sm font-semibold text-purple-400">{service.costRange.split(',')[0].split('–')[0].trim()}</div>
-                    <div className="text-[10px] text-slate-500">From</div>
-                  </div>
-                </div>
-
-                {/* Borough groups — compact */}
-                <div className="space-y-5 overflow-y-auto max-h-[380px] pr-1">
-                  {locationsByBorough.map(({ borough, locations: boroughLocs }) => (
-                    <div key={borough}>
-                      <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">{borough}</div>
-                      <div className="grid grid-cols-2 gap-1.5">
-                        {boroughLocs.slice(0, 8).map(([locationSlug, loc]) => (
-                          <Link
-                            key={locationSlug}
-                            href={`/services/${params.service}/${locationSlug}`}
-                            className="group flex items-center justify-between px-3 py-2 rounded-lg bg-white/4 hover:bg-white/8 border border-white/5 hover:border-cyan-500/20 transition text-sm"
-                          >
-                            <span className="text-slate-300 group-hover:text-white text-xs truncate">{loc.name}</span>
-                            <ChevronRight className="w-3 h-3 text-slate-600 group-hover:text-cyan-400 flex-shrink-0 ml-1" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href="#neighborhoods"
-                  className="block text-center text-xs text-cyan-400 hover:text-cyan-300 mt-4 transition"
-                >
-                  View all {Object.keys(locations).length} neighbourhoods ↓
-                </Link>
               </div>
+            )}
+
+            {/* Quick navigation - prominent */}
+            <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+              <a href="#neighborhoods" className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
+                Choose a neighborhood
+              </a>
+              <a href="#requests" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
+                Common requests
+              </a>
+              <a href="#faqs" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
+                FAQs
+              </a>
+              <a href="#questions" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
+                Questions to ask
+              </a>
             </div>
           </section>
 
