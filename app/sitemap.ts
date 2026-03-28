@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   )
 
   // ── Blog posts (/blog/[slug]) ─────────────────────────────────────────────
-  const blogSlugs = [...new Set(allRawPosts.map(post => post.folder))]
+  const blogSlugs = Array.from(new Set(allRawPosts.map(post => post.folder)))
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map(slug => ({
     url: `${BASE_URL}/blog/${slug}`,
