@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { locationsData } from '@/lib/locations-data'
+import { locations } from '@/lib/locations-data'
 import { services } from '@/lib/services-data'
 import { GUIDES } from '@/lib/guides-data'
 import { allRawPosts } from '@/content/blog'
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ].map(page => ({ ...page, lastModified: today }))
 
   // ── Location pages (/locations/[location]) ────────────────────────────────
-  const locationSlugs = Object.keys(locationsData)
+  const locationSlugs = Object.keys(locations)
 
   const locationPages: MetadataRoute.Sitemap = locationSlugs.map(slug => ({
     url: `${BASE_URL}/locations/${slug}`,
