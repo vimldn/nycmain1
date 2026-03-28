@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { BreadcrumbJsonLd, ServiceJsonLd } from '@/components/seo'
+import { BreadcrumbJsonLd, ServiceJsonLd, FaqJsonLd } from '@/components/seo'
 import Image from 'next/image'
 import {
   ChevronRight,
@@ -337,6 +337,72 @@ export async function generateStaticParams() {
   return params
 }
 
+
+// Generates 3 location-unique FAQs from the violation profile — different per neighbourhood
+const buildViolationFaqs = (
+  serviceSlug: string,
+  serviceName: string,
+  locationName: string,
+  vp: NonNullable<(typeof locations)[string]['violationProfile']>
+) => {
+  const noun = stripServicesSuffix(serviceName).toLowerCase()
+
+  // Map service categories to relevant VP signals
+  const pestRelevant = ['pest-control', 'cleaning-services', 'mold-remediation']
+  const heatRelevant = ['hvac-repair', 'plumbers', 'electricians', 'building-inspectors']
+  const moveRelevant = ['moving-companies', 'packing-services', 'storage-facilities', 'junk-removal', 'furniture-assembly', 'painters']
+
+  let riskSignal = ''
+  if (pestRelevant.includes(serviceSlug)) {
+    riskSignal = `Pest risk in ${locationName} is rated ${vp.pestRisk} — ${
+      vp.pestRisk === 'High'
+        ? `meaning roach and rodent complaints are frequent in older building stock here`
+        : vp.pestRisk === 'Medium'
+        ? `meaning pest complaints are present but not dominant`
+        : `meaning pest complaints are below average for NYC`
+    }. ${vp.avgViolationsNote}`
+  } else if (heatRelevant.includes(serviceSlug)) {
+    riskSignal = `Heat complaint levels in ${locationName} are rated ${vp.heatComplaintLevel} — ${
+      vp.heatComplaintLevel === 'High'
+        ? `meaning heating system failures are among the most common issues in this neighbourhood`
+        : vp.heatComplaintLevel === 'Medium'
+        ? `meaning heat issues occur but are not the dominant complaint type`
+        : `meaning heat complaints are relatively infrequent here`
+    }. ${vp.avgViolationsNote}`
+  } else if (moveRelevant.includes(serviceSlug)) {
+    riskSignal = `${locationName} buildings are typically ${vp.buildingAge.toLowerCase()}. ${vp.avgViolationsNote}`
+  } else {
+    riskSignal = vp.avgViolationsNote
+  }
+
+  return [
+    {
+      q: `What building issues should I be aware of when hiring ${noun} in ${locationName}?`,
+      a: `The most commonly reported building issues in ${locationName} include: ${vp.topIssues.join(', ')}. ${riskSignal} This context is useful when planning ${noun} work in the area, as building age and condition can affect access, scope, and timing.`,
+    },
+    {
+      q: `Why is ${noun} particularly important for ${locationName} renters?`,
+      a: `${vp.rentersNote} Understanding the local building profile helps when deciding how urgently to act — ${
+        vp.pestRisk === 'High' || vp.heatComplaintLevel === 'High'
+          ? `and in ${locationName}, proactive action is especially worthwhile given the elevated complaint history`
+          : `and in ${locationName}, staying informed is a practical advantage when evaluating service options`
+      }.`,
+    },
+    {
+      q: `What do ${locationName} buildings typically look like and how does that affect ${noun}?`,
+      a: `${locationName} building stock is predominantly ${vp.buildingAge}. This affects ${noun} in practical ways — ${
+        serviceSlug === 'moving-companies' || serviceSlug === 'packing-services' || serviceSlug === 'furniture-assembly'
+          ? `walk-up access, elevator rules, and tight stairwells are common considerations`
+          : serviceSlug === 'pest-control' || serviceSlug === 'mold-remediation' || serviceSlug === 'cleaning-services'
+          ? `older building stock tends to have more structural gaps, moisture issues, and infestation entry points`
+          : serviceSlug === 'hvac-repair' || serviceSlug === 'plumbers' || serviceSlug === 'electricians'
+          ? `ageing infrastructure means systems are more likely to need repairs rather than simple maintenance`
+          : `local building characteristics shape the complexity and scope of most service jobs`
+      }.`,
+    },
+  ]
+}
+
 export default function ServiceLocationPage({ params }: Props) {
   const service = services[params.service]
   const location = locations[params.location]
@@ -367,6 +433,14 @@ export default function ServiceLocationPage({ params }: Props) {
   const localizedFaqs = copy?.faqs || []
   const detailedFaqs = [...localizedFaqs, ...leadGenFaqs(params.service, service.name, location.name), ...service.faqs]
 
+  // Schema FAQs: 3 violation-profile-based unique FAQs + 2 lead-gen FAQs = 5 total per page
+  // Questions include location name so Google treats them as distinct across pages
+  const vp = location.violationProfile
+  const schemaFaqs = [
+    ...(vp ? buildViolationFaqs(params.service, service.name, location.name, vp) : []),
+    ...leadGenFaqs(params.service, service.name, location.name).slice(0, vp ? 2 : 5),
+  ]
+
   return (
     <div className="min-h-screen bg-[#0a0e17] text-white">
       <Header />
@@ -389,6 +463,7 @@ export default function ServiceLocationPage({ params }: Props) {
           description: location.description
         }}
       />
+      {schemaFaqs.length > 0 && <FaqJsonLd faqs={schemaFaqs} />}
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
