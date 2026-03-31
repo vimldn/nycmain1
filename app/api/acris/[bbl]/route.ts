@@ -43,10 +43,16 @@ function parseBBL(bbl: string) {
   // and lot as 4-char zero-padded TEXT ('7501').
   // Do NOT strip leading zeros — exact string match is required.
   const raw = bbl.replace(/\D/g, '').padStart(10, '0')
+  const lotNum = parseInt(raw.slice(6), 10)
+  // Condo unit lots are >= 1001. ACRIS records are filed against the
+  // parent building lot (0001), so we also query that when needed.
+  const isCondoUnit = lotNum >= 1001
   return {
-    borough: raw[0],          // '1'
-    block:   raw.slice(1, 6), // '00047' — preserves leading zeros
-    lot:     raw.slice(6),    // '7501'
+    borough:     raw[0],
+    block:       raw.slice(1, 6),
+    lot:         raw.slice(6),
+    isCondoUnit,
+    parentLot:   isCondoUnit ? '0001' : null,
   }
 }
 
@@ -74,48 +80,44 @@ function chunk<T>(arr: T[], n: number): T[][] {
 
 // ─── Socrata fetchers ──────────────────────────────────────────────────────────
 
+async function queryLegalsByLot(borough: string, block: string, lot: string, debugMode: boolean) {
+  const whereClause = `borough='${borough}' AND block='${block}' AND lot='${lot}'`
+  const url = new URL(LEGALS)
+  url.searchParams.set('$where',  whereClause)
+  url.searchParams.set('$select', 'document_id')
+  url.searchParams.set('$limit',  '1000')
+  const fullUrl = url.toString()
+  const res = await fetch(fullUrl, { headers: reqHeaders(), next: { revalidate: 172800 } })
+  if (!res.ok) return { ids: [], debugEntry: { lot, whereClause, status: res.status } }
+  const rows: Array<{ document_id: string }> = await res.json()
+  return {
+    ids: rows.map(r => r.document_id),
+    debugEntry: debugMode ? { lot, whereClause, url: fullUrl, count: rows.length, sample: rows.slice(0, 3) } : { lot, count: rows.length },
+  }
+}
+
 async function fetchDocumentIds(bbl: string, debugMode: boolean) {
-  const { borough, block, lot } = parseBBL(bbl)
-
-  // Build three query variants — try each until one returns results.
-  // ACRIS dataset has inconsistent formatting across boroughs and time periods.
-  const variants = [
-    `borough='${borough}' AND block='${block}' AND lot='${lot}'`,
-    `borough='${borough}' AND block='${String(parseInt(block, 10))}' AND lot='${String(parseInt(lot, 10))}'`,
-    `borough=${borough} AND block=${parseInt(block, 10)} AND lot=${parseInt(lot, 10)}`,
-  ]
-
+  const { borough, block, lot, isCondoUnit, parentLot } = parseBBL(bbl)
   const debugInfo: any[] = []
 
-  for (const whereClause of variants) {
-    const url = new URL(LEGALS)
-    url.searchParams.set('$where',  whereClause)
-    url.searchParams.set('$select', 'document_id')
-    url.searchParams.set('$limit',  '1000')
+  // Always query the unit/lot directly
+  const unitResult = await queryLegalsByLot(borough, block, lot, debugMode)
+  debugInfo.push(unitResult.debugEntry)
 
-    const fullUrl = url.toString()
-    const res = await fetch(fullUrl, {
-      headers: reqHeaders(),
-      next: { revalidate: 172800 },
-    })
-
-    if (!res.ok) {
-      if (debugMode) debugInfo.push({ variant: whereClause, status: res.status, error: await res.text() })
-      continue
-    }
-
-    const rows: Array<{ document_id: string }> = await res.json()
-
-    if (debugMode) {
-      debugInfo.push({ variant: whereClause, url: fullUrl, count: rows.length, sample: rows.slice(0, 3) })
-    }
-
-    if (rows.length > 0) {
-      return { ids: Array.from(new Set(rows.map(r => r.document_id))), debugInfo, matched: whereClause }
-    }
+  // If it's a condo unit, also query the parent building lot (0001)
+  // ACRIS files building-level records (mortgages, liens) against the parent lot
+  let parentResult = { ids: [] as string[], debugEntry: null as any }
+  if (isCondoUnit && parentLot) {
+    parentResult = await queryLegalsByLot(borough, block, parentLot, debugMode)
+    if (debugMode) debugInfo.push({ ...parentResult.debugEntry, note: 'parent building lot' })
   }
 
-  return { ids: [], debugInfo, matched: null }
+  const allIds = Array.from(new Set([...unitResult.ids, ...parentResult.ids]))
+  const matched = allIds.length > 0
+    ? isCondoUnit ? `unit lot + parent lot (${parentLot})` : 'unit lot'
+    : null
+
+  return { ids: allIds, debugInfo, matched, isCondoUnit }
 }
 
 async function fetchMasterRecords(docIds: string[]) {
@@ -276,10 +278,14 @@ export async function GET(req: NextRequest, { params }: { params: { bbl: string 
         debug: true,
         bbl,
         parsed,
+        isCondoUnit: parsed.isCondoUnit,
+        parentLotQueried: parsed.parentLot,
         docIdsFound: ids.length,
         matchedVariant: matched,
         variants: debugInfo,
-        note: 'If docIdsFound=0 across all variants, this BBL has no ACRIS records or the dataset field format has changed.',
+        note: parsed.isCondoUnit
+          ? 'Condo unit lot detected — queried both unit lot and parent building lot (0001)'
+          : 'If docIdsFound=0, this BBL has no ACRIS records or the dataset field format has changed.',
       })
     } catch (err: any) {
       return NextResponse.json({ debug: true, error: err.message }, { status: 500 })
