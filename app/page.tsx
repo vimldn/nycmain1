@@ -281,18 +281,18 @@ export default function HomePage() {
             Free · Official NYC Data · 55+ Sources
           </div>
 
-          {/* H1 — full keyword, Bebas Neue, huge */}
+          {/* H1 — keyword included, reads like a real headline */}
           <h1 style={{
             fontFamily: 'var(--font-bebas), "Bebas Neue", sans-serif',
-            fontSize: 'clamp(72px, 11vw, 136px)',
+            fontSize: 'clamp(64px, 9vw, 120px)',
             lineHeight: 0.92,
             letterSpacing: '0.02em',
             color: '#0a0a0a',
             marginBottom: '28px',
           }}>
-            NYC Building<br />
-            Violations<br />
-            <span style={{ color: 'var(--teal)' }}>Lookup.</span>
+            Free NYC Building<br />
+            Violations Lookup —<br />
+            <span style={{ color: 'var(--teal)' }}>Know Before You Sign.</span>
           </h1>
 
           <p style={{
@@ -678,3 +678,6 @@ export default function HomePage() {
       </section>
 
       <Footer />
+    </div>
+  )
+}
