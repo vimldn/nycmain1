@@ -11,164 +11,120 @@ export default function NYCInfoBar() {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [currentDate, setCurrentDate] = useState<string>('');
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  // Update time every second
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      
-      // Format time for NYC (EST/EDT)
-      const timeString = now.toLocaleTimeString('en-US', {
+      setCurrentTime(now.toLocaleTimeString('en-US', {
         timeZone: 'America/New_York',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
-      });
-      
-      // Format date
-      const dateString = now.toLocaleDateString('en-US', {
+        hour: 'numeric', minute: '2-digit', hour12: true,
+      }));
+      setCurrentDate(now.toLocaleDateString('en-US', {
         timeZone: 'America/New_York',
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-      });
-      
-      setCurrentTime(timeString);
-      setCurrentDate(dateString);
+        weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
+      }));
     };
-
     updateTime();
-    const interval = setInterval(updateTime, 1000);
-
-    return () => clearInterval(interval);
+    const t = setInterval(updateTime, 1000);
+    return () => clearInterval(t);
   }, []);
 
-  // Fetch weather data
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const response = await fetch(
+        const res = await fetch(
           'https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.0060&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/New_York'
         );
-        
-        const data = await response.json();
-        
-        const getWeatherCondition = (code: number): string => {
-          const weatherCodes: { [key: number]: string } = {
-            0: 'Clear Sky', 1: 'Mostly Clear', 2: 'Partly Cloudy', 3: 'Cloudy',
-            45: 'Foggy', 48: 'Foggy', 51: 'Light Drizzle', 53: 'Drizzle',
-            55: 'Heavy Drizzle', 61: 'Light Rain', 63: 'Rain', 65: 'Heavy Rain',
-            71: 'Light Snow', 73: 'Snow', 75: 'Heavy Snow', 77: 'Snow Grains',
-            80: 'Light Showers', 81: 'Showers', 82: 'Heavy Showers',
-            85: 'Light Snow Showers', 86: 'Snow Showers', 95: 'Thunderstorm',
-            96: 'Thunderstorm', 99: 'Severe Thunderstorm',
-          };
-          return weatherCodes[code] || 'Unknown';
+        const data = await res.json();
+        const codes: Record<number, string> = {
+          0:'Clear Sky',1:'Mostly Clear',2:'Partly Cloudy',3:'Overcast',
+          45:'Foggy',48:'Foggy',51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',
+          61:'Light Rain',63:'Rain',65:'Heavy Rain',71:'Light Snow',73:'Snow',
+          75:'Heavy Snow',80:'Light Showers',81:'Showers',82:'Heavy Showers',
+          95:'Thunderstorm',96:'Thunderstorm',99:'Severe Thunderstorm',
         };
-        
         setWeather({
           temp: Math.round(data.current.temperature_2m),
-          condition: getWeatherCondition(data.current.weather_code)
+          condition: codes[data.current.weather_code] ?? 'Unknown',
         });
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching weather:', error);
-        setLoading(false);
-      }
+      } catch {}
     };
-
     fetchWeather();
-    const interval = setInterval(fetchWeather, 600000);
-    return () => clearInterval(interval);
+    const t = setInterval(fetchWeather, 600000);
+    return () => clearInterval(t);
   }, []);
 
+  const cell = (main: React.ReactNode, sub: string, last = false) => (
+    <div style={{
+      flex: 1,
+      padding: '16px 24px',
+      borderRight: last ? 'none' : '1px solid #e0e0e0',
+    }}>
+      <div style={{
+        fontFamily: 'var(--font-bebas, "Bebas Neue", sans-serif)',
+        fontSize: '22px',
+        letterSpacing: '0.04em',
+        color: '#0a0a0a',
+        lineHeight: 1,
+        marginBottom: '4px',
+      }}>{main}</div>
+      <div style={{
+        fontFamily: 'var(--font-space-mono, monospace)',
+        fontSize: '10px',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
+        color: '#888',
+      }}>{sub}</div>
+    </div>
+  );
+
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.4; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-          50% { opacity: 0.8; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
-        }
-        .gradient-animate {
-          background: linear-gradient(90deg, rgba(59, 130, 246, 0.25) 0%, rgba(147, 51, 234, 0.25) 25%, rgba(59, 130, 246, 0.25) 50%, rgba(147, 51, 234, 0.25) 75%, rgba(59, 130, 246, 0.25) 100%);
-          background-size: 200% 100%;
-          animation: gradient-shift 8s ease infinite;
-        }
-        .divider-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-      `}</style>
-      
-      <div className="relative gradient-animate rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/10 backdrop-blur-sm overflow-hidden">
-        <div className="absolute inset-0 bg-[#0a0e1a]/80 backdrop-blur-sm"></div>
-        
-        {/* ALWAYS HORIZONTAL - COMPACT ON MOBILE, WIDE ON DESKTOP */}
-        <div className="relative flex flex-row items-center justify-between gap-3 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-16 py-3 sm:py-6">
-          
-          {/* Time */}
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <div className="flex flex-col gap-0.5 text-left">
-              <span className="text-white font-bold text-sm sm:text-xl md:text-2xl tracking-tight whitespace-nowrap">
-                {currentTime} <span className="text-blue-400 text-xs sm:text-xl">EST</span>
-              </span>
-              <span className="text-gray-400 text-[10px] sm:text-sm md:text-base font-medium truncate">
-                {currentDate}
-              </span>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="h-10 sm:h-14 md:h-16 w-0.5 bg-gradient-to-b from-transparent via-blue-400 to-transparent divider-glow flex-shrink-0"></div>
-
-          {/* Weather */}
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            {loading ? (
-              <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-white font-bold text-sm sm:text-xl md:text-2xl whitespace-nowrap animate-pulse">...</span>
-                <span className="text-gray-400 text-[10px] sm:text-sm md:text-base truncate">Loading</span>
-              </div>
-            ) : weather ? (
-              <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-white font-bold text-sm sm:text-xl md:text-2xl tracking-tight whitespace-nowrap">
-                  {weather.temp}<span className="text-blue-400 text-xs sm:text-xl">°F</span>
-                </span>
-                <span className="text-gray-400 text-[10px] sm:text-sm md:text-base font-medium truncate">
-                  {weather.condition}
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-0.5 text-left">
-                <span className="text-white font-bold text-sm sm:text-xl md:text-2xl whitespace-nowrap">N/A</span>
-                <span className="text-gray-400 text-[10px] sm:text-sm md:text-base truncate">Unavailable</span>
-              </div>
-            )}
-          </div>
-
-          {/* Divider */}
-          <div className="h-10 sm:h-14 md:h-16 w-0.5 bg-gradient-to-b from-transparent via-purple-400 to-transparent divider-glow flex-shrink-0"></div>
-
-          {/* NYC */}
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <div className="flex flex-col gap-0.5 text-left">
-              <span className="text-white font-bold text-sm sm:text-xl md:text-2xl tracking-tight whitespace-nowrap">
-                <span className="gradient-text">NYC</span>
-              </span>
-              <span className="text-gray-400 text-[10px] sm:text-sm md:text-base font-medium truncate">
-                New York City
-              </span>
-            </div>
-          </div>
-        </div>
-        
-        {/* Bottom border */}
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
+    <div style={{
+      border: '2px solid #0a0a0a',
+      display: 'flex',
+      background: '#fff',
+      width: '100%',
+      maxWidth: '720px',
+      margin: '0 auto',
+    }}>
+      {/* Label */}
+      <div style={{
+        background: '#0a0a0a',
+        padding: '16px 18px',
+        display: 'flex',
+        alignItems: 'center',
+        flexShrink: 0,
+      }}>
+        <span style={{
+          fontFamily: 'var(--font-space-mono, monospace)',
+          fontSize: '9px',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: 'var(--teal, #0b8a7a)',
+          writingMode: 'vertical-rl',
+          transform: 'rotate(180deg)',
+        }}>Live</span>
       </div>
+
+      {cell(
+        currentTime
+          ? <>{currentTime} <span style={{color:'var(--teal,#0b8a7a)',fontSize:'14px'}}>EST</span></>
+          : '––',
+        currentDate || 'New York City'
+      )}
+
+      {cell(
+        weather
+          ? <>{weather.temp}<span style={{color:'var(--teal,#0b8a7a)',fontSize:'14px'}}>°F</span></>
+          : '––',
+        weather?.condition ?? 'Loading'
+      )}
+
+      {cell(
+        <span style={{color:'var(--teal,#0b8a7a)'}}>NYC</span>,
+        'New York City',
+        true
+      )}
     </div>
   );
 }
