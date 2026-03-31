@@ -268,14 +268,14 @@ export default function HomePage() {
       {/* ── HERO — V2 Brutalist White/Teal ── */}
       <section style={{ borderBottom: '3px solid #0a0a0a', position: 'relative', overflow: 'hidden' }} className="pt-24 pb-16 px-6">
 
-        {/* ESB silhouette — bottom-right corner, low opacity */}
+        {/* ESB silhouette — right side, full hero height */}
         <div style={{
           position: 'absolute',
-          bottom: '-40px',
-          right: '-20px',
-          width: '340px',
-          height: '440px',
-          opacity: 0.07,
+          bottom: 0,
+          right: 0,
+          width: '420px',
+          height: '100%',
+          opacity: 0.08,
           pointerEvents: 'none',
           userSelect: 'none',
         }}>
