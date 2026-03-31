@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
@@ -67,7 +67,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
   }
 
   const mono = { fontFamily: '"Space Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase' as const }
-  const navLink = { ...mono, padding: '0 16px', lineHeight: '60px', color: '#555', textDecoration: 'none', borderLeft: '1px solid #e0e0e0', display: 'block', transition: 'color 0.15s' }
+  const navLink = { ...mono, padding: '0 14px', lineHeight: '60px', color: '#555', textDecoration: 'none', display: 'block', transition: 'color 0.15s' }
   const dropItem = { display: 'block', padding: '12px 16px', borderBottom: '1px solid #e0e0e0', textDecoration: 'none', color: '#0a0a0a', fontSize: '13px', fontWeight: 500, transition: 'background 0.1s' }
 
   return (
@@ -92,7 +92,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder={searchPlaceholder} disabled={searching}
                   style={{ flex:1, padding:'8px 14px', border:'none', outline:'none', fontFamily:'"Space Mono", monospace', fontSize:'12px', color:'#0a0a0a' }} />
                 <button type="submit" disabled={searching}
-                  style={{ background:'var(--teal,#0b8a7a)', color:'#fff', border:'none', padding:'8px 16px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'16px', letterSpacing:'0.08em' }}>
+                  style={{ background:'#0b8a7a', color:'#fff', border:'none', padding:'8px 16px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'16px', letterSpacing:'0.08em' }}>
                   {searching ? '…' : 'Search'}
                 </button>
               </div>
@@ -101,15 +101,16 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
           )}
 
           {/* Desktop nav */}
-          <nav style={{ display:'flex', alignItems:'center' }} className="hidden md:flex">
+          <nav style={{ display:'flex', alignItems:'center', gap:0 }} className="hidden md:flex">
             <Link href="/" style={navLink}
-              onMouseEnter={e=>(e.currentTarget.style.color='var(--teal,#0b8a7a)')}
+              onMouseEnter={e=>(e.currentTarget.style.color='#0b8a7a')}
               onMouseLeave={e=>(e.currentTarget.style.color='#555')}>Home</Link>
+            <span style={{ color:'#d0d0d0', fontSize:'14px', userSelect:'none' }}>|</span>
 
             {/* Services */}
             <div style={{ position:'relative' }} onMouseEnter={()=>setServicesOpen(true)} onMouseLeave={()=>setServicesOpen(false)}>
-              <button style={{ ...navLink, background:'none', border:'none', borderLeft:'1px solid #e0e0e0', cursor:'pointer', display:'flex', alignItems:'center', gap:'4px', height:'60px', padding:'0 16px' } as React.CSSProperties}
-                onMouseEnter={e=>(e.currentTarget.style.color='var(--teal,#0b8a7a)')}
+              <button style={{ ...navLink, background:'none', border:'none', cursor:'pointer', display:'flex', alignItems:'center', gap:'4px', height:'60px', padding:'0 14px' } as React.CSSProperties}
+                onMouseEnter={e=>(e.currentTarget.style.color='#0b8a7a')}
                 onMouseLeave={e=>(e.currentTarget.style.color='#555')}>
                 Services <ChevronDown size={12} />
               </button>
@@ -117,23 +118,24 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 <div style={{ position:'absolute', top:'100%', left:0, background:'#fff', border:'2px solid #0a0a0a', borderTop:'none', minWidth:'240px', zIndex:100 }}>
                   {SERVICES.map(s => (
                     <Link key={s.href} href={s.href} style={dropItem}
-                      onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-light,#e0f5f2)')}
+                      onMouseEnter={e=>(e.currentTarget.style.background='#e0f5f2')}
                       onMouseLeave={e=>(e.currentTarget.style.background='#fff')}>
                       {s.label}
                       <span style={{ display:'block', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.06em', color:'#aaa', marginTop:'2px' }}>{s.desc}</span>
                     </Link>
                   ))}
-                  <Link href="/services" style={{ ...dropItem, borderBottom:'none', color:'var(--teal,#0b8a7a)', fontWeight:700 }}
-                    onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-light,#e0f5f2)')}
+                  <Link href="/services" style={{ ...dropItem, borderBottom:'none', color:'#0b8a7a', fontWeight:700 }}
+                    onMouseEnter={e=>(e.currentTarget.style.background='#e0f5f2')}
                     onMouseLeave={e=>(e.currentTarget.style.background='#fff')}>View all services →</Link>
                 </div>
               )}
             </div>
+            <span style={{ color:'#d0d0d0', fontSize:'14px', userSelect:'none' }}>|</span>
 
             {/* Locations */}
             <div style={{ position:'relative' }} onMouseEnter={()=>setLocationsOpen(true)} onMouseLeave={()=>setLocationsOpen(false)}>
-              <button style={{ ...navLink, background:'none', border:'none', borderLeft:'1px solid #e0e0e0', cursor:'pointer', display:'flex', alignItems:'center', gap:'4px', height:'60px', padding:'0 16px' } as React.CSSProperties}
-                onMouseEnter={e=>(e.currentTarget.style.color='var(--teal,#0b8a7a)')}
+              <button style={{ ...navLink, background:'none', border:'none', cursor:'pointer', display:'flex', alignItems:'center', gap:'4px', height:'60px', padding:'0 14px' } as React.CSSProperties}
+                onMouseEnter={e=>(e.currentTarget.style.color='#0b8a7a')}
                 onMouseLeave={e=>(e.currentTarget.style.color='#555')}>
                 Locations <ChevronDown size={12} />
               </button>
@@ -141,27 +143,31 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 <div style={{ position:'absolute', top:'100%', left:0, background:'#fff', border:'2px solid #0a0a0a', borderTop:'none', minWidth:'200px', zIndex:100 }}>
                   {LOCATIONS.map(l => (
                     <Link key={l.slug} href={`/locations/${l.slug}`} style={dropItem}
-                      onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-light,#e0f5f2)')}
+                      onMouseEnter={e=>(e.currentTarget.style.background='#e0f5f2')}
                       onMouseLeave={e=>(e.currentTarget.style.background='#fff')}>
                       {l.name}
                     </Link>
                   ))}
-                  <Link href="/locations" style={{ ...dropItem, borderBottom:'none', color:'var(--teal,#0b8a7a)', fontWeight:700 }}
-                    onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-light,#e0f5f2)')}
+                  <Link href="/locations" style={{ ...dropItem, borderBottom:'none', color:'#0b8a7a', fontWeight:700 }}
+                    onMouseEnter={e=>(e.currentTarget.style.background='#e0f5f2')}
                     onMouseLeave={e=>(e.currentTarget.style.background='#fff')}>View all locations →</Link>
                 </div>
               )}
             </div>
+            <span style={{ color:'#d0d0d0', fontSize:'14px', userSelect:'none' }}>|</span>
 
-            {NAV.map(l => (
-              <Link key={l.href} href={l.href} style={navLink}
-                onMouseEnter={e=>(e.currentTarget.style.color='var(--teal,#0b8a7a)')}
-                onMouseLeave={e=>(e.currentTarget.style.color='#555')}>{l.label}</Link>
+            {NAV.map((l, i) => (
+              <React.Fragment key={l.href}>
+                <Link href={l.href} style={navLink}
+                  onMouseEnter={e=>(e.currentTarget.style.color='#0b8a7a')}
+                  onMouseLeave={e=>(e.currentTarget.style.color='#555')}>{l.label}</Link>
+                {i < NAV.length - 1 && <span style={{ color:'#d0d0d0', fontSize:'14px', userSelect:'none' }}>|</span>}
+              </React.Fragment>
             ))}
 
-            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0 28px', lineHeight:'60px', background:'var(--teal,#0b8a7a)', color:'#fff', textDecoration:'none', borderLeft:'3px solid #0a0a0a', whiteSpace:'nowrap', transition:'background 0.15s', flexShrink:0 }}
-              onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-dark,#076d5f)')}
-              onMouseLeave={e=>(e.currentTarget.style.background='var(--teal,#0b8a7a)')}>
+            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0 28px', lineHeight:'60px', background:'#0b8a7a', color:'#fff', textDecoration:'none', marginLeft:'16px', whiteSpace:'nowrap', transition:'background 0.15s', flexShrink:0 }}
+              onMouseEnter={e=>(e.currentTarget.style.background='#076d5f')}
+              onMouseLeave={e=>(e.currentTarget.style.background='#0b8a7a')}>
               CHECK A BUILDING
             </Link>
           </nav>
@@ -183,7 +189,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
               <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search any NYC address..." disabled={searching}
                 style={{ flex:1, padding:'12px 16px', border:'none', outline:'none', fontFamily:'"Space Mono", monospace', fontSize:'13px' }} />
               <button type="submit" disabled={searching}
-                style={{ background:'var(--teal,#0b8a7a)', color:'#fff', border:'none', padding:'12px 18px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'0.08em', textTransform:'uppercase' }}>
+                style={{ background:'#0b8a7a', color:'#fff', border:'none', padding:'12px 18px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'0.08em', textTransform:'uppercase' }}>
                 {searching ? '…' : 'GO'}
               </button>
             </div>
@@ -199,7 +205,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
             Services <ChevronDown size={12} style={{ transform:mobileServices?'rotate(180deg)':'none', transition:'transform 0.2s' }}/>
           </button>
           {mobileServices && (
-            <div style={{ background:'var(--teal-light,#e0f5f2)', borderBottom:'1px solid #e0e0e0' }}>
+            <div style={{ background:'#e0f5f2', borderBottom:'1px solid #e0e0e0' }}>
               {SERVICES.map(s=>(
                 <Link key={s.href} href={s.href} onClick={()=>setMobileOpen(false)}
                   style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'#0a0a0a', borderBottom:'1px solid rgba(0,0,0,0.06)' }}>
@@ -207,7 +213,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 </Link>
               ))}
               <Link href="/services" onClick={()=>setMobileOpen(false)}
-                style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'var(--teal,#0b8a7a)' }}>
+                style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'#0b8a7a' }}>
                 View all →
               </Link>
             </div>
@@ -219,7 +225,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
             Locations <ChevronDown size={12} style={{ transform:mobileLocations?'rotate(180deg)':'none', transition:'transform 0.2s' }}/>
           </button>
           {mobileLocations && (
-            <div style={{ background:'var(--teal-light,#e0f5f2)', borderBottom:'1px solid #e0e0e0' }}>
+            <div style={{ background:'#e0f5f2', borderBottom:'1px solid #e0e0e0' }}>
               {LOCATIONS.map(l=>(
                 <Link key={l.slug} href={`/locations/${l.slug}`} onClick={()=>setMobileOpen(false)}
                   style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'#0a0a0a', borderBottom:'1px solid rgba(0,0,0,0.06)' }}>
@@ -227,7 +233,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 </Link>
               ))}
               <Link href="/locations" onClick={()=>setMobileOpen(false)}
-                style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'var(--teal,#0b8a7a)' }}>
+                style={{ display:'block', padding:'12px 20px 12px 32px', fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'0.08em', textTransform:'uppercase', textDecoration:'none', color:'#0b8a7a' }}>
                 View all →
               </Link>
             </div>
@@ -242,7 +248,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
 
           <div style={{ padding:'20px' }}>
             <Link href="/" onClick={()=>setMobileOpen(false)}
-              style={{ display:'block', textAlign:'center', background:'var(--teal,#0b8a7a)', color:'#fff', fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', padding:'14px', textDecoration:'none', border:'2px solid #0a0a0a' }}>
+              style={{ display:'block', textAlign:'center', background:'#0b8a7a', color:'#fff', fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', padding:'14px', textDecoration:'none', border:'2px solid #0a0a0a' }}>
               Check a Building
             </Link>
           </div>
