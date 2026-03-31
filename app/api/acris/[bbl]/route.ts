@@ -96,7 +96,7 @@ async function fetchDocumentIds(bbl: string): Promise<string[]> {
   })
   if (!res.ok) throw new Error(`ACRIS legals error ${res.status}`)
   const rows: Array<{ document_id: string }> = await res.json()
-  return [...new Set(rows.map(r => r.document_id))]
+  return Array.from(new Set(rows.map(r => r.document_id)))
 }
 
 async function fetchMasterRecords(docIds: string[]) {
