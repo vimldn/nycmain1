@@ -134,7 +134,7 @@ export async function GET(req: NextRequest) {
       fetchData(DATASETS.hpdViolations, `bbl=${bbl}&$limit=1500&$order=inspectiondate DESC`),
       fetchData(DATASETS.hpdComplaints, `bbl=${bbl}&$where=receiveddate>='${y5}'&$limit=800&$order=receiveddate DESC`),
       fetchData(DATASETS.hpdRegistrations, `bbl=${bbl}&$limit=1`),
-      fetchData(DATASETS.hpdContacts, `$where=registrationid IN (SELECT registrationid FROM tesw-yqqr WHERE bbl='${bbl}')&$limit=30`).catch(()=>[]),
+      Promise.resolve([]) /* hpdContacts loaded below after reg lookup */,
       fetchData(DATASETS.hpdLitigations, `bbl=${bbl}&$limit=200&$order=caseopendate DESC`),
       fetchData(DATASETS.hpdCharges, `bbl=${bbl}&$limit=200`).catch(()=>[]),
       fetchData(DATASETS.hpdVacateOrders, `bbl=${bbl}&$limit=50`).catch(()=>[]),
@@ -148,18 +148,18 @@ export async function GET(req: NextRequest) {
       fetchData(DATASETS.dobSafety, `$where=boro='${borough}' AND block='${block}' AND lot='${lot}'&$limit=150`),
       fetchData(DATASETS.dobEcb, `$where=boro='${borough}' AND block='${block}' AND lot='${lot}'&$limit=300`),
       fetchData(DATASETS.dobVacates, `$where=boro='${borough}' AND block='${block}' AND lot='${lot}'&$limit=30`).catch(()=>[]),
-      fetchData(DATASETS.acrisLegals, `$where=borough='${borough}' AND block=${parseInt(block)} AND lot=${parseInt(lot)}&$limit=100&$order=good_through_date DESC`),
+      fetchData(DATASETS.acrisLegals, `$where=borough='${borough}' AND block='${bbl.slice(1,6)}' AND lot='${bbl.slice(6)}'&$limit=100&$order=good_through_date DESC`),
       // DOF Rolling Sales - borough is number, block/lot need padding
       fetchData(DATASETS.dofRollingSales, `$where=borough=${borough} AND block=${parseInt(block)} AND lot=${parseInt(lot)}&$limit=50&$order=sale_date DESC`).catch(()=>[]),
       fetchData(DATASETS.evictions, `bbl=${bbl}&$where=executed_date>='${y5}'&$limit=150&$order=executed_date DESC`),
       fetchData(DATASETS.housingCourt, `$where=bbl='${bbl}'&$limit=200&$order=fileddate DESC`).catch(()=>[]), // Housing court filings
       fetchData(DATASETS.rodents, `bbl=${bbl}&$limit=80&$order=inspection_date DESC`),
-      fetchData(DATASETS.bedbugs, `$where=building_id='${bbl}'&$limit=50`),
+      fetchData(DATASETS.bedbugs, `$where=bbl='${bbl}'&$limit=50`),
       fetchData(DATASETS.speculationWatch, `bbl=${bbl}&$limit=5`),
       fetchData(DATASETS.rentStabilized, `$where=ucbbl='${bbl}'&$limit=1`).catch(()=>[]),
       fetchData(DATASETS.subsidizedHousing, `$where=bbl='${bbl}'&$limit=5`).catch(()=>[]),
       fetchData(DATASETS.nycha, `$where=bbl='${bbl}'&$limit=3`).catch(()=>[]),
-      fetchData(DATASETS.sr311, `$where=bbl='${bbl}' AND created_date>='${y3}'&$limit=300&$order=created_date DESC`).catch(()=>[]),
+      p?.address && lat && lng ? fetchData(DATASETS.sr311, `$where=within_circle(location,${lat},${lng},50) AND created_date>='${y3}'&$limit=300&$order=created_date DESC`).catch(()=>[]) : Promise.resolve([]),
       
       // Crime (within 500m radius, last 1 year)
       lat && lng ? fetchData(DATASETS.nypdComplaints, `$where=within_circle(lat_lon,${lat},${lng},500) AND cmplnt_fr_dt>='${y1}'&$limit=500&$order=cmplnt_fr_dt DESC`).catch(()=>[]) : Promise.resolve([]),
@@ -254,7 +254,7 @@ export async function GET(req: NextRequest) {
       zoneDist1: p.zonedist1 || '', assessedValue: p.assesstot ? +p.assesstot : null,
       yearAltered1: p.yearalter1 ? +p.yearalter1 : null, yearAltered2: p.yearalter2 ? +p.yearalter2 : null,
       landmark: p.landmark || null, histDist: p.histdist || null,
-      isRentStabilized: rs != null || (+p.unitsres >= 6 && +p.yearbuilt < 1974),
+      isRentStabilized: rs != null,
       rentStabilizedUnits: rs?.uc2023 || rs?.uc2022 || rs?.uc2021 || null,
       rsLostUnits: rs && rs.uc2007 && rs.uc2023 ? +rs.uc2007 - +rs.uc2023 : null,
       isSubsidized: subsidy.length > 0, subsidyPrograms: subsidy.map((s:any)=>s.program_name).filter(Boolean),
@@ -413,12 +413,25 @@ export async function GET(req: NextRequest) {
     
     if (landlord.registrationId) {
       try {
-        const port = await fetchData(DATASETS.hpdRegistrations, `registrationid=${landlord.registrationId}&$select=bbl,housenumber,streetname,zip,borough&$limit=150`, 8000)
+        const [port, contacts] = await Promise.all([
+          fetchData(DATASETS.hpdRegistrations, `registrationid=${landlord.registrationId}&$select=bbl,housenumber,streetname,zip,borough&$limit=150`, 8000),
+          fetchData(DATASETS.hpdContacts, `$where=registrationid='${landlord.registrationId}'&$limit=30`, 8000).catch(()=>[]),
+        ])
         landlord.portfolioSize = port.length
         landlord.portfolio = port.filter((b:any) => b.bbl !== bbl).slice(0,20).map((b:any) => ({
           bbl: b.bbl, address: `${b.housenumber||''} ${b.streetname||''}`.trim(),
           borough: BOROUGH_CODES[b.borough] || b.borough, zipcode: b.zip,
         }))
+        // Populate contacts now that we have the registrationId
+        const ownerC = contacts.filter((c:any) => (c.type||'').toLowerCase().match(/owner|head|corporate/))
+        const agentC = contacts.filter((c:any) => (c.type||'').toLowerCase().match(/agent|manag|site/))
+        const siteC  = contacts.filter((c:any) => (c.type||'').toLowerCase().match(/site/))
+        if (contacts.length) {
+          landlord.owners       = ownerC.map(formatContact)
+          landlord.agents       = agentC.map(formatContact)
+          landlord.siteManagers = siteC.map(formatContact)
+          landlord.allContacts  = contacts.map(formatContact)
+        }
       } catch {}
     }
 
