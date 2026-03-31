@@ -176,8 +176,8 @@ export default function ServicePage({ params }: Props) {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                   {headline}
                 </h1>
-                <OpenModalButton variant="primary" className="lg:w-auto w-full">
-                  Get {service.name} quotes
+                <OpenModalButton variant="primary" className="lg:w-auto w-full whitespace-nowrap">
+                  Get quotes
                 </OpenModalButton>
               </div>
               {/* Sub-headline with trust signal */}
@@ -236,8 +236,8 @@ export default function ServicePage({ params }: Props) {
 
             {/* Quick navigation - prominent */}
             <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-              <a href="#neighborhoods" className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
-                Choose a neighborhood
+              <a href="#neighborhoods" onClick={(e) => { const el = document.getElementById('neighborhoods') as HTMLDetailsElement | null; if (el) el.open = true }} className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
+                Browse neighborhoods
               </a>
               <a href="#requests" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
                 Common requests
@@ -288,65 +288,6 @@ export default function ServicePage({ params }: Props) {
                 )}
               </div>
             </section>
-
-              {/* LOCATION GRID - Grouped by borough */}
-              <section id="neighborhoods" className="bg-[#12161f] border border-white/10 rounded-2xl p-10">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-cyan-400" />
-                    </div>
-                    <div>
-                      <h2 className="text-3xl font-bold">Choose a neighborhood</h2>
-                      <p className="text-slate-400 mt-1">
-                        Pick your area to view {noun.toLowerCase()} options and request help.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Borough-grouped locations */}
-                <div className="space-y-8">
-                  {locationsByBorough.map(({ borough, locations: boroughLocs }) => (
-                    <div key={borough}>
-                      <h3 className="text-xl font-bold mb-4 text-slate-300 flex items-center gap-3">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        {borough}
-                      </h3>
-                      
-                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                        {boroughLocs.map(([locationSlug, loc]) => (
-                          <Link
-                            key={locationSlug}
-                            href={`/services/${params.service}/${locationSlug}`}
-                            className="group flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition"
-                          >
-                            <div>
-                              <div className="font-semibold">{loc.name}</div>
-                              <div className="text-xs text-slate-500 mt-0.5">
-                                {service.timeline.split(';')[0]}
-                              </div>
-                            </div>
-                            <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-white transition" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* View all link — rendered as crawlable <a> via Next Link */}
-                {allLocations.length > 30 && (
-                  <div className="mt-8 text-center">
-                    <Link
-                      href={`/services/${params.service}/${allLocations[0][0]}`}
-                      className="inline-block px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition"
-                    >
-                      View all {allLocations.length} neighborhoods →
-                    </Link>
-                  </div>
-                )}
-              </section>
 
               {/* DATA MOAT — dynamic per service */}
               {service.dataMoat && (
@@ -438,6 +379,45 @@ export default function ServicePage({ params }: Props) {
                   </Link>
                 </div>
               </section>
+
+              {/* LOCATION GRID - Collapsible, at the bottom */}
+              <details id="neighborhoods" className="group bg-[#12161f] border border-white/10 rounded-2xl overflow-hidden">
+                <summary className="flex items-center justify-between p-8 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold">Browse by neighborhood</h2>
+                      <p className="text-slate-400 text-sm mt-0.5">{allLocations.length} areas covered across all 5 boroughs</p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform flex-shrink-0" />
+                </summary>
+
+                <div className="px-8 pb-8 border-t border-white/5 pt-6 space-y-8">
+                  {locationsByBorough.map(({ borough, locations: boroughLocs }) => (
+                    <div key={borough}>
+                      <h3 className="text-sm font-bold mb-3 text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                        {borough}
+                      </h3>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                        {boroughLocs.map(([locationSlug, loc]) => (
+                          <Link
+                            key={locationSlug}
+                            href={`/services/${params.service}/${locationSlug}`}
+                            className="group/card flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition"
+                          >
+                            <span className="font-medium text-sm">{loc.name}</span>
+                            <ChevronRight className="w-4 h-4 text-slate-600 group-hover/card:text-white transition" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </details>
 
               {/* Footer CTA */}
               <section className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8">
