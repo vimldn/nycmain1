@@ -331,7 +331,7 @@ export default function ServicePage({ params }: Props) {
                         key={i}
                         className="group bg-[#f5f5f5] border border-[#e0e0e0]  overflow-hidden"
                       >
-                        <summary className="flex items-center justify-between cursor-pointer p-5 text-left font-semibold text-white hover:bg-[#f5f5f5] transition list-none [&::-webkit-details-marker]:hidden">
+                        <summary className="flex items-center justify-between cursor-pointer p-5 text-left font-semibold text-[#0a0a0a] hover:bg-[#e8e8e8] transition list-none [&::-webkit-details-marker]:hidden">
                           <span className="pr-4">{faq.q}</span>
                           <ChevronRight className="w-5 h-5 text-[#888] group-open:rotate-90 transition-transform flex-shrink-0" />
                         </summary>

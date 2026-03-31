@@ -526,7 +526,7 @@ export default function ServiceLocationPage({ params }: Props) {
                     </OpenModalButton>
                     <a
                       href="#faq"
-                      className="px-6 py-3 bg-transparent border-2 border-emerald-400/50 text-[#0b8a7a] hover:bg-emerald-400/10 hover:border-emerald-400 font-semibold  transition lg:w-auto w-full sm:w-auto inline-block text-center"
+                      className="px-6 py-3 border-2 border-[#0b8a7a] text-[#0b8a7a] hover:bg-[#e0f5f2] font-semibold transition lg:w-auto w-full sm:w-auto inline-block text-center" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'20px', letterSpacing:'.08em' }}
                     >
                       See How It Works ↓
                     </a>
@@ -584,21 +584,21 @@ export default function ServiceLocationPage({ params }: Props) {
 
                 {/* Jump navigation */}
                 <div className="flex flex-wrap gap-2">
-                  <a href="#why-need" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
+                  <a href="#why-need" className="px-4 py-2 border border-[#ddd] hover:border-[#0b8a7a] text-[#555] hover:text-[#0b8a7a] text-sm transition" style={{ fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'.08em', textTransform:'uppercase' }}>
                     What you can request
                   </a>
-                  <a href="#what-to-look-for" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
+                  <a href="#what-to-look-for" className="px-4 py-2 border border-[#ddd] hover:border-[#0b8a7a] text-[#555] hover:text-[#0b8a7a] text-sm transition" style={{ fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'.08em', textTransform:'uppercase' }}>
                     What to look for
                   </a>
-                  <a href="#costs" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
+                  <a href="#costs" className="px-4 py-2 border border-[#ddd] hover:border-[#0b8a7a] text-[#555] hover:text-[#0b8a7a] text-sm transition" style={{ fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'.08em', textTransform:'uppercase' }}>
                     Costs
                   </a>
-                  <a href="#faq" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
+                  <a href="#faq" className="px-4 py-2 border border-[#ddd] hover:border-[#0b8a7a] text-[#555] hover:text-[#0b8a7a] text-sm transition" style={{ fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'.08em', textTransform:'uppercase' }}>
                     FAQ
                   </a>
                   <Link
                     href={`/services/${params.service}/questions-to-ask`}
-                    className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition"
+                    className="px-4 py-2 border border-[#ddd] hover:border-[#0b8a7a] text-[#555] hover:text-[#0b8a7a] text-sm transition" style={{ fontFamily:'"Space Mono", monospace', fontSize:'10px', letterSpacing:'.08em', textTransform:'uppercase' }}
                   >
                     Questions to ask
                   </Link>
@@ -758,7 +758,7 @@ export default function ServiceLocationPage({ params }: Props) {
                 </p>
                 <Link
                   href="/building"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold  transition"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold transition" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'20px', letterSpacing:'.08em' }}
                 >
                   Look Up a Building Address
                   <ChevronRight className="w-5 h-5" />

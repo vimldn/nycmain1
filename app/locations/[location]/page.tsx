@@ -30,7 +30,6 @@ import {
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import UniversalLeadForm from '@/components/UniversalLeadForm'
 import { services } from '@/lib/services-data'
 import { locations } from '@/lib/locations-data'
 import { BreadcrumbJsonLd, LocationJsonLd, FaqJsonLd } from '@/components/seo'
@@ -229,7 +228,6 @@ export default function LocationPage({ params }: Props) {
                     <p className="text-xs text-[#555]">Licensed providers · No commitment</p>
                   </div>
                 </div>
-                <UniversalLeadForm locationName={location.name} locationSlug={params.location} />
               </div>
             </div>
           </div>
