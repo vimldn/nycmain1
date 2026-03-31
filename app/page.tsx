@@ -266,7 +266,28 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO — V2 Brutalist White/Teal ── */}
-      <section style={{ borderBottom: '3px solid #0a0a0a' }} className="pt-24 pb-16 px-6">
+      <section style={{ borderBottom: '3px solid #0a0a0a', position: 'relative', overflow: 'hidden' }} className="pt-24 pb-16 px-6">
+
+        {/* ESB silhouette — bottom-right corner, low opacity */}
+        <div style={{
+          position: 'absolute',
+          bottom: '-40px',
+          right: '-20px',
+          width: '340px',
+          height: '440px',
+          opacity: 0.07,
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}>
+          <Image
+            src="/esb.png"
+            alt=""
+            fill
+            style={{ objectFit: 'contain', objectPosition: 'bottom right' }}
+            priority={false}
+            aria-hidden
+          />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Eyebrow */}
