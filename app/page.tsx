@@ -275,156 +275,155 @@ export default function HomePage() {
       <DatasetJsonLd />
       <Header />
 
-      {/* HERO - FULLY RESPONSIVE */}
-      <section className="relative pt-20 sm:pt-24 md:pt-20 md:min-h-[calc(100vh-80px)] md:flex md:items-center md:justify-center pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-64 h-64 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-3xl top-0 -left-10 sm:-left-20 md:-left-48 animate-pulse" />
-          <div className="absolute w-64 h-64 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] bg-emerald-500/10 rounded-full blur-3xl bottom-0 -right-10 sm:-right-20 md:-right-48 animate-pulse delay-1000" />
-        </div>
+      {/* ── HERO — V2 Brutalist White/Teal ── */}
+      <section style={{ borderBottom: '3px solid #0a0a0a' }} className="pt-24 pb-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-emerald-500/10 border border-blue-500/20 rounded-full mb-6 sm:mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="text-[14px] sm:text-sm font-medium text-[var(--text-secondary)]">
-              Trusted by <span className="text-[var(--text-primary)] font-semibold">10,000+</span> NYC renters
-            </span>
+          {/* Eyebrow */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            fontFamily: 'var(--font-space-mono), monospace',
+            fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase',
+            color: 'var(--teal)', border: '1px solid var(--teal)',
+            padding: '6px 16px', marginBottom: '28px'
+          }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block' }} />
+            Free · Official NYC Data · 55+ Sources
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
-            Research NYC Building Violations{' '}
-            <span className="gradient-text block mt-1 sm:mt-2">Before Signing Your Lease</span>
+          {/* H1 — full keyword, Bebas Neue, huge */}
+          <h1 style={{
+            fontFamily: 'var(--font-bebas), "Bebas Neue", sans-serif',
+            fontSize: 'clamp(72px, 11vw, 136px)',
+            lineHeight: 0.92,
+            letterSpacing: '0.02em',
+            color: '#0a0a0a',
+            marginBottom: '28px',
+          }}>
+            NYC Building<br />
+            Violations<br />
+            <span style={{ color: 'var(--teal)' }}>Lookup.</span>
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] mb-6 sm:mb-8 max-w-3xl mx-auto px-2 leading-relaxed">
-            Search any NYC address and instantly see{' '}
-            <span className="text-[var(--text-primary)] font-medium">building violations</span>,{' '}
-            <span className="text-[var(--text-primary)] font-medium">pest history</span>,{' '}
-            <span className="text-[var(--text-primary)] font-medium">heat complaints</span>, and{' '}
-            <span className="text-[var(--text-primary)] font-medium">311 records,</span> all pulled from official NYC government data.
-            {' '}Don&apos;t sign a lease until you&apos;ve checked.
+          <p style={{
+            fontSize: '19px', lineHeight: 1.75, color: 'var(--text-secondary)',
+            maxWidth: '620px', margin: '0 auto 44px', fontWeight: 300,
+          }}>
+            Search any NYC address and instantly see building violations, pest history, heat complaints, and 311 records — pulled directly from official government data. Free, no login required.
           </p>
 
-          {/* UNIVERSAL RESPONSIVE SEARCH BOX */}
-          <div className="max-w-3xl mx-auto">
+          {/* SEARCH BOX — the entire point of the page */}
+          <div className="max-w-3xl mx-auto" style={{ marginBottom: '16px' }}>
             <form
               onSubmit={handleSubmit}
-              className={`relative ${loading ? 'pointer-events-none' : ''}`}
               ref={dropdownRef}
+              style={{
+                display: 'flex',
+                border: '3px solid #0a0a0a',
+                boxShadow: '6px 6px 0 #0a0a0a',
+                background: '#fff',
+                position: 'relative',
+              }}
+              className={loading ? 'pointer-events-none' : ''}
             >
-              <div className="flex flex-row gap-2 sm:gap-3 md:gap-4">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 pointer-events-none" />
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Enter NYC address..."
-                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 md:py-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-[16px] sm:text-lg transition-all"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="cta-super flex items-center gap-2 justify-center flex-shrink-0 disabled:opacity-50 whitespace-nowrap !py-3 sm:!py-4 !px-4 sm:!px-6 !text-sm sm:!text-base"
-                >
-                  {loading ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span className="hidden sm:inline">Loading</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="!hidden sm:!inline">Check Building</span>
-                      <span className="!inline sm:!hidden">Check</span>
-                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </>
-                  )}
-                </button>
-              </div>
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Enter any NYC address..."
+                style={{
+                  flex: 1, padding: '20px 24px', border: 'none', outline: 'none',
+                  fontFamily: 'var(--font-space-mono), monospace',
+                  fontSize: '16px', color: '#0a0a0a', background: 'none',
+                  borderRight: '2px solid #0a0a0a',
+                }}
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  background: 'var(--teal)', color: '#fff', border: 'none',
+                  padding: '20px 36px', cursor: 'pointer', transition: 'background 0.15s',
+                  fontFamily: 'var(--font-bebas), sans-serif',
+                  fontSize: '22px', letterSpacing: '0.08em', whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {loading ? 'Searching…' : 'Check Building'}
+              </button>
 
               {showDropdown && suggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-2xl overflow-hidden z-50 max-h-80 overflow-y-auto">
+                <div style={{
+                  position: 'absolute', top: '100%', left: 0, right: 0,
+                  background: '#fff', border: '2px solid #0a0a0a',
+                  borderTop: 'none', zIndex: 50, maxHeight: 320, overflowY: 'auto',
+                }}>
                   {suggestions.map((s, i) => (
                     <button
                       key={s.bbl}
                       type="button"
                       onClick={() => handleSelect(s)}
-                      className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 hover:bg-[var(--bg-hover)] transition border-b border-[var(--border-primary)] last:border-b-0 ${
-                        i === selectedIndex ? 'bg-[var(--bg-hover)]' : ''
-                      }`}
+                      style={{
+                        width: '100%', textAlign: 'left', padding: '14px 20px',
+                        background: i === selectedIndex ? 'var(--teal-light)' : '#fff',
+                        border: 'none', borderBottom: '1px solid #e0e0e0',
+                        cursor: 'pointer', fontFamily: 'var(--font-inter), sans-serif',
+                        transition: 'background 0.1s',
+                      }}
                     >
-                      <div className="font-medium text-sm sm:text-base line-clamp-1">{s.address}</div>
-                      <div className="text-sm sm:text-sm text-[var(--text-muted)] mt-0.5 line-clamp-1">
-                        {s.neighborhood ? `${s.neighborhood}, ` : ''}
-                        {s.borough}
-                        {s.zipcode ? ` ${s.zipcode}` : ''}
+                      <div style={{ fontWeight: 600, fontSize: '15px' }}>{s.address}</div>
+                      <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: 2 }}>
+                        {s.neighborhood ? `${s.neighborhood}, ` : ''}{s.borough}{s.zipcode ? ` ${s.zipcode}` : ''}
                       </div>
                     </button>
                   ))}
                 </div>
               )}
             </form>
-
-            {/* MOBILE: fixed overlay loading (no reflow / no “disforming”) */}
-            {loading && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden touch-none overscroll-contain">
-                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-center mx-4">
-                  <div className="mx-auto mb-4 animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-blue-600" />
-                  <p className="text-base font-medium">Checking building safety...</p>
-                  <p className="text-sm text-[var(--text-muted)] mt-1">Searching 55+ data sources</p>
-                </div>
-              </div>
-            )}
-
-            {/* SM+: keep your existing in-flow loading block */}
-            {loading && (
-              <div
-                aria-hidden
-                className="hidden sm:flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 mt-4 sm:mt-6 pointer-events-none select-none"
-              >
-                <div className="relative mb-4 sm:mb-5">
-                  <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-gray-200"></div>
-                  <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
-                </div>
-                <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 dark:text-gray-300 text-center px-4">
-                  Checking building safety...
-                </p>
-                <p className="text-sm sm:text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-2 text-center px-4">
-                  Searching 55+ data sources
-                </p>
-              </div>
-            )}
-
           </div>
 
-          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-sm">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
-              <span className="text-[var(--text-muted)]">Instant Results</span>
+          {/* Mobile loading overlay */}
+          {loading && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden touch-none">
+              <div style={{ background: '#fff', border: '2px solid #0a0a0a', padding: '28px 36px', textAlign: 'center' }}>
+                <div className="mx-auto mb-4 animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-[var(--teal)]" />
+                <p style={{ fontSize: '16px', fontWeight: 600 }}>Checking building safety...</p>
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: 4 }}>Searching 55+ data sources</p>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
-              <span className="text-[var(--text-muted)]">Official NYC Data</span>
-            </div>
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
-              <span className="text-[var(--text-muted)]">55+ Data Sources</span>
-            </div>
+          )}
+
+          {/* Search meta */}
+          <div style={{
+            fontFamily: 'var(--font-space-mono), monospace', fontSize: '12px',
+            color: 'var(--text-muted)', letterSpacing: '0.06em', marginBottom: '28px',
+          }}>
+            // No login required · Updated daily · Always free
           </div>
-                      {/* NYC Info Bar */}
-<div className="mt-8 sm:mt-10 flex justify-center">
-  <NYCInfoBar />
-</div>
+
+          {/* Quick-topic chips */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            {['HPD Violations', '311 Complaints', 'Pest History', 'Rent Stabilised?', 'DOB Permits', 'Landlord Court Filings'].map(t => (
+              <span key={t} style={{
+                border: '1px solid #d0d0d0', padding: '7px 16px',
+                fontSize: '13px', color: 'var(--text-muted)',
+                fontFamily: 'var(--font-space-mono), monospace', cursor: 'pointer',
+                letterSpacing: '0.04em', transition: 'all 0.15s',
+              }}>{t}</span>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <NYCInfoBar />
+          </div>
         </div>
       </section>
-<AsSeenIn />
-      {/* Everything below is unchanged */}
+
+
+      <AsSeenIn />
+            {/* Everything below is unchanged */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[var(--bg-secondary)] px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">

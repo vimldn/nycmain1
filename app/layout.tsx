@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Mono } from 'next/font/google'
+import { Inter, Space_Mono, Bebas_Neue } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
@@ -14,6 +14,13 @@ const spaceMono = Space_Mono({
   weight: ['400', '700'],
   display: 'swap',
   variable: '--font-space-mono',
+})
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-bebas',
 })
 
 export const metadata: Metadata = {
@@ -135,7 +142,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
 
-      <body className={`${inter.variable} ${spaceMono.variable} font-sans min-h-screen antialiased`}>
+      <body className={`${inter.variable} ${spaceMono.variable} ${bebasNeue.variable} font-sans min-h-screen antialiased`}>
         {children}
       </body>
     </html>
