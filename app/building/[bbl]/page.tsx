@@ -13,12 +13,12 @@ import ACRISPanel from '@/components/ACRISPanel'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
-  loading: () => <div className="h-full w-full flex items-center justify-center text-xs text-[#64748b]">Loading chart…</div>,
+  loading: () => <div className="h-full w-full flex items-center justify-center text-xs text-[#666]">Loading chart…</div>,
 })
 
 const ViolationsYearlyBarChart = dynamic(() => import('./ViolationsYearlyBarChart'), {
   ssr: false,
-  loading: () => <div className="h-full w-full flex items-center justify-center text-xs text-[#64748b]">Loading chart…</div>,
+  loading: () => <div className="h-full w-full flex items-center justify-center text-xs text-[#666]">Loading chart…</div>,
 })
 
 type Tab = 'overview' | 'violations' | 'complaints' | 'timeline' | 'landlord' | 'permits' | 'sales' | 'neighborhood'
@@ -36,8 +36,8 @@ class ChartBoundary extends React.Component<
       return (
         <div className="h-full w-full flex items-center justify-center text-center px-4">
           <div>
-            <div className="text-sm font-semibold text-[#e2e8f0]">Chart unavailable</div>
-            <div className="text-xs text-[#64748b] mt-1">
+            <div className="text-sm font-semibold text-[#111]">Chart unavailable</div>
+            <div className="text-xs text-[#666] mt-1">
               {this.props.title ? `${this.props.title} couldn't load for this building.` : 'This chart could not be rendered for this building.'}
             </div>
           </div>
@@ -115,7 +115,7 @@ function sc(v: number) {
 function ScoreBar({ score, height = 4 }: { score: number; height?: number }) {
   const c = sc(score)
   return (
-    <div style={{ height, background: '#1a2235', borderRadius: height / 2, overflow: 'hidden' }}>
+    <div style={{ height, background: '#e0e0e0', borderRadius: height / 2, overflow: 'hidden' }}>
       <div style={{ height: '100%', width: `${score}%`, background: c, borderRadius: height / 2, transition: 'width .6s' }} />
     </div>
   )
@@ -129,17 +129,17 @@ function CategoryCard({ name, icon, score, detail, onClick }: {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left p-4 bg-[#111827] rounded-xl border border-[#1e293b] hover:border-[#334155] transition-colors cursor-pointer group"
+      className="w-full text-left p-4 bg-white border-2 border-[#e0e0e0] hover:border-[#0b8a7a] transition-colors cursor-pointer group"
     >
       <div className="flex items-start justify-between gap-2 mb-3">
-        <div className="text-xs text-[#64748b] group-hover:text-[#94a3b8] transition-colors leading-snug">{icon} {name}</div>
+        <div className="text-xs text-[#666] group-hover:text-[#555] transition-colors leading-snug">{icon} {name}</div>
         <div className="flex items-baseline gap-1.5 flex-shrink-0">
           <span className="text-2xl font-black leading-none" style={{ color: c }}>{score}</span>
           <span className="text-sm font-bold" style={{ color: c }}>{grade}</span>
         </div>
       </div>
       <ScoreBar score={score} height={4} />
-      {detail && <div className="text-xs text-[#475569] mt-2">{detail}</div>}
+      {detail && <div className="text-xs text-[#777] mt-2">{detail}</div>}
     </button>
   )
 }
@@ -147,10 +147,10 @@ function CategoryCard({ name, icon, score, detail, onClick }: {
 function InlineScore({ value, label }: { value: number; label: string }) {
   const c = sc(value)
   return (
-    <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+    <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
       <div className="text-2xl font-black mb-2" style={{ color: c }}>{value}</div>
       <ScoreBar score={value} height={3} />
-      <div className="text-xs text-[#475569] mt-2">{label}</div>
+      <div className="text-xs text-[#777] mt-2">{label}</div>
     </div>
   )
 }
@@ -258,25 +258,25 @@ export default function BuildingPage() {
   }, [loading])
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0e17]">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="text-center">
         <div className="relative w-24 h-24 mx-auto mb-6">
-          <div className="absolute inset-0 border-4 border-[#1e293b] rounded-full" />
-          <div className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin" />
+          <div className="absolute inset-0 border-4 border-[#ddd] rounded-full" />
+          <div className="absolute inset-0 border-4 border-[#0b8a7a] rounded-full border-t-transparent animate-spin" />
         </div>
-        <p className="text-[#94a3b8] text-xl mb-2">Analyzing building...</p>
-        <p className="text-[#64748b] text-sm">Fetching from 30+ data sources</p>
+        <p className="text-[#555] text-xl mb-2">Analyzing building...</p>
+        <p className="text-[#666] text-sm">Fetching from 30+ data sources</p>
       </div>
     </div>
   )
 
   if (error || !data) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0e17]">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="text-center max-w-md px-4">
         <XCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
         <h1 className="text-2xl font-bold mb-2">Building Not Found</h1>
-        <p className="text-[#94a3b8] mb-6">{error}</p>
-        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold">
+        <p className="text-[#555] mb-6">{error}</p>
+        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-blue-600 font-semibold">
           <ChevronLeft size={18} />Back to Search
         </Link>
       </div>
@@ -335,7 +335,7 @@ export default function BuildingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-white">
 
       <Header />
 
@@ -363,27 +363,27 @@ export default function BuildingPage() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="text-[38px] font-black leading-none" style={{ color: scoreColor }}>{s.overall}</span>
-                  <span className="text-[10px] text-[#475569] mt-0.5">/ 100</span>
+                  <span className="text-[10px] text-[#777] mt-0.5">/ 100</span>
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-[64px] font-black leading-none" style={{ color: scoreColor }}>{s.grade}</div>
                 <div className="text-sm font-bold mt-1" style={{ color: scoreColor }}>{s.label}</div>
-                <div className="text-[11px] text-[#475569] mt-0.5">BHX Score</div>
+                <div className="text-[11px] text-[#777] mt-0.5">BHX Score</div>
               </div>
             </div>
 
             {/* Address + meta + badges — right column */}
             <div className="flex-1 px-6 py-5 min-w-0">
               <h1 className="text-2xl md:text-3xl font-black mb-1 leading-tight">{b?.address || 'Unknown'}</h1>
-              <p className="text-[#64748b] text-sm mb-4">
+              <p className="text-[#666] text-sm mb-4">
                 {b?.neighborhood && `${b.neighborhood}, `}{b?.borough}, NY {b?.zipcode}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {b?.unitsRes > 0 && <div className="px-3 py-1.5 bg-[#111827] rounded-lg border border-[#1e293b]"><span className="text-[#64748b] text-xs">Units</span><span className="ml-2 text-white font-semibold text-sm">{b.unitsRes}</span></div>}
-                {b?.yearBuilt && <div className="px-3 py-1.5 bg-[#111827] rounded-lg border border-[#1e293b]"><span className="text-[#64748b] text-xs">Built</span><span className="ml-2 text-white font-semibold text-sm">{b.yearBuilt}</span></div>}
-                {b?.floors > 0 && <div className="px-3 py-1.5 bg-[#111827] rounded-lg border border-[#1e293b]"><span className="text-[#64748b] text-xs">Floors</span><span className="ml-2 text-white font-semibold text-sm">{b.floors}</span></div>}
-                {b?.buildingClassDesc && <div className="px-3 py-1.5 bg-[#111827] rounded-lg border border-[#1e293b]"><span className="text-[#64748b] text-xs">Type</span><span className="ml-2 text-white font-semibold text-sm">{b.buildingClassDesc}</span></div>}
+                {b?.unitsRes > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Units</span><span className="ml-2 text-white font-semibold text-sm">{b.unitsRes}</span></div>}
+                {b?.yearBuilt && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Built</span><span className="ml-2 text-white font-semibold text-sm">{b.yearBuilt}</span></div>}
+                {b?.floors > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Floors</span><span className="ml-2 text-white font-semibold text-sm">{b.floors}</span></div>}
+                {b?.buildingClassDesc && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Type</span><span className="ml-2 text-white font-semibold text-sm">{b.buildingClassDesc}</span></div>}
                 {b?.rentStabilizedUnits && <div className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"><span className="text-cyan-400 text-xs">RS Units</span><span className="ml-2 text-cyan-300 font-semibold text-sm">{b.rentStabilizedUnits}</span></div>}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -403,17 +403,17 @@ export default function BuildingPage() {
 
           {/* Bottom: category score bar strip */}
           {data.categoryScores?.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-[#1e293b]">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-[#ddd]">
               {data.categoryScores.map((c: any) => {
                 const cc = sc(c.score)
                 return (
                   <button
                     key={c.name}
                     onClick={() => catNav(c.name)}
-                    className="p-3 text-left hover:bg-[#111827] transition-colors group"
+                    className="p-3 text-left hover:bg-[#f5f5f5] transition-colors group"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] text-[#475569] group-hover:text-[#64748b] transition-colors leading-snug truncate pr-1">{c.icon} {c.name}</span>
+                      <span className="text-[10px] text-[#777] group-hover:text-[#666] transition-colors leading-snug truncate pr-1">{c.icon} {c.name}</span>
                       <span className="text-sm font-black ml-1 flex-shrink-0" style={{ color: cc }}>{c.score}</span>
                     </div>
                     <ScoreBar score={c.score} height={3} />
@@ -437,7 +437,7 @@ export default function BuildingPage() {
                   {data.redFlags.slice(0, 8).map((f: any, i: number) => (
                     <div
                       key={i}
-                      className={`flex items-start gap-1.5 text-xs px-2.5 py-1.5 rounded-lg border ${f.severity === 'critical' ? 'bg-red-500/10 border-red-500/25 text-red-300' : f.severity === 'warning' ? 'bg-yellow-500/10 border-yellow-500/25 text-yellow-300' : 'bg-blue-500/10 border-blue-500/25 text-blue-300'}`}
+                      className={`flex items-start gap-1.5 text-xs px-2.5 py-1.5 rounded-lg border ${f.severity === 'critical' ? 'bg-red-500/10 border-red-500/25 text-red-300' : f.severity === 'warning' ? 'bg-yellow-500/10 border-yellow-500/25 text-yellow-300' : 'bg-[#0b8a7a]/10 border-[#0b8a7a]/25 text-[#076d5f]'}`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full mt-1 flex-shrink-0 ${f.severity === 'critical' ? 'bg-red-400' : f.severity === 'warning' ? 'bg-yellow-400' : 'bg-blue-400'}`} />
                       <span><strong>{f.title}</strong> — {f.description}</span>
@@ -479,17 +479,17 @@ export default function BuildingPage() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 font-bold text-sm">
-                    <Clock size={14} className="text-[#94a3b8]" />
+                    <Clock size={14} className="text-[#555]" />
                     Time window: <span className="text-white">{rangeLabel}</span>
                   </div>
-                  <p className="text-xs text-[#64748b] mt-1">We summarize this period and compare it to the previous period of the same length.</p>
+                  <p className="text-xs text-[#666] mt-1">We summarize this period and compare it to the previous period of the same length.</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {rangeOptions.map(r => (
                     <button
                       key={r.key}
                       onClick={() => setRange(r.key)}
-                      className={`px-3 py-2 rounded-xl border text-sm transition-all ${range === r.key ? 'bg-blue-500 border-blue-500 text-white' : 'bg-[#151c2c] border-[#1e293b] text-[#94a3b8] hover:text-white'}`}
+                      className={`px-3 py-2 rounded-xl border text-sm transition-all ${range === r.key ? 'bg-[#0b8a7a] border-[#0b8a7a] text-white' : 'bg-[#eeeeee] border-[#ddd] text-[#555] hover:text-white'}`}
                     >
                       <div className="font-semibold leading-none">{r.label}</div>
                       <div className="text-xs sm:text-[10px] opacity-80 mt-0.5">{r.subtitle}</div>
@@ -504,16 +504,16 @@ export default function BuildingPage() {
               {[
                 { label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-300' },
                 { label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-300' },
-                { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-blue-400" />, cls: 'stat-blue', numCls: 'text-blue-300' },
+                { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
                 { label: 'Open hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C (immediately hazardous)', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-300' },
               ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
                 <div key={label} className={`card p-5 ${cls}`}>
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-[#64748b] text-xs">{label}</div>
+                    <div className="text-[#666] text-xs">{label}</div>
                     {icon}
                   </div>
                   <div className={`text-3xl font-black ${numCls}`}>{count}</div>
-                  <div className={`text-xs mt-1 ${delta > 0 ? 'text-red-300' : delta < 0 ? 'text-emerald-300' : 'text-[#475569]'}`}>
+                  <div className={`text-xs mt-1 ${delta > 0 ? 'text-red-300' : delta < 0 ? 'text-emerald-300' : 'text-[#777]'}`}>
                     {sub ?? (delta === 0 ? 'No change vs prior period' : `${delta > 0 ? '+' : ''}${delta} vs prior period`)}
                   </div>
                 </div>
@@ -524,14 +524,14 @@ export default function BuildingPage() {
             <div className="card p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-bold text-base">Reports over time ({rangeLabel})</h3>
-                <div className="text-xs text-[#64748b]">Heat / Pests / Noise / Other</div>
+                <div className="text-xs text-[#666]">Heat / Pests / Noise / Other</div>
               </div>
               <div className="h-72">
                 <ChartBoundary title="Reports over time">
                   <SignalsAreaChart data={signalSeries || []} />
                 </ChartBoundary>
               </div>
-              <div className="mt-3 text-xs text-[#64748b]">
+              <div className="mt-3 text-xs text-[#666]">
                 Total reports in this window: <span className="text-white font-semibold">{signalCounts.total}</span>
               </div>
             </div>
@@ -539,17 +539,17 @@ export default function BuildingPage() {
             {/* Sanity-check guide */}
             <div className="card p-5">
               <h3 className="font-bold mb-1 text-base">What to sanity-check before a lease</h3>
-              <p className="text-xs text-[#64748b] mb-4">Use the tabs to drill in. These are the highest-signal checks.</p>
+              <p className="text-xs text-[#666] mb-4">Use the tabs to drill in. These are the highest-signal checks.</p>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
                   { icon: <Flame size={14} className="text-yellow-400" />, title: 'Heat & hot water', body: 'Look for repeated winter spikes and unresolved building-wide patterns.', fn: () => goToTabAndScroll('complaints', 'section-heat-hot-water') },
                   { icon: <Bug size={14} className="text-emerald-400" />, title: 'Pests', body: 'Repeated rodent fails or bedbug filings matter more than a single event.', fn: () => goToTabAndScroll('neighborhood', 'section-pest-control') },
-                  { icon: <Volume2 size={14} className="text-blue-400" />, title: 'Noise', body: 'Late-night spikes can hint at chronic issues (bar, construction, neighbors).', fn: () => goToTabAndScroll('neighborhood', 'section-noise') },
+                  { icon: <Volume2 size={14} className="text-[#0b8a7a]" />, title: 'Noise', body: 'Late-night spikes can hint at chronic issues (bar, construction, neighbors).', fn: () => goToTabAndScroll('neighborhood', 'section-noise') },
                   { icon: <ShieldAlert size={14} className="text-red-400" />, title: 'Hazards', body: 'Open Class C violations deserve direct questions during a showing.', fn: () => goToTabAndScroll('violations', 'section-building-violations') },
                 ].map(({ icon, title, body, fn }) => (
-                  <button key={title} onClick={fn} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b] text-left hover:border-[#334155] transition-colors group">
+                  <button key={title} onClick={fn} className="p-4 bg-white border-2 border-[#e0e0e0] hover:border-[#0b8a7a] text-left transition-colors group">
                     <div className="flex items-center gap-2 font-semibold text-sm mb-1.5">{icon}{title}</div>
-                    <div className="text-xs text-[#64748b] group-hover:text-[#94a3b8] transition-colors">{body}</div>
+                    <div className="text-xs text-[#666] group-hover:text-[#555] transition-colors">{body}</div>
                   </button>
                 ))}
               </div>
@@ -585,14 +585,14 @@ export default function BuildingPage() {
               {[
                 { label: 'Class C', val: data?.violations?.hpd?.classC ?? 0, cls: 'text-red-400' },
                 { label: 'Class B', val: data.violations.hpd.classB, cls: 'text-yellow-400' },
-                { label: 'Class A', val: data.violations.hpd.classA, cls: 'text-blue-400' },
+                { label: 'Class A', val: data.violations.hpd.classA, cls: 'text-[#0b8a7a]' },
                 { label: 'Total HPD', val: data.violations.hpd.total, cls: 'text-white' },
                 { label: 'DOB', val: data.violations.dob.total, cls: 'text-orange-400' },
                 { label: 'ECB', val: data.violations.ecb.total, cls: 'text-purple-400' },
               ].map(({ label, val, cls }) => (
                 <div key={label} className="card p-4 text-center">
                   <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                  <div className="text-xs text-[#64748b] mt-1">{label}</div>
+                  <div className="text-xs text-[#666] mt-1">{label}</div>
                 </div>
               ))}
             </div>
@@ -614,7 +614,7 @@ export default function BuildingPage() {
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
                   return (
-                    <div key={v.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
+                    <div key={v.id} className="p-4 bg-[#f5f5f5] rounded-xl border border-[#ddd]">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-start gap-3 flex-1 min-w-0">
                           <span className={`px-2 py-1 rounded text-xs font-bold flex-shrink-0 ${v.class === 'C' ? 'violation-c' : v.class === 'B' ? 'violation-b' : v.source === 'DOB' ? 'badge-orange' : 'violation-a'}`}>
@@ -622,15 +622,15 @@ export default function BuildingPage() {
                           </span>
                           <div className="min-w-0">
                             <p className="text-sm">{v.description}</p>
-                            <div className="flex gap-3 mt-1 text-xs text-[#64748b]">
+                            <div className="flex gap-3 mt-1 text-xs text-[#666]">
                               <span>{v.category}</span>
                               {v.unit && <span>Unit: {v.unit}</span>}
                             </div>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className={`text-xs font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#64748b]'}`}>{v.status}</span>
-                          <p className="text-xs text-[#4a5568] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
+                          <span className={`text-xs font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#666]'}`}>{v.status}</span>
+                          <p className="text-xs text-[#888] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
                         </div>
                       </div>
                       {/* Contextual lead form — only for open violations with a mapped service */}
@@ -646,10 +646,10 @@ export default function BuildingPage() {
                       )}
                       {/* Inline guide link — tenant rights guide for this violation type */}
                       {v.status === 'Open' && VIOLATION_GUIDE_LINK_MAP[v.category] && (
-                        <div className="mt-3 pt-3 border-t border-[#1e293b]">
+                        <div className="mt-3 pt-3 border-t border-[#ddd]">
                           <Link
                             href={`/guides/${VIOLATION_GUIDE_LINK_MAP[v.category].slug}`}
-                            className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                            className="inline-flex items-center gap-1.5 text-xs text-[#0b8a7a] hover:text-[#076d5f] font-medium transition-colors"
                           >
                             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -664,7 +664,7 @@ export default function BuildingPage() {
                     </div>
                   )
                 }) : (
-                  <div className="text-center py-10 text-[#64748b]">
+                  <div className="text-center py-10 text-[#666]">
                     <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-2" />No violations
                   </div>
                 )}
@@ -701,10 +701,10 @@ export default function BuildingPage() {
                       <Link
                         key={category}
                         href={`/blog/${guide.slug}`}
-                        className="group flex flex-col bg-[#111827] rounded-xl border border-[#1e293b] hover:border-[#334155] overflow-hidden transition-colors"
+                        className="group flex flex-col bg-[#f5f5f5] rounded-xl border border-[#ddd] hover:border-[#bbb] overflow-hidden transition-colors"
                       >
                         {/* Image */}
-                        <div className="relative w-full h-36 bg-[#0d1321] flex-shrink-0 overflow-hidden">
+                        <div className="relative w-full h-36 bg-[#f0f0f0] flex-shrink-0 overflow-hidden">
                           <img
                             src={guide.image}
                             alt={guide.title}
@@ -713,18 +713,18 @@ export default function BuildingPage() {
                             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                           />
                           {/* Category pill over image */}
-                          <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 px-2 py-1 rounded-md bg-[#0d1321]/80 text-[#94a3b8] text-[10px] font-semibold uppercase tracking-wider backdrop-blur-sm">
-                            <span className="text-[#64748b]">{catIcon[category] ?? defaultIcon}</span>
+                          <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 px-2 py-1 rounded-md bg-[#f0f0f0]/80 text-[#555] text-[10px] font-semibold uppercase tracking-wider backdrop-blur-sm">
+                            <span className="text-[#666]">{catIcon[category] ?? defaultIcon}</span>
                             {category}
                           </div>
                         </div>
                         {/* Text */}
                         <div className="p-4 flex flex-col flex-1">
-                          <p className="text-sm font-semibold text-[#e2e8f0] leading-snug mb-2 group-hover:text-white transition-colors">
+                          <p className="text-sm font-semibold text-[#111] leading-snug mb-2 group-hover:text-white transition-colors">
                             {guide.title}
                           </p>
-                          <p className="text-xs text-[#64748b] leading-relaxed flex-1">{guide.excerpt}</p>
-                          <div className="mt-3 flex items-center gap-1 text-xs text-blue-400 group-hover:text-blue-300 font-medium transition-colors">
+                          <p className="text-xs text-[#666] leading-relaxed flex-1">{guide.excerpt}</p>
+                          <div className="mt-3 flex items-center gap-1 text-xs text-[#0b8a7a] group-hover:text-[#076d5f] font-medium transition-colors">
                             Read guide
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                           </div>
@@ -750,11 +750,11 @@ export default function BuildingPage() {
                 { label: 'Total HPD', val: data.complaints.hpd.total, cls: 'text-white', id: undefined },
                 { label: 'Last 12 months', val: data.complaints.hpd.recentYear, cls: 'text-yellow-400', id: undefined },
                 { label: 'Heat / Hot Water', val: data.complaints.hpd.heatHotWater, cls: 'text-orange-400', id: 'section-heat-hot-water' },
-                { label: '311 Requests', val: data.complaints.sr311.total, cls: 'text-blue-400', id: undefined },
+                { label: '311 Requests', val: data.complaints.sr311.total, cls: 'text-[#0b8a7a]', id: undefined },
               ].map(({ label, val, cls, id }) => (
                 <div key={label} className="card p-4 text-center" id={id}>
                   <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                  <div className="text-xs text-[#64748b] mt-1">{label}</div>
+                  <div className="text-xs text-[#666] mt-1">{label}</div>
                 </div>
               ))}
             </div>
@@ -762,18 +762,18 @@ export default function BuildingPage() {
               <h3 className="font-bold mb-4 text-base">Recent complaints</h3>
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {data.complaints.recent?.length > 0 ? data.complaints.recent.map((c: any) => (
-                  <div key={c.id} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b] flex items-center justify-between">
+                  <div key={c.id} className="p-4 bg-[#f5f5f5] rounded-xl border border-[#ddd] flex items-center justify-between">
                     <div>
                       <span className={`badge ${c.source === 'HPD' ? 'badge-blue' : c.source === '311' ? 'badge-purple' : 'badge-orange'} mr-2`}>{c.source}</span>
                       <span className="text-sm">{c.type}</span>
-                      {c.descriptor && <span className="text-xs text-[#64748b] ml-2">({c.descriptor})</span>}
+                      {c.descriptor && <span className="text-xs text-[#666] ml-2">({c.descriptor})</span>}
                     </div>
                     <div className="text-right">
-                      <span className="text-xs text-[#64748b]">{c.status}</span>
-                      <p className="text-xs text-[#4a5568]">{c.date && new Date(c.date).toLocaleDateString()}</p>
+                      <span className="text-xs text-[#666]">{c.status}</span>
+                      <p className="text-xs text-[#888]">{c.date && new Date(c.date).toLocaleDateString()}</p>
                     </div>
                   </div>
-                )) : <div className="text-center py-10 text-[#64748b]">No complaints</div>}
+                )) : <div className="text-center py-10 text-[#666]">No complaints</div>}
               </div>
             </div>
           </div>
@@ -791,13 +791,13 @@ export default function BuildingPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <span className={`badge ${e.type === 'violation' ? 'badge-red' : e.type === 'complaint' ? 'badge-yellow' : e.type === 'sale' ? 'badge-green' : e.type === 'eviction' ? 'badge-purple' : e.type === 'litigation' ? 'badge-orange' : 'badge-blue'} mr-2`}>{e.type}</span>
-                      <span className="text-xs text-[#64748b]">{e.source}</span>
+                      <span className="text-xs text-[#666]">{e.source}</span>
                       <p className="text-sm mt-1">{e.description}</p>
                     </div>
-                    <span className="text-xs text-[#64748b] flex-shrink-0">{e.date && new Date(e.date).toLocaleDateString()}</span>
+                    <span className="text-xs text-[#666] flex-shrink-0">{e.date && new Date(e.date).toLocaleDateString()}</span>
                   </div>
                 </div>
-              )) : <div className="text-center py-10 text-[#64748b]">No events</div>}
+              )) : <div className="text-center py-10 text-[#666]">No events</div>}
             </div>
           </div>
         )}
@@ -816,59 +816,59 @@ export default function BuildingPage() {
               ].map(({ label, val, cls }) => (
                 <div key={label} className="card p-4 text-center">
                   <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                  <div className="text-xs text-[#64748b] mt-1">{label}</div>
+                  <div className="text-xs text-[#666] mt-1">{label}</div>
                 </div>
               ))}
             </div>
 
             <div className="card p-6">
               <h3 className="font-bold mb-2 text-base">Who's the landlord of this building?</h3>
-              <p className="text-[#64748b] text-xs mb-5">Learn more about the people responsible for this building</p>
+              <p className="text-[#666] text-xs mb-5">Learn more about the people responsible for this building</p>
               <div className="space-y-3">
                 {data.landlord.owners?.map((c: any, i: number) => (
-                  <div key={`owner-${i}`} className="p-4 bg-[#111827] rounded-xl border-l-4 border-blue-500">
+                  <div key={`owner-${i}`} className="p-4 bg-[#f5f5f5] rounded-xl border-l-4 border-[#0b8a7a]">
                     <div className="font-bold text-base">{c.name}</div>
-                    <div className="text-sm text-blue-400">{c.title || 'Head Officer'}</div>
-                    {c.address && <div className="text-sm text-[#64748b] mt-1">{c.address}</div>}
+                    <div className="text-sm text-[#0b8a7a]">{c.title || 'Head Officer'}</div>
+                    {c.address && <div className="text-sm text-[#666] mt-1">{c.address}</div>}
                   </div>
                 ))}
                 {data.landlord.agents?.map((c: any, i: number) => (
-                  <div key={`agent-${i}`} className="p-4 bg-[#111827] rounded-xl border-l-4 border-green-500">
+                  <div key={`agent-${i}`} className="p-4 bg-[#f5f5f5] rounded-xl border-l-4 border-green-500">
                     <div className="font-bold text-base">{c.name}</div>
                     <div className="text-sm text-green-400">{c.title || 'Agent'}</div>
-                    {c.address && <div className="text-sm text-[#64748b] mt-1">{c.address}</div>}
+                    {c.address && <div className="text-sm text-[#666] mt-1">{c.address}</div>}
                   </div>
                 ))}
                 {data.landlord.siteManagers?.filter((c: any) => !data.landlord.agents?.find((a: any) => a.name === c.name)).map((c: any, i: number) => (
-                  <div key={`site-${i}`} className="p-4 bg-[#111827] rounded-xl border-l-4 border-purple-500">
+                  <div key={`site-${i}`} className="p-4 bg-[#f5f5f5] rounded-xl border-l-4 border-purple-500">
                     <div className="font-bold text-base">{c.name}</div>
                     <div className="text-sm text-purple-400">Site Manager</div>
-                    {c.address && <div className="text-sm text-[#64748b] mt-1">{c.address}</div>}
+                    {c.address && <div className="text-sm text-[#666] mt-1">{c.address}</div>}
                   </div>
                 ))}
               </div>
-              <div className="mt-5 p-4 bg-[#151c2c] rounded-xl">
+              <div className="mt-5 p-4 bg-[#eeeeee] rounded-xl">
                 <div className="font-bold text-base mb-1">{data.landlord.name}</div>
-                <div className="flex flex-wrap gap-4 text-sm text-[#94a3b8]">
+                <div className="flex flex-wrap gap-4 text-sm text-[#555]">
                   {data.landlord.registrationDate && <span>{data.landlord.registrationDate}</span>}
                   {data.landlord.registrationExpires && <span className="text-yellow-400">({data.landlord.registrationExpires})</span>}
                 </div>
                 {data.sales?.recent?.[0] && (
                   <div className="mt-2 text-sm">
-                    <span className="text-[#64748b]">Last sold: </span>
+                    <span className="text-[#666]">Last sold: </span>
                     <span className="text-white">{safeDate(data.sales.recent[0].date, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                     <span className="text-emerald-400 ml-2">for ${safeMoney(data.sales.recent[0].amount)}</span>
                   </div>
                 )}
               </div>
               {data.landlord.portfolioSize > 1 && (
-                <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                  <div className="text-blue-400 font-medium text-sm">This landlord owns {data.landlord.portfolioSize} buildings</div>
+                <div className="mt-4 p-4 bg-[#0b8a7a]/10 border border-[#0b8a7a]/20 rounded-xl">
+                  <div className="text-[#0b8a7a] font-medium text-sm">This landlord owns {data.landlord.portfolioSize} buildings</div>
                 </div>
               )}
               <div className="mt-5 flex flex-wrap gap-3">
-                <a href={`https://whoownswhat.justfix.org/bbl/${bbl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 rounded-lg text-blue-400 text-sm">Who Owns What <ExternalLink size={13} /></a>
-                <a href={`https://hpdonline.nyc.gov/hpdonline/building/${bbl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-[#1a2235] hover:bg-[#232938] rounded-lg text-sm">HPD Profile <ExternalLink size={13} /></a>
+                <a href={`https://whoownswhat.justfix.org/bbl/${bbl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-[#0b8a7a]/10 hover:bg-[#0b8a7a]/20 border border-[#0b8a7a]/20 rounded-lg text-[#0b8a7a] text-sm">Who Owns What <ExternalLink size={13} /></a>
+                <a href={`https://hpdonline.nyc.gov/hpdonline/building/${bbl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-[#e8e8e8] hover:bg-[#ddd] rounded-lg text-sm">HPD Profile <ExternalLink size={13} /></a>
               </div>
             </div>
 
@@ -877,10 +877,10 @@ export default function BuildingPage() {
                 <h3 className="font-bold mb-4 text-base">Other buildings by this owner ({data.landlord.portfolioSize})</h3>
                 <div className="space-y-2 max-h-[400px] overflow-y-auto">
                   {data.landlord.portfolio.map((p: any) => (
-                    <Link key={p.bbl} href={`/building/${p.bbl}`} className="block p-3 bg-[#111827] rounded-lg hover:bg-[#1a2235] border border-[#1e293b] hover:border-[#334155] transition-colors">
+                    <Link key={p.bbl} href={`/building/${p.bbl}`} className="block p-3 bg-[#f5f5f5] rounded-lg hover:bg-[#e8e8e8] border border-[#ddd] hover:border-[#bbb] transition-colors">
                       <div className="flex items-center justify-between">
-                        <div><div className="font-medium text-sm">{p.address}</div><div className="text-xs text-[#64748b]">{p.borough} {p.zipcode}</div></div>
-                        <ChevronRight size={14} className="text-[#4a5568]" />
+                        <div><div className="font-medium text-sm">{p.address}</div><div className="text-xs text-[#666]">{p.borough} {p.zipcode}</div></div>
+                        <ChevronRight size={14} className="text-[#888]" />
                       </div>
                     </Link>
                   ))}
@@ -893,9 +893,9 @@ export default function BuildingPage() {
                 <h3 className="font-bold mb-4 text-base">Housing court filings ({data.evictions.filings.total})</h3>
                 <div className="space-y-3">
                   {data.evictions.filings.recent.map((f: any) => (
-                    <div key={f.id} className="p-4 bg-[#111827] rounded-xl flex items-center justify-between border border-[#1e293b]">
+                    <div key={f.id} className="p-4 bg-[#f5f5f5] rounded-xl flex items-center justify-between border border-[#ddd]">
                       <div><span className="badge badge-orange mr-2">Filing</span><span className="text-sm">{f.caseType || 'Housing Court'}</span></div>
-                      <span className="text-xs text-[#64748b]">{f.filedDate && new Date(f.filedDate).toLocaleDateString()}</span>
+                      <span className="text-xs text-[#666]">{f.filedDate && new Date(f.filedDate).toLocaleDateString()}</span>
                     </div>
                   ))}
                 </div>
@@ -907,9 +907,9 @@ export default function BuildingPage() {
                 <h3 className="font-bold mb-4 text-base">HPD legal actions ({data.litigations.total})</h3>
                 <div className="space-y-3">
                   {data.litigations.recent.map((l: any) => (
-                    <div key={l.id} className="p-4 bg-[#111827] rounded-xl flex items-center justify-between border border-[#1e293b]">
+                    <div key={l.id} className="p-4 bg-[#f5f5f5] rounded-xl flex items-center justify-between border border-[#ddd]">
                       <div><span className="badge badge-purple mr-2">{l.caseType}</span><span className="text-sm">{l.caseStatus}</span>{l.penalty && <span className="text-emerald-400 text-sm ml-2">${l.penalty.toLocaleString()}</span>}</div>
-                      <span className="text-xs text-[#64748b]">{l.caseOpenDate && new Date(l.caseOpenDate).toLocaleDateString()}</span>
+                      <span className="text-xs text-[#666]">{l.caseOpenDate && new Date(l.caseOpenDate).toLocaleDateString()}</span>
                     </div>
                   ))}
                 </div>
@@ -921,9 +921,9 @@ export default function BuildingPage() {
                 <h3 className="font-bold mb-4 text-base">Evictions executed ({data.evictions.total})</h3>
                 <div className="space-y-3">
                   {data.evictions.recent.map((e: any) => (
-                    <div key={e.id} className="p-4 bg-[#111827] rounded-xl flex items-center justify-between border border-[#1e293b]">
+                    <div key={e.id} className="p-4 bg-[#f5f5f5] rounded-xl flex items-center justify-between border border-[#ddd]">
                       <div><span className="badge badge-red mr-2">Executed</span><span className="text-sm">{e.type}</span></div>
-                      <span className="text-xs text-[#64748b]">{e.executedDate && new Date(e.executedDate).toLocaleDateString()}</span>
+                      <span className="text-xs text-[#666]">{e.executedDate && new Date(e.executedDate).toLocaleDateString()}</span>
                     </div>
                   ))}
                 </div>
@@ -941,11 +941,11 @@ export default function BuildingPage() {
               {[
                 { label: 'Total filings', val: data.permits.total, cls: 'text-white' },
                 { label: 'Major alterations', val: data.permits.majorAlterations, cls: 'text-orange-400' },
-                { label: 'Last 3 years', val: data.permits.recentActivity, cls: 'text-blue-400' },
+                { label: 'Last 3 years', val: data.permits.recentActivity, cls: 'text-[#0b8a7a]' },
               ].map(({ label, val, cls }) => (
                 <div key={label} className="card p-4 text-center">
                   <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                  <div className="text-xs text-[#64748b] mt-1">{label}</div>
+                  <div className="text-xs text-[#666] mt-1">{label}</div>
                 </div>
               ))}
             </div>
@@ -953,16 +953,16 @@ export default function BuildingPage() {
               <h3 className="font-bold mb-4 text-base">Recent permits & filings</h3>
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {data.permits.recent?.length > 0 ? data.permits.recent.map((p: any) => (
-                  <div key={p.jobNumber} className="p-4 bg-[#111827] rounded-xl border border-[#1e293b]">
+                  <div key={p.jobNumber} className="p-4 bg-[#f5f5f5] rounded-xl border border-[#ddd]">
                     <div className="flex items-center justify-between mb-2">
                       <span className="badge badge-blue">{p.jobTypeDesc || p.jobType}</span>
-                      <span className="text-xs text-[#64748b]">{p.filingDate && new Date(p.filingDate).toLocaleDateString()}</span>
+                      <span className="text-xs text-[#666]">{p.filingDate && new Date(p.filingDate).toLocaleDateString()}</span>
                     </div>
                     <div className="text-sm">{p.workType || 'Work filing'}</div>
                     {p.estimatedCost && <div className="text-xs text-emerald-400 mt-1">Est. Cost: ${p.estimatedCost.toLocaleString()}</div>}
-                    <div className="text-xs text-[#64748b] mt-1">Status: {p.jobStatusDesc || p.jobStatus}</div>
+                    <div className="text-xs text-[#666] mt-1">Status: {p.jobStatusDesc || p.jobStatus}</div>
                   </div>
-                )) : <div className="text-center py-10 text-[#64748b]">No permits</div>}
+                )) : <div className="text-center py-10 text-[#666]">No permits</div>}
               </div>
             </div>
           </div>
@@ -978,25 +978,25 @@ export default function BuildingPage() {
                 <h3 className="font-bold mb-4 text-base">Property sales history</h3>
                 <div className="space-y-3">
                   {data.sales.recent.map((sale: any) => (
-                    <div key={sale.id} className="p-4 bg-[#111827] rounded-xl flex items-center justify-between border border-[#1e293b]">
+                    <div key={sale.id} className="p-4 bg-[#f5f5f5] rounded-xl flex items-center justify-between border border-[#ddd]">
                       <div className="flex items-center gap-3">
                         <DollarSign className="text-green-400" size={18} />
                         <div>
                           <div className="font-bold text-green-400">${safeMoney(sale.amount)}</div>
-                          <div className="text-xs text-[#64748b]">{sale.docType || 'Sale'}</div>
+                          <div className="text-xs text-[#666]">{sale.docType || 'Sale'}</div>
                         </div>
                       </div>
-                      <span className="text-sm text-[#64748b]">{safeDate(sale.date)}</span>
+                      <span className="text-sm text-[#666]">{safeDate(sale.date)}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            ) : <div className="card p-6 text-center text-[#64748b]">No sales data available</div>}
+            ) : <div className="card p-6 text-center text-[#666]">No sales data available</div>}
             <div className="card p-6">
               <h3 className="font-bold mb-4 text-base">External records</h3>
               <div className="grid sm:grid-cols-2 gap-3">
-                <a href={`https://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${bbl[0]}&block=${bbl.slice(1,6)}&lot=${bbl.slice(6)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#111827] rounded-xl hover:bg-[#1a2235] border border-[#1e293b] hover:border-[#334155] transition-colors text-sm"><span>ACRIS (Full History)</span><ExternalLink size={13} className="text-[#4a5568]" /></a>
-                <a href={`https://zola.planning.nyc.gov/lot/${bbl[0]}/${bbl.slice(1,6).replace(/^0+/, '')}/${bbl.slice(6).replace(/^0+/, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#111827] rounded-xl hover:bg-[#1a2235] border border-[#1e293b] hover:border-[#334155] transition-colors text-sm"><span>ZoLa (Zoning)</span><ExternalLink size={13} className="text-[#4a5568]" /></a>
+                <a href={`https://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${bbl[0]}&block=${bbl.slice(1,6)}&lot=${bbl.slice(6)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#f5f5f5] rounded-xl hover:bg-[#e8e8e8] border border-[#ddd] hover:border-[#bbb] transition-colors text-sm"><span>ACRIS (Full History)</span><ExternalLink size={13} className="text-[#888]" /></a>
+                <a href={`https://zola.planning.nyc.gov/lot/${bbl[0]}/${bbl.slice(1,6).replace(/^0+/, '')}/${bbl.slice(6).replace(/^0+/, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#f5f5f5] rounded-xl hover:bg-[#e8e8e8] border border-[#ddd] hover:border-[#bbb] transition-colors text-sm"><span>ZoLa (Zoning)</span><ExternalLink size={13} className="text-[#888]" /></a>
               </div>
             </div>
           </div>
@@ -1014,7 +1014,7 @@ export default function BuildingPage() {
                 <h3 className="font-bold text-base">Neighborhood BHX Score</h3>
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black" style={{ color: sc(data.neighborhoodScore || 0) }}>{data.neighborhoodScore || 'N/A'}</span>
-                  <span className="text-sm text-[#475569]">/ 100</span>
+                  <span className="text-sm text-[#777]">/ 100</span>
                 </div>
               </div>
               {data.neighborhoodScore > 0 && <div className="mb-5"><ScoreBar score={data.neighborhoodScore} height={6} /></div>}
@@ -1025,15 +1025,15 @@ export default function BuildingPage() {
                   { emoji: 'pedestrian', label: 'Pedestrian safety', val: data.trafficSafety?.level || 'N/A', color: sc(data.trafficSafety?.score ?? 50) },
                   { emoji: 'flood', label: 'Flood risk', val: data.flood?.floodRisk || 'LOW', color: data.flood?.floodRisk === 'LOW' ? '#10b981' : data.flood?.floodRisk === 'MODERATE' ? '#f59e0b' : '#ef4444' },
                 ].map(({ emoji, label, val, color }) => (
-                  <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[#1e293b] mb-2 mx-auto">
-                      {emoji === 'crime' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>}
-                      {emoji === 'violent' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>}
-                      {emoji === 'pedestrian' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>}
-                      {emoji === 'flood' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#94a3b8]"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>}
+                      {emoji === 'crime' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>}
+                      {emoji === 'violent' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>}
+                      {emoji === 'pedestrian' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>}
+                      {emoji === 'flood' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>}
                     </div>
                     <div className="text-base font-black" style={{ color }}>{val}</div>
-                    <div className="text-xs text-[#475569] mt-1">{label}</div>
+                    <div className="text-xs text-[#777] mt-1">{label}</div>
                   </div>
                 ))}
               </div>
@@ -1041,37 +1041,37 @@ export default function BuildingPage() {
 
             {/* HUD Fair Market Rent */}
             {data.rentFairness?.hudFMR && (
-              <div className="card p-6 border border-blue-500/20">
-                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Rent Fairness Meter (HUD FY2025)</h3>
-                <p className="text-xs text-[#64748b] mb-4">HUD Fair Market Rent benchmarks — 40th percentile of NYC area rents</p>
+              <div className="card p-6 border border-[#0b8a7a]/20">
+                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Rent Fairness Meter (HUD FY2025)</h3>
+                <p className="text-xs text-[#666] mb-4">HUD Fair Market Rent benchmarks — 40th percentile of NYC area rents</p>
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                   {[['Studio', data.rentFairness.hudFMR.studio], ['1 BR', data.rentFairness.hudFMR.oneBr], ['2 BR', data.rentFairness.hudFMR.twoBr], ['3 BR', data.rentFairness.hudFMR.threeBr], ['4 BR', data.rentFairness.hudFMR.fourBr]].map(([label, val]: any) => (
-                    <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
-                      <div className="text-xs text-[#64748b] mb-1">{label}</div>
-                      <div className="text-base font-black text-blue-400">${val?.toLocaleString()}</div>
+                    <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
+                      <div className="text-xs text-[#666] mb-1">{label}</div>
+                      <div className="text-base font-black text-[#0b8a7a]">${val?.toLocaleString()}</div>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-[#475569] mt-3">If rent is significantly above FMR, it may be overpriced. Source: HUD.gov</p>
+                <p className="text-xs text-[#777] mt-3">If rent is significantly above FMR, it may be overpriced. Source: HUD.gov</p>
               </div>
             )}
 
             {/* Shootings */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Shooting incidents (500m, 3 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Shooting incidents (500m, 3 years)</h3>
               <div className="grid sm:grid-cols-4 gap-3 mb-4">
                 <InlineScore value={data.shootings?.score || 100} label="Safety BHX Score" />
-                <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                   <div className="text-2xl font-black" style={{ color: data.shootings?.total === 0 ? '#10b981' : data.shootings?.total <= 2 ? '#f59e0b' : '#ef4444' }}>{data.shootings?.total || 0}</div>
-                  <div className="text-xs text-[#475569] mt-1">Total shootings</div>
+                  <div className="text-xs text-[#777] mt-1">Total shootings</div>
                 </div>
-                <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                   <div className="text-2xl font-black text-red-400">{data.shootings?.fatal || 0}</div>
-                  <div className="text-xs text-[#475569] mt-1">Fatal</div>
+                  <div className="text-xs text-[#777] mt-1">Fatal</div>
                 </div>
-                <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                   <div className="text-base font-black" style={{ color: data.shootings?.level === 'LOW' ? '#10b981' : data.shootings?.level === 'MODERATE' ? '#f59e0b' : '#ef4444' }}>{data.shootings?.level || 'LOW'}</div>
-                  <div className="text-xs text-[#475569] mt-1">Risk level</div>
+                  <div className="text-xs text-[#777] mt-1">Risk level</div>
                 </div>
               </div>
               {data.shootings?.total === 0 && <p className="text-sm text-green-400">No shooting incidents nearby in the last 3 years</p>}
@@ -1079,7 +1079,7 @@ export default function BuildingPage() {
 
             {/* Pedestrian safety */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span>Pedestrian & traffic safety (300m, 2 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span>Pedestrian & traffic safety (300m, 2 years)</h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-3">
                 <InlineScore value={data.trafficSafety?.score || 100} label="Safety BHX Score" />
                 {[
@@ -1088,34 +1088,34 @@ export default function BuildingPage() {
                   { label: 'Ped deaths', val: data.trafficSafety?.pedestrianFatalities || 0, cls: 'text-red-400' },
                   { label: 'Cyclist injuries', val: data.trafficSafety?.cyclistInjuries || 0, cls: 'text-yellow-400' },
                 ].map(({ label, val, cls }) => (
-                  <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                    <div className="text-xs text-[#475569] mt-1">{label}</div>
+                    <div className="text-xs text-[#777] mt-1">{label}</div>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-[#475569]">Data from NYC Vision Zero motor vehicle collision reports</p>
+              <p className="text-xs text-[#777]">Data from NYC Vision Zero motor vehicle collision reports</p>
             </div>
 
             {/* Crime */}
             <div className="card p-6" id="section-crime">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></span>All crime (500m radius, last year)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></span>All crime (500m radius, last year)</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 <InlineScore value={data.crime?.score || 0} label="Safety BHX Score" />
-                <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                   <div className="text-2xl font-black">{data.crime?.total || 0}</div>
-                  <div className="text-xs text-[#475569] mt-1">Total incidents</div>
+                  <div className="text-xs text-[#777] mt-1">Total incidents</div>
                 </div>
-                <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                   <div className="text-2xl font-black text-red-400">{data.crime?.violent || 0}</div>
-                  <div className="text-xs text-[#475569] mt-1">Violent crimes</div>
+                  <div className="text-xs text-[#777] mt-1">Violent crimes</div>
                 </div>
               </div>
               {data.crime?.byType?.length > 0 && (
                 <div className="space-y-2 max-h-48 overflow-y-auto">
                   {data.crime.byType.slice(0, 8).map((c: any) => (
-                    <div key={c.type} className="flex items-center justify-between p-2 bg-[#151c2c] rounded-lg">
-                      <span className="text-sm text-[#94a3b8]">{c.type}</span>
+                    <div key={c.type} className="flex items-center justify-between p-2 bg-[#eeeeee] rounded-lg">
+                      <span className="text-sm text-[#555]">{c.type}</span>
                       <span className="text-sm font-medium">{c.count}</span>
                     </div>
                   ))}
@@ -1126,22 +1126,22 @@ export default function BuildingPage() {
             {/* Noise */}
             {data.noise && (
               <div className="card p-6" id="section-noise">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>Noise complaints (3 years)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>Noise complaints (3 years)</h3>
                 <div className="grid sm:grid-cols-2 gap-3 mb-4">
-                  <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="text-2xl font-black" style={{ color: data.noise.level === 'LOW' ? '#10b981' : data.noise.level === 'MODERATE' ? '#f59e0b' : '#ef4444' }}>{data.noise.total || 0}</div>
-                    <div className="text-xs text-[#475569] mt-1">Total noise complaints</div>
+                    <div className="text-xs text-[#777] mt-1">Total noise complaints</div>
                   </div>
-                  <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="text-base font-black" style={{ color: data.noise.level === 'LOW' ? '#10b981' : data.noise.level === 'MODERATE' ? '#f59e0b' : '#ef4444' }}>{data.noise.level}</div>
-                    <div className="text-xs text-[#475569] mt-1">Noise level</div>
+                    <div className="text-xs text-[#777] mt-1">Noise level</div>
                   </div>
                 </div>
                 {data.noise?.byType?.length > 0 && (
                   <div className="space-y-2">
                     {data.noise.byType.map((n: any) => (
-                      <div key={n.type} className="flex items-center justify-between p-2 bg-[#151c2c] rounded-lg">
-                        <span className="text-sm text-[#94a3b8]">{n.type}</span>
+                      <div key={n.type} className="flex items-center justify-between p-2 bg-[#eeeeee] rounded-lg">
+                        <span className="text-sm text-[#555]">{n.type}</span>
                         <span className="text-sm font-medium">{n.count}</span>
                       </div>
                     ))}
@@ -1152,14 +1152,14 @@ export default function BuildingPage() {
 
             {/* Transit */}
             <div className="card p-6" id="section-transit">
-              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg></span>Transit & accessibility</h3>
-              <p className="text-sm text-[#94a3b8]">Transit scoring is coming soon. For now, use the Building Health X report to sanity-check the building itself (heat/hot water, pests, noise, safety hazards) and treat commute details as a separate decision layer.</p>
+              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg></span>Transit & accessibility</h3>
+              <p className="text-sm text-[#555]">Transit scoring is coming soon. For now, use the Building Health X report to sanity-check the building itself (heat/hot water, pests, noise, safety hazards) and treat commute details as a separate decision layer.</p>
             </div>
 
             {/* Pest control */}
             {data.pests && (
               <div className="card p-6" id="section-pest-control">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg></span>Pest control BHX Score</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg></span>Pest control BHX Score</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-4">
                   <InlineScore value={data.pests.score} label="Pest BHX Score" />
                   {[
@@ -1167,9 +1167,9 @@ export default function BuildingPage() {
                     { label: 'Bedbug reports', val: data.pests.bedbugReports, cls: 'text-red-400' },
                     { label: 'Restaurant pests', val: data.pests.restaurantPestViolations, cls: 'text-yellow-400' },
                   ].map(({ label, val, cls }) => (
-                    <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                    <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                       <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                      <div className="text-xs text-[#475569] mt-1">{label}</div>
+                      <div className="text-xs text-[#777] mt-1">{label}</div>
                     </div>
                   ))}
                 </div>
@@ -1182,7 +1182,7 @@ export default function BuildingPage() {
             {/* Restaurants */}
             {data.restaurants && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>Nearby restaurant inspections (100m)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>Nearby restaurant inspections (100m)</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-3">
                   {[
                     { label: 'Restaurants', val: data.restaurants.nearbyCount, cls: 'text-white' },
@@ -1190,9 +1190,9 @@ export default function BuildingPage() {
                     { label: 'Critical violations', val: data.restaurants.criticalViolations, cls: 'text-red-400' },
                     { label: 'Pest violations', val: data.restaurants.pestViolations, cls: 'text-orange-400' },
                   ].map(({ label, val, cls }) => (
-                    <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                    <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                       <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                      <div className="text-xs text-[#475569] mt-1">{label}</div>
+                      <div className="text-xs text-[#777] mt-1">{label}</div>
                     </div>
                   ))}
                 </div>
@@ -1203,14 +1203,14 @@ export default function BuildingPage() {
             {/* Cooling towers */}
             {data.coolingTowers && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-8 6 8v10"/><path d="M10 20v-6h4v6"/></svg></span>Cooling towers (Legionella risk)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-8 6 8v10"/><path d="M10 20v-6h4v6"/></svg></span>Cooling towers (Legionella risk)</h3>
                 <div className={`p-4 rounded-xl ${data.coolingTowers.hasTower ? 'bg-yellow-500/10 border border-yellow-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Cooling tower present</span>
                     <span className={`font-bold ${data.coolingTowers.hasTower ? 'text-yellow-400' : 'text-green-400'}`}>{data.coolingTowers.hasTower ? `YES (${data.coolingTowers.count})` : 'NO'}</span>
                   </div>
-                  {data.coolingTowers.hasTower && <p className="text-xs text-[#64748b] mt-2">{data.coolingTowers.riskNote}</p>}
-                  {data.coolingTowers.lastCertification && <p className="text-xs text-[#64748b] mt-1">Last certification: {data.coolingTowers.lastCertification}</p>}
+                  {data.coolingTowers.hasTower && <p className="text-xs text-[#666] mt-2">{data.coolingTowers.riskNote}</p>}
+                  {data.coolingTowers.lastCertification && <p className="text-xs text-[#666] mt-1">Last certification: {data.coolingTowers.lastCertification}</p>}
                 </div>
               </div>
             )}
@@ -1218,22 +1218,22 @@ export default function BuildingPage() {
             {/* Tax exemptions */}
             {data.taxExemptions && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>Tax exemptions & rent stabilization</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>Tax exemptions & rent stabilization</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   {[
                     { label: '421-a Exemption', val: data.taxExemptions.has421a ? 'YES' : 'NO', active: data.taxExemptions.has421a },
                     { label: 'J-51 Exemption', val: data.taxExemptions.hasJ51 ? 'YES' : 'NO', active: data.taxExemptions.hasJ51 },
                     { label: 'Rent stabilized', val: data.taxExemptions.rentStabilizedByExemption ? 'LIKELY' : 'UNKNOWN', active: data.taxExemptions.rentStabilizedByExemption },
                   ].map(({ label, val, active }) => (
-                    <div key={label} className={`p-3 rounded-xl border ${active ? 'bg-blue-500/10 border-blue-500/30' : 'bg-[#111827] border-[#1e293b]'}`}>
+                    <div key={label} className={`p-3 rounded-xl border ${active ? 'bg-[#0b8a7a]/10 border-[#0b8a7a]/30' : 'bg-[#f5f5f5] border-[#ddd]'}`}>
                       <div className="flex items-center justify-between">
                         <span className="text-sm">{label}</span>
-                        <span className={`font-bold text-sm ${active ? 'text-blue-400' : 'text-[#64748b]'}`}>{val}</span>
+                        <span className={`font-bold text-sm ${active ? 'text-[#0b8a7a]' : 'text-[#666]'}`}>{val}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-                {data.taxExemptions.note && <p className="text-sm text-blue-400 mb-2">{data.taxExemptions.note}</p>}
+                {data.taxExemptions.note && <p className="text-sm text-[#0b8a7a] mb-2">{data.taxExemptions.note}</p>}
                 {data.taxExemptions.exemptionExpiration && <p className="text-sm text-yellow-400">Exemption expires: {data.taxExemptions.exemptionExpiration} — rent may increase after</p>}
               </div>
             )}
@@ -1241,16 +1241,16 @@ export default function BuildingPage() {
             {/* Financial health */}
             {data.financialHealth && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Building financial health</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Building financial health</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   <InlineScore value={data.financialHealth.score} label="Financial BHX Score" />
-                  <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="text-2xl font-black" style={{ color: data.financialHealth.taxLiens === 0 ? '#10b981' : '#ef4444' }}>{data.financialHealth.taxLiens}</div>
-                    <div className="text-xs text-[#475569] mt-1">Tax liens</div>
+                    <div className="text-xs text-[#777] mt-1">Tax liens</div>
                   </div>
-                  <div className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="text-base font-black" style={{ color: data.financialHealth.level === 'HEALTHY' ? '#10b981' : data.financialHealth.level === 'FAIR' ? '#f59e0b' : '#ef4444' }}>{data.financialHealth.level}</div>
-                    <div className="text-xs text-[#475569] mt-1">Status</div>
+                    <div className="text-xs text-[#777] mt-1">Status</div>
                   </div>
                 </div>
                 {data.taxLiens?.warning && <p className="text-sm text-red-400">{data.taxLiens.warning}</p>}
@@ -1259,46 +1259,46 @@ export default function BuildingPage() {
 
             {/* Flood */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Flood & hurricane risk</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Flood & hurricane risk</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className={`p-4 rounded-xl ${data.flood?.inFloodZone ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">FEMA flood zone</span>
                     <span className={`font-bold ${data.flood?.inFloodZone ? 'text-red-400' : 'text-green-400'}`}>{data.flood?.inFloodZone ? data.flood.floodZoneType || 'YES' : 'NO'}</span>
                   </div>
-                  <p className="text-xs text-[#64748b] mt-1">{data.flood?.inFloodZone ? 'Consider flood insurance' : 'Not in a flood zone'}</p>
+                  <p className="text-xs text-[#666] mt-1">{data.flood?.inFloodZone ? 'Consider flood insurance' : 'Not in a flood zone'}</p>
                 </div>
                 <div className={`p-4 rounded-xl ${data.flood?.inHurricaneZone ? 'bg-orange-500/10 border border-orange-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Hurricane evac zone</span>
                     <span className={`font-bold ${data.flood?.inHurricaneZone ? 'text-orange-400' : 'text-green-400'}`}>{data.flood?.inHurricaneZone ? `Zone ${data.flood.hurricaneZone}` : 'NO'}</span>
                   </div>
-                  <p className="text-xs text-[#64748b] mt-1">{data.flood?.inHurricaneZone ? 'May need to evacuate during hurricanes' : 'Not in evacuation zone'}</p>
+                  <p className="text-xs text-[#666] mt-1">{data.flood?.inHurricaneZone ? 'May need to evacuate during hurricanes' : 'Not in evacuation zone'}</p>
                 </div>
               </div>
             </div>
 
             {/* Parks */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#94a3b8] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14l-5-5-5 5"/><path d="M17 8l-5-5-5 5"/><path d="M12 19v-8"/></svg></span>Parks & green space</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14l-5-5-5 5"/><path d="M17 8l-5-5-5 5"/><path d="M12 19v-8"/></svg></span>Parks & green space</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 {[
                   { label: 'Parks nearby', val: data.parks?.count || 0, cls: 'text-green-400' },
                   { label: 'Total acres', val: data.parks?.totalAcres || 0, cls: 'text-emerald-400' },
                   { label: 'Street trees', val: data.trees?.count || 0, cls: 'text-lime-400' },
                 ].map(({ label, val, cls }) => (
-                  <div key={label} className="p-3 bg-[#111827] rounded-xl text-center border border-[#1e293b]">
+                  <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className={`text-2xl font-black ${cls}`}>{val}</div>
-                    <div className="text-xs text-[#475569] mt-1">{label}</div>
+                    <div className="text-xs text-[#777] mt-1">{label}</div>
                   </div>
                 ))}
               </div>
               {data.parks?.nearby?.length > 0 && (
                 <div className="space-y-2">
                   {data.parks.nearby.slice(0, 5).map((p: any, i: number) => (
-                    <div key={i} className="flex items-center justify-between p-2 bg-[#151c2c] rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-2 bg-[#eeeeee] rounded-lg">
                       <span className="text-sm">{p.name}</span>
-                      {p.acres && <span className="text-xs text-[#64748b]">{p.acres} acres</span>}
+                      {p.acres && <span className="text-xs text-[#666]">{p.acres} acres</span>}
                     </div>
                   ))}
                 </div>
@@ -1317,8 +1317,8 @@ export default function BuildingPage() {
               { label: 'ACRIS (Sales)', url: `https://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${bbl[0]}&block=${bbl.slice(1,6)}&lot=${bbl.slice(6)}` },
               { label: 'Who Owns What', url: `https://whoownswhat.justfix.org/bbl/${bbl}` },
             ].map(link => (
-              <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#111827] rounded-xl hover:bg-[#1a2235] border border-[#1e293b] hover:border-[#334155] transition-colors text-sm">
-                <span>{link.label}</span><ExternalLink size={13} className="text-[#4a5568]" />
+              <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-[#f5f5f5] rounded-xl hover:bg-[#e8e8e8] border border-[#ddd] hover:border-[#bbb] transition-colors text-sm">
+                <span>{link.label}</span><ExternalLink size={13} className="text-[#888]" />
               </a>
             ))}
           </div>
@@ -1328,8 +1328,8 @@ export default function BuildingPage() {
         <ACRISPanel bbl={bbl} />
 
         {/* Disclaimer */}
-        <div className="mt-5 p-4 bg-[#151c2c] rounded-xl border border-[#1e293b] text-center">
-          <p className="text-xs text-[#64748b]">{data.dataDisclaimer}</p>
+        <div className="mt-5 p-4 bg-[#eeeeee] rounded-xl border border-[#ddd] text-center">
+          <p className="text-xs text-[#666]">{data.dataDisclaimer}</p>
         </div>
 
       </main>

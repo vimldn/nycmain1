@@ -83,7 +83,7 @@ export default function ViolationLeadForm({
   // Collapsed state — just a CTA button
   if (status === 'idle') {
     return (
-      <div className="mt-3 pt-3 border-t border-[#1e293b]">
+      <div className="mt-3 pt-3 border-t border-[#dddddd]">
         <button
           onClick={() => setStatus('open')}
           className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg bg-blue-600/10 border border-blue-500/25 hover:bg-blue-600/20 hover:border-blue-500/40 transition-colors group"
@@ -100,7 +100,7 @@ export default function ViolationLeadForm({
   // Success state
   if (status === 'success') {
     return (
-      <div className="mt-3 pt-3 border-t border-[#1e293b]">
+      <div className="mt-3 pt-3 border-t border-[#dddddd]">
         <div className="flex items-start gap-3 px-3 py-3 rounded-lg bg-emerald-500/10 border border-emerald-500/25">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400 flex-shrink-0 mt-0.5">
             <path d="M20 6 9 17l-5-5"/>
@@ -116,17 +116,17 @@ export default function ViolationLeadForm({
 
   // Expanded form
   return (
-    <div className="mt-3 pt-3 border-t border-[#1e293b]">
+    <div className="mt-3 pt-3 border-t border-[#dddddd]">
       <div className="p-3 rounded-xl bg-[#0d1321] border border-blue-500/20">
         {/* Header */}
         <div className="flex items-center justify-between mb-3">
           <div>
             <div className="text-xs font-semibold text-blue-300">{service.cta}</div>
-            <div className="text-[10px] text-[#475569] mt-0.5">Free quotes • No obligation • NYC-certified only</div>
+            <div className="text-[10px] text-[#777777] mt-0.5">Free quotes • No obligation • NYC-certified only</div>
           </div>
           <button
             onClick={() => setStatus('idle')}
-            className="text-[#475569] hover:text-[#94a3b8] transition-colors flex-shrink-0 ml-2"
+            className="text-[#777777] hover:text-[#555555] transition-colors flex-shrink-0 ml-2"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
@@ -135,7 +135,7 @@ export default function ViolationLeadForm({
         </div>
 
         {/* Pre-filled context — read only */}
-        <div className="mb-3 px-2.5 py-2 rounded-lg bg-[#111827] border border-[#1e293b] text-[10px] text-[#64748b] leading-relaxed">
+        <div className="mb-3 px-2.5 py-2 rounded-lg bg-[#f5f5f5] border border-[#dddddd] text-[10px] text-[#666666] leading-relaxed">
           {autoMessage}
         </div>
 
@@ -149,7 +149,7 @@ export default function ViolationLeadForm({
                 onChange={e => setName(e.target.value)}
                 placeholder="Your name"
                 autoComplete="name"
-                className="w-full rounded-lg bg-[#111827] border border-[#1e293b] px-2.5 py-2 text-xs text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50"
+                className="w-full rounded-lg bg-[#f5f5f5] border border-[#dddddd] px-2.5 py-2 text-xs text-[#111111] placeholder:text-[#777777] focus:outline-none focus:border-blue-500/50"
               />
             </div>
             <div>
@@ -160,7 +160,7 @@ export default function ViolationLeadForm({
                 onChange={e => setPhone(e.target.value)}
                 placeholder="Phone number"
                 autoComplete="tel"
-                className="w-full rounded-lg bg-[#111827] border border-[#1e293b] px-2.5 py-2 text-xs text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50"
+                className="w-full rounded-lg bg-[#f5f5f5] border border-[#dddddd] px-2.5 py-2 text-xs text-[#111111] placeholder:text-[#777777] focus:outline-none focus:border-blue-500/50"
               />
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function ViolationLeadForm({
               onChange={e => setEmail(e.target.value)}
               placeholder="Email address"
               autoComplete="email"
-              className="w-full rounded-lg bg-[#111827] border border-[#1e293b] px-2.5 py-2 text-xs text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-blue-500/50"
+              className="w-full rounded-lg bg-[#f5f5f5] border border-[#dddddd] px-2.5 py-2 text-xs text-[#111111] placeholder:text-[#777777] focus:outline-none focus:border-blue-500/50"
             />
           </div>
 

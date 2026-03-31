@@ -21,8 +21,8 @@ export default function SignalsAreaChart({ data }: { data: any[] }) {
             <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="otherG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#64748b" stopOpacity={0.18} />
-            <stop offset="95%" stopColor="#64748b" stopOpacity={0} />
+            <stop offset="5%" stopColor="#888888" stopOpacity={0.18} />
+            <stop offset="95%" stopColor="#888888" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis dataKey="label" stroke="#4a5568" fontSize={10} tickLine={false} interval="preserveStartEnd" minTickGap={16} />
@@ -32,7 +32,7 @@ export default function SignalsAreaChart({ data }: { data: any[] }) {
         <Area type="monotone" dataKey="heat" name="Heat" stroke="#f59e0b" strokeWidth={2} fill="url(#heatG)" stackId="1" />
         <Area type="monotone" dataKey="pests" name="Pests" stroke="#10b981" strokeWidth={2} fill="url(#pestsG)" stackId="1" />
         <Area type="monotone" dataKey="noise" name="Noise" stroke="#3b82f6" strokeWidth={2} fill="url(#noiseG)" stackId="1" />
-        <Area type="monotone" dataKey="other" name="Other" stroke="#64748b" strokeWidth={2} fill="url(#otherG)" stackId="1" />
+        <Area type="monotone" dataKey="other" name="Other" stroke="#888888" strokeWidth={2} fill="url(#otherG)" stackId="1" />
       </AreaChart>
     </ResponsiveContainer>
   )

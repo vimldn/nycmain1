@@ -128,41 +128,33 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== INTERACTIVE ELEMENTS ===== */
 /* Card base styles */
 .card {
-  background: #0f172a;
-  border: 1px solid #1e293b;
-  border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* Badge styles */
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 0;
+  font-family: var(--font-space-mono, monospace);
+  font-size: 0.65rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid;
 }
 
-.badge-blue {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-}
+.badge-blue { background: #e8f0fe; color: #1a56db; border-color: #1a56db; }
 
-.badge-green {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-}
+.badge-green { background: #e0f5f2; color: #0b8a7a; border-color: #0b8a7a; }
 
-.badge-yellow {
-  background: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
-}
+.badge-yellow { background: #fef9e7; color: #b45309; border-color: #b45309; }
 
-.badge-red {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-}
+.badge-red { background: #fef2f2; color: #c0392b; border-color: #c0392b; }
 
 /* Tab styles */
 .tab {
@@ -170,31 +162,35 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
+  border-radius: 0;
+  font-family: var(--font-space-mono, "Space Mono", monospace);
+  font-size: 0.7rem;
   font-weight: 500;
-  color: #94a3b8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555;
   background: transparent;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
+  transition: all 0.15s;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .tab:hover {
-  color: #e2e8f0;
-  background: rgba(255, 255, 255, 0.03);
+  color: #0a0a0a;
+  background: #f5f5f5;
+  border-color: #aaa;
 }
 
 .tab-active {
   color: #ffffff;
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: var(--teal, #0b8a7a);
+  border-color: var(--teal, #0b8a7a);
 }
 
 .tab-active:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: var(--teal-dark, #076d5f);
+  border-color: var(--teal-dark, #076d5f);
 }
 
 /* Card with gradient border on hover */
@@ -728,3 +724,30 @@ html { scroll-behavior: smooth; }
 .official-sources a {
   color: var(--text-primary);
 }
+
+/* ===== BUILDING PAGE — LIGHT THEME ADDITIONS ===== */
+.badge-orange { background: #fff3e0; color: #c05621; border-color: #c05621; }
+.badge-purple { background: #f3e8ff; color: #6b21a8; border-color: #6b21a8; }
+.badge-cyan   { background: #e0f7fa; color: #0e7490; border-color: #0e7490; }
+
+.violation-c { background: #fef2f2; color: #c0392b; border: 1px solid #c0392b; border-radius: 0; padding: 3px 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.violation-b { background: #fef9e7; color: #b45309; border: 1px solid #b45309; border-radius: 0; padding: 3px 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.violation-a { background: #e8f0fe; color: #1a56db; border: 1px solid #1a56db; border-radius: 0; padding: 3px 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.stat-red    { border-left: 3px solid #e24b4a; }
+.stat-yellow { border-left: 3px solid #d97706; }
+.stat-green  { border-left: 3px solid #0b8a7a; }
+.stat-blue   { border-left: 3px solid #1a56db; }
+
+.timeline-item { border-left: 2px solid #e0e0e0; padding-left: 16px; }
+.timeline-item.severity-critical { border-left-color: #e24b4a; }
+.timeline-item.severity-warning  { border-left-color: #d97706; }
+.timeline-item.severity-low      { border-left-color: #0b8a7a; }
+
+.score-ring { transform: rotate(0deg); }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.animate-fade-in { animation: fade-in 0.2s ease forwards; }

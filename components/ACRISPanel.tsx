@@ -81,7 +81,7 @@ const GROUP_COLORS: Record<string, string> = {
   LPDE: '#f87171',
   MLIE: '#fb923c',
   ALIE: '#fbbf24',
-  UCC:  '#94a3b8',
+  UCC:  '#555555',
 }
 
 function fmt$(n: number) {
@@ -106,7 +106,7 @@ function ScoreRing({ score, color }: { score: number; color: string }) {
 
   return (
     <svg width="72" height="72" viewBox="0 0 72 72" style={{ flexShrink: 0 }}>
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#1e293b" strokeWidth={7} />
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#dddddd" strokeWidth={7} />
       <circle
         cx={cx} cy={cy} r={r}
         fill="none"
@@ -152,7 +152,7 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
     return (
       <div style={styles.card}>
         <div style={styles.sectionHeader}>Financial Health (ACRIS)</div>
-        <div style={{ padding: '24px 0', color: '#64748b', fontSize: 13, textAlign: 'center' }}>
+        <div style={{ padding: '24px 0', color: '#666666', fontSize: 13, textAlign: 'center' }}>
           Loading financial records…
         </div>
       </div>
@@ -176,7 +176,7 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
     return (
       <div style={styles.card}>
         <div style={styles.sectionHeader}>Financial Health (ACRIS)</div>
-        <div style={{ padding: '12px', color: '#64748b', fontSize: 13 }}>
+        <div style={{ padding: '12px', color: '#666666', fontSize: 13 }}>
           No ACRIS records found for this property.
         </div>
       </div>
@@ -198,9 +198,9 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
         <div>
           <div style={styles.sectionHeader}>Financial Health (ACRIS)</div>
-          <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>
+          <div style={{ fontSize: 12, color: '#777777', marginTop: 2 }}>
             {data.docCount} documents on record
-            {data.cached && <span style={{ marginLeft: 6, color: '#334155' }}>· cached</span>}
+            {data.cached && <span style={{ marginLeft: 6, color: '#bbbbbb' }}>· cached</span>}
           </div>
         </div>
         <a
@@ -215,10 +215,10 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
 
       {/* Score + risk profile */}
       <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 20,
-        padding: '14px', background: '#0f172a', borderRadius: 10, border: '1px solid #1e293b' }}>
+        padding: '14px', background: '#ffffff', borderRadius: 0, border: '1px solid #dddddd' }}>
         <ScoreRing score={signals.financialScore} color={scoreColor} />
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 11, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+          <div style={{ fontSize: 11, color: '#777777', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
             Financial health score
           </div>
           <div style={{
@@ -229,7 +229,7 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: riskColor, flexShrink: 0 }} />
             {signals.riskProfile.label}
           </div>
-          <div style={{ fontSize: 12, color: '#64748b', marginTop: 6, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 12, color: '#666666', marginTop: 6, lineHeight: 1.5 }}>
             {signals.riskProfile.detail}
           </div>
         </div>
@@ -290,11 +290,11 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
 
       {/* Last known owner */}
       {signals.lastOwner && (
-        <div style={{ fontSize: 12, color: '#64748b', marginBottom: 16 }}>
+        <div style={{ fontSize: 12, color: '#666666', marginBottom: 16 }}>
           Current owner of record:{' '}
           <span style={{ color: '#cbd5e1', fontWeight: 500 }}>{signals.lastOwner}</span>
           {signals.lastSaleDate && (
-            <span style={{ color: '#475569' }}> · since {signals.lastSaleDate}</span>
+            <span style={{ color: '#777777' }}> · since {signals.lastSaleDate}</span>
           )}
         </div>
       )}
@@ -302,7 +302,7 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
       {/* Document timeline */}
       {timeline.length > 0 && (
         <>
-          <div style={{ fontSize: 11, color: '#475569', textTransform: 'uppercase',
+          <div style={{ fontSize: 11, color: '#777777', textTransform: 'uppercase',
             letterSpacing: '0.06em', marginBottom: 10 }}>
             Document timeline
           </div>
@@ -311,22 +311,22 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
               <div key={ev.id} style={{
                 display: 'flex', alignItems: 'center', gap: 10,
                 padding: '8px 10px', borderRadius: 7,
-                background: '#0f172a', border: '1px solid #1e293b',
+                background: '#ffffff', border: '1px solid #dddddd',
                 fontSize: 12,
               }}>
                 <span style={{
                   flexShrink: 0, width: 8, height: 8, borderRadius: '50%',
-                  background: GROUP_COLORS[ev.group] ?? '#64748b',
+                  background: GROUP_COLORS[ev.group] ?? '#666666',
                 }} />
-                <span style={{ color: '#94a3b8', width: 80, flexShrink: 0 }}>{ev.date}</span>
-                <span style={{ color: GROUP_COLORS[ev.group] ?? '#64748b', width: 120, flexShrink: 0, fontWeight: 500 }}>
+                <span style={{ color: '#555555', width: 80, flexShrink: 0 }}>{ev.date}</span>
+                <span style={{ color: GROUP_COLORS[ev.group] ?? '#666666', width: 120, flexShrink: 0, fontWeight: 500 }}>
                   {GROUP_LABELS[ev.group] ?? ev.docType}
                 </span>
-                <span style={{ color: '#64748b', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <span style={{ color: '#666666', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {ev.grantee ?? ev.grantor ?? ev.docType}
                 </span>
                 {ev.amount > 0 && (
-                  <span style={{ color: '#94a3b8', flexShrink: 0 }}>{fmt$(ev.amount)}</span>
+                  <span style={{ color: '#555555', flexShrink: 0 }}>{fmt$(ev.amount)}</span>
                 )}
               </div>
             ))}
@@ -346,10 +346,10 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
 
       {/* Legend */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px', marginTop: 16, paddingTop: 14,
-        borderTop: '1px solid #1e293b' }}>
+        borderTop: '1px solid #dddddd' }}>
         {Object.entries(GROUP_LABELS).map(([key, label]) => (
-          <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#475569' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: GROUP_COLORS[key] ?? '#64748b', flexShrink: 0 }} />
+          <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#777777' }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: GROUP_COLORS[key] ?? '#666666', flexShrink: 0 }} />
             {label}
           </div>
         ))}
@@ -369,14 +369,14 @@ function StatCell({
   danger?: boolean
   warn?:   boolean
 }) {
-  const color = danger ? '#ef4444' : warn ? '#eab308' : '#e2e8f0'
+  const color = danger ? '#ef4444' : warn ? '#eab308' : '#111111'
   return (
     <div title={tooltip} style={{
-      padding: '10px 12px', background: '#0f172a', borderRadius: 8,
-      border: `1px solid ${danger ? '#ef444440' : warn ? '#eab30840' : '#1e293b'}`,
+      padding: '10px 12px', background: '#ffffff', borderRadius: 0,
+      border: `1px solid ${danger ? '#ef444440' : warn ? '#eab30840' : '#dddddd'}`,
     }}>
       <div style={{ fontSize: 18, fontWeight: 700, color }}>{value}</div>
-      <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{label}</div>
+      <div style={{ fontSize: 11, color: '#777777', marginTop: 2 }}>{label}</div>
     </div>
   )
 }
@@ -385,8 +385,8 @@ function StatCell({
 
 const styles = {
   card: {
-    background: '#111827',
-    border:     '1px solid #1e293b',
+    background: '#f5f5f5',
+    border:     '1px solid #dddddd',
     borderRadius: 14,
     padding:    '20px',
     marginTop:  '24px',
@@ -395,14 +395,14 @@ const styles = {
   sectionHeader: {
     fontSize:   15,
     fontWeight: 600,
-    color:      '#e2e8f0',
+    color:      '#111111',
   } as React.CSSProperties,
 
   alert: {
     fontSize:     12,
     lineHeight:   1.6,
     padding:      '10px 12px',
-    borderRadius: 8,
+    borderRadius: 0,
     border:       '1px solid',
     marginBottom: 12,
   } as React.CSSProperties,
