@@ -134,7 +134,7 @@ export async function GET(req: NextRequest) {
       fetchData(DATASETS.hpdViolations, `bbl=${bbl}&$limit=1500&$order=inspectiondate DESC`),
       fetchData(DATASETS.hpdComplaints, `bbl=${bbl}&$where=receiveddate>='${y5}'&$limit=800&$order=receiveddate DESC`),
       fetchData(DATASETS.hpdRegistrations, `bbl=${bbl}&$limit=1`),
-      Promise.resolve([]) /* hpdContacts loaded below after reg lookup */,
+      Promise.resolve([] as any[]) /* hpdContacts loaded below after reg lookup */,
       fetchData(DATASETS.hpdLitigations, `bbl=${bbl}&$limit=200&$order=caseopendate DESC`),
       fetchData(DATASETS.hpdCharges, `bbl=${bbl}&$limit=200`).catch(()=>[]),
       fetchData(DATASETS.hpdVacateOrders, `bbl=${bbl}&$limit=50`).catch(()=>[]),
