@@ -9,6 +9,7 @@ import { buildGuidePanel, VIOLATION_GUIDE_LINK_MAP } from '@/lib/violation-blog-
 import ViolationLeadForm, { VIOLATION_SERVICE_MAP } from '@/components/ViolationLeadForm'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ACRISPanel from '@/components/ACRISPanel'
 
 const SignalsAreaChart = dynamic(() => import('./SignalsAreaChart'), {
   ssr: false,
@@ -1322,6 +1323,9 @@ export default function BuildingPage() {
             ))}
           </div>
         </div>
+
+        {/* Financial health — ACRIS */}
+        <ACRISPanel bbl={bbl} />
 
         {/* Disclaimer */}
         <div className="mt-5 p-4 bg-[#151c2c] rounded-xl border border-[#1e293b] text-center">
