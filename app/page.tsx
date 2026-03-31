@@ -293,7 +293,7 @@ export default function HomePage() {
           {/* Eyebrow */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            fontFamily: 'var(--font-space-mono), monospace',
+            fontFamily: '"Space Mono", monospace',
             fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase',
             color: 'var(--teal)', border: '1px solid var(--teal)',
             padding: '6px 16px', marginBottom: '28px'
@@ -304,7 +304,7 @@ export default function HomePage() {
 
           {/* H1 — keyword included, reads like a real headline */}
           <h1 style={{
-            fontFamily: 'var(--font-bebas), "Bebas Neue", sans-serif',
+            fontFamily: '"Bebas Neue", sans-serif',
             fontSize: 'clamp(64px, 9vw, 120px)',
             lineHeight: 0.92,
             letterSpacing: '0.02em',
@@ -346,7 +346,7 @@ export default function HomePage() {
                 placeholder="Enter any NYC address..."
                 style={{
                   flex: 1, padding: '20px 24px', border: 'none', outline: 'none',
-                  fontFamily: 'var(--font-space-mono), monospace',
+                  fontFamily: '"Space Mono", monospace',
                   fontSize: '16px', color: '#0a0a0a', background: 'none',
                   borderRight: '2px solid #0a0a0a',
                 }}
@@ -357,7 +357,7 @@ export default function HomePage() {
                 style={{
                   background: 'var(--teal)', color: '#fff', border: 'none',
                   padding: '20px 36px', cursor: 'pointer', transition: 'background 0.15s',
-                  fontFamily: 'var(--font-bebas), sans-serif',
+                  fontFamily: '"Bebas Neue", sans-serif',
                   fontSize: '22px', letterSpacing: '0.08em', whiteSpace: 'nowrap',
                   flexShrink: 0,
                 }}
@@ -408,7 +408,7 @@ export default function HomePage() {
 
           {/* Search meta */}
           <div style={{
-            fontFamily: 'var(--font-space-mono), monospace', fontSize: '12px',
+            fontFamily: '"Space Mono", monospace', fontSize: '12px',
             color: 'var(--text-muted)', letterSpacing: '0.06em', marginBottom: '24px',
           }}>
             // No login required · Updated daily · Always free
@@ -425,7 +425,7 @@ export default function HomePage() {
               <span key={t} style={{
                 border: '1px solid #d0d0d0', padding: '7px 16px',
                 fontSize: '13px', color: 'var(--text-muted)',
-                fontFamily: 'var(--font-space-mono), monospace', cursor: 'pointer',
+                fontFamily: '"Space Mono", monospace', cursor: 'pointer',
                 letterSpacing: '0.04em', transition: 'all 0.15s',
               }}>{t}</span>
             ))}
@@ -440,8 +440,8 @@ export default function HomePage() {
       <section style={{borderTop:'3px solid #0a0a0a',borderBottom:'3px solid #0a0a0a'}} className="py-16 px-6 bg-[var(--bg-secondary)]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>What You'll Find</p>
-            <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',color:'#0a0a0a',lineHeight:0.95}}>Everything You Need to Know About Your Building</h2>
+            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>What You'll Find</p>
+            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',color:'#0a0a0a',lineHeight:0.95}}>Everything You Need to Know About Your Building</h2>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0',border:'2px solid #0a0a0a'}}>
             {[
@@ -464,8 +464,8 @@ export default function HomePage() {
               onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-light)')}
               onMouseLeave={e=>(e.currentTarget.style.background='transparent')}
               >
-                <div style={{fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'#ccc',letterSpacing:'0.12em',marginBottom:'14px'}}>{item.num}</div>
-                <div style={{fontFamily:'var(--font-bebas)',fontSize:'22px',letterSpacing:'0.04em',marginBottom:'8px',color:'#0a0a0a'}}>{item.title}</div>
+                <div style={{fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'#ccc',letterSpacing:'0.12em',marginBottom:'14px'}}>{item.num}</div>
+                <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'22px',letterSpacing:'0.04em',marginBottom:'8px',color:'#0a0a0a'}}>{item.title}</div>
                 <div style={{fontSize:'13px',color:'var(--text-muted)',lineHeight:1.65}}>{item.desc}</div>
               </div>
             ))}
@@ -476,7 +476,7 @@ export default function HomePage() {
       {/* ── LIVE DATA STRIP ── */}
       <section style={{background:'#0a0a0a',borderBottom:'3px solid #0a0a0a'}} className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'24px'}}>// Live NYC Building Database — Updated Daily</p>
+          <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'24px'}}>// Live NYC Building Database — Updated Daily</p>
           <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0'}}>
             {[
               {target:1200000,suffix:'+',label:'Properties Indexed',sub:'All 5 boroughs'},
@@ -489,11 +489,11 @@ export default function HomePage() {
                 borderRight: i<3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
               }}>
                 <div className="counter" data-target={item.target} data-suffix={item.suffix}
-                  style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(36px,4vw,52px)',color:'var(--teal)',letterSpacing:'0.04em',display:'block',lineHeight:1}}>
+                  style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(36px,4vw,52px)',color:'var(--teal)',letterSpacing:'0.04em',display:'block',lineHeight:1}}>
                   0{item.suffix}
                 </div>
-                <div style={{fontFamily:'var(--font-bebas)',fontSize:'18px',letterSpacing:'0.06em',color:'rgba(255,255,255,0.8)',marginTop:'4px'}}>{item.label}</div>
-                <div style={{fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'rgba(255,255,255,0.3)',letterSpacing:'0.08em',marginTop:'4px',textTransform:'uppercase'}}>{item.sub}</div>
+                <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'18px',letterSpacing:'0.06em',color:'rgba(255,255,255,0.8)',marginTop:'4px'}}>{item.label}</div>
+                <div style={{fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'rgba(255,255,255,0.3)',letterSpacing:'0.08em',marginTop:'4px',textTransform:'uppercase'}}>{item.sub}</div>
               </div>
             ))}
           </div>
@@ -504,8 +504,8 @@ export default function HomePage() {
       <section style={{borderBottom:'2px solid #e0e0e0'}} className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto" style={{display:'grid',gridTemplateColumns:'1fr 2fr',gap:'80px',alignItems:'start'}}>
           <div>
-            <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Process</p>
-            <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Get Building Insights in 3 Steps</h2>
+            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Process</p>
+            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Get Building Insights in 3 Steps</h2>
           </div>
           <div>
             {[
@@ -519,9 +519,9 @@ export default function HomePage() {
                 borderBottom: i<2 ? '1px solid #e0e0e0' : 'none',
                 alignItems:'start',
               }}>
-                <div style={{fontFamily:'var(--font-bebas)',fontSize:'52px',color:'var(--teal)',letterSpacing:'0.04em',lineHeight:1}}>{step.n}</div>
+                <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'52px',color:'var(--teal)',letterSpacing:'0.04em',lineHeight:1}}>{step.n}</div>
                 <div>
-                  <div style={{fontFamily:'var(--font-bebas)',fontSize:'24px',letterSpacing:'0.04em',marginBottom:'8px',color:'#0a0a0a'}}>{step.title}</div>
+                  <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'24px',letterSpacing:'0.04em',marginBottom:'8px',color:'#0a0a0a'}}>{step.title}</div>
                   <div style={{fontSize:'15px',color:'var(--text-muted)',lineHeight:1.7,fontWeight:300}}>{step.body}</div>
                 </div>
               </div>
@@ -534,19 +534,19 @@ export default function HomePage() {
       <section style={{borderBottom:'3px solid #0a0a0a',background:'var(--teal-light)'}} className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div style={{marginBottom:'32px'}}>
-            <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>See It in Action</p>
-            <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>What a Building Report Looks Like</h2>
+            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>See It in Action</p>
+            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>What a Building Report Looks Like</h2>
           </div>
           <div style={{border:'2px solid #0a0a0a',background:'#fff'}}>
             <div style={{background:'#0a0a0a',padding:'14px 24px',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-              <div style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',color:'rgba(255,255,255,0.5)',letterSpacing:'0.1em'}}>SAMPLE BUILDING REPORT</div>
-              <div style={{fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'var(--teal)',letterSpacing:'0.08em',display:'flex',alignItems:'center',gap:'6px'}}>
+              <div style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',color:'rgba(255,255,255,0.5)',letterSpacing:'0.1em'}}>SAMPLE BUILDING REPORT</div>
+              <div style={{fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'var(--teal)',letterSpacing:'0.08em',display:'flex',alignItems:'center',gap:'6px'}}>
                 <span style={{width:6,height:6,borderRadius:'50%',background:'var(--teal)',display:'inline-block'}}/>LIVE DATA
               </div>
             </div>
             <div style={{padding:'24px',borderBottom:'1px solid #e0e0e0'}}>
-              <div style={{fontFamily:'var(--font-bebas)',fontSize:'28px',letterSpacing:'0.04em',color:'#0a0a0a'}}>123 Main Street</div>
-              <div style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',color:'var(--text-muted)',letterSpacing:'0.06em',marginTop:'4px'}}>Manhattan, NY 10001</div>
+              <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'28px',letterSpacing:'0.04em',color:'#0a0a0a'}}>123 Main Street</div>
+              <div style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',color:'var(--text-muted)',letterSpacing:'0.06em',marginTop:'4px'}}>Manhattan, NY 10001</div>
             </div>
             <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0'}}>
               {[
@@ -559,7 +559,7 @@ export default function HomePage() {
                   padding:'24px',
                   borderRight: i<3 ? '1px solid #e0e0e0' : 'none',
                 }}>
-                  <div style={{fontFamily:'var(--font-bebas)',fontSize:'48px',color:item.color,lineHeight:1,letterSpacing:'0.04em'}}>{item.val}</div>
+                  <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'48px',color:item.color,lineHeight:1,letterSpacing:'0.04em'}}>{item.val}</div>
                   <div style={{fontSize:'12px',color:'var(--text-muted)',marginTop:'4px',lineHeight:1.5}}>{item.label}</div>
                 </div>
               ))}
@@ -572,8 +572,8 @@ export default function HomePage() {
       <section style={{borderBottom:'2px solid #e0e0e0'}} className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'80px',alignItems:'start'}}>
           <div>
-            <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Why Choose Us</p>
-            <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a',marginBottom:'24px'}}>The Only NYC Building Violations Lookup Tool You'll Ever Need</h2>
+            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Why Choose Us</p>
+            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a',marginBottom:'24px'}}>The Only NYC Building Violations Lookup Tool You'll Ever Need</h2>
             <p style={{fontSize:'16px',color:'var(--text-muted)',lineHeight:1.75,fontWeight:300,marginBottom:'36px'}}>
               Finding an apartment in New York City is already stressful enough. We've aggregated data from <strong style={{color:'#0a0a0a',fontWeight:700}}>55+ official NYC data sources</strong> so you can make informed decisions in minutes, not hours.
             </p>
@@ -583,9 +583,9 @@ export default function HomePage() {
               {n:'03',title:'Tenant-Focused Red Flag Alerts',body:'We surface repeated heat complaints, pest infestations, and buildings on HPD watchlists.'},
             ].map((item,i) => (
               <div key={item.n} style={{display:'flex',gap:'20px',alignItems:'start',padding:'20px 0',borderTop:'1px solid #e0e0e0'}}>
-                <div style={{fontFamily:'var(--font-bebas)',fontSize:'32px',color:'var(--teal)',lineHeight:1,flexShrink:0,letterSpacing:'0.04em'}}>{item.n}</div>
+                <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'32px',color:'var(--teal)',lineHeight:1,flexShrink:0,letterSpacing:'0.04em'}}>{item.n}</div>
                 <div>
-                  <div style={{fontFamily:'var(--font-bebas)',fontSize:'20px',letterSpacing:'0.04em',color:'#0a0a0a',marginBottom:'6px'}}>{item.title}</div>
+                  <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'20px',letterSpacing:'0.04em',color:'#0a0a0a',marginBottom:'6px'}}>{item.title}</div>
                   <div style={{fontSize:'14px',color:'var(--text-muted)',lineHeight:1.65}}>{item.body}</div>
                 </div>
               </div>
@@ -593,11 +593,11 @@ export default function HomePage() {
           </div>
           <div style={{border:'2px solid #0a0a0a',background:'var(--teal-light)'}}>
             <div style={{background:'#0a0a0a',padding:'16px 24px'}}>
-              <div style={{fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'rgba(255,255,255,0.4)',letterSpacing:'0.12em',textTransform:'uppercase'}}>Data Sources</div>
+              <div style={{fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'rgba(255,255,255,0.4)',letterSpacing:'0.12em',textTransform:'uppercase'}}>Data Sources</div>
             </div>
             <div style={{padding:'32px'}}>
-              <div style={{fontFamily:'var(--font-bebas)',fontSize:'80px',color:'var(--teal)',lineHeight:1,letterSpacing:'0.04em'}}>55+</div>
-              <div style={{fontFamily:'var(--font-bebas)',fontSize:'20px',color:'#0a0a0a',letterSpacing:'0.06em',marginBottom:'24px'}}>Official NYC Government Sources</div>
+              <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'80px',color:'var(--teal)',lineHeight:1,letterSpacing:'0.04em'}}>55+</div>
+              <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'20px',color:'#0a0a0a',letterSpacing:'0.06em',marginBottom:'24px'}}>Official NYC Government Sources</div>
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0',border:'1px solid #0a0a0a'}}>
                 {[
                   {n:'1M+',l:'Properties'},
@@ -610,14 +610,14 @@ export default function HomePage() {
                     borderRight: i%2===0 ? '1px solid #0a0a0a' : 'none',
                     borderBottom: i<2 ? '1px solid #0a0a0a' : 'none',
                   }}>
-                    <div style={{fontFamily:'var(--font-bebas)',fontSize:'32px',color:'var(--teal)',letterSpacing:'0.04em',lineHeight:1}}>{item.n}</div>
+                    <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'32px',color:'var(--teal)',letterSpacing:'0.04em',lineHeight:1}}>{item.n}</div>
                     <div style={{fontSize:'12px',color:'var(--text-muted)',marginTop:'4px'}}>{item.l}</div>
                   </div>
                 ))}
               </div>
               <div style={{display:'flex',flexWrap:'wrap',gap:'8px',marginTop:'20px'}}>
                 {['HPD','DOB','311','DHCR','DOHMH','ACRIS','FDNY','ECB'].map(s => (
-                  <span key={s} style={{border:'1px solid rgba(11,138,122,0.4)',padding:'5px 12px',fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'var(--teal)',letterSpacing:'0.08em'}}>{s}</span>
+                  <span key={s} style={{border:'1px solid rgba(11,138,122,0.4)',padding:'5px 12px',fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'var(--teal)',letterSpacing:'0.08em'}}>{s}</span>
                 ))}
               </div>
             </div>
@@ -629,8 +629,8 @@ export default function HomePage() {
       <section style={{borderBottom:'3px solid #0a0a0a',background:'#fff'}} className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div style={{marginBottom:'36px'}}>
-            <p style={{fontFamily:'var(--font-space-mono)',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>Services</p>
-            <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Help at Every Step of Your Move</h2>
+            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>Services</p>
+            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Help at Every Step of Your Move</h2>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0',border:'2px solid #0a0a0a'}}>
             {Object.entries(services).slice(0,8).map(([slug, service], i) => (
@@ -661,10 +661,10 @@ export default function HomePage() {
                   <Image src={`/services/${slug}.png`} alt={service.name} fill className="object-cover" sizes="25vw" />
                 </div>
                 <div style={{padding:'20px'}}>
-                  <div style={{fontFamily:'var(--font-space-mono)',fontSize:'9px',color:'#ccc',letterSpacing:'0.12em',marginBottom:'10px'}}>0{i+1}</div>
-                  <div style={{fontFamily:'var(--font-bebas)',fontSize:'20px',letterSpacing:'0.04em',color:'#0a0a0a',marginBottom:'8px'}}>{service.name}</div>
+                  <div style={{fontFamily:'"Space Mono", monospace',fontSize:'9px',color:'#ccc',letterSpacing:'0.12em',marginBottom:'10px'}}>0{i+1}</div>
+                  <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'20px',letterSpacing:'0.04em',color:'#0a0a0a',marginBottom:'8px'}}>{service.name}</div>
                   <div style={{fontSize:'12px',color:'var(--text-muted)',lineHeight:1.6}}>Get matched with experienced pros and fast availability.</div>
-                  <div style={{fontFamily:'var(--font-bebas)',fontSize:'13px',color:'var(--teal)',letterSpacing:'0.1em',marginTop:'14px'}}>Get Quotes →</div>
+                  <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'13px',color:'var(--teal)',letterSpacing:'0.1em',marginTop:'14px'}}>Get Quotes →</div>
                 </div>
               </Link>
             ))}
@@ -673,7 +673,7 @@ export default function HomePage() {
             <Link href="/services" style={{
               display:'inline-flex',alignItems:'center',gap:'8px',
               border:'2px solid #0a0a0a',padding:'14px 32px',
-              fontFamily:'var(--font-bebas)',fontSize:'18px',letterSpacing:'0.08em',
+              fontFamily:'"Bebas Neue", sans-serif',fontSize:'18px',letterSpacing:'0.08em',
               color:'#0a0a0a',textDecoration:'none',transition:'all 0.15s',
               background:'transparent',
             }}
@@ -688,9 +688,9 @@ export default function HomePage() {
       <section style={{background:'var(--bg-secondary)',borderBottom:'1px solid #e0e0e0'}} className="py-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div style={{display:'flex',alignItems:'center',gap:'32px',flexWrap:'wrap'}}>
-            <div style={{fontFamily:'var(--font-space-mono)',fontSize:'10px',color:'var(--text-muted)',letterSpacing:'0.12em',textTransform:'uppercase',flexShrink:0}}>Powered by</div>
+            <div style={{fontFamily:'"Space Mono", monospace',fontSize:'10px',color:'var(--text-muted)',letterSpacing:'0.12em',textTransform:'uppercase',flexShrink:0}}>Powered by</div>
             {['NYC Open Data','HPD','DOB','311','ACRIS','DOHMH','DHCR','FDNY'].map(s => (
-              <div key={s} style={{fontFamily:'var(--font-space-mono)',fontSize:'12px',fontWeight:700,color:'var(--text-muted)',letterSpacing:'0.06em',cursor:'default',transition:'color 0.15s'}}
+              <div key={s} style={{fontFamily:'"Space Mono", monospace',fontSize:'12px',fontWeight:700,color:'var(--text-muted)',letterSpacing:'0.06em',cursor:'default',transition:'color 0.15s'}}
               onMouseEnter={e=>(e.currentTarget.style.color='var(--teal)')}
               onMouseLeave={e=>(e.currentTarget.style.color='var(--text-muted)')}
               >{s}</div>
