@@ -529,6 +529,43 @@ export default function BuildingPage() {
             </div>
 
             {/* Signal stat cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-600' },
+                { label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-700' },
+                { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
+                { label: 'Open hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C (immediately hazardous)', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
+              ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
+                <div key={label} className={`card p-5 ${cls}`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-[#666] text-xs">{label}</div>
+                    {icon}
+                  </div>
+                  <div className={`text-3xl font-black ${numCls}`}>{count}</div>
+                  <div className={`text-xs mt-1 ${delta > 0 ? 'text-red-600' : delta < 0 ? 'text-emerald-700' : 'text-[#777]'}`}>
+                    {sub ?? (delta === 0 ? 'No change vs prior period' : `${delta > 0 ? '+' : ''}${delta} vs prior period`)}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Area chart */}
+            <div className="card p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-base">Reports over time ({rangeLabel})</h3>
+                <div className="text-xs text-[#666]">Heat / Pests / Noise / Other</div>
+              </div>
+              <div className="h-72">
+                <ChartBoundary title="Reports over time">
+                  <SignalsAreaChart data={signalSeries || []} />
+                </ChartBoundary>
+              </div>
+              <div className="mt-3 text-xs text-[#666]">
+                Total reports in this window: <span style={{fontWeight:700,color:"#0a0a0a"}}>{signalCounts.total}</span>
+              </div>
+            </div>
+
+          </div>
         )}
 
         {/* ══════════════════════════════════════════
