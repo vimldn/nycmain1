@@ -80,10 +80,9 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
             <div style={{ width:'32px', height:'32px', border:'2px solid #0a0a0a', overflow:'hidden', position:'relative', flexShrink:0 }}>
               <Image src="/logo.png" alt="BHX" fill sizes="32px" style={{ objectFit:'contain' }} priority />
             </div>
-            <span style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.06em', color:'#0a0a0a' }}>
-              Building<span style={{ color:'var(--teal,#0b8a7a)' }}>Health</span>X
+            <span style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'30px', letterSpacing:'0.04em', lineHeight:'1', color:'#0a0a0a', textTransform:'uppercase' }}>
+              BUILDING<span style={{ color:'#0b8a7a' }}>HEALTH</span>X
             </span>
-            <span style={{ ...mono, color:'#ccc', fontSize:'9px' }} className="hidden xl:inline">NYC Building Reality Check</span>
           </Link>
 
           {/* Optional header search */}
@@ -160,10 +159,10 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
                 onMouseLeave={e=>(e.currentTarget.style.color='#555')}>{l.label}</Link>
             ))}
 
-            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'16px', letterSpacing:'0.08em', padding:'0 20px', lineHeight:'60px', background:'var(--teal,#0b8a7a)', color:'#fff', textDecoration:'none', borderLeft:'3px solid #0a0a0a', whiteSpace:'nowrap', transition:'background 0.15s' }}
+            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0 28px', lineHeight:'60px', background:'var(--teal,#0b8a7a)', color:'#fff', textDecoration:'none', borderLeft:'3px solid #0a0a0a', whiteSpace:'nowrap', transition:'background 0.15s', flexShrink:0 }}
               onMouseEnter={e=>(e.currentTarget.style.background='var(--teal-dark,#076d5f)')}
               onMouseLeave={e=>(e.currentTarget.style.background='var(--teal,#0b8a7a)')}>
-              Check a Building
+              CHECK A BUILDING
             </Link>
           </nav>
 
@@ -184,8 +183,8 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
               <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search any NYC address..." disabled={searching}
                 style={{ flex:1, padding:'12px 16px', border:'none', outline:'none', fontFamily:'"Space Mono", monospace', fontSize:'13px' }} />
               <button type="submit" disabled={searching}
-                style={{ background:'var(--teal,#0b8a7a)', color:'#fff', border:'none', padding:'12px 18px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'0.08em' }}>
-                {searching ? '…' : 'Go'}
+                style={{ background:'var(--teal,#0b8a7a)', color:'#fff', border:'none', padding:'12px 18px', cursor:'pointer', fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'0.08em', textTransform:'uppercase' }}>
+                {searching ? '…' : 'GO'}
               </button>
             </div>
             {searchError && <p style={{ fontFamily:'"Space Mono", monospace', fontSize:'11px', color:'#e24b4a', marginTop:'6px' }}>{searchError}</p>}
