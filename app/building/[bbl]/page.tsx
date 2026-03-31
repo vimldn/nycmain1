@@ -1020,7 +1020,7 @@ export default function BuildingPage() {
                   { emoji: 'flood', label: 'Flood risk', val: data.flood?.floodRisk || 'LOW', color: data.flood?.floodRisk === 'LOW' ? '#10b981' : data.flood?.floodRisk === 'MODERATE' ? '#f59e0b' : '#ef4444' },
                 ].map(({ emoji, label, val, color }) => (
                   <div key={label} className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
-                    <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[#1e293b] mb-2 mx-auto">
+                    <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[#f0f0f0] mb-2 mx-auto">
                       {emoji === 'crime' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>}
                       {emoji === 'violent' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>}
                       {emoji === 'pedestrian' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555]"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>}
@@ -1036,7 +1036,7 @@ export default function BuildingPage() {
             {/* HUD Fair Market Rent */}
             {data.rentFairness?.hudFMR && (
               <div className="card p-6 border border-[#0b8a7a]/20">
-                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Rent Fairness Meter (HUD FY2025)</h3>
+                <h3 className="font-bold mb-2 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Rent Fairness Meter (HUD FY2025)</h3>
                 <p className="text-xs text-[#666] mb-4">HUD Fair Market Rent benchmarks — 40th percentile of NYC area rents</p>
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                   {[['Studio', data.rentFairness.hudFMR.studio], ['1 BR', data.rentFairness.hudFMR.oneBr], ['2 BR', data.rentFairness.hudFMR.twoBr], ['3 BR', data.rentFairness.hudFMR.threeBr], ['4 BR', data.rentFairness.hudFMR.fourBr]].map(([label, val]: any) => (
@@ -1052,7 +1052,7 @@ export default function BuildingPage() {
 
             {/* Shootings */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Shooting incidents (500m, 3 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Shooting incidents (500m, 3 years)</h3>
               <div className="grid sm:grid-cols-4 gap-3 mb-4">
                 <InlineScore value={data.shootings?.score || 100} label="Safety BHX Score" />
                 <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
@@ -1073,7 +1073,7 @@ export default function BuildingPage() {
 
             {/* Pedestrian safety */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span>Pedestrian & traffic safety (300m, 2 years)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span>Pedestrian & traffic safety (300m, 2 years)</h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-3">
                 <InlineScore value={data.trafficSafety?.score || 100} label="Safety BHX Score" />
                 {[
@@ -1093,7 +1093,7 @@ export default function BuildingPage() {
 
             {/* Crime */}
             <div className="card p-6" id="section-crime">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></span>All crime (500m radius, last year)</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></span>All crime (500m radius, last year)</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 <InlineScore value={data.crime?.score || 0} label="Safety BHX Score" />
                 <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
@@ -1120,7 +1120,7 @@ export default function BuildingPage() {
             {/* Noise */}
             {data.noise && (
               <div className="card p-6" id="section-noise">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>Noise complaints (3 years)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>Noise complaints (3 years)</h3>
                 <div className="grid sm:grid-cols-2 gap-3 mb-4">
                   <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
                     <div className="text-2xl font-black" style={{ color: data.noise.level === 'LOW' ? '#10b981' : data.noise.level === 'MODERATE' ? '#f59e0b' : '#ef4444' }}>{data.noise.total || 0}</div>
@@ -1146,14 +1146,14 @@ export default function BuildingPage() {
 
             {/* Transit */}
             <div className="card p-6" id="section-transit">
-              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg></span>Transit & accessibility</h3>
+              <h3 className="font-bold mb-3 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg></span>Transit & accessibility</h3>
               <p className="text-sm text-[#555]">Transit scoring is coming soon. For now, use the Building Health X report to sanity-check the building itself (heat/hot water, pests, noise, safety hazards) and treat commute details as a separate decision layer.</p>
             </div>
 
             {/* Pest control */}
             {data.pests && (
               <div className="card p-6" id="section-pest-control">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg></span>Pest control BHX Score</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg></span>Pest control BHX Score</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-4">
                   <InlineScore value={data.pests.score} label="Pest BHX Score" />
                   {[
@@ -1176,7 +1176,7 @@ export default function BuildingPage() {
             {/* Restaurants */}
             {data.restaurants && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>Nearby restaurant inspections (100m)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>Nearby restaurant inspections (100m)</h3>
                 <div className="grid sm:grid-cols-4 gap-3 mb-3">
                   {[
                     { label: 'Restaurants', val: data.restaurants.nearbyCount, cls: 'text-white' },
@@ -1197,7 +1197,7 @@ export default function BuildingPage() {
             {/* Cooling towers */}
             {data.coolingTowers && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-8 6 8v10"/><path d="M10 20v-6h4v6"/></svg></span>Cooling towers (Legionella risk)</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-8 6 8v10"/><path d="M10 20v-6h4v6"/></svg></span>Cooling towers (Legionella risk)</h3>
                 <div className={`p-4 rounded-xl ${data.coolingTowers.hasTower ? 'bg-yellow-500/10 border border-yellow-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Cooling tower present</span>
@@ -1212,7 +1212,7 @@ export default function BuildingPage() {
             {/* Tax exemptions */}
             {data.taxExemptions && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>Tax exemptions & rent stabilization</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>Tax exemptions & rent stabilization</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   {[
                     { label: '421-a Exemption', val: data.taxExemptions.has421a ? 'YES' : 'NO', active: data.taxExemptions.has421a },
@@ -1235,7 +1235,7 @@ export default function BuildingPage() {
             {/* Financial health */}
             {data.financialHealth && (
               <div className="card p-6">
-                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Building financial health</h3>
+                <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Building financial health</h3>
                 <div className="grid sm:grid-cols-3 gap-3 mb-3">
                   <InlineScore value={data.financialHealth.score} label="Financial BHX Score" />
                   <div className="p-3 bg-white border-2 border-[#e0e0e0] text-center">
@@ -1253,7 +1253,7 @@ export default function BuildingPage() {
 
             {/* Flood */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Flood & hurricane risk</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Flood & hurricane risk</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className={`p-4 rounded-xl ${data.flood?.inFloodZone ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'}`}>
                   <div className="flex items-center justify-between">
@@ -1274,7 +1274,7 @@ export default function BuildingPage() {
 
             {/* Parks */}
             <div className="card p-6">
-              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded bg-[#1e293b] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14l-5-5-5 5"/><path d="M17 8l-5-5-5 5"/><path d="M12 19v-8"/></svg></span>Parks & green space</h3>
+              <h3 className="font-bold mb-4 text-base flex items-center gap-2"><span className="inline-flex items-center justify-center w-5 h-5 border border-[#ddd] bg-[#f5f5f5] text-[#555] mr-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14l-5-5-5 5"/><path d="M17 8l-5-5-5 5"/><path d="M12 19v-8"/></svg></span>Parks & green space</h3>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 {[
                   { label: 'Parks nearby', val: data.parks?.count || 0, cls: 'text-green-400' },
