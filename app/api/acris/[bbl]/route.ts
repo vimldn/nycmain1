@@ -127,7 +127,7 @@ async function fetchMasterRecords(docIds: string[]) {
       const inClause = ids.map(id => `'${id}'`).join(',')
       const url = new URL(MASTER)
       url.searchParams.set('$where',  `document_id IN(${inClause})`)
-      url.searchParams.set('$select', 'document_id,doc_type,document_date,doc_amount,good_through_date,recorded_filed')
+      url.searchParams.set('$select', 'document_id,doc_type,document_date,document_amt,good_through_date,recorded_datetime')
       url.searchParams.set('$limit',  '500')
       const res = await fetch(url.toString(), { headers: reqHeaders(), next: { revalidate: 172800 } })
       if (!res.ok) return []
@@ -168,9 +168,9 @@ function buildDocList(master: any[], parties: any[]) {
       id:      d.document_id as string,
       group:   classifyDoc(d.doc_type ?? ''),
       docType: (d.doc_type ?? '').trim(),
-      date:    new Date(d.document_date ?? d.recorded_filed ?? '1970-01-01'),
-      amount:  parseFloat(d.doc_amount ?? '0') || 0,
-      goodThru: d.good_through_date ? new Date(d.good_through_date) : null,
+      date:    new Date(d.document_date ?? d.recorded_datetime ?? '1970-01-01'),
+      amount:  parseFloat(d.document_amt ?? '0') || 0,
+      certThru: d.good_through_date ? new Date(d.good_through_date) : null,
       grantor:  partyMap[d.document_id]?.grantor ?? null,
       grantee:  partyMap[d.document_id]?.grantee ?? null,
     }))
@@ -191,7 +191,7 @@ function computeSignals(docs: ReturnType<typeof buildDocList>) {
 
   const activeMortgageCount = Math.max(0, mortgages.length - satisfactions.length)
   const totalMortgageDebt   = mortgages.slice(0, activeMortgageCount).reduce((s, m) => s + m.amount, 0)
-  const activeLisPendens    = lisPendens.filter(d => !d.goodThru || d.goodThru > now)
+  const activeLisPendens    = lisPendens.filter(d => !d.certThru || d.certThru > now)
   const recentSales         = deeds.filter(d => d.date >= threeYrsAgo)
   const recentMechLiens     = mechLiens.filter(d => d.date >= threeYrsAgo)
   const lastDeed            = deeds[0] ?? null
@@ -236,13 +236,15 @@ function getRiskProfile(score: number, lisPendens: number, recentSales: number, 
 
 // ─── Supabase cache ────────────────────────────────────────────────────────────
 
+const CACHE_VERSION = 'v2'  // bump this to invalidate all cached entries
+
 async function getCached(bbl: string) {
   if (!supabase) return null
   try {
     const { data } = await supabase
       .from('acris_cache')
       .select('payload, refreshed_at')
-      .eq('bbl', bbl)
+      .eq('bbl', `${CACHE_VERSION}:${bbl}`)
       .single()
     if (!data) return null
     if (Date.now() - new Date(data.refreshed_at).getTime() > CACHE_TTL_MS) return null
@@ -255,7 +257,7 @@ async function setCache(bbl: string, payload: object) {
   try {
     await supabase
       .from('acris_cache')
-      .upsert({ bbl, payload, refreshed_at: new Date().toISOString() }, { onConflict: 'bbl' })
+      .upsert({ bbl: `${CACHE_VERSION}:${bbl}`, payload, refreshed_at: new Date().toISOString() }, { onConflict: 'bbl' })
   } catch {}
 }
 
