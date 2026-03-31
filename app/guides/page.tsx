@@ -133,15 +133,15 @@ export default function GuidesPage() {
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <div className="mb-12 max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
-            <span className="inline-flex items-center px-3 py-1  text-xs font-semibold bg-[#e8f0fe] text-[#1a56db] border border-[#bfdbfe]">
+            <span className="inline-flex items-center px-3 py-1 text-xs font-semibold bg-[#e0f5f2] text-[#0b8a7a] border border-[#0b8a7a]" style={{fontFamily:'"Space Mono",monospace',letterSpacing:'.1em',textTransform:'uppercase'}}>
               NYC Tenant Rights Hub
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
             Your landlord knows the rules.<br className="hidden sm:block" />
-            <span className="text-[#1a56db]">Now you do too.</span>
+            <span className="text-[#0b8a7a]">Now you do too.</span>
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+          <p className="text-lg text-[#555] max-w-2xl leading-relaxed">
             Step-by-step guides for NYC renters — from checking a building before you sign,
             to forcing repairs when your landlord ignores you, to getting out clean when it's time to leave.
           </p>
@@ -166,8 +166,8 @@ export default function GuidesPage() {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a56db] flex-shrink-0 mt-0.5">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
-          <p className="text-xs text-[#64748b] leading-relaxed">
-            <span className="text-[#94a3b8] font-semibold">Verified against official sources.</span>
+          <p className="text-xs text-[#555] leading-relaxed">
+            <span className="text-[#444] font-semibold">Verified against official sources.</span>
             {' '}All guides are researched using NYC Housing Preservation &amp; Development (HPD), Department of Buildings (DOB), DHCR, and New York State legal codes. Nothing here is legal advice — for your specific situation, consult a tenant attorney or{' '}
             <a href="https://www.legalaidnyc.org/" target="_blank" rel="noopener noreferrer" className="text-[#1a56db] hover:text-[#1a56db] transition-colors">NYC Legal Aid</a>.
           </p>
@@ -193,36 +193,36 @@ export default function GuidesPage() {
                       {bucket.label}
                     </span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-black mb-2 text-[#e2e8f0]">
+                  <h2 className="mb-2" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'clamp(32px,4vw,52px)',letterSpacing:'.03em',color:'#0a0a0a',lineHeight:0.95}}>
                     {bucket.headline}
                   </h2>
-                  <p className="text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+                  <p className="text-[#555] max-w-2xl leading-relaxed">
                     {bucket.description}
                   </p>
                 </div>
 
                 {/* Guide cards */}
                 {guides.length > 0 ? (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                     {guides.map(guide => (
                       <Link
                         key={guide.slug}
                         href={`/guides/${guide.slug}`}
-                        className={`group flex flex-col justify-between p-5  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:${a.border} transition-colors`}
+                        className={`group flex flex-col justify-between p-7 bg-white border-2 border-[#e0e0e0] hover:border-[#0b8a7a] transition-colors`}
                       >
                         <div>
-                          <h3 className="text-sm font-semibold leading-snug text-[#e2e8f0] group-hover:text-[#1a56db] transition-colors mb-3">
+                          <h3 className="font-semibold leading-snug text-[#0a0a0a] group-hover:text-[#0b8a7a] transition-colors mb-4" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'18px',letterSpacing:'.03em',lineHeight:1.1}}>
                             {guide.title}
                           </h3>
-                          <p className="text-xs text-[#64748b] leading-relaxed line-clamp-2">
+                          <p className="text-sm text-[#555] leading-relaxed line-clamp-3">
                             {guide.subheadline}
                           </p>
                         </div>
                         <div className="flex items-center justify-between mt-4">
-                          <span className="inline-flex items-center px-2 py-0.5  bg-[var(--bg-hover)] text-[10px] font-semibold text-[#64748b] uppercase ">
+                          <span className="inline-flex items-center px-2 py-1 border border-[#e0e0e0] text-[10px] font-semibold text-[#888] uppercase" style={{fontFamily:'"Space Mono",monospace',letterSpacing:'.08em'}}>
                             {guide.serviceName}
                           </span>
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-[#1a56db] transition-colors">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#bbb] group-hover:text-[#0b8a7a] transition-colors">
                             <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                           </svg>
                         </div>
@@ -230,17 +230,17 @@ export default function GuidesPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="p-5  border border-dashed border-[#1e293b] text-sm text-[#475569] mb-6">
+                  <div className="p-5 border border-dashed border-[#e0e0e0] text-sm text-[#888] mb-6">
                     More guides coming soon in this category.
                   </div>
                 )}
 
                 {/* Bucket CTA row */}
-                <div className={`flex items-center gap-3 px-4 py-3  border ${a.border} bg-[var(--bg-card)]`}>
-                  <p className="text-xs text-[#64748b] flex-1">{bucket.ctaNote}</p>
+                <div className="flex items-center gap-3 px-4 py-3 border-2 border-[#e0e0e0] bg-[#f9f9f9]">
+                  <p className="text-sm text-[#555] flex-1">{bucket.ctaNote}</p>
                   <Link
                     href={bucket.cta.href}
-                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2  bg-blue-600 hover:bg-blue-500 transition-colors text-xs font-semibold text-white whitespace-nowrap"
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-5 py-2 bg-[#0b8a7a] hover:bg-[#076d5f] transition-colors text-white whitespace-nowrap" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'18px',letterSpacing:'.08em'}}
                   >
                     {bucket.cta.label}
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -257,14 +257,14 @@ export default function GuidesPage() {
         <div className="mt-12 p-8  border border-[var(--border-primary)] bg-[var(--bg-card)]">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="flex-1">
-              <h2 className="text-xl font-black mb-1 text-[#e2e8f0]">Is your building hiding something?</h2>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              <h2 className="mb-1" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'28px',letterSpacing:'.04em',color:'#0a0a0a'}}>Is your building hiding something?</h2>
+              <p className="text-sm text-[#555] leading-relaxed">
                 Search any NYC address to see its full violation history, complaint trends, and 0–100 BHX health score — free, in seconds.
               </p>
             </div>
             <Link
               href="/"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3  bg-blue-600 hover:bg-blue-500 transition-colors font-semibold text-sm text-white"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] transition-colors text-white" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'20px',letterSpacing:'.08em'}}
             >
               Search your building
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

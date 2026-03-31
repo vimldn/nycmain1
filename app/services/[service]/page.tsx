@@ -238,10 +238,10 @@ export default function ServicePage({ params }: Props) {
 
             {/* Quick navigation - prominent */}
             <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-              <a href="#neighborhoods" className="px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f]  font-semibold transition">
+              <a href="#neighborhoods" className="px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold transition" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'20px',letterSpacing:'.08em'}}>
                 Browse neighborhoods
               </a>
-              <a href="#requests" className="px-6 py-3 bg-[#f5f5f5] hover:bg-[#eeeeee] border border-[#e0e0e0]  font-semibold transition">
+              <a href="#requests" className="px-6 py-3 bg-[#f5f5f5] hover:bg-[#eeeeee] border-2 border-[#e0e0e0] text-[#0a0a0a] font-semibold transition" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'20px',letterSpacing:'.08em'}}>
                 Common requests
               </a>
               <a href="#faqs" className="px-6 py-3 bg-[#f5f5f5] hover:bg-[#eeeeee] border border-[#e0e0e0]  font-semibold transition">
@@ -308,7 +308,7 @@ export default function ServicePage({ params }: Props) {
                   </p>
                   <Link
                     href={service.dataMoat.ctaHref}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold  transition"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold transition" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'20px',letterSpacing:'.08em'}}
                   >
                     <Search className="w-5 h-5" />
                     {service.dataMoat.ctaText}
@@ -412,7 +412,7 @@ export default function ServicePage({ params }: Props) {
                             className="group/card flex items-center justify-between p-3  bg-[#f5f5f5] hover:bg-[#eeeeee] border border-[#eeeeee] hover:border-[#e0e0e0] transition"
                           >
                             <span className="font-medium text-sm">{loc.name}</span>
-                            <ChevronRight className="w-4 h-4 text-[#666] group-hover/card:text-white transition" />
+                            <ChevronRight className="w-4 h-4 text-[#888] group-hover/card:text-[#0b8a7a] transition" />
                           </Link>
                         ))}
                       </div>
@@ -433,7 +433,7 @@ export default function ServicePage({ params }: Props) {
                   </OpenModalButton>
                   <Link
                     href={getStartedHref}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#f5f5f5] hover:bg-[#eeeeee] border border-[#e0e0e0] text-white font-semibold  transition"
+                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#f5f5f5] font-semibold transition" style={{fontFamily:'"Bebas Neue",sans-serif',fontSize:'20px',letterSpacing:'.08em'}}
                   >
                     Browse neighborhoods
                     <ChevronRight className="w-5 h-5" />
