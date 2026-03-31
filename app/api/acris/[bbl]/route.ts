@@ -269,23 +269,41 @@ export async function GET(req: NextRequest, { params }: { params: { bbl: string 
     return NextResponse.json({ error: 'Invalid BBL — must be 10 digits' }, { status: 400 })
   }
 
-  // Debug mode — skip cache, return raw query info so you can see exactly what's being sent
+  // Debug mode — tests all three ACRIS endpoints and returns raw results
   if (debugMode) {
     try {
       const parsed = parseBBL(bbl)
       const { ids, debugInfo, matched } = await fetchDocumentIds(bbl, true)
+      const sampleIds = ids.slice(0, 3)
+      let masterSample: any[] = [], masterError: string | null = null
+      let partiesSample: any[] = [], partiesError: string | null = null
+
+      if (sampleIds.length) {
+        const inClause = sampleIds.map(id => `'${id}'`).join(',')
+        try {
+          const mUrl = new URL(MASTER)
+          mUrl.searchParams.set('$where', `document_id IN(${inClause})`)
+          mUrl.searchParams.set('$limit', '10')
+          const mRes = await fetch(mUrl.toString(), { headers: reqHeaders() })
+          masterSample = mRes.ok ? await mRes.json() : []
+          if (!mRes.ok) masterError = `HTTP ${mRes.status}`
+        } catch (e: any) { masterError = e.message }
+
+        try {
+          const pUrl = new URL(PARTIES)
+          pUrl.searchParams.set('$where', `document_id IN(${inClause})`)
+          pUrl.searchParams.set('$limit', '10')
+          const pRes = await fetch(pUrl.toString(), { headers: reqHeaders() })
+          partiesSample = pRes.ok ? await pRes.json() : []
+          if (!pRes.ok) partiesError = `HTTP ${pRes.status}`
+        } catch (e: any) { partiesError = e.message }
+      }
+
       return NextResponse.json({
-        debug: true,
-        bbl,
-        parsed,
-        isCondoUnit: parsed.isCondoUnit,
-        parentLotQueried: parsed.parentLot,
-        docIdsFound: ids.length,
-        matchedVariant: matched,
-        variants: debugInfo,
-        note: parsed.isCondoUnit
-          ? 'Condo unit lot detected — queried both unit lot and parent building lot (0001)'
-          : 'If docIdsFound=0, this BBL has no ACRIS records or the dataset field format has changed.',
+        debug: true, bbl, parsed,
+        step1_legals:  { docIdsFound: ids.length, matched, detail: debugInfo },
+        step2_master:  { endpoint: MASTER,  sampleDocIds: sampleIds, rowsReturned: masterSample.length,  error: masterError,  sample: masterSample.slice(0, 3) },
+        step3_parties: { endpoint: PARTIES, sampleDocIds: sampleIds, rowsReturned: partiesSample.length, error: partiesError, sample: partiesSample.slice(0, 3) },
       })
     } catch (err: any) {
       return NextResponse.json({ debug: true, error: err.message }, { status: 500 })
