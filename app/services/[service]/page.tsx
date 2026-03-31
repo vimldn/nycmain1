@@ -25,6 +25,8 @@ type Props = {
   params: { service: string }
 }
 
+export const dynamic = 'force-dynamic'
+
 const stripServicesSuffix = (name: string) => name.replace(/\s+Services$/i, '').trim()
 
 const needs24x7 = (serviceSlug: string) => {
@@ -236,7 +238,7 @@ export default function ServicePage({ params }: Props) {
 
             {/* Quick navigation - prominent */}
             <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-              <a href="#neighborhoods" onClick={(e) => { const el = document.getElementById('neighborhoods') as HTMLDetailsElement | null; if (el) el.open = true }} className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
+              <a href="#neighborhoods" className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition">
                 Browse neighborhoods
               </a>
               <a href="#requests" className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition">
