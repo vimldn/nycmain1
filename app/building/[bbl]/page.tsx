@@ -375,82 +375,115 @@ export default function BuildingPage() {
 
       <main className="max-w-7xl mx-auto px-4 pt-28 pb-10">
 
-        {/* ══ HERO CARD — V2 Bold Verdict ══ */}
-        <div className="card mb-5 overflow-hidden">
-          {/* Top: ring column + address column */}
-          <div className="flex flex-col sm:flex-row" style={{ borderBottom: `1px solid ${scoreColor}22` }}>
-            {/* Ring + grade — left column */}
-            <div
-              className="flex flex-col items-center justify-center gap-4 px-8 py-6 flex-shrink-0"
-              style={{ background: `${scoreColor}0e`, borderRight: `1px solid ${scoreColor}1a` }}
-            >
-              <div className="relative w-[116px] h-[116px]">
-                <svg className="w-full h-full score-ring" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="42" fill="none" stroke="#1e293b" strokeWidth="10" />
-                  <circle
-                    cx="50" cy="50" r="42" fill="none"
-                    stroke={scoreColor} strokeWidth="10" strokeLinecap="round"
-                    strokeDasharray={circumference} strokeDashoffset={strokeDashoffset}
-                    className="transition-all duration-1000"
-                    style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-[38px] font-black leading-none" style={{ color: scoreColor }}>{s.overall}</span>
-                  <span className="text-[10px] text-[#777] mt-0.5">/ 100</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-[64px] font-black leading-none" style={{ color: scoreColor }}>{s.grade}</div>
-                <div className="text-sm font-bold mt-1" style={{ color: scoreColor }}>{s.label}</div>
-                <div className="text-[11px] text-[#777] mt-0.5">BHX Score</div>
+        {/* ══ HERO — Magazine Spread ══ */}
+        <div style={{ border:'2px solid #0a0a0a', marginBottom:24, overflow:'hidden' }}>
+
+          {/* Address eyebrow bar */}
+          <div style={{ borderBottom:'1px solid #e0e0e0', padding:'8px 20px', display:'flex', alignItems:'center', gap:12 }}>
+            <span style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.14em', textTransform:'uppercase', color:'#888' }}>BHX Building Report</span>
+            <span style={{ width:1, height:12, background:'#ddd', flexShrink:0 }} />
+            <span style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:'#555' }}>
+              {b?.neighborhood && `${b.neighborhood} · `}{b?.borough} · NY {b?.zipcode}
+            </span>
+          </div>
+
+          {/* Main two-column split */}
+          <div style={{ display:'grid', gridTemplateColumns:'160px 1fr' }}>
+
+            {/* LEFT — score + meta */}
+            <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'24px 20px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
+              <div style={{ fontFamily:'Georgia,serif', fontSize:80, fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
+              <div style={{ fontFamily:'"Space Mono",monospace', fontSize:28, fontWeight:700, color:scoreColor, lineHeight:1, marginTop:2 }}>{s.overall}</div>
+              <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.12em', textTransform:'uppercase', color:'#888', marginTop:4 }}>/ 100 BHX</div>
+              <div style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:scoreColor, fontWeight:700, marginTop:10, padding:'3px 8px', border:`1px solid ${scoreColor}`, display:'inline-block' }}>{s.label}</div>
+              <div style={{ marginTop:20, width:'100%' }}>
+                {b?.unitsRes > 0 && <div style={{ display:'flex', justifyContent:'space-between', padding:'5px 0', borderBottom:'1px solid #e0e0e0', fontSize:10 }}><span style={{ color:'#888' }}>Units</span><span style={{ fontWeight:700, color:'#0a0a0a' }}>{b.unitsRes?.toLocaleString()}</span></div>}
+                {b?.yearBuilt && <div style={{ display:'flex', justifyContent:'space-between', padding:'5px 0', borderBottom:'1px solid #e0e0e0', fontSize:10 }}><span style={{ color:'#888' }}>Built</span><span style={{ fontWeight:700, color:'#0a0a0a' }}>{b.yearBuilt}</span></div>}
+                {b?.floors > 0 && <div style={{ display:'flex', justifyContent:'space-between', padding:'5px 0', borderBottom:'1px solid #e0e0e0', fontSize:10 }}><span style={{ color:'#888' }}>Floors</span><span style={{ fontWeight:700, color:'#0a0a0a' }}>{b.floors}</span></div>}
+                {b?.buildingClassDesc && <div style={{ display:'flex', justifyContent:'space-between', padding:'5px 0', fontSize:10 }}><span style={{ color:'#888' }}>Type</span><span style={{ fontWeight:700, color:'#0a0a0a', textAlign:'right', maxWidth:80, fontSize:9 }}>{b.buildingClassDesc}</span></div>}
               </div>
             </div>
 
-            {/* Address + meta + badges — right column */}
-            <div className="flex-1 px-6 py-5 min-w-0">
-              <h1 className="text-2xl md:text-3xl font-black mb-1 leading-tight">{b?.address || 'Unknown'}</h1>
-              <p className="text-[#666] text-sm mb-4">
-                {b?.neighborhood && `${b.neighborhood}, `}{b?.borough}, NY {b?.zipcode}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {b?.unitsRes > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Units</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.unitsRes}</span></div>}
-                {b?.yearBuilt && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Built</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.yearBuilt}</span></div>}
-                {b?.floors > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Floors</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.floors}</span></div>}
-                {b?.buildingClassDesc && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Type</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.buildingClassDesc}</span></div>}
-                {b?.rentStabilizedUnits && <div className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"><span className="text-cyan-400 text-xs">RS Units</span><span className="ml-2 text-cyan-300 font-semibold text-sm">{b.rentStabilizedUnits}</span></div>}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {b?.isRentStabilized && <span className="badge badge-cyan">Rent Stabilized</span>}
+            {/* RIGHT — address + flags + badges */}
+            <div style={{ padding:'24px 28px', background:'#fff' }}>
+              <h1 style={{ fontFamily:'"Bebas Neue",Georgia,sans-serif', fontSize:'clamp(28px,4vw,52px)', lineHeight:.9, letterSpacing:'.03em', color:'#0a0a0a', marginBottom:8 }}>{b?.address || 'Unknown Address'}</h1>
+
+              {/* Program badges */}
+              <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:16 }}>
+                {b?.isRentStabilized && <span className="badge badge-cyan">Rent Stabilised</span>}
                 {data.programs?.aep && <span className="badge badge-red">AEP Building</span>}
                 {data.programs?.speculationWatch && <span className="badge badge-orange">Speculation Watch</span>}
                 {b?.isNycha && <span className="badge badge-purple">NYCHA</span>}
-                {b?.isSubsidized && <span className="badge badge-green">Subsidized</span>}
-                {data.redFlags?.length > 0 && (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-400 border border-red-500/25">
-                    <AlertTriangle size={11} />{data.redFlags.length} Red Flag{data.redFlags.length > 1 ? 's' : ''}
-                  </span>
+                {b?.isSubsidized && <span className="badge badge-green">Subsidised</span>}
+              </div>
+
+              {/* Red flags inline — only when present */}
+              {data.redFlags?.length > 0 && (
+                <div style={{ borderLeft:'3px solid #e24b4a', paddingLeft:14, marginBottom:16 }}>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:10, letterSpacing:'.1em', textTransform:'uppercase', color:'#e24b4a', fontWeight:700, marginBottom:8 }}>
+                    {data.redFlags.length} Red Flag{data.redFlags.length > 1 ? 's' : ''} Detected
+                  </div>
+                  <div style={{ display:'flex', flexDirection:'column', gap:4 }}>
+                    {data.redFlags.slice(0, 6).map((f: any, i: number) => (
+                      <div key={i} style={{ fontSize:11, color: f.severity === 'critical' ? '#c0392b' : f.severity === 'warning' ? '#b45309' : '#555', display:'flex', gap:6, alignItems:'flex-start' }}>
+                        <span style={{ width:4, height:4, borderRadius:'50%', background: f.severity === 'critical' ? '#e24b4a' : f.severity === 'warning' ? '#d97706' : '#888', flexShrink:0, marginTop:4 }} />
+                        <span><strong>{f.title}</strong> — {f.description}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Quick stats row */}
+              <div style={{ display:'flex', gap:24, flexWrap:'wrap' }}>
+                <div style={{ textAlign:'center' }}>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:22, fontWeight:700, color: (data.violations?.hpd?.classC ?? 0) > 0 ? '#e24b4a' : '#10b981', lineHeight:1 }}>{data.violations?.hpd?.classC ?? 0}</div>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.1em', textTransform:'uppercase', color:'#888', marginTop:3 }}>Class C</div>
+                </div>
+                <div style={{ textAlign:'center' }}>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:22, fontWeight:700, color: (data.complaints?.hpd?.heatHotWater ?? 0) > 5 ? '#d97706' : '#10b981', lineHeight:1 }}>{data.complaints?.hpd?.heatHotWater ?? 0}</div>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.1em', textTransform:'uppercase', color:'#888', marginTop:3 }}>Heat complaints</div>
+                </div>
+                <div style={{ textAlign:'center' }}>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:22, fontWeight:700, color: (data.evictions?.total ?? 0) > 0 ? '#e24b4a' : '#10b981', lineHeight:1 }}>{data.evictions?.total ?? 0}</div>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.1em', textTransform:'uppercase', color:'#888', marginTop:3 }}>Evictions</div>
+                </div>
+                {data.pests?.bedbugReports > 0 && (
+                  <div style={{ textAlign:'center' }}>
+                    <div style={{ fontFamily:'"Space Mono",monospace', fontSize:22, fontWeight:700, color:'#e24b4a', lineHeight:1 }}>{data.pests.bedbugReports}</div>
+                    <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.1em', textTransform:'uppercase', color:'#888', marginTop:3 }}>Bedbug reports</div>
+                  </div>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Bottom: category score bar strip */}
+          {/* Category score strip */}
           {data.categoryScores?.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-[#ddd]">
-              {data.categoryScores.map((c: any) => {
+            <div style={{ display:'grid', gridTemplateColumns:`repeat(${Math.min(data.categoryScores.length, 6)}, 1fr)`, borderTop:'2px solid #0a0a0a' }}>
+              {data.categoryScores.map((c: any, i: number) => {
                 const cc = sc(c.score)
                 return (
                   <button
                     key={c.name}
                     onClick={() => catNav(c.name)}
-                    className="p-3 text-left hover:bg-[#f5f5f5] transition-colors group"
+                    style={{
+                      padding:'12px 10px', textAlign:'left', background:'#fff', border:'none',
+                      borderRight: i < data.categoryScores.length - 1 ? '1px solid #e0e0e0' : 'none',
+                      cursor:'pointer', transition:'background .12s',
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.background='#f5f5f5')}
+                    onMouseLeave={e => (e.currentTarget.style.background='#fff')}
                   >
-                    <div className="flex items-center justify-between mb-2">
-                      <span style={{ display:"flex", alignItems:"center", gap:4, fontSize:10, color:"#666" }}><CategoryIcon name={c.name} />{c.name}</span>
-                      <span className="text-sm font-black ml-1 flex-shrink-0" style={{ color: cc }}>{c.score}</span>
+                    <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:6 }}>
+                      <span style={{ display:'flex', alignItems:'center', gap:4, fontSize:9, color:'#666', letterSpacing:'.04em', textTransform:'uppercase', fontFamily:'"Space Mono",monospace' }}>
+                        <CategoryIcon name={c.name} />{c.name}
+                      </span>
+                      <span style={{ fontSize:14, fontWeight:700, color:cc, flexShrink:0, marginLeft:4 }}>{c.score}</span>
                     </div>
-                    <ScoreBar score={c.score} height={3} />
+                    <div style={{ height:3, background:'#efefef', borderRadius:0 }}>
+                      <div style={{ height:'100%', width:`${c.score}%`, background:cc, transition:'width .6s' }} />
+                    </div>
                   </button>
                 )
               })}
@@ -458,31 +491,7 @@ export default function BuildingPage() {
           )}
         </div>
 
-        {/* ══ RED FLAGS ══ */}
-        {data.redFlags?.length > 0 && (
-          <div className="mb-5 p-4 rounded-xl border border-red-500/30" style={{ background: 'rgba(239,68,68,0.06)' }}>
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                <AlertTriangle className="text-red-400" size={15} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-red-400 text-sm mb-2">{data.redFlags.length} Red Flag{data.redFlags.length > 1 ? 's' : ''} Detected</div>
-                <div className="flex flex-wrap gap-2">
-                  {data.redFlags.slice(0, 8).map((f: any, i: number) => (
-                    <div
-                      key={i}
-                      className={`flex items-start gap-1.5 text-xs px-2.5 py-1.5 rounded-lg border ${f.severity === 'critical' ? 'bg-red-500/10 border-red-500/25 text-red-300' : f.severity === 'warning' ? 'bg-yellow-500/10 border-yellow-500/25 text-yellow-300' : 'bg-[#0b8a7a]/10 border-[#0b8a7a]/25 text-[#076d5f]'}`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full mt-1 flex-shrink-0 ${f.severity === 'critical' ? 'bg-red-400' : f.severity === 'warning' ? 'bg-yellow-400' : 'bg-blue-400'}`} />
-                      <span><strong>{f.title}</strong> — {f.description}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
+        {/* ══ TAB BAR ══ */}
         {/* ══ TAB BAR ══ */}
         <div className="flex gap-1.5 mb-6 overflow-x-auto pb-2 scrollbar-hide">
           {tabs.map(t => (
@@ -508,104 +517,18 @@ export default function BuildingPage() {
         {tab === 'overview' && (
           <div className="space-y-5 animate-fade-in">
 
-            {/* Time window */}
-            <div className="card p-5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2 font-bold text-sm">
-                    <Clock size={14} className="text-[#555]" />
-                    Time window: <span className="text-white">{rangeLabel}</span>
-                  </div>
-                  <p className="text-xs text-[#666] mt-1">We summarize this period and compare it to the previous period of the same length.</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {rangeOptions.map(r => (
-                    <button
-                      key={r.key}
-                      onClick={() => setRange(r.key)}
-                      className={`px-3 py-2 rounded-xl border text-sm transition-all ${range === r.key ? 'bg-[#0b8a7a] border-[#0b8a7a] text-white' : 'bg-[#eeeeee] border-[#ddd] text-[#555] hover:text-white'}`}
-                    >
-                      <div className="font-semibold leading-none">{r.label}</div>
-                      <div className="text-xs sm:text-[10px] opacity-80 mt-0.5">{r.subtitle}</div>
-                    </button>
-                  ))}
-                </div>
+            {/* Range toggle — compact */}
+            <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:8 }}>
+              <span style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.12em', textTransform:'uppercase', color:'#888' }}>Window</span>
+              <div style={{ display:'flex', gap:0 }}>
+                {rangeOptions.map((r, i) => (
+                  <button key={r.key} onClick={() => setRange(r.key)} style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.08em', textTransform:'uppercase', padding:'5px 12px', background: range === r.key ? '#0b8a7a' : '#fff', color: range === r.key ? '#fff' : '#666', border:'1px solid #ddd', borderRight: i < rangeOptions.length - 1 ? 'none' : '1px solid #ddd', cursor:'pointer', transition:'all .12s' }}>{r.label}</button>
+                ))}
               </div>
+              <span style={{ fontFamily:'"Space Mono",monospace', fontSize:9, color:'#aaa' }}>vs prior period</span>
             </div>
 
             {/* Signal stat cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-300' },
-                { label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-300' },
-                { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
-                { label: 'Open hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C (immediately hazardous)', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-300' },
-              ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
-                <div key={label} className={`card p-5 ${cls}`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-[#666] text-xs">{label}</div>
-                    {icon}
-                  </div>
-                  <div className={`text-3xl font-black ${numCls}`}>{count}</div>
-                  <div className={`text-xs mt-1 ${delta > 0 ? 'text-red-300' : delta < 0 ? 'text-emerald-300' : 'text-[#777]'}`}>
-                    {sub ?? (delta === 0 ? 'No change vs prior period' : `${delta > 0 ? '+' : ''}${delta} vs prior period`)}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Area chart */}
-            <div className="card p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-base">Reports over time ({rangeLabel})</h3>
-                <div className="text-xs text-[#666]">Heat / Pests / Noise / Other</div>
-              </div>
-              <div className="h-72">
-                <ChartBoundary title="Reports over time">
-                  <SignalsAreaChart data={signalSeries || []} />
-                </ChartBoundary>
-              </div>
-              <div className="mt-3 text-xs text-[#666]">
-                Total reports in this window: <span className="text-white font-semibold">{signalCounts.total}</span>
-              </div>
-            </div>
-
-            {/* Sanity-check guide */}
-            <div className="card p-5">
-              <h3 className="font-bold mb-1 text-base">What to sanity-check before a lease</h3>
-              <p className="text-xs text-[#666] mb-4">Use the tabs to drill in. These are the highest-signal checks.</p>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {[
-                  { icon: <Flame size={14} className="text-yellow-400" />, title: 'Heat & hot water', body: 'Look for repeated winter spikes and unresolved building-wide patterns.', fn: () => goToTabAndScroll('complaints', 'section-heat-hot-water') },
-                  { icon: <Bug size={14} className="text-emerald-400" />, title: 'Pests', body: 'Repeated rodent fails or bedbug filings matter more than a single event.', fn: () => goToTabAndScroll('neighborhood', 'section-pest-control') },
-                  { icon: <Volume2 size={14} className="text-[#0b8a7a]" />, title: 'Noise', body: 'Late-night spikes can hint at chronic issues (bar, construction, neighbors).', fn: () => goToTabAndScroll('neighborhood', 'section-noise') },
-                  { icon: <ShieldAlert size={14} className="text-red-400" />, title: 'Hazards', body: 'Open Class C violations deserve direct questions during a showing.', fn: () => goToTabAndScroll('violations', 'section-building-violations') },
-                ].map(({ icon, title, body, fn }) => (
-                  <button key={title} onClick={fn} className="p-4 bg-white border-2 border-[#e0e0e0] hover:border-[#0b8a7a] text-left transition-colors group">
-                    <div className="flex items-center gap-2 font-semibold text-sm mb-1.5">{icon}{title}</div>
-                    <div className="text-xs text-[#666] group-hover:text-[#555] transition-colors">{body}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Category BHX Scores — with bars */}
-            <div className="card p-6">
-              <h3 className="font-bold mb-5 text-base">Category BHX Scores</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {data.categoryScores?.map((c: any) => (
-                  <CategoryCard
-                    key={c.name}
-                    name={c.name}
-                    icon={c.icon}
-                    score={c.score}
-                    detail={c.detail}
-                    onClick={() => catNav(c.name)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
         )}
 
         {/* ══════════════════════════════════════════
