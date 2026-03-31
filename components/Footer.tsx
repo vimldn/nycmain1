@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 const mono = { fontFamily: 'var(--font-space-mono,monospace)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase' as const }
