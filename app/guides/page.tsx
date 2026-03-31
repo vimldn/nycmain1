@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import GuidesEmailCapture from '@/components/GuidesEmailCapture'
 import { GUIDES } from '@/lib/guides-data'
 import { BreadcrumbJsonLd } from '@/components/seo'
 
@@ -252,11 +251,6 @@ export default function GuidesPage() {
               </section>
             )
           })}
-        </div>
-
-        {/* ── Email capture lead magnet ──────────────────────────────────────── */}
-        <div className="mt-20">
-          <GuidesEmailCapture />
         </div>
 
         {/* ── Bottom address search CTA ─────────────────────────────────────── */}
