@@ -1,115 +1,143 @@
 import Link from 'next/link'
-import Image from 'next/image'
+
+const mono = { fontFamily: 'var(--font-space-mono,monospace)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase' as const }
+const bebas = { fontFamily: 'var(--font-bebas,"Bebas Neue",sans-serif)', letterSpacing: '0.06em' }
+
+const SERVICES = [
+  { slug: 'moving-companies', name: 'Moving Companies' },
+  { slug: 'pest-control', name: 'Pest Control' },
+  { slug: 'cleaning-services', name: 'Cleaning Services' },
+  { slug: 'renters-insurance', name: 'Renters Insurance' },
+  { slug: 'plumbers', name: 'Plumbers' },
+  { slug: 'electricians', name: 'Electricians' },
+]
+
+const LOCATIONS = [
+  { slug: 'manhattan', name: 'Manhattan' },
+  { slug: 'brooklyn', name: 'Brooklyn' },
+  { slug: 'queens', name: 'Queens' },
+  { slug: 'bronx', name: 'The Bronx' },
+  { slug: 'williamsburg', name: 'Williamsburg' },
+  { slug: 'astoria', name: 'Astoria' },
+  { slug: 'upper-east-side', name: 'Upper East Side' },
+  { slug: 'park-slope', name: 'Park Slope' },
+]
+
+const RESOURCES = [
+  { href: '/blog', name: 'Blog' },
+  { href: '/guides', name: 'Guides' },
+  { href: '/news', name: 'News' },
+  { href: '/press', name: 'Press' },
+  { href: '/data-sources', name: 'Data Sources' },
+]
+
+const LEGAL = [
+  { href: '/privacy-policy', name: 'Privacy Policy' },
+  { href: '/terms-of-service', name: 'Terms of Service' },
+]
+
+const footerLink = {
+  display: 'block',
+  ...mono,
+  fontSize: '11px',
+  color: 'rgba(255,255,255,0.45)',
+  textDecoration: 'none',
+  marginBottom: '10px',
+  transition: 'color 0.15s',
+}
 
 export default function Footer() {
-  // Popular locations for internal linking
-  const popularLocations = [
-    { slug: 'manhattan', name: 'Manhattan' },
-    { slug: 'brooklyn', name: 'Brooklyn' },
-    { slug: 'queens', name: 'Queens' },
-    { slug: 'bronx', name: 'The Bronx' },
-    { slug: 'williamsburg', name: 'Williamsburg' },
-    { slug: 'astoria', name: 'Astoria' },
-    { slug: 'upper-east-side', name: 'Upper East Side' },
-    { slug: 'park-slope', name: 'Park Slope' },
-  ]
-
-  // Popular services for internal linking
-  const popularServices = [
-    { slug: 'moving-companies', name: 'Moving Companies' },
-    { slug: 'pest-control', name: 'Pest Control' },
-    { slug: 'cleaning-services', name: 'Cleaning Services' },
-    { slug: 'renters-insurance', name: 'Renters Insurance' },
-    { slug: 'plumbers', name: 'Plumbers' },
-  ]
-
   return (
-    <footer className="py-12 sm:py-16 bg-[var(--bg-secondary)] border-t border-[var(--border-primary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 mb-10 sm:mb-12">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10 flex-shrink-0">
-                <Image
-                  src="/logo-256.png"
-                  alt="Building Health X"
-                  width={40}
-                  height={40}
-                  className="rounded-lg"
-                />
-              </div>
-              <span className="font-bold text-lg">Building Health X</span>
-            </div>
-            <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              NYC's most comprehensive building violations lookup tool. Make informed decisions before signing your lease.
-            </p>
-          </div>
+    <footer style={{ background: '#0a0a0a', borderTop: '3px solid #0a0a0a' }}>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-              {popularServices.map(service => (
-                <li key={service.slug}>
-                  <Link href={`/services/${service.slug}`} className="hover:text-[var(--text-primary)] transition">
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/services" className="text-blue-400 hover:text-blue-300 transition">
-                  View all services →
-                </Link>
-              </li>
-            </ul>
-          </div>
+      {/* Main footer grid */}
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '56px 24px 40px', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '48px' }}>
 
-          {/* Locations */}
-          <div>
-            <h4 className="font-semibold mb-4">Locations</h4>
-            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-              {popularLocations.map(location => (
-                <li key={location.slug}>
-                  <Link href={`/locations/${location.slug}`} className="hover:text-[var(--text-primary)] transition">
-                    {location.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/locations" className="text-blue-400 hover:text-blue-300 transition">
-                  View all locations →
-                </Link>
-              </li>
-            </ul>
+        {/* Brand col */}
+        <div>
+          <div style={{ ...bebas, fontSize: '28px', color: '#fff', marginBottom: '12px' }}>
+            Building<span style={{ color: 'var(--teal,#0b8a7a)' }}>Health</span>X
           </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-              <li><Link href="/blog" className="hover:text-[var(--text-primary)] transition">Blog</Link></li>
-              <li><Link href="/blog" className="hover:text-[var(--text-primary)] transition">NYC Renter's Guide</Link></li>
-              <li><Link href="/news" className="hover:text-[var(--text-primary)] transition">News</Link></li>
-              <li><Link href="/press" className="hover:text-[var(--text-primary)] transition">Press</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-              <li><Link href="/privacy-policy" className="hover:text-[var(--text-primary)] transition">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-service" className="hover:text-[var(--text-primary)] transition">Terms of Service</Link></li>
-              <li><Link href="/data-sources" className="hover:text-[var(--text-primary)] transition">Data Sources</Link></li>
-            </ul>
-          </div>
+          <p style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.8, marginBottom: '24px' }}>
+            NYC's most comprehensive building violations lookup tool. Make informed decisions before signing your lease.
+          </p>
+          <Link href="/" style={{
+            display: 'inline-block',
+            ...bebas, fontSize: '16px', letterSpacing: '0.08em',
+            background: 'var(--teal,#0b8a7a)', color: '#fff',
+            padding: '10px 20px', textDecoration: 'none',
+            border: '1px solid rgba(11,138,122,0.5)',
+            transition: 'background 0.15s',
+          }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'var(--teal-dark,#076d5f)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'var(--teal,#0b8a7a)')}>
+            Check a Building Free →
+          </Link>
         </div>
 
-        <div className="pt-8 border-t border-[var(--border-primary)] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-[var(--text-muted)]">© 2025 Building Health X. All rights reserved.</p>
-          <p className="text-sm text-[var(--text-muted)]">Data sourced from NYC Open Data</p>
+        {/* Services */}
+        <div>
+          <div style={{ ...bebas, fontSize: '18px', color: '#fff', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '10px' }}>Services</div>
+          {SERVICES.map(s => (
+            <Link key={s.slug} href={`/services/${s.slug}`} style={footerLink}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--teal,#0b8a7a)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
+              {s.name}
+            </Link>
+          ))}
+          <Link href="/services" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all →</Link>
         </div>
+
+        {/* Locations */}
+        <div>
+          <div style={{ ...bebas, fontSize: '18px', color: '#fff', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '10px' }}>Locations</div>
+          {LOCATIONS.map(l => (
+            <Link key={l.slug} href={`/locations/${l.slug}`} style={footerLink}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--teal,#0b8a7a)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
+              {l.name}
+            </Link>
+          ))}
+          <Link href="/locations" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all →</Link>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <div style={{ ...bebas, fontSize: '18px', color: '#fff', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '10px' }}>Resources</div>
+          {RESOURCES.map(r => (
+            <Link key={r.href} href={r.href} style={footerLink}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--teal,#0b8a7a)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
+              {r.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Legal */}
+        <div>
+          <div style={{ ...bebas, fontSize: '18px', color: '#fff', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '10px' }}>Legal</div>
+          {LEGAL.map(l => (
+            <Link key={l.href} href={l.href} style={footerLink}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--teal,#0b8a7a)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
+              {l.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Data sources strip */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '16px 24px', maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+        <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>Powered by</span>
+        {['HPD', 'DOB', '311', 'DHCR', 'DOHMH', 'ACRIS', 'FDNY', 'NYC Open Data'].map(s => (
+          <span key={s} style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)', cursor: 'default' }}>{s}</span>
+        ))}
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '16px 24px', maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+        <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>© 2025 Building Health X. All rights reserved.</span>
+        <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>Data sourced from NYC Open Data</span>
       </div>
     </footer>
   )
