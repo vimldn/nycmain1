@@ -131,10 +131,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             (function() {
               try {
                 var theme = localStorage.getItem('theme');
-                if (theme === 'light') {
+                if (theme === 'dark') {
                   document.documentElement.setAttribute('data-theme', 'light');
                 } else {
-                  document.documentElement.setAttribute('data-theme', 'dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
               } catch (e) {}
             })();

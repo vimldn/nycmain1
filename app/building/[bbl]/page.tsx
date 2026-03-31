@@ -121,6 +121,40 @@ function ScoreBar({ score, height = 4 }: { score: number; height?: number }) {
   )
 }
 
+
+// ── Category icon map (SVG, no emojis) ─────────────────────────
+function CategoryIcon({ name }: { name: string }) {
+  const n = name.toLowerCase()
+  const s = { width:14, height:14 }
+  const p = { fill:"none", stroke:"currentColor", strokeWidth:"2", strokeLinecap:"round" as const, strokeLinejoin:"round" as const }
+  if (n.includes("heat") || n.includes("hot water"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+  if (n.includes("pest") || n.includes("bug"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 12H3"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z"/><path d="M6 8l-3-3"/><path d="M18 8l3-3"/><path d="M6 16l-3 3"/><path d="M18 16l3 3"/></svg>
+  if (n.includes("maintenance") || n.includes("repair"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+  if (n.includes("safety") && !n.includes("pedestrian") && !n.includes("traffic"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  if (n.includes("landlord") || n.includes("owner"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  if (n.includes("stability") || n.includes("financial health"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+  if (n.includes("violent") || n.includes("shooting"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  if (n.includes("crime"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>
+  if (n.includes("pedestrian") || n.includes("traffic"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>
+  if (n.includes("transit") || n.includes("subway") || n.includes("bus"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v5"/><circle cx="8.5" cy="17" r="1.5"/><circle cx="15.5" cy="17" r="1.5"/><path d="M8 12h8"/></svg>
+  if (n.includes("noise") || n.includes("sound"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+  if (n.includes("flood") || n.includes("water"))
+    return <svg {...s} viewBox="0 0 24 24" {...p}><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+  // default
+  return <svg {...s} viewBox="0 0 24 24" {...p}><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+}
+
 function CategoryCard({ name, icon, score, detail, onClick }: {
   name: string; icon: string; score: number; detail?: string; onClick?: () => void
 }) {
@@ -258,14 +292,14 @@ export default function BuildingPage() {
   }, [loading])
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="text-center">
-        <div className="relative w-24 h-24 mx-auto mb-6">
-          <div className="absolute inset-0 border-4 border-[#ddd] rounded-full" />
-          <div className="absolute inset-0 border-4 border-[#0b8a7a] rounded-full border-t-transparent animate-spin" />
+    <div style={{ minHeight:'100vh', background:'#fff', display:'flex', alignItems:'center', justifyContent:'center' }}>
+      <style>{`@keyframes bhx-spin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{ textAlign:'center' }}>
+        <div style={{ width:56, height:56, border:'2px solid #e0e0e0', position:'relative', margin:'0 auto 20px' }}>
+          <div style={{ position:'absolute', inset:-2, border:'2px solid transparent', borderTopColor:'#0b8a7a', borderRadius:'50%', animation:'bhx-spin 0.8s linear infinite' }} />
         </div>
-        <p className="text-[#555] text-xl mb-2">Analyzing building...</p>
-        <p className="text-[#666] text-sm">Fetching from 30+ data sources</p>
+        <p style={{ fontFamily:'"Bebas Neue","Space Mono",sans-serif', fontSize:26, letterSpacing:'0.08em', color:'#0a0a0a', margin:'0 0 6px' }}>Analyzing Building</p>
+        <p style={{ fontFamily:'"Space Mono",monospace', fontSize:10, letterSpacing:'0.12em', textTransform:'uppercase', color:'#888', margin:0 }}>Fetching from 30+ data sources</p>
       </div>
     </div>
   )
@@ -335,7 +369,7 @@ export default function BuildingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background:'#fff' }}>
 
       <Header />
 
@@ -380,10 +414,10 @@ export default function BuildingPage() {
                 {b?.neighborhood && `${b.neighborhood}, `}{b?.borough}, NY {b?.zipcode}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {b?.unitsRes > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Units</span><span className="ml-2 text-white font-semibold text-sm">{b.unitsRes}</span></div>}
-                {b?.yearBuilt && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Built</span><span className="ml-2 text-white font-semibold text-sm">{b.yearBuilt}</span></div>}
-                {b?.floors > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Floors</span><span className="ml-2 text-white font-semibold text-sm">{b.floors}</span></div>}
-                {b?.buildingClassDesc && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Type</span><span className="ml-2 text-white font-semibold text-sm">{b.buildingClassDesc}</span></div>}
+                {b?.unitsRes > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Units</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.unitsRes}</span></div>}
+                {b?.yearBuilt && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Built</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.yearBuilt}</span></div>}
+                {b?.floors > 0 && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Floors</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.floors}</span></div>}
+                {b?.buildingClassDesc && <div className="px-3 py-1.5 bg-[#f5f5f5] rounded-lg border border-[#ddd]"><span className="text-[#666] text-xs">Type</span><span className="ml-2 text-[#0a0a0a] font-semibold text-sm">{b.buildingClassDesc}</span></div>}
                 {b?.rentStabilizedUnits && <div className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"><span className="text-cyan-400 text-xs">RS Units</span><span className="ml-2 text-cyan-300 font-semibold text-sm">{b.rentStabilizedUnits}</span></div>}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -413,7 +447,7 @@ export default function BuildingPage() {
                     className="p-3 text-left hover:bg-[#f5f5f5] transition-colors group"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] text-[#777] group-hover:text-[#666] transition-colors leading-snug truncate pr-1">{c.icon} {c.name}</span>
+                      <span style={{ display:"flex", alignItems:"center", gap:4, fontSize:10, color:"#666" }}><CategoryIcon name={c.name} />{c.name}</span>
                       <span className="text-sm font-black ml-1 flex-shrink-0" style={{ color: cc }}>{c.score}</span>
                     </div>
                     <ScoreBar score={c.score} height={3} />
