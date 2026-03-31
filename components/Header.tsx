@@ -165,7 +165,7 @@ export default function Header({ showSearch = false, searchPlaceholder = 'Search
               </React.Fragment>
             ))}
 
-            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'22px', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0 28px', lineHeight:'60px', background:'#0b8a7a', color:'#fff', textDecoration:'none', marginLeft:'16px', whiteSpace:'nowrap', transition:'background 0.15s', flexShrink:0 }}
+            <Link href="/" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'20px', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0 24px', height:'40px', display:'flex', alignItems:'center', background:'#0b8a7a', color:'#fff', textDecoration:'none', marginLeft:'16px', whiteSpace:'nowrap', transition:'background 0.15s', flexShrink:0, alignSelf:'center' }}
               onMouseEnter={e=>(e.currentTarget.style.background='#076d5f')}
               onMouseLeave={e=>(e.currentTarget.style.background='#0b8a7a')}>
               CHECK A BUILDING

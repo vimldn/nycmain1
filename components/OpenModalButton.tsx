@@ -16,8 +16,8 @@ export default function OpenModalButton({ children, className = '', variant = 'p
   };
 
   const baseStyles = variant === 'primary'
-    ? 'px-8 py-4 bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white font-bold rounded-xl transition shadow-lg'
-    : 'px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition';
+    ? 'px-8 py-4 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-bold transition'
+    : 'px-4 py-2 border-2 border-[#e0e0e0] hover:border-[#0b8a7a] text-[#555] text-sm transition';
 
   return (
     <button

@@ -7,7 +7,7 @@ export default function BlogSidebar({ currentSlug }: { currentSlug?: string }) {
   return (
     <aside className="space-y-4">
       <div className="card p-5">
-        <h3 className="font-bold mb-3">Recent Articles</h3>
+        <h3 style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'.06em', marginBottom:'12px' }}>Recent Articles</h3>
         <div className="space-y-3">
           {recent.map((p) => (
             <Link
@@ -16,20 +16,20 @@ export default function BlogSidebar({ currentSlug }: { currentSlug?: string }) {
               className="block group"
             >
               <div className="text-sm font-semibold leading-snug group-hover:underline">{p.title}</div>
-              <div className="text-xs text-[#94a3b8] mt-1 line-clamp-2">{p.excerpt}</div>
+              <div className="text-xs text-[#666] mt-1 line-clamp-2">{p.excerpt}</div>
             </Link>
           ))}
         </div>
       </div>
 
       <div className="card p-5">
-        <h3 className="font-bold mb-2">Check a building</h3>
-        <p className="text-sm text-[#94a3b8] mb-3">
+        <h3 style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'18px', letterSpacing:'.06em', marginBottom:'8px' }}>Check a Building</h3>
+        <p className="text-sm text-[#666] mb-3">
           Pull NYC open data for any address and see what’s changing over time.
         </p>
         <Link
           href="/"
-          className="inline-flex items-center justify-center w-full px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 transition text-white font-semibold"
+          className="inline-flex items-center justify-center w-full px-4 py-2 bg-[#0b8a7a] hover:bg-[#076d5f] transition text-white font-semibold"
         >
           Search an address
         </Link>

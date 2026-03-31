@@ -722,7 +722,7 @@ export default function ServiceLocationPage({ params }: Props) {
                 {/* Accordion for remaining FAQs */}
                 {detailedFaqs.length > 5 && (
                   <details className="group">
-                    <summary className="cursor-pointer px-6 py-4 bg-[#f5f5f5] hover:bg-[#eeeeee]  font-semibold flex items-center justify-between transition">
+                    <summary className="cursor-pointer px-4 py-3 bg-[#f5f5f5] hover:bg-[#e0f5f2] font-semibold flex items-center justify-between transition border border-[#e0e0e0] text-sm">
                       <span>View {detailedFaqs.length - 5} more questions</span>
                       <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
                     </summary>
@@ -791,25 +791,25 @@ export default function ServiceLocationPage({ params }: Props) {
                   <nav className="space-y-2">
                     <a
                       href="#why-need"
-                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
+                      className="block px-3 py-2 text-sm text-[#555] hover:text-[#0b8a7a] hover:bg-[#f0faf9] transition border-l-2 border-transparent hover:border-[#0b8a7a]"
                     >
                       What you can request
                     </a>
                     <a
                       href="#what-to-look-for"
-                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
+                      className="block px-3 py-2 text-sm text-[#555] hover:text-[#0b8a7a] hover:bg-[#f0faf9] transition border-l-2 border-transparent hover:border-[#0b8a7a]"
                     >
                       What to look for
                     </a>
                     <a
                       href="#costs"
-                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
+                      className="block px-3 py-2 text-sm text-[#555] hover:text-[#0b8a7a] hover:bg-[#f0faf9] transition border-l-2 border-transparent hover:border-[#0b8a7a]"
                     >
                       Costs & timeline
                     </a>
                     <a
                       href="#faq"
-                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
+                      className="block px-3 py-2 text-sm text-[#555] hover:text-[#0b8a7a] hover:bg-[#f0faf9] transition border-l-2 border-transparent hover:border-[#0b8a7a]"
                     >
                       FAQ
                     </a>
