@@ -268,14 +268,14 @@ export default function HomePage() {
       {/* ── HERO — V2 Brutalist White/Teal ── */}
       <section style={{ borderBottom: '3px solid #0a0a0a', position: 'relative', overflow: 'hidden' }} className="pt-24 pb-16 px-6">
 
-        {/* ESB silhouette — right side, full hero height */}
+        {/* ESB silhouette — right side, top-aligned with headline */}
         <div style={{
           position: 'absolute',
-          bottom: 0,
-          right: 0,
-          width: '420px',
-          height: '100%',
-          opacity: 0.08,
+          top: 0,
+          right: '-10px',
+          width: '38%',
+          height: '115%',
+          opacity: 0.1,
           pointerEvents: 'none',
           userSelect: 'none',
         }}>
@@ -283,7 +283,7 @@ export default function HomePage() {
             src="/esb.png"
             alt=""
             fill
-            style={{ objectFit: 'contain', objectPosition: 'bottom right' }}
+            style={{ objectFit: 'contain', objectPosition: 'top right' }}
             priority={false}
             aria-hidden
           />
@@ -409,9 +409,14 @@ export default function HomePage() {
           {/* Search meta */}
           <div style={{
             fontFamily: 'var(--font-space-mono), monospace', fontSize: '12px',
-            color: 'var(--text-muted)', letterSpacing: '0.06em', marginBottom: '28px',
+            color: 'var(--text-muted)', letterSpacing: '0.06em', marginBottom: '24px',
           }}>
             // No login required · Updated daily · Always free
+          </div>
+
+          {/* NYC Live Bar — above fold */}
+          <div className="mb-6">
+            <NYCInfoBar />
           </div>
 
           {/* Quick-topic chips */}
@@ -424,10 +429,6 @@ export default function HomePage() {
                 letterSpacing: '0.04em', transition: 'all 0.15s',
               }}>{t}</span>
             ))}
-          </div>
-
-          <div className="mt-8">
-            <NYCInfoBar />
           </div>
         </div>
       </section>
