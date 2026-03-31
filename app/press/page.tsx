@@ -224,7 +224,7 @@ export default function PressPage() {
 
         {/* ── H1 + Keyword-rich intro with internal links ── */}
         <header className="mb-10">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 text-sm font-semibold rounded-full mb-4 uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 bg-[#e8f0fe] text-[#1a56db] text-sm font-semibold  mb-4 uppercase r">
             Press
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-5">Building Health X in the News</h1>
@@ -239,7 +239,7 @@ export default function PressPage() {
         </header>
 
         {/* ── "As Seen On" Greyscale Trust Banner ── */}
-        <div className="mb-14 py-8 px-6 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50">
+        <div className="mb-14 py-8 px-6  border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50">
           <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">
             As Seen On
           </p>
@@ -261,26 +261,26 @@ export default function PressPage() {
           grouped[cat] && (
             <section key={cat} className="mb-12">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <span className="w-1.5 h-6 bg-blue-500 rounded-full" />
+                <span className="w-1.5 h-6 bg-blue-500 " />
                 {categoryLabels[cat]}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 {grouped[cat].map((item) => (
                   <article
                     key={item.url}
-                    className="rounded-xl border border-[var(--border-primary)] hover:border-blue-500/40 bg-[var(--bg-card)] hover:bg-[var(--bg-secondary)] transition-all group overflow-hidden"
+                    className=" border border-[var(--border-primary)] hover:border-blue-500/40 bg-[var(--bg-card)] hover:bg-[var(--bg-secondary)] transition-all group overflow-hidden"
                   >
                     <div className="p-5">
                       {/* Publication name + Date */}
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-bold text-blue-400">
+                        <span className="text-sm font-bold text-[#1a56db]">
                           Published on {item.name}
                         </span>
                         <span className="text-xs text-[var(--text-muted)] whitespace-nowrap ml-3">{item.date}</span>
                       </div>
 
                       {/* Headline */}
-                      <h3 className="text-base font-semibold mb-2 leading-snug group-hover:text-blue-400 transition line-clamp-2">
+                      <h3 className="text-base font-semibold mb-2 leading-snug group-hover:text-[#1a56db] transition line-clamp-2">
                         {item.headline}
                       </h3>
 
@@ -294,7 +294,7 @@ export default function PressPage() {
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-400 border border-blue-500/30 rounded-lg hover:bg-blue-500/10 transition"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#1a56db] border border-[#1a56db]  hover:bg-[#e8f0fe] transition"
                       >
                         Read Full Article
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -324,7 +324,7 @@ export default function PressPage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold  transition"
             >
               Try Building Health X
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -333,13 +333,13 @@ export default function PressPage() {
             </Link>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-primary)] hover:border-[var(--border-secondary)] text-sm font-semibold rounded-xl transition"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-primary)] hover:border-[var(--border-secondary)] text-sm font-semibold  transition"
             >
               Read Our Blog
             </Link>
             <Link
               href="/blog/building-health-x-launches-nyc-building-research-tool"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-primary)] hover:border-[var(--border-secondary)] text-sm font-semibold rounded-xl transition"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-primary)] hover:border-[var(--border-secondary)] text-sm font-semibold  transition"
             >
               Read the Launch Post
             </Link>

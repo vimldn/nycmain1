@@ -81,13 +81,13 @@ export default function ServicesIndexPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <Header />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
-            <Link href="/" className="hover:text-white transition">
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-8">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -97,7 +97,7 @@ export default function ServicesIndexPage() {
           {/* Hero with CTA */}
           <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">Services</h1>
-            <p className="text-slate-300 max-w-3xl leading-relaxed mb-6">
+            <p className="text-[#444] max-w-3xl leading-relaxed mb-6">
               Browse NYC renter services by category. Each service page has neighborhood-specific tips and what to look
               for.
             </p>
@@ -122,21 +122,21 @@ export default function ServicesIndexPage() {
                         <Link
                           key={svc.slug}
                           href={`/services/${svc.slug}`}
-                          className="group bg-[#12161f] border border-white/5 rounded-xl p-5 hover:border-blue-500/30 hover:bg-blue-500/5 transition"
+                          className="group bg-[#f5f5f5] border border-[#eeeeee]  p-5 hover:border-[#1a56db] hover:bg-blue-500/5 transition"
                         >
                           <div className="flex items-start gap-4">
-                            <div className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-white/10 transition">
+                            <div className="w-11 h-11 bg-[#f5f5f5]  flex items-center justify-center text-[#555] group-hover:text-[#0a0a0a] group-hover:bg-[#eeeeee] transition">
                               {getServiceIcon(svc.slug, 'w-5 h-5')}
                             </div>
 
                             <div className="min-w-0 flex-1">
-                              <div className="font-semibold text-lg mb-1 group-hover:text-blue-400 transition">
+                              <div className="font-semibold text-lg mb-1 group-hover:text-[#1a56db] transition">
                                 {svc.name}
                               </div>
-                              <div className="text-sm text-slate-400 line-clamp-2">{svc.description}</div>
+                              <div className="text-sm text-[#555] line-clamp-2">{svc.description}</div>
                             </div>
 
-                            <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-blue-400 transition mt-1" />
+                            <ChevronRight className="w-5 h-5 text-[#666] group-hover:text-[#1a56db] transition mt-1" />
                           </div>
                         </Link>
                       ))}
@@ -151,22 +151,22 @@ export default function ServicesIndexPage() {
               <div className="space-y-6">
                 {/* Popular */}
                 {popularSlugs.length > 0 && (
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                    <h3 className="font-semibold mb-4 text-sm text-slate-400 uppercase tracking-wider">Popular</h3>
+                  <div className="bg-[#f5f5f5] border border-[#eeeeee]  p-5">
+                    <h3 className="font-semibold mb-4 text-sm text-[#555] uppercase r">Popular</h3>
                     <div className="space-y-2">
                       {popularSlugs.map((slug) => (
                         <Link
                           key={slug}
                           href={`/services/${slug}`}
-                          className="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition group"
+                          className="flex items-center justify-between p-3  hover:bg-[#f5f5f5] transition group"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center text-slate-400 group-hover:text-white transition">
+                            <div className="w-8 h-8 bg-[#f5f5f5]  flex items-center justify-center text-[#555] group-hover:text-[#0a0a0a] transition">
                               {getServiceIcon(slug, 'w-4 h-4')}
                             </div>
                             <span className="text-sm">{services[slug].name}</span>
                           </div>
-                          <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white transition" />
+                          <ChevronRight className="w-4 h-4 text-[#888] group-hover:text-[#0a0a0a] transition" />
                         </Link>
                       ))}
                     </div>
@@ -174,17 +174,17 @@ export default function ServicesIndexPage() {
                 )}
 
                 {/* Quick links */}
-                <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
-                  <h3 className="font-semibold mb-4 text-sm text-slate-400 uppercase tracking-wider">Quick Links</h3>
+                <div className="bg-[#f5f5f5] border border-[#eeeeee]  p-5">
+                  <h3 className="font-semibold mb-4 text-sm text-[#555] uppercase r">Quick Links</h3>
                   <div className="space-y-2">
                     {quickLinks.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition group"
+                        className="flex items-center justify-between p-3  hover:bg-[#f5f5f5] transition group"
                       >
-                        <span className="text-sm text-slate-300">{item.label}</span>
-                        <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white transition" />
+                        <span className="text-sm text-[#444]">{item.label}</span>
+                        <ChevronRight className="w-4 h-4 text-[#888] group-hover:text-[#0a0a0a] transition" />
                       </Link>
                     ))}
                   </div>
@@ -194,11 +194,11 @@ export default function ServicesIndexPage() {
           </div>
 
           {/* BOTTOM CTA SECTION (the only CTA on this page) */}
-          <section className="mt-16 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 border border-blue-500/20 rounded-2xl p-8">
+          <section className="mt-16 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 border border-[#bfdbfe]  p-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div>
                 <h2 className="text-2xl font-bold mb-2">Not sure which service you need?</h2>
-                <p className="text-slate-300 leading-relaxed max-w-2xl">
+                <p className="text-[#444] leading-relaxed max-w-2xl">
                   Tell us what you're trying to get done and where you are in NYC. We'll follow up with options from
                   providers who serve your neighborhood.
                 </p>

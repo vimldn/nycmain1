@@ -84,10 +84,10 @@ const BUCKETS = [
 type AccentColor = 'blue' | 'emerald' | 'red' | 'purple'
 
 const ACCENT: Record<AccentColor, { pill: string; icon: string; border: string; label: string }> = {
-  blue:    { pill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',       icon: 'text-blue-400',    border: 'border-blue-500/20',    label: 'text-blue-400'    },
-  emerald: { pill: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20', icon: 'text-emerald-400', border: 'border-emerald-500/20', label: 'text-emerald-400' },
-  red:     { pill: 'bg-red-500/10 text-red-300 border-red-500/20',          icon: 'text-red-400',     border: 'border-red-500/25',     label: 'text-red-400'     },
-  purple:  { pill: 'bg-purple-500/10 text-purple-300 border-purple-500/20', icon: 'text-purple-400',  border: 'border-purple-500/20',  label: 'text-purple-400'  },
+  blue:    { pill: 'bg-[#e8f0fe] text-[#1a56db] border-[#bfdbfe]',       icon: 'text-[#1a56db]',    border: 'border-[#bfdbfe]',    label: 'text-[#1a56db]'    },
+  emerald: { pill: 'bg-[#e0f5f2] text-[#0b8a7a] border-[#a7f3d0]', icon: 'text-[#0b8a7a]', border: 'border-[#a7f3d0]', label: 'text-[#0b8a7a]' },
+  red:     { pill: 'bg-[#fef2f2] text-red-300 border-red-500/20',          icon: 'text-[#e24b4a]',     border: 'border-[#fca5a5]',     label: 'text-[#e24b4a]'     },
+  purple:  { pill: 'bg-[#f3e8ff] text-[#6b21a8] border-purple-500/20', icon: 'text-[#6b21a8]',  border: 'border-purple-500/20',  label: 'text-[#6b21a8]'  },
 }
 
 // ItemList schema for the whole guides hub
@@ -133,13 +133,13 @@ export default function GuidesPage() {
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <div className="mb-12 max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/20">
+            <span className="inline-flex items-center px-3 py-1  text-xs font-semibold bg-[#e8f0fe] text-[#1a56db] border border-[#bfdbfe]">
               NYC Tenant Rights Hub
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
             Your landlord knows the rules.<br className="hidden sm:block" />
-            <span className="text-blue-400">Now you do too.</span>
+            <span className="text-[#1a56db]">Now you do too.</span>
           </h1>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
             Step-by-step guides for NYC renters — from checking a building before you sign,
@@ -153,7 +153,7 @@ export default function GuidesPage() {
             <a
               key={bucket.id}
               href={`#${bucket.id}`}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${ACCENT[bucket.accentColor].pill} hover:opacity-80`}
+              className={`inline-flex items-center gap-2 px-4 py-2  text-sm font-semibold border transition-colors ${ACCENT[bucket.accentColor].pill} hover:opacity-80`}
             >
               <span>{bucket.emoji}</span>
               {bucket.label}
@@ -162,14 +162,14 @@ export default function GuidesPage() {
         </div>
 
         {/* ── Trust banner ─────────────────────────────────────────────────── */}
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] mb-14">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0 mt-0.5">
+        <div className="flex items-start gap-3 px-4 py-3  bg-[var(--bg-card)] border border-[var(--border-primary)] mb-14">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a56db] flex-shrink-0 mt-0.5">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
           <p className="text-xs text-[#64748b] leading-relaxed">
             <span className="text-[#94a3b8] font-semibold">Verified against official sources.</span>
             {' '}All guides are researched using NYC Housing Preservation &amp; Development (HPD), Department of Buildings (DOB), DHCR, and New York State legal codes. Nothing here is legal advice — for your specific situation, consult a tenant attorney or{' '}
-            <a href="https://www.legalaidnyc.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">NYC Legal Aid</a>.
+            <a href="https://www.legalaidnyc.org/" target="_blank" rel="noopener noreferrer" className="text-[#1a56db] hover:text-[#1a56db] transition-colors">NYC Legal Aid</a>.
           </p>
         </div>
 
@@ -189,7 +189,7 @@ export default function GuidesPage() {
                 <div className="mb-7">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-2xl">{bucket.emoji}</span>
-                    <span className={`text-xs font-bold uppercase tracking-widest ${a.label}`}>
+                    <span className={`text-xs font-bold uppercase st ${a.label}`}>
                       {bucket.label}
                     </span>
                   </div>
@@ -208,10 +208,10 @@ export default function GuidesPage() {
                       <Link
                         key={guide.slug}
                         href={`/guides/${guide.slug}`}
-                        className={`group flex flex-col justify-between p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:${a.border} transition-colors`}
+                        className={`group flex flex-col justify-between p-5  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:${a.border} transition-colors`}
                       >
                         <div>
-                          <h3 className="text-sm font-semibold leading-snug text-[#e2e8f0] group-hover:text-blue-300 transition-colors mb-3">
+                          <h3 className="text-sm font-semibold leading-snug text-[#e2e8f0] group-hover:text-[#1a56db] transition-colors mb-3">
                             {guide.title}
                           </h3>
                           <p className="text-xs text-[#64748b] leading-relaxed line-clamp-2">
@@ -219,10 +219,10 @@ export default function GuidesPage() {
                           </p>
                         </div>
                         <div className="flex items-center justify-between mt-4">
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[var(--bg-hover)] text-[10px] font-semibold text-[#64748b] uppercase tracking-wide">
+                          <span className="inline-flex items-center px-2 py-0.5  bg-[var(--bg-hover)] text-[10px] font-semibold text-[#64748b] uppercase ">
                             {guide.serviceName}
                           </span>
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-blue-400 transition-colors">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-[#1a56db] transition-colors">
                             <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                           </svg>
                         </div>
@@ -230,17 +230,17 @@ export default function GuidesPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="p-5 rounded-xl border border-dashed border-[#1e293b] text-sm text-[#475569] mb-6">
+                  <div className="p-5  border border-dashed border-[#1e293b] text-sm text-[#475569] mb-6">
                     More guides coming soon in this category.
                   </div>
                 )}
 
                 {/* Bucket CTA row */}
-                <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border ${a.border} bg-[var(--bg-card)]`}>
+                <div className={`flex items-center gap-3 px-4 py-3  border ${a.border} bg-[var(--bg-card)]`}>
                   <p className="text-xs text-[#64748b] flex-1">{bucket.ctaNote}</p>
                   <Link
                     href={bucket.cta.href}
-                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-xs font-semibold text-white whitespace-nowrap"
+                    className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2  bg-blue-600 hover:bg-blue-500 transition-colors text-xs font-semibold text-white whitespace-nowrap"
                   >
                     {bucket.cta.label}
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -254,7 +254,7 @@ export default function GuidesPage() {
         </div>
 
         {/* ── Bottom address search CTA ─────────────────────────────────────── */}
-        <div className="mt-12 p-8 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)]">
+        <div className="mt-12 p-8  border border-[var(--border-primary)] bg-[var(--bg-card)]">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="flex-1">
               <h2 className="text-xl font-black mb-1 text-[#e2e8f0]">Is your building hiding something?</h2>
@@ -264,7 +264,7 @@ export default function GuidesPage() {
             </div>
             <Link
               href="/"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition-colors font-semibold text-sm text-white"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3  bg-blue-600 hover:bg-blue-500 transition-colors font-semibold text-sm text-white"
             >
               Search your building
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

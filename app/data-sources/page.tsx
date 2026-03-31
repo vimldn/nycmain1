@@ -85,15 +85,15 @@ const sources = [
 
 export default function DataSourcesPage() {
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <DatasetJsonLd />
       <Header />
 
       <main className="pt-24 pb-20">
         <div className="max-w-4xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
-            <Link href="/" className="hover:text-white transition">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-10">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">Home</Link>
             <span>/</span>
             <span className="text-white">Data Sources</span>
           </nav>
@@ -101,12 +101,12 @@ export default function DataSourcesPage() {
           {/* Header */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center">
-                <Database className="w-7 h-7 text-blue-400" />
+              <div className="w-14 h-14 bg-[#e8f0fe] border border-[#bfdbfe]  flex items-center justify-center">
+                <Database className="w-7 h-7 text-[#1a56db]" />
               </div>
               <h1 className="text-4xl font-bold">Data Sources</h1>
             </div>
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-lg text-[#444] leading-relaxed">
               Building Health X aggregates data from <strong className="text-white">55+ official NYC government
               sources</strong> to give you a complete picture of any building before you sign a lease. Every data
               point links back to a real public record.
@@ -115,30 +115,30 @@ export default function DataSourcesPage() {
 
           {/* Stats */}
           <div className="grid sm:grid-cols-3 gap-4 mb-14">
-            <div className="bg-[#12161f] border border-white/10 rounded-2xl p-6 text-center">
-              <div className="text-3xl font-bold text-blue-400 mb-1">55+</div>
-              <div className="text-sm text-slate-400">Official NYC data sources</div>
+            <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6 text-center">
+              <div className="text-3xl font-bold text-[#1a56db] mb-1">55+</div>
+              <div className="text-sm text-[#555]">Official NYC data sources</div>
             </div>
-            <div className="bg-[#12161f] border border-white/10 rounded-2xl p-6 text-center">
+            <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6 text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
-                <RefreshCw className="w-5 h-5 text-emerald-400" />
-                <span className="text-3xl font-bold text-emerald-400">Daily</span>
+                <RefreshCw className="w-5 h-5 text-[#0b8a7a]" />
+                <span className="text-3xl font-bold text-[#0b8a7a]">Daily</span>
               </div>
-              <div className="text-sm text-slate-400">Data refresh cadence</div>
+              <div className="text-sm text-[#555]">Data refresh cadence</div>
             </div>
-            <div className="bg-[#12161f] border border-white/10 rounded-2xl p-6 text-center">
+            <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6 text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
-                <Building2 className="w-5 h-5 text-purple-400" />
-                <span className="text-3xl font-bold text-purple-400">1M+</span>
+                <Building2 className="w-5 h-5 text-[#6b21a8]" />
+                <span className="text-3xl font-bold text-[#6b21a8]">1M+</span>
               </div>
-              <div className="text-sm text-slate-400">NYC properties indexed</div>
+              <div className="text-sm text-[#555]">NYC properties indexed</div>
             </div>
           </div>
 
           {/* Disclaimer */}
-          <div className="flex gap-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-5 mb-14">
-            <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-slate-300 leading-relaxed">
+          <div className="flex gap-4 bg-[#fffbeb] border border-[#d97706]  p-5 mb-14">
+            <AlertTriangle className="w-5 h-5 text-[#b45309] flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-[#444] leading-relaxed">
               Data is sourced from public government databases and may have processing delays of up to 24–72 hours.
               Building Health X does not create or modify source records. For critical decisions, always verify
               information directly with the relevant NYC agency.
@@ -148,14 +148,14 @@ export default function DataSourcesPage() {
           {/* Sources list */}
           <div className="space-y-6">
             {sources.map((source) => (
-              <div key={source.agency} className="bg-[#12161f] border border-white/10 rounded-2xl p-7">
+              <div key={source.agency} className="bg-[#f5f5f5] border border-[#e0e0e0]  p-7">
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <h2 className="text-xl font-bold">{source.agency}</h2>
                   <a
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition flex-shrink-0"
+                    className="flex items-center gap-1.5 text-sm text-[#1a56db] hover:text-[#1a56db] transition flex-shrink-0"
                   >
                     Official site
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -164,10 +164,10 @@ export default function DataSourcesPage() {
                 <div className="space-y-3">
                   {source.datasets.map((dataset) => (
                     <div key={dataset.name} className="flex gap-3">
-                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full flex-shrink-0 mt-2" />
+                      <div className="w-1.5 h-1.5 bg-blue-400  flex-shrink-0 mt-2" />
                       <div>
                         <span className="font-semibold text-white">{dataset.name}: </span>
-                        <span className="text-slate-400 text-sm">{dataset.desc}</span>
+                        <span className="text-[#555] text-sm">{dataset.desc}</span>
                       </div>
                     </div>
                   ))}
@@ -177,23 +177,23 @@ export default function DataSourcesPage() {
           </div>
 
           {/* Footer CTA */}
-          <div className="mt-14 p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl text-center">
+          <div className="mt-14 p-8 bg-white border-2 border-[#e0e0e0]  text-center">
             <h2 className="text-2xl font-bold mb-3">Ready to research your building?</h2>
-            <p className="text-slate-300 mb-6 max-w-xl mx-auto">
+            <p className="text-[#444] mb-6 max-w-xl mx-auto">
               Search any NYC address and get a full report pulling from all of these sources in seconds.
             </p>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold transition"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-[#0b8a7a] hover:bg-[#076d5f]  font-semibold transition"
             >
               Search an address
             </Link>
           </div>
 
           {/* Related legal links */}
-          <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-4 text-sm text-slate-400">
-            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="hover:text-white transition">Terms of Service</Link>
+          <div className="mt-12 pt-8 border-t border-[#e0e0e0] flex flex-wrap gap-4 text-sm text-[#555]">
+            <Link href="/privacy-policy" className="hover:text-[#0a0a0a] transition">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-[#0a0a0a] transition">Terms of Service</Link>
           </div>
         </div>
       </main>

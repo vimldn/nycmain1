@@ -26,13 +26,13 @@ const boroughOrder = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island
 
 export default function LocationsPage() {
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <Header />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
-            <Link href="/" className="hover:text-white transition">
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-8">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -44,10 +44,10 @@ export default function LocationsPage() {
             <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
               <div className="lg:col-span-12">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-blue-500/10 text-blue-300">
+                  <span className="inline-flex items-center px-3 py-1  text-xs font-semibold uppercase  bg-[#e8f0fe] text-[#1a56db]">
                     NYC Neighborhoods
                   </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-cyan-500/10 text-cyan-300">
+                  <span className="inline-flex items-center px-3 py-1  text-xs font-semibold uppercase  bg-[#e0f7fa] text-cyan-300">
                     Browse by borough
                   </span>
                 </div>
@@ -59,20 +59,20 @@ export default function LocationsPage() {
                   </span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-3xl leading-relaxed">
+                <p className="text-xl text-[#444] max-w-3xl leading-relaxed">
                   Choose a service and a neighborhood. We follow up with providers who serve that area.
                 </p>
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
+                  <div className="bg-[#f5f5f5] border border-[#eeeeee]  p-5">
                     <div className="text-sm font-semibold text-white mb-1">Popular services</div>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-[#555]">
                       Moving companies, packing services, cleaning services, locksmiths, furniture assembly, and more.
                     </p>
                   </div>
-                  <div className="bg-[#12161f] border border-white/5 rounded-xl p-5">
+                  <div className="bg-[#f5f5f5] border border-[#eeeeee]  p-5">
                     <div className="text-sm font-semibold text-white mb-1">How it works</div>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-[#555]">
                       Submit your request. Compare options. Choose the provider that fits your timeline.
                     </p>
                   </div>
@@ -92,23 +92,23 @@ export default function LocationsPage() {
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <MapPin className="w-6 h-6 text-cyan-400" />
                     {borough}
-                    <span className="text-sm font-normal text-slate-500">({boroughLocations.length} areas)</span>
+                    <span className="text-sm font-normal text-[#888]">({boroughLocations.length} areas)</span>
                   </h2>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {boroughLocations.map((loc) => (
                       <Link
                         key={loc.slug}
                         href={`/locations/${loc.slug}`}
-                        className="group bg-[#12161f] border border-white/5 rounded-xl p-5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition"
+                        className="group bg-[#f5f5f5] border border-[#eeeeee]  p-5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition"
                       >
                         <div className="flex items-start justify-between">
                           <div>
                             <h3 className="font-semibold text-lg mb-2 group-hover:text-cyan-400 transition">
                               {loc.name}
                             </h3>
-                            <p className="text-sm text-slate-400 line-clamp-2">{loc.description}</p>
+                            <p className="text-sm text-[#555] line-clamp-2">{loc.description}</p>
                           </div>
-                          <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition flex-shrink-0" />
+                          <ChevronRight className="w-5 h-5 text-[#888] group-hover:text-cyan-400 transition flex-shrink-0" />
                         </div>
                       </Link>
                     ))}
@@ -119,15 +119,15 @@ export default function LocationsPage() {
           </div>
 
           {/* LAST SECTION CTA (longer wording, last thing on the page) */}
-          <section className="mt-16 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8">
+          <section className="mt-16 bg-white border-2 border-[#e0e0e0]  p-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white flex-shrink-0">
+                <div className="w-12 h-12 bg-[#0b8a7a]  flex items-center justify-center text-white flex-shrink-0">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold mb-2">Get matched with providers in your neighborhood</h2>
-                  <p className="text-slate-300 leading-relaxed max-w-2xl">
+                  <p className="text-[#444] leading-relaxed max-w-2xl">
                     Tell us what you need, your timeline, and which NYC neighborhood you’re in. We’ll follow up with
                     providers who serve that area so you can compare next steps and move forward quickly.
                   </p>

@@ -13,22 +13,22 @@ export default function PrivacyPolicyPage() {
   const lastUpdated = 'January 2025'
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-24 pb-20">
         <div className="max-w-3xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
-            <Link href="/" className="hover:text-white transition">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-10">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">Home</Link>
             <span>/</span>
             <span className="text-white">Privacy Policy</span>
           </nav>
 
           <h1 className="text-4xl font-bold mb-3">Privacy Policy</h1>
-          <p className="text-slate-400 mb-12 text-sm">Last updated: {lastUpdated}</p>
+          <p className="text-[#555] mb-12 text-sm">Last updated: {lastUpdated}</p>
 
-          <div className="prose prose-invert prose-slate max-w-none space-y-10 text-slate-300 leading-relaxed">
+          <div className="prose prose-invert prose-slate max-w-none space-y-10 text-[#444] leading-relaxed">
 
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4">1. Who We Are</h2>
@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
                 Building Health X ("we", "us", or "our") is an NYC building transparency platform that aggregates
                 publicly available government data to help renters research residential buildings before signing a
                 lease. Our website is located at{' '}
-                <a href="https://www.buildinghealthx.com" className="text-blue-400 hover:text-blue-300">
+                <a href="https://www.buildinghealthx.com" className="text-[#1a56db] hover:text-[#1a56db]">
                   www.buildinghealthx.com
                 </a>
                 .
@@ -173,11 +173,11 @@ export default function PrivacyPolicyPage() {
               <p>
                 If you have any questions about this Privacy Policy or how we handle your data, please contact us:
               </p>
-              <div className="mt-4 p-5 bg-white/5 border border-white/10 rounded-xl">
+              <div className="mt-4 p-5 bg-[#f5f5f5] border border-[#e0e0e0] ">
                 <p className="font-semibold text-white">Building Health X</p>
                 <p className="mt-1">
                   Website:{' '}
-                  <a href="https://www.buildinghealthx.com" className="text-blue-400 hover:text-blue-300">
+                  <a href="https://www.buildinghealthx.com" className="text-[#1a56db] hover:text-[#1a56db]">
                     www.buildinghealthx.com
                   </a>
                 </p>
@@ -187,9 +187,9 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* Related legal links */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-wrap gap-4 text-sm text-slate-400">
-            <Link href="/terms-of-service" className="hover:text-white transition">Terms of Service</Link>
-            <Link href="/data-sources" className="hover:text-white transition">Data Sources</Link>
+          <div className="mt-16 pt-8 border-t border-[#e0e0e0] flex flex-wrap gap-4 text-sm text-[#555]">
+            <Link href="/terms-of-service" className="hover:text-[#0a0a0a] transition">Terms of Service</Link>
+            <Link href="/data-sources" className="hover:text-[#0a0a0a] transition">Data Sources</Link>
           </div>
         </div>
       </main>

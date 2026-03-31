@@ -107,7 +107,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   <Link
                     key={t}
                     href={`/blog?tag=${encodeURIComponent(t)}`}
-                    className="px-3 py-1 rounded-full border border-[var(--border-primary)] text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] transition"
+                    className="px-3 py-1  border border-[var(--border-primary)] text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] transition"
                   >
                     {t}
                   </Link>

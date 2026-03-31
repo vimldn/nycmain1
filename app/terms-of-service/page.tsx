@@ -13,22 +13,22 @@ export default function TermsOfServicePage() {
   const lastUpdated = 'January 2025'
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="pt-24 pb-20">
         <div className="max-w-3xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
-            <Link href="/" className="hover:text-white transition">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-10">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">Home</Link>
             <span>/</span>
             <span className="text-white">Terms of Service</span>
           </nav>
 
           <h1 className="text-4xl font-bold mb-3">Terms of Service</h1>
-          <p className="text-slate-400 mb-12 text-sm">Last updated: {lastUpdated}</p>
+          <p className="text-[#555] mb-12 text-sm">Last updated: {lastUpdated}</p>
 
-          <div className="prose prose-invert prose-slate max-w-none space-y-10 text-slate-300 leading-relaxed">
+          <div className="prose prose-invert prose-slate max-w-none space-y-10 text-[#444] leading-relaxed">
 
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4">1. Agreement to Terms</h2>
@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
               </p>
               <p className="mt-3">
                 Building Health X is a building research and renter services platform operated at{' '}
-                <a href="https://www.buildinghealthx.com" className="text-blue-400 hover:text-blue-300">
+                <a href="https://www.buildinghealthx.com" className="text-[#1a56db] hover:text-[#1a56db]">
                   www.buildinghealthx.com
                 </a>
                 . These terms apply to all visitors and users of the Platform.
@@ -190,11 +190,11 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4">12. Contact</h2>
               <p>If you have questions about these Terms of Service, please contact us:</p>
-              <div className="mt-4 p-5 bg-white/5 border border-white/10 rounded-xl">
+              <div className="mt-4 p-5 bg-[#f5f5f5] border border-[#e0e0e0] ">
                 <p className="font-semibold text-white">Building Health X</p>
                 <p className="mt-1">
                   Website:{' '}
-                  <a href="https://www.buildinghealthx.com" className="text-blue-400 hover:text-blue-300">
+                  <a href="https://www.buildinghealthx.com" className="text-[#1a56db] hover:text-[#1a56db]">
                     www.buildinghealthx.com
                   </a>
                 </p>
@@ -204,9 +204,9 @@ export default function TermsOfServicePage() {
           </div>
 
           {/* Related legal links */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-wrap gap-4 text-sm text-slate-400">
-            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
-            <Link href="/data-sources" className="hover:text-white transition">Data Sources</Link>
+          <div className="mt-16 pt-8 border-t border-[#e0e0e0] flex flex-wrap gap-4 text-sm text-[#555]">
+            <Link href="/privacy-policy" className="hover:text-[#0a0a0a] transition">Privacy Policy</Link>
+            <Link href="/data-sources" className="hover:text-[#0a0a0a] transition">Data Sources</Link>
           </div>
         </div>
       </main>

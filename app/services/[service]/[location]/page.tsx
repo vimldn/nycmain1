@@ -225,7 +225,7 @@ const renderHeadlineWithGradientLocation = (headline: string, locationName: stri
   return (
     <>
       {parts[0]}
-      <span className="bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent">
+      <span className="text-[#0b8a7a]">
         {locationName}
       </span>
       {parts.slice(1).join(locationName)}
@@ -442,7 +442,7 @@ export default function ServiceLocationPage({ params }: Props) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] text-white">
+    <div className="min-h-screen bg-white">
       <Header />
        <BreadcrumbJsonLd
         items={[
@@ -467,16 +467,16 @@ export default function ServiceLocationPage({ params }: Props) {
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
-            <Link href="/" className="hover:text-white transition">
+          <nav className="flex items-center gap-2 text-sm text-[#888] mb-8">
+            <Link href="/" className="hover:text-[#0a0a0a] transition">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/services" className="hover:text-white transition">
+            <Link href="/services" className="hover:text-[#0a0a0a] transition">
               Services
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href={`/services/${params.service}`} className="hover:text-white transition">
+            <Link href={`/services/${params.service}`} className="hover:text-[#0a0a0a] transition">
               {service.name}
             </Link>
             <ChevronRight className="w-4 h-4" />
@@ -488,7 +488,7 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* HERO */}
               <section className="space-y-8">
                 {/* IMAGE FIRST */}
-                <div className="relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+                <div className="relative w-full h-[300px] sm:h-[400px]  overflow-hidden bg-[#f5f5f5] border border-[#e0e0e0]">
                   <Image
                     src={`/services/${params.service}.png`}
                     alt={`${noun} in ${location.name}`}
@@ -497,17 +497,17 @@ export default function ServiceLocationPage({ params }: Props) {
                     priority
                     sizes="(max-width: 1024px) 100vw, 66vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17]/80 via-[#0a0e17]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
                   {/* Badges on image */}
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-                    <span className="px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-sm rounded-lg text-emerald-300 text-sm font-medium">
+                    <span className="px-3 py-1.5 bg-[#c0e8e4] border border-[#0b8a7a]   text-[#0b8a7a] text-sm font-medium">
                       {service.category}
                     </span>
-                    <span className="px-3 py-1.5 bg-blue-500/20 border border-blue-500/30 backdrop-blur-sm rounded-lg text-blue-300 text-sm font-medium">
+                    <span className="px-3 py-1.5 bg-[#d0dcfb] border border-[#1a56db]   text-[#1a56db] text-sm font-medium">
                       {location.name}
                     </span>
-                    <span className="px-3 py-1.5 bg-purple-500/20 border border-purple-500/30 backdrop-blur-sm rounded-lg text-purple-300 text-sm font-medium">
+                    <span className="px-3 py-1.5 bg-[#e0d0ff] border border-purple-500/30   text-[#6b21a8] text-sm font-medium">
                       {location.borough}
                     </span>
                   </div>
@@ -526,7 +526,7 @@ export default function ServiceLocationPage({ params }: Props) {
                     </OpenModalButton>
                     <a
                       href="#faq"
-                      className="px-6 py-3 bg-transparent border-2 border-emerald-400/50 text-emerald-400 hover:bg-emerald-400/10 hover:border-emerald-400 font-semibold rounded-xl transition lg:w-auto w-full sm:w-auto inline-block text-center"
+                      className="px-6 py-3 bg-transparent border-2 border-emerald-400/50 text-[#0b8a7a] hover:bg-emerald-400/10 hover:border-emerald-400 font-semibold  transition lg:w-auto w-full sm:w-auto inline-block text-center"
                     >
                       See How It Works ↓
                     </a>
@@ -534,7 +534,7 @@ export default function ServiceLocationPage({ params }: Props) {
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-slate-300 leading-relaxed mb-4">{pitch}</p>
+                <p className="text-lg text-[#444] leading-relaxed mb-4">{pitch}</p>
 
                 <div className="space-y-4 mb-6">
                   {seoIntro.split(/(?<=\.)\s+(?=[A-Z])/).reduce<string[][]>((acc, sentence, i) => {
@@ -543,7 +543,7 @@ export default function ServiceLocationPage({ params }: Props) {
                     acc[chunkIndex].push(sentence)
                     return acc
                   }, []).map((chunk, i) => (
-                    <p key={i} className="text-lg text-slate-300 leading-relaxed">
+                    <p key={i} className="text-lg text-[#444] leading-relaxed">
                       {chunk.join(' ')}
                     </p>
                   ))}
@@ -552,53 +552,53 @@ export default function ServiceLocationPage({ params }: Props) {
                 {/* Quick stats badges */}
                 <div className="flex flex-wrap gap-6 mb-8">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                    <div className="w-10 h-10 bg-[#e0f5f2]  flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-[#0b8a7a]" />
                     </div>
                     <div>
                       <div className="font-semibold">Experienced Pros</div>
-                      <div className="text-sm text-slate-500">Local availability</div>
+                      <div className="text-sm text-[#888]">Local availability</div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-blue-400" />
+                    <div className="w-10 h-10 bg-[#e8f0fe]  flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-[#1a56db]" />
                     </div>
                     <div>
                       <div className="font-semibold">{service.timeline.split(';')[0]}</div>
-                      <div className="text-sm text-slate-500">Typical timeline</div>
+                      <div className="text-sm text-[#888]">Typical timeline</div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-purple-400" />
+                    <div className="w-10 h-10 bg-[#f3e8ff]  flex items-center justify-center">
+                      <DollarSign className="w-5 h-5 text-[#6b21a8]" />
                     </div>
                     <div>
                       <div className="font-semibold">{service.costRange.split(',')[0].split(' ')[0]}</div>
-                      <div className="text-sm text-slate-500">Starting cost</div>
+                      <div className="text-sm text-[#888]">Starting cost</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Jump navigation */}
                 <div className="flex flex-wrap gap-2">
-                  <a href="#why-need" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
+                  <a href="#why-need" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
                     What you can request
                   </a>
-                  <a href="#what-to-look-for" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
+                  <a href="#what-to-look-for" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
                     What to look for
                   </a>
-                  <a href="#costs" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
+                  <a href="#costs" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
                     Costs
                   </a>
-                  <a href="#faq" className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition">
+                  <a href="#faq" className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition">
                     FAQ
                   </a>
                   <Link
                     href={`/services/${params.service}/questions-to-ask`}
-                    className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition"
+                    className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#eeeeee]  text-sm transition"
                   >
                     Questions to ask
                   </Link>
@@ -606,10 +606,10 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* What you can request */}
-              <section id="why-need" className="bg-[#12161f] border border-white/10 rounded-2xl p-10">
+              <section id="why-need" className="bg-[#f5f5f5] border border-[#e0e0e0]  p-10">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-[#e8f0fe]  flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-[#1a56db]" />
                   </div>
                   <h2 className="text-3xl font-bold">What you can request in {location.name}</h2>
                 </div>
@@ -617,12 +617,12 @@ export default function ServiceLocationPage({ params }: Props) {
                   {service.whyNeed.map((reason, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-4 pb-5 border-b border-white/5 last:border-0 last:pb-0"
+                      className="flex items-start gap-4 pb-5 border-b border-[#eeeeee] last:border-0 last:pb-0"
                     >
-                      <div className="w-8 h-8 bg-blue-500/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <CheckCircle2 className="w-5 h-5 text-blue-400" />
+                      <div className="w-8 h-8 bg-[#dde8fd]  flex items-center justify-center flex-shrink-0 mt-1">
+                        <CheckCircle2 className="w-5 h-5 text-[#1a56db]" />
                       </div>
-                      <span className="text-slate-300 leading-relaxed">{reason}</span>
+                      <span className="text-[#444] leading-relaxed">{reason}</span>
                     </li>
                   ))}
                 </ul>
@@ -631,11 +631,11 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* What to Look For */}
               <section
                 id="what-to-look-for"
-                className="bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10 rounded-2xl p-10"
+                className="bg-[#f9f9f9] border-2 border-[#e0e0e0]  p-10"
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                    <ClipboardCheck className="w-6 h-6 text-purple-400" />
+                  <div className="w-12 h-12 bg-[#f3e8ff]  flex items-center justify-center">
+                    <ClipboardCheck className="w-6 h-6 text-[#6b21a8]" />
                   </div>
                   <h2 className="text-3xl font-bold">What to look for</h2>
                 </div>
@@ -643,14 +643,14 @@ export default function ServiceLocationPage({ params }: Props) {
                   {service.whatToLookFor.map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-4 pb-6 border-b border-white/5 last:border-0 last:pb-0"
+                      className="flex items-start gap-4 pb-6 border-b border-[#eeeeee] last:border-0 last:pb-0"
                     >
-                      <div className="w-10 h-10 bg-purple-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-6 h-6 text-purple-400" />
+                      <div className="w-10 h-10 bg-[#ede0ff]  flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="w-6 h-6 text-[#6b21a8]" />
                       </div>
                       <div>
                         <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
-                        <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                        <p className="text-[#555] leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -660,31 +660,31 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* Costs & Timeline */}
               <section
                 id="costs"
-                className="bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/10 rounded-2xl p-10"
+                className="bg-white border-2 border-[#e0e0e0]  p-10"
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
-                    <DollarSign className="w-6 h-6 text-green-400" />
+                  <div className="w-12 h-12 bg-[#e8f5e9]  flex items-center justify-center">
+                    <DollarSign className="w-6 h-6 text-[#15803d]" />
                   </div>
                   <h2 className="text-3xl font-bold">{noun} costs in {location.name}</h2>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="bg-white/5 rounded-xl p-6">
-                    <div className="text-sm text-slate-500 mb-2 uppercase tracking-wide">Typical Cost Range</div>
-                    <div className="text-lg font-semibold text-emerald-400">{service.costRange}</div>
+                  <div className="bg-[#f5f5f5]  p-6">
+                    <div className="text-sm text-[#888] mb-2 uppercase ">Typical Cost Range</div>
+                    <div className="text-lg font-semibold text-[#0b8a7a]">{service.costRange}</div>
                   </div>
-                  <div className="bg-white/5 rounded-xl p-6">
-                    <div className="text-sm text-slate-500 mb-2 uppercase tracking-wide">Timeline</div>
+                  <div className="bg-[#f5f5f5]  p-6">
+                    <div className="text-sm text-[#888] mb-2 uppercase ">Timeline</div>
                     <div className="text-lg font-semibold">{service.timeline}</div>
                   </div>
                 </div>
 
-                <div className="mt-6 bg-amber-500/5 border border-amber-500/20 rounded-xl p-6">
+                <div className="mt-6 bg-[#fffdf5] border border-[#d97706]  p-6">
                   <div className="flex items-start gap-4">
-                    <Lightbulb className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <Lightbulb className="w-6 h-6 text-[#b45309] flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-amber-300 mb-2">Pro tip for {location.name}</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">
+                      <h4 className="font-semibold text-[#b45309] mb-2">Pro tip for {location.name}</h4>
+                      <p className="text-[#555] text-sm leading-relaxed">
                         {copy?.proTip
                           || (location.borough === 'Manhattan'
                             ? `Manhattan buildings often have strict requirements. Confirm scheduling rules and any COI requirements before booking.`
@@ -698,10 +698,10 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* FAQ - Collapsible accordion */}
-              <section id="faq" className="bg-[#12161f] border border-white/10 rounded-2xl p-10">
+              <section id="faq" className="bg-[#f5f5f5] border border-[#e0e0e0]  p-10">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                    <HelpCircle className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-[#e8f0fe]  flex items-center justify-center">
+                    <HelpCircle className="w-6 h-6 text-[#1a56db]" />
                   </div>
                   <h2 className="text-3xl font-bold">Frequently asked questions</h2>
                 </div>
@@ -711,10 +711,10 @@ export default function ServiceLocationPage({ params }: Props) {
                   {detailedFaqs.slice(0, 5).map((faq, i) => (
                     <div
                       key={`${faq.q}-${i}`}
-                      className="pb-6 border-b border-white/5 last:border-0 last:pb-0"
+                      className="pb-6 border-b border-[#eeeeee] last:border-0 last:pb-0"
                     >
                       <h4 className="font-semibold text-lg mb-3">{faq.q}</h4>
-                      <p className="text-slate-400 leading-relaxed">{faq.a}</p>
+                      <p className="text-[#555] leading-relaxed">{faq.a}</p>
                     </div>
                   ))}
                 </div>
@@ -722,7 +722,7 @@ export default function ServiceLocationPage({ params }: Props) {
                 {/* Accordion for remaining FAQs */}
                 {detailedFaqs.length > 5 && (
                   <details className="group">
-                    <summary className="cursor-pointer px-6 py-4 bg-white/5 hover:bg-white/10 rounded-xl font-semibold flex items-center justify-between transition">
+                    <summary className="cursor-pointer px-6 py-4 bg-[#f5f5f5] hover:bg-[#eeeeee]  font-semibold flex items-center justify-between transition">
                       <span>View {detailedFaqs.length - 5} more questions</span>
                       <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
                     </summary>
@@ -731,10 +731,10 @@ export default function ServiceLocationPage({ params }: Props) {
                       {detailedFaqs.slice(5).map((faq, i) => (
                         <div
                           key={`${faq.q}-${i}`}
-                          className="pb-6 border-b border-white/5 last:border-0 last:pb-0"
+                          className="pb-6 border-b border-[#eeeeee] last:border-0 last:pb-0"
                         >
                           <h4 className="font-semibold text-lg mb-3">{faq.q}</h4>
-                          <p className="text-slate-400 leading-relaxed">{faq.a}</p>
+                          <p className="text-[#555] leading-relaxed">{faq.a}</p>
                         </div>
                       ))}
                     </div>
@@ -743,22 +743,22 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* Building Health X — Localized Data Moat */}
-              <section className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl p-8">
+              <section className="bg-[#fffbf0] border-2 border-[#d97706]  p-8">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-amber-400" />
+                  <div className="w-12 h-12 bg-[#fef3c7]  flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-[#b45309]" />
                   </div>
                   <h2 className="text-2xl font-bold">
                     {copy?.dataMoat?.headline || `Check ${location.name} Building Violations Before You Book`}
                   </h2>
                 </div>
-                <p className="text-slate-300 mb-6">
+                <p className="text-[#444] mb-6">
                   {copy?.dataMoat?.body
                     || `Before you book, check the building\u2019s history. Building Health X shows violations, complaints, and issues from 55+ official NYC sources for free.`}
                 </p>
                 <Link
                   href="/building"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-xl transition"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b8a7a] hover:bg-[#076d5f] text-white font-semibold  transition"
                 >
                   Look Up a Building Address
                   <ChevronRight className="w-5 h-5" />
@@ -770,14 +770,14 @@ export default function ServiceLocationPage({ params }: Props) {
             <div className="lg:col-span-1">
               <div className="lg:sticky lg:top-24 space-y-6">
                 {/* Sidebar CTA */}
-                <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-6">
+                <div className="bg-white border-2 border-[#e0e0e0]  p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white">
+                    <div className="w-10 h-10 bg-[#0b8a7a]  flex items-center justify-center text-white">
                       {getServiceIcon(params.service)}
                     </div>
                     <div>
                       <h3 className="font-semibold text-base">Get quotes and availability</h3>
-                      <p className="text-xs text-slate-400">Fast matching • Clear next steps</p>
+                      <p className="text-xs text-[#555]">Fast matching • Clear next steps</p>
                     </div>
                   </div>
                   <OpenModalButton className="w-full" variant="primary">
@@ -786,30 +786,30 @@ export default function ServiceLocationPage({ params }: Props) {
                 </div>
 
                 {/* On this page navigation */}
-                <div className="bg-[#12161f] border border-white/10 rounded-xl p-6">
-                  <h3 className="font-semibold mb-4 text-sm text-slate-400 uppercase tracking-wider">On This Page</h3>
+                <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6">
+                  <h3 className="font-semibold mb-4 text-sm text-[#555] uppercase r">On This Page</h3>
                   <nav className="space-y-2">
                     <a
                       href="#why-need"
-                      className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"
+                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
                     >
                       What you can request
                     </a>
                     <a
                       href="#what-to-look-for"
-                      className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"
+                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
                     >
                       What to look for
                     </a>
                     <a
                       href="#costs"
-                      className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"
+                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
                     >
                       Costs & timeline
                     </a>
                     <a
                       href="#faq"
-                      className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"
+                      className="block px-4 py-2.5 text-sm text-[#555] hover:text-[#0a0a0a] hover:bg-[#f5f5f5]  transition"
                     >
                       FAQ
                     </a>
@@ -818,8 +818,8 @@ export default function ServiceLocationPage({ params }: Props) {
 
                 {/* Nearby locations */}
                 {relatedLocations.length > 0 && (
-                  <div className="bg-[#12161f] border border-white/10 rounded-xl p-6">
-                    <h3 className="font-semibold mb-4 text-sm text-slate-400 uppercase tracking-wider">
+                  <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6">
+                    <h3 className="font-semibold mb-4 text-sm text-[#555] uppercase r">
                       {service.name} Nearby
                     </h3>
                     <div className="space-y-2">
@@ -827,13 +827,13 @@ export default function ServiceLocationPage({ params }: Props) {
                         <Link
                           key={slug}
                           href={`/services/${params.service}/${slug}`}
-                          className="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition group"
+                          className="flex items-center justify-between p-3  hover:bg-[#f5f5f5] transition group"
                         >
                           <div>
                             <div className="font-medium text-sm">{loc.name}</div>
-                            <div className="text-xs text-slate-500">{loc.borough}</div>
+                            <div className="text-xs text-[#888]">{loc.borough}</div>
                           </div>
-                          <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white transition" />
+                          <ChevronRight className="w-4 h-4 text-[#888] group-hover:text-[#0a0a0a] transition" />
                         </Link>
                       ))}
                     </div>
@@ -841,8 +841,8 @@ export default function ServiceLocationPage({ params }: Props) {
                 )}
 
                 {/* Other services */}
-                <div className="bg-[#12161f] border border-white/10 rounded-xl p-6">
-                  <h3 className="font-semibold mb-4 text-sm text-slate-400 uppercase tracking-wider">
+                <div className="bg-[#f5f5f5] border border-[#e0e0e0]  p-6">
+                  <h3 className="font-semibold mb-4 text-sm text-[#555] uppercase r">
                     Other Services in {location.name}
                   </h3>
                   <div className="space-y-2">
@@ -850,14 +850,14 @@ export default function ServiceLocationPage({ params }: Props) {
                       <Link
                         key={slug}
                         href={`/services/${slug}/${params.location}`}
-                        className="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition group"
+                        className="flex items-center justify-between p-3  hover:bg-[#f5f5f5] transition group"
                       >
                         <span className="text-sm">{svc.name}</span>
-                        <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-white transition" />
+                        <ChevronRight className="w-4 h-4 text-[#888] group-hover:text-[#0a0a0a] transition" />
                       </Link>
                     ))}
                   </div>
-                  <Link href="/services" className="block mt-4 text-center text-sm text-blue-400 hover:text-blue-300 transition">
+                  <Link href="/services" className="block mt-4 text-center text-sm text-[#1a56db] hover:text-[#1a56db] transition">
                     View all services →
                   </Link>
                 </div>

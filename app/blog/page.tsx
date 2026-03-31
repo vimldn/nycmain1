@@ -59,7 +59,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
               placeholder="Search articles by title or content..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full pl-11 pr-4 py-3  border border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
           </div>
           {searchQuery && (
@@ -74,7 +74,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
           <div className="flex flex-wrap gap-2 mb-6">
             <Link
               href="/blog"
-              className={`px-3 py-1 rounded-full border border-[var(--border-primary)] text-xs transition ${!activeTag ? 'bg-blue-500/10 text-blue-400 border-blue-500/30' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
+              className={`px-3 py-1  border border-[var(--border-primary)] text-xs transition ${!activeTag ? 'bg-[#e8f0fe] text-[#1a56db] border-[#1a56db]' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
             >
               All
             </Link>
@@ -82,7 +82,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
               <Link
                 key={t}
                 href={`/blog?tag=${encodeURIComponent(t)}`}
-                className={`px-3 py-1 rounded-full border border-[var(--border-primary)] text-xs transition ${activeTag === t ? 'bg-blue-500/10 text-blue-400 border-blue-500/30' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
+                className={`px-3 py-1  border border-[var(--border-primary)] text-xs transition ${activeTag === t ? 'bg-[#e8f0fe] text-[#1a56db] border-[#1a56db]' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
               >
                 {t}
               </Link>
@@ -112,7 +112,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
                   <div className="aspect-[16/9] w-full bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-emerald-500/10" />
                 )}
                 <div className="p-5">
-                  <h2 className="font-bold leading-snug mb-2 group-hover:text-blue-400 transition">{p.title}</h2>
+                  <h2 className="font-bold leading-snug mb-2 group-hover:text-[#1a56db] transition">{p.title}</h2>
                   <div className="text-xs text-[var(--text-muted)] mb-2">
                     {p.dateISO ? new Date(p.dateISO).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
                   </div>
@@ -132,7 +132,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
           <div className="flex items-center justify-center gap-3 mt-10">
             <Link
               href={`/blog?page=${Math.max(1, page - 1)}${activeTag ? `&tag=${encodeURIComponent(activeTag)}` : ''}`}
-              className={`px-4 py-2 rounded-xl border border-[var(--border-primary)] text-sm transition ${page <= 1 ? 'opacity-40 pointer-events-none' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
+              className={`px-4 py-2  border border-[var(--border-primary)] text-sm transition ${page <= 1 ? 'opacity-40 pointer-events-none' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
             >
               Prev
             </Link>
@@ -141,7 +141,7 @@ export default function BlogIndexPage({ searchParams }: { searchParams?: { page?
             </div>
             <Link
               href={`/blog?page=${Math.min(totalPages, page + 1)}${activeTag ? `&tag=${encodeURIComponent(activeTag)}` : ''}`}
-              className={`px-4 py-2 rounded-xl border border-[var(--border-primary)] text-sm transition ${page >= totalPages ? 'opacity-40 pointer-events-none' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
+              className={`px-4 py-2  border border-[var(--border-primary)] text-sm transition ${page >= totalPages ? 'opacity-40 pointer-events-none' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)]'}`}
             >
               Next
             </Link>

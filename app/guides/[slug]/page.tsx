@@ -143,12 +143,12 @@ function renderSection(
     case 'table':
       if (!section.rows || section.rows.length < 2) return null
       return (
-        <div key={index} className="my-6 overflow-x-auto rounded-xl border border-[var(--border-primary)]">
+        <div key={index} className="my-6 overflow-x-auto  border border-[var(--border-primary)]">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-[#111827]">
+              <tr className="bg-[#f5f5f5]">
                 {section.rows[0].map((cell, ci) => (
-                  <th key={ci} className="px-4 py-3 text-left text-xs font-semibold text-[#94a3b8] uppercase tracking-wide border-b border-[#1e293b]">
+                  <th key={ci} className="px-4 py-3 text-left text-xs font-semibold text-[#94a3b8] uppercase  border-b border-[#1e293b]">
                     {cell}
                   </th>
                 ))}
@@ -156,7 +156,7 @@ function renderSection(
             </thead>
             <tbody>
               {section.rows.slice(1).map((row, ri) => (
-                <tr key={ri} className={ri % 2 === 0 ? 'bg-[#0d1321]' : 'bg-[#111827]/50'}>
+                <tr key={ri} className={ri % 2 === 0 ? 'bg-[#0d1321]' : 'bg-[#f5f5f5]/50'}>
                   {row.map((cell, ci) => (
                     <td key={ci} className="px-4 py-3 text-base text-[var(--text-secondary)] border-b border-[#1e293b]/50 last:border-b-0">
                       {ci === 0 ? <span className="font-medium text-[#e2e8f0]">{cell}</span> : cell}
@@ -173,7 +173,7 @@ function renderSection(
       return (
         <div key={index} className="mb-8">
           <div className="flex items-baseline gap-3 mb-3">
-            <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-xs font-black text-blue-400">
+            <span className="flex-shrink-0 w-7 h-7  bg-[#dde8fd] border border-blue-500/25 flex items-center justify-center text-xs font-black text-[#1a56db]">
               {section.stepNumber}
             </span>
             <h2 className="text-xl font-black">{section.heading}</h2>
@@ -187,7 +187,7 @@ function renderSection(
             <ul className="space-y-3 pl-10">
               {section.items.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-base text-[var(--text-secondary)]">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500/50 flex-shrink-0" />
+                  <span className="mt-2 w-1.5 h-1.5  bg-blue-500/50 flex-shrink-0" />
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -198,7 +198,7 @@ function renderSection(
 
     case 'warning':
       return (
-        <div key={index} className="my-6 flex items-start gap-3 p-4 rounded-xl bg-yellow-500/8 border border-yellow-500/25">
+        <div key={index} className="my-6 flex items-start gap-3 p-4  bg-yellow-500/8 border border-yellow-500/25">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-yellow-400 flex-shrink-0 mt-1">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -209,13 +209,13 @@ function renderSection(
 
     case 'tip':
       return (
-        <div key={index} className="my-6 flex items-start gap-3 p-4 rounded-xl bg-blue-500/8 border border-blue-500/20">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 flex-shrink-0 mt-1">
+        <div key={index} className="my-6 flex items-start gap-3 p-4  bg-blue-500/8 border border-[#bfdbfe]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a56db] flex-shrink-0 mt-1">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="12"/>
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <p className="text-base text-blue-300/90 leading-relaxed">{section.body}</p>
+          <p className="text-base text-[#1a56db]/90 leading-relaxed">{section.body}</p>
         </div>
       )
 
@@ -224,7 +224,7 @@ function renderSection(
         <ul key={index} className="my-6 space-y-3">
           {section.items?.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-base text-[var(--text-secondary)]">
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#334155] flex-shrink-0" />
+              <span className="mt-2 w-1.5 h-1.5  bg-[#334155] flex-shrink-0" />
               <span className="leading-relaxed">{item}</span>
             </li>
           ))}
@@ -245,14 +245,14 @@ function renderSection(
 
     case 'stat': {
       const colorMap: Record<string, { bg: string; border: string; val: string; src: string }> = {
-        blue:   { bg: 'bg-blue-500/8',   border: 'border-blue-500/20',   val: 'text-blue-300',   src: 'text-blue-400/60'   },
+        blue:   { bg: 'bg-blue-500/8',   border: 'border-[#bfdbfe]',   val: 'text-[#1a56db]',   src: 'text-[#1a56db]/60'   },
         yellow: { bg: 'bg-yellow-500/8', border: 'border-yellow-500/20', val: 'text-yellow-300', src: 'text-yellow-400/60' },
-        green:  { bg: 'bg-green-500/8',  border: 'border-green-500/20',  val: 'text-green-300',  src: 'text-green-400/60'  },
-        red:    { bg: 'bg-red-500/8',    border: 'border-red-500/20',    val: 'text-red-300',    src: 'text-red-400/60'    },
+        green:  { bg: 'bg-green-500/8',  border: 'border-green-500/20',  val: 'text-green-300',  src: 'text-[#15803d]/60'  },
+        red:    { bg: 'bg-red-500/8',    border: 'border-red-500/20',    val: 'text-red-300',    src: 'text-[#e24b4a]/60'    },
       }
       const c = colorMap[section.color ?? 'blue']
       return (
-        <div key={index} className={`my-8 flex flex-col items-center text-center p-7 rounded-xl ${c.bg} border ${c.border}`}>
+        <div key={index} className={`my-8 flex flex-col items-center text-center p-7  ${c.bg} border ${c.border}`}>
           <span className={`text-4xl font-black mb-2 tabular-nums ${c.val}`}>{section.value}</span>
           <span className="text-sm text-[var(--text-secondary)] max-w-md leading-relaxed">{section.label}</span>
           {section.source && (
@@ -273,8 +273,8 @@ function renderSection(
           }`}
         >
           {section.stats?.map((s, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
-              <span className="text-3xl font-black text-blue-300 mb-1 tabular-nums">{s.value}</span>
+            <div key={i} className="flex flex-col items-center text-center p-5  bg-[var(--bg-card)] border border-[var(--border-primary)]">
+              <span className="text-3xl font-black text-[#1a56db] mb-1 tabular-nums">{s.value}</span>
               <span className="text-xs text-[var(--text-secondary)] leading-relaxed">{s.label}</span>
               {s.source && <span className="text-[10px] text-[#334155] mt-1">{s.source}</span>}
             </div>
@@ -292,7 +292,7 @@ function renderSection(
             {section.items?.map((item, i) => (
               <details
                 key={i}
-                className="group rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden"
+                className="group  border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden"
               >
                 <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none select-none">
                   <span className="text-sm font-semibold text-[#e2e8f0] leading-snug">{item.q}</span>
@@ -368,7 +368,7 @@ export default function GuidePage({ params }: Props) {
 
             {/* Category pill */}
             {category && (
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-5 bg-${category.color}-500/10 text-${category.color}-300 border border-${category.color}-500/20`}>
+              <div className={`inline-flex items-center gap-2 px-3 py-1  text-xs font-semibold mb-5 bg-${category.color}-500/10 text-${category.color}-300 border border-${category.color}-500/20`}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d={category.icon} />
                 </svg>
@@ -394,11 +394,11 @@ export default function GuidePage({ params }: Props) {
                     <Link
                       key={r.slug}
                       href={`/guides/${r.slug}`}
-                      className="group p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-blue-500/30 transition-colors"
+                      className="group p-4  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#1a56db] transition-colors"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <span className="text-sm font-semibold leading-snug group-hover:text-blue-300 transition-colors">{r.title}</span>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-blue-400 flex-shrink-0 mt-0.5 transition-colors">
+                        <span className="text-sm font-semibold leading-snug group-hover:text-[#1a56db] transition-colors">{r.title}</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-[#1a56db] flex-shrink-0 mt-0.5 transition-colors">
                           <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                         </svg>
                       </div>
@@ -417,7 +417,7 @@ export default function GuidePage({ params }: Props) {
                     <Link
                       key={sp.href}
                       href={sp.href}
-                      className="px-3 py-1.5 rounded-lg bg-[var(--bg-card)] border border-[var(--border-primary)] text-xs text-[#64748b] hover:text-[#94a3b8] hover:border-[#334155] transition-colors"
+                      className="px-3 py-1.5  bg-[var(--bg-card)] border border-[var(--border-primary)] text-xs text-[#64748b] hover:text-[#94a3b8] hover:border-[#334155] transition-colors"
                     >
                       {sp.label}
                     </Link>
@@ -435,14 +435,14 @@ export default function GuidePage({ params }: Props) {
                     <Link
                       key={post.slug}
                       href={`/blog/${post.slug}`}
-                      className="group flex items-start gap-3 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-blue-500/30 transition-colors"
+                      className="group flex items-start gap-3 p-4  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#1a56db] transition-colors"
                     >
-                      <div className="flex-shrink-0 w-6 h-6 rounded-md bg-[#1e293b] flex items-center justify-center mt-0.5">
+                      <div className="flex-shrink-0 w-6 h-6  bg-[#eeeeee] flex items-center justify-center mt-0.5">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#64748b]">
                           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                         </svg>
                       </div>
-                      <span className="text-sm text-[var(--text-secondary)] leading-snug group-hover:text-blue-300 transition-colors">
+                      <span className="text-sm text-[var(--text-secondary)] leading-snug group-hover:text-[#1a56db] transition-colors">
                         {post.title}
                       </span>
                     </Link>
@@ -462,9 +462,9 @@ export default function GuidePage({ params }: Props) {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-start gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors"
+                      className="group flex items-start gap-4 p-4  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors"
                     >
-                      <div className="flex-shrink-0 w-7 h-7 rounded-lg bg-[#1e293b] flex items-center justify-center mt-0.5">
+                      <div className="flex-shrink-0 w-7 h-7  bg-[#eeeeee] flex items-center justify-center mt-0.5">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#64748b]">
                           <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
                           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -472,7 +472,7 @@ export default function GuidePage({ params }: Props) {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-sm font-semibold text-[#e2e8f0] group-hover:text-blue-300 transition-colors">{link.label}</span>
+                          <span className="text-sm font-semibold text-[#e2e8f0] group-hover:text-[#1a56db] transition-colors">{link.label}</span>
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] flex-shrink-0">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                             <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
@@ -491,7 +491,7 @@ export default function GuidePage({ params }: Props) {
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-5">
 
-              <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
+              <div className=" border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
                 <div className="h-1 w-full bg-gradient-to-r from-blue-600 to-blue-400" />
                 <div className="p-5">
                   <p className="text-sm font-semibold text-[#e2e8f0] leading-snug mb-1">
@@ -500,7 +500,7 @@ export default function GuidePage({ params }: Props) {
                   <p className="text-xs text-[#64748b] mb-4">Free · No obligation · Response within 24 hours</p>
                   <Link
                     href={`/services/${guide.serviceSlug}`}
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white w-full"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5  bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white w-full"
                   >
                     Find {guide.serviceName} in NYC
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -510,14 +510,14 @@ export default function GuidePage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="p-5 rounded-xl bg-blue-500/8 border border-blue-500/20">
+              <div className="p-5  bg-blue-500/8 border border-[#bfdbfe]">
                 <div className="text-sm font-semibold mb-2">Check your building's BHX Score</div>
                 <p className="text-xs text-[#64748b] mb-4 leading-relaxed">
                   Search any NYC address to see its full violation history, complaint trends, and 0–100 health score before you sign or buy.
                 </p>
                 <Link
                   href="/"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5  bg-blue-600 hover:bg-blue-500 transition-colors text-sm font-semibold text-white"
                 >
                   Search a building
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -528,10 +528,10 @@ export default function GuidePage({ params }: Props) {
 
               <Link
                 href="/guides"
-                className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors group"
+                className="flex items-center justify-between p-4  bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[#334155] transition-colors group"
               >
-                <span className="text-sm font-semibold group-hover:text-blue-300 transition-colors">Browse all guides</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-blue-400 transition-colors">
+                <span className="text-sm font-semibold group-hover:text-[#1a56db] transition-colors">Browse all guides</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#334155] group-hover:text-[#1a56db] transition-colors">
                   <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                 </svg>
               </Link>

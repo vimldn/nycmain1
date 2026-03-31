@@ -104,7 +104,7 @@ export default async function NewsPage() {
 
       <main className="pt-28 pb-16 px-4 max-w-6xl mx-auto">
         <header className="mb-12">
-          <span className="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 text-sm font-semibold rounded-full mb-4 uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 bg-[#e8f0fe] text-[#1a56db] text-sm font-semibold  mb-4 uppercase r">
             News Feed
           </span>
           <h1 className="text-4xl font-bold mb-4">NYC Real Estate News</h1>
@@ -130,11 +130,11 @@ export default async function NewsPage() {
               
               <div className="p-5">
                 <div className="flex items-center justify-between text-sm text-[var(--text-muted)] mb-2">
-                  <span className="font-medium text-blue-400">{item.source}</span>
+                  <span className="font-medium text-[#1a56db]">{item.source}</span>
                   <span>{formatDate(item.pubDate)}</span>
                 </div>
                 
-                <h2 className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-blue-400 transition">{item.title}</h2>
+                <h2 className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-[#1a56db] transition">{item.title}</h2>
                 
                 <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-3">
                   {truncateToSentences(item.contentSnippet || item.content || '', 3)}
@@ -144,7 +144,7 @@ export default async function NewsPage() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#1a56db] hover:text-[#1a56db] transition-colors"
                 >
                   Read more at {item.sourceUrl}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
