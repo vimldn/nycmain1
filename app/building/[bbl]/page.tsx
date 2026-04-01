@@ -537,7 +537,7 @@ export default function BuildingPage() {
                 { aDelay: 100, label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-700' },
                 { aDelay: 200, label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
                 { aDelay: 300, label: 'Hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
-              ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
+              ].map(({ label, count, delta, icon, cls, numCls, sub, aDelay }: any) => (
                 <div key={label} data-animate="fade-up" data-delay={aDelay} className={`card p-5 ${cls} bhx-hover-glow`}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-[#666] text-[10px] sm:text-xs leading-tight">{label}</div>
