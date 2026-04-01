@@ -236,7 +236,7 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
       </div>
 
       {/* Signal grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, marginBottom: 20 }}>
         <StatCell
           label="Lis pendens"
           value={signals.activeLisPendensCount}
@@ -309,24 +309,30 @@ export default function ACRISPanel({ bbl }: { bbl: string }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             {visibleEvents.map(ev => (
               <div key={ev.id} style={{
-                display: 'flex', alignItems: 'center', gap: 10,
                 padding: '8px 10px', borderRadius: 7,
                 background: '#ffffff', border: '1px solid #dddddd',
                 fontSize: 12,
               }}>
-                <span style={{
-                  flexShrink: 0, width: 8, height: 8, borderRadius: '50%',
-                  background: GROUP_COLORS[ev.group] ?? '#666666',
-                }} />
-                <span style={{ color: '#555555', width: 80, flexShrink: 0 }}>{ev.date}</span>
-                <span style={{ color: GROUP_COLORS[ev.group] ?? '#666666', width: 120, flexShrink: 0, fontWeight: 500 }}>
-                  {GROUP_LABELS[ev.group] ?? ev.docType}
-                </span>
-                <span style={{ color: '#666666', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {ev.grantee ?? ev.grantor ?? ev.docType}
-                </span>
-                {ev.amount > 0 && (
-                  <span style={{ color: '#555555', flexShrink: 0 }}>{fmt$(ev.amount)}</span>
+                {/* Top row: dot + date + type + amount */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{
+                    flexShrink: 0, width: 8, height: 8, borderRadius: '50%',
+                    background: GROUP_COLORS[ev.group] ?? '#666666',
+                  }} />
+                  <span style={{ color: '#555555', flexShrink: 0, minWidth: 0 }}>{ev.date}</span>
+                  <span style={{ color: GROUP_COLORS[ev.group] ?? '#666666', fontWeight: 600, flexShrink: 0 }}>
+                    {GROUP_LABELS[ev.group] ?? ev.docType}
+                  </span>
+                  {ev.amount > 0 && (
+                    <span style={{ color: '#555555', marginLeft: 'auto', flexShrink: 0 }}>{fmt$(ev.amount)}</span>
+                  )}
+                </div>
+                {/* Second row: party name */}
+                {(ev.grantee ?? ev.grantor) && (
+                  <div style={{ color: '#888', fontSize: 11, marginTop: 3, paddingLeft: 16,
+                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {ev.grantee ?? ev.grantor}
+                  </div>
                 )}
               </div>
             ))}
@@ -375,8 +381,8 @@ function StatCell({
       padding: '10px 12px', background: '#ffffff', borderRadius: 0,
       border: `1px solid ${danger ? '#ef444440' : warn ? '#eab30840' : '#dddddd'}`,
     }}>
-      <div style={{ fontSize: 18, fontWeight: 700, color }}>{value}</div>
-      <div style={{ fontSize: 11, color: '#777777', marginTop: 2 }}>{label}</div>
+      <div style={{ fontSize: 16, fontWeight: 700, color }}>{value}</div>
+      <div style={{ fontSize: 10, color: '#777777', marginTop: 2, lineHeight: 1.3 }}>{label}</div>
     </div>
   )
 }

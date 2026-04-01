@@ -388,7 +388,7 @@ export default function BuildingPage() {
           </div>
 
           {/* Main two-column split */}
-          <div style={{ display:'grid', gridTemplateColumns:'160px 1fr' }}>
+          <div className="bhx-report-grid" style={{ display:'grid', gridTemplateColumns:'160px 1fr' }}>
 
             {/* LEFT — score + meta */}
             <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'24px 20px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
@@ -406,7 +406,7 @@ export default function BuildingPage() {
 
             {/* RIGHT — address + flags + badges */}
             <div style={{ padding:'24px 28px', background:'#fff' }}>
-              <h1 style={{ fontFamily:'"Bebas Neue",Georgia,sans-serif', fontSize:'clamp(28px,4vw,52px)', lineHeight:.9, letterSpacing:'.03em', color:'#0a0a0a', marginBottom:8 }}>{b?.address || 'Unknown Address'}</h1>
+              <h1 style={{ fontFamily:'"Bebas Neue",Georgia,sans-serif', fontSize:'clamp(20px,4vw,52px)', lineHeight:.9, letterSpacing:'.03em', color:'#0a0a0a', marginBottom:8 }}>{b?.address || 'Unknown Address'}</h1>
 
               {/* Program badges */}
               <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:16 }}>
@@ -460,7 +460,7 @@ export default function BuildingPage() {
 
           {/* Category score strip */}
           {data.categoryScores?.length > 0 && (
-            <div style={{ display:'grid', gridTemplateColumns:`repeat(${Math.min(data.categoryScores.length, 6)}, 1fr)`, borderTop:'2px solid #0a0a0a' }}>
+            <div className="bhx-cat-strip" style={{ display:'grid', gridTemplateColumns:`repeat(${Math.min(data.categoryScores.length, 6)}, 1fr)`, borderTop:'2px solid #0a0a0a' }}>
               {data.categoryScores.map((c: any, i: number) => {
                 const cc = sc(c.score)
                 return (
@@ -525,7 +525,7 @@ export default function BuildingPage() {
                   <button key={r.key} onClick={() => setRange(r.key)} style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.08em', textTransform:'uppercase', padding:'5px 12px', background: range === r.key ? '#0b8a7a' : '#fff', color: range === r.key ? '#fff' : '#666', border:'1px solid #ddd', borderRight: i < rangeOptions.length - 1 ? 'none' : '1px solid #ddd', cursor:'pointer', transition:'all .12s' }}>{r.label}</button>
                 ))}
               </div>
-              <span style={{ fontFamily:'"Space Mono",monospace', fontSize:9, color:'#aaa' }}>vs prior period</span>
+              <span className="hidden sm:inline" style={{ fontFamily:'"Space Mono",monospace', fontSize:9, color:'#aaa' }}>vs prior period</span>
             </div>
 
             {/* Signal stat cards */}
@@ -534,11 +534,11 @@ export default function BuildingPage() {
                 { label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-600' },
                 { label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-700' },
                 { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
-                { label: 'Open hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C (immediately hazardous)', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
+                { label: 'Hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
               ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
                 <div key={label} className={`card p-5 ${cls}`}>
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-[#666] text-xs">{label}</div>
+                    <div className="text-[#666] text-[10px] sm:text-xs leading-tight">{label}</div>
                     {icon}
                   </div>
                   <div className={`text-3xl font-black ${numCls}`}>{count}</div>
@@ -551,9 +551,9 @@ export default function BuildingPage() {
 
             {/* Area chart */}
             <div className="card p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-base">Reports over time ({rangeLabel})</h3>
-                <div className="text-xs text-[#666]">Heat / Pests / Noise / Other</div>
+              <div className="bhx-chart-header flex items-start justify-between mb-4 gap-2">
+                <h3 className="font-bold text-sm sm:text-base">Reports over time ({rangeLabel})</h3>
+                <div className="text-[10px] sm:text-xs text-[#666] text-right">Heat / Pests / Noise / Other</div>
               </div>
               <div className="h-72">
                 <ChartBoundary title="Reports over time">
