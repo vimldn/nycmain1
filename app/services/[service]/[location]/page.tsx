@@ -486,9 +486,31 @@ export default function ServiceLocationPage({ params }: Props) {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-12">
               {/* HERO */}
-              <section className="space-y-8">
-                {/* IMAGE FIRST */}
-                <div className="relative w-full h-[300px] sm:h-[400px]  overflow-hidden bg-[#f5f5f5] border border-[#e0e0e0]">
+              <section className="space-y-0">
+                {/* On mobile: headline first, image below. On sm+: image first. */}
+                <div className="flex flex-col-reverse sm:flex-col gap-6 sm:gap-8 mb-8">
+
+                {/* HEADLINE + CTA — appears first on mobile via flex-col-reverse */}
+                <div className="space-y-4">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                    {renderHeadlineWithGradientLocation(headline, location.name)}
+                  </h1>
+                  <div className="flex flex-wrap gap-3">
+                    <OpenModalButton variant="primary" className="lg:w-auto w-full sm:w-auto">
+                      Get Free Quotes
+                    </OpenModalButton>
+                    <a
+                      href="#faq"
+                      className="px-6 py-3 border-2 border-[#0b8a7a] text-[#0b8a7a] hover:bg-[#e0f5f2] font-semibold transition lg:w-auto w-full sm:w-auto inline-block text-center"
+                      style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'20px', letterSpacing:'.08em' }}
+                    >
+                      See How It Works ↓
+                    </a>
+                  </div>
+                </div>
+
+                {/* IMAGE — appears second on mobile, first on sm+ */}
+                <div className="relative w-full h-[200px] sm:h-[400px] overflow-hidden bg-[#f5f5f5] border border-[#e0e0e0]">
                   <Image
                     src={`/services/${params.service}.png`}
                     alt={`${noun} in ${location.name}`}
@@ -513,27 +535,9 @@ export default function ServiceLocationPage({ params }: Props) {
                       </span>
                     )}
                   </div>
-                </div>
+                </div>{/* end image */}
 
-                {/* THEN HEADLINE */}
-                <div className="space-y-4">
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                    {renderHeadlineWithGradientLocation(headline, location.name)}
-                  </h1>
-
-                  {/* THEN CTA buttons */}
-                  <div className="flex flex-wrap gap-3">
-                    <OpenModalButton variant="primary" className="lg:w-auto w-full sm:w-auto">
-                      Get Free Quotes
-                    </OpenModalButton>
-                    <a
-                      href="#faq"
-                      className="px-6 py-3 border-2 border-[#0b8a7a] text-[#0b8a7a] hover:bg-[#e0f5f2] font-semibold transition lg:w-auto w-full sm:w-auto inline-block text-center" style={{ fontFamily:'"Bebas Neue", sans-serif', fontSize:'20px', letterSpacing:'.08em' }}
-                    >
-                      See How It Works ↓
-                    </a>
-                  </div>
-                </div>
+                </div>{/* end flex-col-reverse wrapper */}
 
                 {/* Description */}
                 <p className="text-lg text-[#444] leading-relaxed mb-4">{pitch}</p>

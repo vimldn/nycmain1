@@ -157,41 +157,44 @@ export default function ServicePage({ params }: Props) {
             <span className="text-white">{service.name}</span>
           </nav>
 
-          {/* HERO - Full-width with centered content */}
+          {/* HERO - mobile: headline first, image below; desktop: image first */}
           <section className="mb-16">
-            {/* Background image with overlay */}
-            <div className="relative h-[300px] sm:h-[350px] lg:h-[400px] rounded-3xl overflow-hidden mb-12">
-              <Image
-                src={`/services/${params.service}.png`}
-                alt={`${service.name} in NYC`}
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80" />
-            </div>
+            <div className="flex flex-col-reverse sm:flex-col gap-6 sm:gap-0 max-w-5xl mx-auto mb-10">
 
-            {/* Headline + CTA (NOT inside the image) */}
-            <div className="max-w-5xl mx-auto mb-10">
-              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                  {headline}
-                </h1>
-                <OpenModalButton variant="primary" className="lg:w-auto w-full whitespace-nowrap">
-                  Get quotes
-                </OpenModalButton>
+              {/* Headline + CTA — floats to top on mobile via flex-col-reverse */}
+              <div>
+                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    {headline}
+                  </h1>
+                  <OpenModalButton variant="primary" className="lg:w-auto w-full whitespace-nowrap">
+                    Get quotes
+                  </OpenModalButton>
+                </div>
+                {service.subHeadline ? (
+                  <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
+                    {service.subHeadline}
+                  </p>
+                ) : (
+                  <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
+                    {pitch}
+                  </p>
+                )}
               </div>
-              {/* Sub-headline with trust signal */}
-              {service.subHeadline ? (
-                <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
-                  {service.subHeadline}
-                </p>
-              ) : (
-                <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
-                  {pitch}
-                </p>
-              )}
+
+              {/* Image — smaller on mobile, full size on sm+ */}
+              <div className="relative h-[180px] sm:h-[350px] lg:h-[400px] rounded-3xl overflow-hidden sm:mb-10">
+                <Image
+                  src={`/services/${params.service}.png`}
+                  alt={`${service.name} in NYC`}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80" />
+              </div>
+
             </div>
 
             {/* Stats grid */}
