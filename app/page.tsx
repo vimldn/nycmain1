@@ -446,7 +446,7 @@ export default function HomePage() {
               {num:'07',aDelay:600,title:'Rent Stabilisation',desc:'Whether the building has rent-stabilised units — confirmed via DHCR records.'},
               {num:'08',aDelay:700,title:'Safety Reports',desc:'Fire safety, elevator compliance, and boiler inspection records.'},
             ].map((item,i) => (
-              <div key={item.num} data-animate="fade-up" data-delay={item.aDelay} style={{
+              <div key={item.num} data-animate="fade-in" data-delay={item.aDelay} style={{
                 padding:'28px 24px',
                 borderRight: i%4===3 ? 'none' : '1px solid #e0e0e0',
                 borderBottom: i<4 ? '1px solid #e0e0e0' : 'none',
@@ -476,7 +476,7 @@ export default function HomePage() {
               {target:500000,suffix:'+',aDelay:300,label:'311 Complaints',sub:'Indexed & searchable'},
               {target:250000,suffix:'+',aDelay:450,label:'DOB Permits',sub:'Active & historical'},
             ].map((item,i) => (
-              <div key={item.label} data-animate="count-bounce" data-delay={item.aDelay} style={{
+              <div key={item.label} style={{
                 padding:'32px',
                 borderRight: i<3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
               }}>
