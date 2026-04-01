@@ -266,7 +266,7 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO — V2 Brutalist White/Teal ── */}
-      <section style={{ borderBottom: '3px solid #0a0a0a', position: 'relative', overflow: 'hidden' }} className="pt-24 pb-16 px-6">
+      <section style={{ borderBottom: '3px solid #0a0a0a', position: 'relative', overflow: 'hidden' }} className="bhx-hero pt-24 pb-16 px-6">
 
         {/* ESB silhouette — right side, top-aligned with headline */}
         <div style={{
@@ -296,14 +296,15 @@ export default function HomePage() {
             fontFamily: '"Space Mono", monospace',
             fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase',
             color: 'var(--teal)', border: '1px solid var(--teal)',
-            padding: '6px 16px', marginBottom: '28px'
+            padding: '6px 16px', marginBottom: '28px',
+            // bhx-eyebrow handles mobile mb override via CSS, className:'bhx-eyebrow'
           }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block' }} />
             Free · Official NYC Data · 55+ Sources
           </div>
 
           {/* H1 — keyword included, reads like a real headline */}
-          <h1 style={{
+          <h1 className="bhx-hero-h1" style={{
             fontFamily: '"Bebas Neue", sans-serif',
             fontSize: 'clamp(64px, 9vw, 120px)',
             lineHeight: 0.92,
@@ -316,7 +317,7 @@ export default function HomePage() {
             <span style={{ color: 'var(--teal)' }}>Know Before You Sign.</span>
           </h1>
 
-          <p style={{
+          <p className="bhx-hero-p" style={{
             fontSize: '19px', lineHeight: 1.75, color: 'var(--text-secondary)',
             maxWidth: '620px', margin: '0 auto 44px', fontWeight: 300,
           }}>

@@ -964,3 +964,42 @@ html { scroll-behavior: smooth; }
 
 /* Ensure no section overflows viewport width */
 section { max-width: 100vw; overflow-x: hidden; }
+
+/* ===== BHX HERO MOBILE — search bar above the fold ===== */
+@media (max-width: 640px) {
+
+  /* Shrink hero padding so less empty space at top */
+  .bhx-hero {
+    padding-top: 72px !important;
+    padding-bottom: 32px !important;
+  }
+
+  /* H1: drop from 64px minimum down to 38px on mobile */
+  .bhx-hero-h1 {
+    font-size: 38px !important;
+    line-height: 1 !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Eyebrow: halve its bottom margin */
+  .bhx-hero .inline-flex,
+  .bhx-hero > div > div > div:first-child {
+    margin-bottom: 14px !important;
+  }
+
+  /* Body copy: hide on mobile — user just needs to search */
+  .bhx-hero-p {
+    display: none !important;
+  }
+
+  /* Search box: reduce shadow on mobile, full bleed */
+  .bhx-hero form {
+    box-shadow: 3px 3px 0 #0a0a0a !important;
+  }
+
+  /* Search meta line: tighten */
+  .bhx-hero form + div {
+    margin-bottom: 12px !important;
+    font-size: 10px !important;
+  }
+}
