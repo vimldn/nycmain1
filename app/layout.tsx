@@ -13,14 +13,14 @@ const inter = Inter({
 const spaceMono = Space_Mono({
   subsets: ['latin'],
   weight: ['400', '700'],
-  display: 'swap',
+  display: 'block',
   variable: '--font-space-mono',
 })
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
   weight: ['400'],
-  display: 'swap',
+  display: 'block',
   variable: '--font-bebas',
 })
 
