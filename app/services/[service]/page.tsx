@@ -164,7 +164,7 @@ export default function ServicePage({ params }: Props) {
               {/* Headline + CTA — floats to top on mobile via flex-col-reverse */}
               <div>
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                  <h1 data-animate="fade-up" className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                     {headline}
                   </h1>
                   <OpenModalButton variant="primary" className="lg:w-auto w-full whitespace-nowrap">

@@ -378,7 +378,7 @@ export default function BuildingPage() {
       <main className="max-w-7xl mx-auto px-4 pt-28 pb-10">
 
         {/* ══ HERO — Magazine Spread ══ */}
-        <div style={{ border:'2px solid #0a0a0a', marginBottom:24, overflow:'hidden' }}>
+        <div data-animate="scale-up" style={{ border:'2px solid #0a0a0a', marginBottom:24, overflow:'hidden' }}>
 
           {/* Address eyebrow bar */}
           <div style={{ borderBottom:'1px solid #e0e0e0', padding:'8px 20px', display:'flex', alignItems:'center', gap:12 }}>
@@ -394,7 +394,7 @@ export default function BuildingPage() {
 
             {/* LEFT — score + meta */}
             <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'20px 10px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
-              <div style={{ fontFamily:'Georgia,serif', fontSize:'clamp(44px,10vw,80px)', fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
+              <div data-animate="stamp" style={{ fontFamily:'Georgia,serif', fontSize:'clamp(44px,10vw,80px)', fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:'clamp(18px,5vw,28px)', fontWeight:700, color:scoreColor, lineHeight:1, marginTop:2 }}>{s.overall}</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.12em', textTransform:'uppercase', color:'#888', marginTop:4 }}>/ 100 BHX</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:scoreColor, fontWeight:700, marginTop:10, padding:'3px 8px', border:`1px solid ${scoreColor}`, display:'inline-block' }}>{s.label}</div>
@@ -533,12 +533,12 @@ export default function BuildingPage() {
             {/* Signal stat cards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-600' },
-                { label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-700' },
-                { label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
-                { label: 'Hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
+                { aDelay: 0, label: 'Heat & hot water reports', count: signalCounts.heat, delta: signalDeltas.heat, icon: <Flame size={16} className="text-yellow-400" />, cls: 'stat-yellow', numCls: 'text-yellow-600' },
+                { aDelay: 100, label: 'Pest signals', count: signalCounts.pests, delta: signalDeltas.pests, icon: <Bug size={16} className="text-emerald-400" />, cls: 'stat-green', numCls: 'text-emerald-700' },
+                { aDelay: 200, label: 'Noise signals', count: signalCounts.noise, delta: signalDeltas.noise, icon: <Volume2 size={16} className="text-[#0b8a7a]" />, cls: 'stat-blue', numCls: 'text-[#076d5f]' },
+                { aDelay: 300, label: 'Hazardous violations', count: data?.violations?.hpd?.classC ?? 0, delta: 0, sub: 'Class C', icon: <ShieldAlert size={16} className="text-red-400" />, cls: 'stat-red', numCls: 'text-red-600' },
               ].map(({ label, count, delta, icon, cls, numCls, sub }: any) => (
-                <div key={label} className={`card p-5 ${cls}`}>
+                <div key={label} data-animate="fade-up" data-delay={aDelay} className={`card p-5 ${cls} bhx-hover-glow`}>
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-[#666] text-[10px] sm:text-xs leading-tight">{label}</div>
                     {icon}
@@ -603,7 +603,7 @@ export default function BuildingPage() {
               </div>
             </div>
 
-            <div className="card p-6" id="section-building-violations">
+            <div className="card p-6 bhx-hover-lift" id="section-building-violations">
               <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
 
 

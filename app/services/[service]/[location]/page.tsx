@@ -495,7 +495,7 @@ export default function ServiceLocationPage({ params }: Props) {
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                     {renderHeadlineWithGradientLocation(headline, location.name)}
                   </h1>
-                  <div className="flex flex-wrap gap-3">
+                  <div data-animate="fade-up" data-delay="150" className="flex flex-wrap gap-3">
                     <OpenModalButton variant="primary" className="lg:w-auto w-full sm:w-auto">
                       Get Free Quotes
                     </OpenModalButton>
@@ -612,7 +612,7 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* What you can request */}
-              <section id="why-need" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10">
+              <section id="why-need" data-animate="fade-up" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10 bhx-hover-glow">
                 <div className="flex items-start gap-3 mb-5">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f0fe]  flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6 text-[#1a56db]" />
@@ -637,7 +637,7 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* What to Look For */}
               <section
                 id="what-to-look-for"
-                className="bg-[#f9f9f9] border-2 border-[#e0e0e0] p-5 sm:p-10"
+                data-animate="fade-up" className="bg-[#f9f9f9] border-2 border-[#e0e0e0] p-5 sm:p-10 bhx-hover-glow"
               >
                 <div className="flex items-start gap-3 mb-5">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#f3e8ff]  flex items-center justify-center">
@@ -666,7 +666,7 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* Costs & Timeline */}
               <section
                 id="costs"
-                className="bg-white border-2 border-[#e0e0e0] p-5 sm:p-10"
+                data-animate="fade-up" className="bg-white border-2 border-[#e0e0e0] p-5 sm:p-10 bhx-hover-glow"
               >
                 <div className="flex items-start gap-3 mb-5">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f5e9]  flex items-center justify-center">
@@ -704,7 +704,7 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* FAQ - Collapsible accordion */}
-              <section id="faq" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10">
+              <section id="faq" data-animate="fade-up" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10 bhx-hover-glow">
                 <div className="flex items-start gap-3 mb-5">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f0fe]  flex items-center justify-center">
                     <HelpCircle className="w-6 h-6 text-[#1a56db]" />

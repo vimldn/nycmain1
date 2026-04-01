@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import SiteAnimations from '@/components/SiteAnimations'
 import { Inter, Space_Mono, Bebas_Neue } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
@@ -143,6 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className={`${inter.variable} ${spaceMono.variable} ${bebasNeue.variable} font-sans min-h-screen antialiased`}>
+        <SiteAnimations />
         {children}
       </body>
     </html>

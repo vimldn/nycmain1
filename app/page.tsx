@@ -304,7 +304,7 @@ export default function HomePage() {
           </div>
 
           {/* H1 — keyword included, reads like a real headline */}
-          <h1 className="bhx-hero-h1" style={{
+          <h1 className="bhx-hero-h1" data-animate="fade-up" data-delay="100" style={{
             fontFamily: '"Bebas Neue", sans-serif',
             fontSize: 'clamp(64px, 9vw, 120px)',
             lineHeight: 0.92,
@@ -317,7 +317,7 @@ export default function HomePage() {
             <span style={{ color: 'var(--teal)' }}>Know Before You Sign.</span>
           </h1>
 
-          <p className="bhx-hero-p" style={{
+          <p className="bhx-hero-p" data-animate="fade-up" data-delay="250" style={{
             fontSize: '19px', lineHeight: 1.75, color: 'var(--text-secondary)',
             maxWidth: '620px', margin: '0 auto 44px', fontWeight: 300,
           }}>
@@ -325,7 +325,7 @@ export default function HomePage() {
           </p>
 
           {/* SEARCH BOX — the entire point of the page */}
-          <div className="bhx-search-wrap max-w-3xl mx-auto" style={{ marginBottom: '16px' }}>
+          <div className="bhx-search-wrap max-w-3xl mx-auto" data-animate="fade-up" data-delay="380" style={{ marginBottom: '16px' }}>
             <form
               onSubmit={handleSubmit}
               ref={dropdownRef}
@@ -432,21 +432,21 @@ export default function HomePage() {
       <section style={{borderTop:'3px solid #0a0a0a',borderBottom:'3px solid #0a0a0a'}} className="py-16 px-6 bg-[var(--bg-secondary)]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
-            <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>What You'll Find</p>
-            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',color:'#0a0a0a',lineHeight:0.95}}>Everything You Need to Know About Your Building</h2>
+            <p data-animate="fade-in" style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>What You'll Find</p>
+            <h2 data-animate="slide-left" data-delay="100" style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',color:'#0a0a0a',lineHeight:0.95}}>Everything You Need to Know About Your Building</h2>
           </div>
           <div className="bhx-grid-4" style={{border:'2px solid #0a0a0a'}}>
             {[
-              {num:'01',title:'HPD Violations',desc:'Housing maintenance code violations — class A, B, and C — and their open/closed status.'},
-              {num:'02',title:'311 Complaints',desc:'Heat, hot water, pest, noise, and other tenant complaints filed with the city.'},
-              {num:'03',title:'Pest Reports',desc:'Rodent and pest inspection results from the Department of Health and Mental Hygiene.'},
-              {num:'04',title:'DOB Permits',desc:'Active construction permits, stop-work orders, and building work history.'},
-              {num:'05',title:'Eviction History',desc:'Eviction filings and legal proceedings data from Housing Court records.'},
-              {num:'06',title:'Property Records',desc:'Ownership history, deed transfers, and mortgage records from ACRIS.'},
-              {num:'07',title:'Rent Stabilisation',desc:'Whether the building has rent-stabilised units — confirmed via DHCR records.'},
-              {num:'08',title:'Safety Reports',desc:'Fire safety, elevator compliance, and boiler inspection records.'},
+              {num:'01',aDelay:0,title:'HPD Violations',desc:'Housing maintenance code violations — class A, B, and C — and their open/closed status.'},
+              {num:'02',aDelay:100,title:'311 Complaints',desc:'Heat, hot water, pest, noise, and other tenant complaints filed with the city.'},
+              {num:'03',aDelay:200,title:'Pest Reports',desc:'Rodent and pest inspection results from the Department of Health and Mental Hygiene.'},
+              {num:'04',aDelay:300,title:'DOB Permits',desc:'Active construction permits, stop-work orders, and building work history.'},
+              {num:'05',aDelay:400,title:'Eviction History',desc:'Eviction filings and legal proceedings data from Housing Court records.'},
+              {num:'06',aDelay:500,title:'Property Records',desc:'Ownership history, deed transfers, and mortgage records from ACRIS.'},
+              {num:'07',aDelay:600,title:'Rent Stabilisation',desc:'Whether the building has rent-stabilised units — confirmed via DHCR records.'},
+              {num:'08',aDelay:700,title:'Safety Reports',desc:'Fire safety, elevator compliance, and boiler inspection records.'},
             ].map((item,i) => (
-              <div key={item.num} style={{
+              <div key={item.num} data-animate="fade-up" data-delay={item.aDelay} style={{
                 padding:'28px 24px',
                 borderRight: i%4===3 ? 'none' : '1px solid #e0e0e0',
                 borderBottom: i<4 ? '1px solid #e0e0e0' : 'none',
@@ -468,15 +468,15 @@ export default function HomePage() {
       {/* ── LIVE DATA STRIP ── */}
       <section style={{background:'#0a0a0a',borderBottom:'3px solid #0a0a0a'}} className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'24px'}}>// Live NYC Building Database — Updated Daily</p>
+          <p data-animate="fade-in" style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'24px'}}>// Live NYC Building Database — Updated Daily</p>
           <div className="bhx-grid-4-dark" style={{}}>
             {[
-              {target:1200000,suffix:'+',label:'Properties Indexed',sub:'All 5 boroughs'},
-              {target:800000,suffix:'+',label:'Violations on Record',sub:'HPD open & closed'},
-              {target:500000,suffix:'+',label:'311 Complaints',sub:'Indexed & searchable'},
-              {target:250000,suffix:'+',label:'DOB Permits',sub:'Active & historical'},
+              {target:1200000,suffix:'+',aDelay:0,label:'Properties Indexed',sub:'All 5 boroughs'},
+              {target:800000,suffix:'+',aDelay:150,label:'Violations on Record',sub:'HPD open & closed'},
+              {target:500000,suffix:'+',aDelay:300,label:'311 Complaints',sub:'Indexed & searchable'},
+              {target:250000,suffix:'+',aDelay:450,label:'DOB Permits',sub:'Active & historical'},
             ].map((item,i) => (
-              <div key={item.label} style={{
+              <div key={item.label} data-animate="count-bounce" data-delay={item.aDelay} style={{
                 padding:'32px',
                 borderRight: i<3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
               }}>
@@ -497,15 +497,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto bhx-grid-how">
           <div>
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Process</p>
-            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Get Building Insights in 3 Steps</h2>
+            <h2 data-animate="slide-left" style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Get Building Insights in 3 Steps</h2>
           </div>
           <div>
             {[
-              {n:'01',title:'Enter an Address',body:'Type any NYC address into our search bar. We instantly pull the building from 55+ official databases.'},
-              {n:'02',title:'Review the Data',body:'Browse violations, complaints, permits, ownership records, and safety reports — all in one place.'},
-              {n:'03',title:'Make an Informed Decision',body:'Use the data to decide if this building is right for you before handing over a deposit.'},
+              {n:'01',aDelay:0,title:'Enter an Address',body:'Type any NYC address into our search bar. We instantly pull the building from 55+ official databases.'},
+              {n:'02',aDelay:150,title:'Review the Data',body:'Browse violations, complaints, permits, ownership records, and safety reports — all in one place.'},
+              {n:'03',aDelay:300,title:'Make an Informed Decision',body:'Use the data to decide if this building is right for you before handing over a deposit.'},
             ].map((step,i) => (
-              <div key={step.n} className="bhx-step-grid" style={{
+              <div key={step.n} className="bhx-step-grid" data-animate="fade-up" data-delay={step.aDelay} style={{
                 padding:'28px 0',
                 borderBottom: i<2 ? '1px solid #e0e0e0' : 'none',
               }}>
@@ -620,11 +620,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div style={{marginBottom:'36px'}}>
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>Services</p>
-            <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Help at Every Step of Your Move</h2>
+            <h2 data-animate="slide-left" style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Help at Every Step of Your Move</h2>
           </div>
           <div className="bhx-grid-services" style={{border:'2px solid #0a0a0a'}}>
             {Object.entries(services).slice(0,8).map(([slug, service], i) => (
               <Link key={slug} href={`/services/${slug}`}
+                className="bhx-hover-lift"
                 style={{
                   display:'block',
                   borderRight: i%4===3 ? 'none' : '1px solid #e0e0e0',
