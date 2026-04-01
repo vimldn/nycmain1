@@ -1194,29 +1194,30 @@ section { max-width: 100vw; overflow-x: hidden; }
   100% { transform: scale(1); }
 }
 
-/* ── Base: elements start invisible ─────────────── */
+/* ── Base: only hide elements AFTER JS confirms it's ready ── */
+/* Without the class, elements are always visible (progressive enhancement) */
 
-[data-animate] {
+.bhx-anim-ready [data-animate] {
   opacity: 0;
   will-change: opacity, transform;
 }
 
 /* ── Triggered state: is-visible ─────────────────── */
 
-[data-animate].is-visible {
+.bhx-anim-ready [data-animate].is-visible {
   animation-duration: 0.65s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-[data-animate="fade-up"].is-visible       { animation-name: bhx-fade-up; }
-[data-animate="fade-in"].is-visible       { animation-name: bhx-fade-in; }
-[data-animate="slide-left"].is-visible    { animation-name: bhx-slide-left; }
-[data-animate="slide-right"].is-visible   { animation-name: bhx-slide-right; }
-[data-animate="scale-up"].is-visible      { animation-name: bhx-scale-up; animation-duration: 0.5s; }
-[data-animate="stamp"].is-visible         { animation-name: bhx-stamp; animation-duration: 0.55s; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
-[data-animate="reveal"].is-visible        { animation-name: bhx-reveal; animation-duration: 0.7s; }
-[data-animate="count-bounce"].is-visible  { animation-name: bhx-count-bounce; animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+.bhx-anim-ready [data-animate="fade-up"].is-visible       { animation-name: bhx-fade-up; }
+.bhx-anim-ready [data-animate="fade-in"].is-visible       { animation-name: bhx-fade-in; }
+.bhx-anim-ready [data-animate="slide-left"].is-visible    { animation-name: bhx-slide-left; }
+.bhx-anim-ready [data-animate="slide-right"].is-visible   { animation-name: bhx-slide-right; }
+.bhx-anim-ready [data-animate="scale-up"].is-visible      { animation-name: bhx-scale-up; animation-duration: 0.5s; }
+.bhx-anim-ready [data-animate="stamp"].is-visible         { animation-name: bhx-stamp; animation-duration: 0.55s; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+.bhx-anim-ready [data-animate="reveal"].is-visible        { animation-name: bhx-reveal; animation-duration: 0.7s; }
+.bhx-anim-ready [data-animate="count-bounce"].is-visible  { animation-name: bhx-count-bounce; animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
 
 /* ── Stagger delays ──────────────────────────────── */
 [data-delay="50"]  { animation-delay: 50ms !important; }
@@ -1291,7 +1292,8 @@ section { max-width: 100vw; overflow-x: hidden; }
 
 /* ── Reduced motion ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  [data-animate], [data-animate].is-visible {
+  .bhx-anim-ready [data-animate],
+  .bhx-anim-ready [data-animate].is-visible {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
