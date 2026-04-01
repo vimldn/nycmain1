@@ -391,9 +391,9 @@ export default function BuildingPage() {
           <div className="bhx-report-grid" style={{ display:'grid', gridTemplateColumns:'160px 1fr' }}>
 
             {/* LEFT — score + meta */}
-            <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'24px 20px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
-              <div style={{ fontFamily:'Georgia,serif', fontSize:80, fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
-              <div style={{ fontFamily:'"Space Mono",monospace', fontSize:28, fontWeight:700, color:scoreColor, lineHeight:1, marginTop:2 }}>{s.overall}</div>
+            <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'20px 10px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
+              <div style={{ fontFamily:'Georgia,serif', fontSize:'clamp(44px,10vw,80px)', fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
+              <div style={{ fontFamily:'"Space Mono",monospace', fontSize:'clamp(18px,5vw,28px)', fontWeight:700, color:scoreColor, lineHeight:1, marginTop:2 }}>{s.overall}</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.12em', textTransform:'uppercase', color:'#888', marginTop:4 }}>/ 100 BHX</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:scoreColor, fontWeight:700, marginTop:10, padding:'3px 8px', border:`1px solid ${scoreColor}`, display:'inline-block' }}>{s.label}</div>
               <div style={{ marginTop:20, width:'100%' }}>
@@ -405,7 +405,7 @@ export default function BuildingPage() {
             </div>
 
             {/* RIGHT — address + flags + badges */}
-            <div style={{ padding:'24px 28px', background:'#fff' }}>
+            <div style={{ padding:'20px 16px', background:'#fff' }}>
               <h1 style={{ fontFamily:'"Bebas Neue",Georgia,sans-serif', fontSize:'clamp(20px,4vw,52px)', lineHeight:.9, letterSpacing:'.03em', color:'#0a0a0a', marginBottom:8 }}>{b?.address || 'Unknown Address'}</h1>
 
               {/* Program badges */}
@@ -420,7 +420,7 @@ export default function BuildingPage() {
               {/* Red flags inline — only when present */}
               {data.redFlags?.length > 0 && (
                 <div style={{ borderLeft:'3px solid #e24b4a', paddingLeft:14, marginBottom:16 }}>
-                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:10, letterSpacing:'.1em', textTransform:'uppercase', color:'#e24b4a', fontWeight:700, marginBottom:8 }}>
+                  <div style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.08em', textTransform:'uppercase', color:'#e24b4a', fontWeight:700, marginBottom:6 }}>
                     {data.redFlags.length} Red Flag{data.redFlags.length > 1 ? 's' : ''} Detected
                   </div>
                   <div style={{ display:'flex', flexDirection:'column', gap:4 }}>

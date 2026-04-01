@@ -1080,34 +1080,25 @@ section { max-width: 100vw; overflow-x: hidden; }
 
 /* ===== BUILDING PAGE MOBILE FIXES ===== */
 
-/* Hero report card: stack vertically on mobile */
 @media (max-width: 640px) {
+
+  /* Hero report card: shrink left column, keep side-by-side */
   .bhx-report-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 100px 1fr !important;
   }
 
-  /* Left grade panel: switch from vertical column to horizontal row when stacked */
+  /* Left grade panel: tighter padding, smaller internals */
   .bhx-report-grid > div:first-child {
-    border-right: none !important;
-    border-bottom: 2px solid #0a0a0a !important;
-    padding: 16px 20px !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    gap: 16px !important;
+    padding: 16px 10px !important;
+    gap: 0 !important;
   }
 
-  /* Grade letter: smaller on mobile */
-  .bhx-report-grid > div:first-child > div:first-child {
-    font-size: 56px !important;
-  }
-
-  /* Right content panel: less padding */
+  /* Right content panel: less horizontal padding */
   .bhx-report-grid > div:last-child {
-    padding: 16px 16px !important;
+    padding: 14px 12px !important;
   }
 
-  /* Category score strip: force 3 cols max on mobile */
+  /* Category score strip: 3 cols on mobile */
   .bhx-cat-strip {
     grid-template-columns: repeat(3, 1fr) !important;
   }
@@ -1127,7 +1118,7 @@ section { max-width: 100vw; overflow-x: hidden; }
     padding: 12px !important;
   }
 
-  /* Main page px-4 on mobile is fine, but reduce pt */
+  /* Main page: reduce top padding */
   main.max-w-7xl {
     padding-top: 88px !important;
   }
