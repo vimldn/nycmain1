@@ -501,15 +501,17 @@ export default function ServiceLocationPage({ params }: Props) {
 
                   {/* Badges on image */}
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-                    <span className="px-3 py-1.5 bg-[#c0e8e4] border border-[#0b8a7a]   text-[#0b8a7a] text-sm font-medium">
+                    <span className="px-3 py-1.5 bg-[#c0e8e4] border border-[#0b8a7a] text-[#0b8a7a] text-sm font-medium">
                       {service.category}
                     </span>
-                    <span className="px-3 py-1.5 bg-[#d0dcfb] border border-[#1a56db]   text-[#1a56db] text-sm font-medium">
+                    <span className="px-3 py-1.5 bg-[#d0dcfb] border border-[#1a56db] text-[#1a56db] text-sm font-medium">
                       {location.name}
                     </span>
-                    <span className="px-3 py-1.5 bg-[#e0d0ff] border border-purple-500/30   text-[#6b21a8] text-sm font-medium">
-                      {location.borough}
-                    </span>
+                    {location.borough && location.borough !== location.name && (
+                      <span className="px-3 py-1.5 bg-[#e0d0ff] border border-purple-500/30 text-[#6b21a8] text-sm font-medium">
+                        {location.borough}
+                      </span>
+                    )}
                   </div>
                 </div>
 

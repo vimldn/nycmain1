@@ -354,15 +354,16 @@ export default function HomePage() {
               <button
                 type="submit"
                 disabled={loading}
+                className="bhx-search-btn"
                 style={{
                   background: 'var(--teal)', color: '#fff', border: 'none',
-                  padding: '20px 36px', cursor: 'pointer', transition: 'background 0.15s',
+                  padding: '20px 28px', cursor: 'pointer', transition: 'background 0.15s',
                   fontFamily: '"Bebas Neue", sans-serif',
                   fontSize: '22px', letterSpacing: '0.08em', whiteSpace: 'nowrap',
                   flexShrink: 0,
                 }}
               >
-                {loading ? 'Searching…' : 'Check Building'}
+                {loading ? 'Searching…' : <><span className="bhx-btn-full">Check Building</span><span className="bhx-btn-short" style={{display:'none'}}>Search</span></>}
               </button>
 
               {showDropdown && suggestions.length > 0 && (
@@ -394,17 +395,6 @@ export default function HomePage() {
               )}
             </form>
           </div>
-
-          {/* Mobile loading overlay */}
-          {loading && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm sm:hidden touch-none">
-              <div style={{ background: '#fff', border: '2px solid #0a0a0a', padding: '28px 36px', textAlign: 'center' }}>
-                <div className="mx-auto mb-4 animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-[var(--teal)]" />
-                <p style={{ fontSize: '16px', fontWeight: 600 }}>Checking building safety...</p>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: 4 }}>Searching 55+ data sources</p>
-              </div>
-            </div>
-          )}
 
           {/* Search meta */}
           <div style={{
@@ -443,7 +433,7 @@ export default function HomePage() {
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>What You'll Find</p>
             <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',color:'#0a0a0a',lineHeight:0.95}}>Everything You Need to Know About Your Building</h2>
           </div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0',border:'2px solid #0a0a0a'}}>
+          <div className="bhx-grid-4" style={{border:'2px solid #0a0a0a'}}>
             {[
               {num:'01',title:'HPD Violations',desc:'Housing maintenance code violations — class A, B, and C — and their open/closed status.'},
               {num:'02',title:'311 Complaints',desc:'Heat, hot water, pest, noise, and other tenant complaints filed with the city.'},
@@ -477,7 +467,7 @@ export default function HomePage() {
       <section style={{background:'#0a0a0a',borderBottom:'3px solid #0a0a0a'}} className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'24px'}}>// Live NYC Building Database — Updated Daily</p>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0'}}>
+          <div className="bhx-grid-4-dark" style={{}}>
             {[
               {target:1200000,suffix:'+',label:'Properties Indexed',sub:'All 5 boroughs'},
               {target:800000,suffix:'+',label:'Violations on Record',sub:'HPD open & closed'},
@@ -502,7 +492,7 @@ export default function HomePage() {
 
       {/* ── HOW IT WORKS ── */}
       <section style={{borderBottom:'2px solid #e0e0e0'}} className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto" style={{display:'grid',gridTemplateColumns:'1fr 2fr',gap:'80px',alignItems:'start'}}>
+        <div className="max-w-7xl mx-auto bhx-grid-how">
           <div>
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Process</p>
             <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Get Building Insights in 3 Steps</h2>
@@ -513,11 +503,9 @@ export default function HomePage() {
               {n:'02',title:'Review the Data',body:'Browse violations, complaints, permits, ownership records, and safety reports — all in one place.'},
               {n:'03',title:'Make an Informed Decision',body:'Use the data to decide if this building is right for you before handing over a deposit.'},
             ].map((step,i) => (
-              <div key={step.n} style={{
-                display:'grid',gridTemplateColumns:'72px 1fr',gap:'24px',
+              <div key={step.n} className="bhx-step-grid" style={{
                 padding:'28px 0',
                 borderBottom: i<2 ? '1px solid #e0e0e0' : 'none',
-                alignItems:'start',
               }}>
                 <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'52px',color:'var(--teal)',letterSpacing:'0.04em',lineHeight:1}}>{step.n}</div>
                 <div>
@@ -548,7 +536,7 @@ export default function HomePage() {
               <div style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'28px',letterSpacing:'0.04em',color:'#0a0a0a'}}>123 Main Street</div>
               <div style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',color:'var(--text-muted)',letterSpacing:'0.06em',marginTop:'4px'}}>Manhattan, NY 10001</div>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0'}}>
+            <div className="bhx-grid-4-stats" style={{}}>
               {[
                 {val:'12',label:'Active Violations',color:'#e24b4a'},
                 {val:'8',label:'Heat Complaints (12mo)',color:'#ba7517'},
@@ -570,7 +558,7 @@ export default function HomePage() {
 
       {/* ── WHY CHOOSE US ── */}
       <section style={{borderBottom:'2px solid #e0e0e0'}} className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'80px',alignItems:'start'}}>
+        <div className="max-w-7xl mx-auto bhx-grid-2">
           <div>
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'12px'}}>Why Choose Us</p>
             <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a',marginBottom:'24px'}}>The Only NYC Building Violations Lookup Tool You'll Ever Need</h2>
@@ -632,7 +620,7 @@ export default function HomePage() {
             <p style={{fontFamily:'"Space Mono", monospace',fontSize:'11px',letterSpacing:'0.15em',textTransform:'uppercase',color:'var(--teal)',marginBottom:'10px'}}>Services</p>
             <h2 style={{fontFamily:'"Bebas Neue", sans-serif',fontSize:'clamp(48px,5vw,72px)',letterSpacing:'0.03em',lineHeight:0.95,color:'#0a0a0a'}}>Help at Every Step of Your Move</h2>
           </div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'0',border:'2px solid #0a0a0a'}}>
+          <div className="bhx-grid-services" style={{border:'2px solid #0a0a0a'}}>
             {Object.entries(services).slice(0,8).map(([slug, service], i) => (
               <Link key={slug} href={`/services/${slug}`}
                 style={{

@@ -52,16 +52,16 @@ export default function Footer() {
   return (
     <footer style={{ background: '#0a0a0a', borderTop: '3px solid #0a0a0a' }}>
 
-      {/* Main footer grid */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '56px 24px 40px', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '48px' }}>
+      {/* Main footer grid — bhx-footer-grid handles responsive cols in globals.css */}
+      <div className="bhx-footer-grid" style={{ maxWidth: '1400px', margin: '0 auto', padding: '56px 24px 40px' }}>
 
-        {/* Brand col */}
-        <div>
+        {/* Brand col — bhx-footer-brand spans full row on tablet */}
+        <div className="bhx-footer-brand">
           <div style={{ ...bebas, fontSize: '28px', color: '#fff', marginBottom: '12px' }}>
             Building<span style={{ color: 'var(--teal,#0b8a7a)' }}>Health</span>X
           </div>
           <p style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.8, marginBottom: '24px' }}>
-            NYC's most comprehensive building violations lookup tool. Make informed decisions before signing your lease.
+            NYC&apos;s most comprehensive building violations lookup tool. Make informed decisions before signing your lease.
           </p>
           <Link href="/" style={{
             display: 'inline-block',
@@ -73,7 +73,7 @@ export default function Footer() {
           }}
             onMouseEnter={e => (e.currentTarget.style.background = 'var(--teal-dark,#076d5f)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'var(--teal,#0b8a7a)')}>
-            Check a Building Free →
+            Check a Building Free &rarr;
           </Link>
         </div>
 
@@ -87,7 +87,7 @@ export default function Footer() {
               {s.name}
             </Link>
           ))}
-          <Link href="/services" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all →</Link>
+          <Link href="/services" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all &rarr;</Link>
         </div>
 
         {/* Locations */}
@@ -100,7 +100,7 @@ export default function Footer() {
               {l.name}
             </Link>
           ))}
-          <Link href="/locations" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all →</Link>
+          <Link href="/locations" style={{ ...footerLink, color: 'var(--teal,#0b8a7a)' }}>View all &rarr;</Link>
         </div>
 
         {/* Resources */}
@@ -138,7 +138,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '16px 24px', maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-        <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>© 2025 Building Health X. All rights reserved.</span>
+        <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>&copy; 2025 Building Health X. All rights reserved.</span>
         <span style={{ ...mono, fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>Data sourced from NYC Open Data</span>
       </div>
     </footer>
