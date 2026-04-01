@@ -304,7 +304,7 @@ export default function HomePage() {
           </div>
 
           {/* H1 — keyword included, reads like a real headline */}
-          <h1 className="bhx-hero-h1" data-animate="fade-up" data-delay="100" style={{
+          <h1 className="bhx-hero-h1 bhx-auto bhx-auto-fade-up bhx-d100" style={{
             fontFamily: '"Bebas Neue", sans-serif',
             fontSize: 'clamp(64px, 9vw, 120px)',
             lineHeight: 0.92,
@@ -317,7 +317,7 @@ export default function HomePage() {
             <span style={{ color: 'var(--teal)' }}>Know Before You Sign.</span>
           </h1>
 
-          <p className="bhx-hero-p" data-animate="fade-up" data-delay="250" style={{
+          <p className="bhx-hero-p bhx-auto bhx-auto-fade-up bhx-d250" style={{
             fontSize: '19px', lineHeight: 1.75, color: 'var(--text-secondary)',
             maxWidth: '620px', margin: '0 auto 44px', fontWeight: 300,
           }}>
@@ -325,7 +325,7 @@ export default function HomePage() {
           </p>
 
           {/* SEARCH BOX — the entire point of the page */}
-          <div className="bhx-search-wrap max-w-3xl mx-auto" data-animate="fade-up" data-delay="380" style={{ marginBottom: '16px' }}>
+          <div className="bhx-search-wrap max-w-3xl mx-auto bhx-auto bhx-auto-fade-up bhx-d380" style={{ marginBottom: '16px' }}>
             <form
               onSubmit={handleSubmit}
               ref={dropdownRef}

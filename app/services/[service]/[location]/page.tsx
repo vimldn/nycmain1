@@ -492,10 +492,10 @@ export default function ServiceLocationPage({ params }: Props) {
 
                 {/* HEADLINE + CTA — appears first on mobile via flex-col-reverse */}
                 <div className="space-y-4">
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight bhx-auto bhx-auto-fade-up bhx-d0">
                     {renderHeadlineWithGradientLocation(headline, location.name)}
                   </h1>
-                  <div data-animate="fade-up" data-delay="150" className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 bhx-auto bhx-auto-fade-up bhx-d150">
                     <OpenModalButton variant="primary" className="lg:w-auto w-full sm:w-auto">
                       Get Free Quotes
                     </OpenModalButton>

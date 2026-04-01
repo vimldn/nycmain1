@@ -378,7 +378,7 @@ export default function BuildingPage() {
       <main className="max-w-7xl mx-auto px-4 pt-28 pb-10">
 
         {/* ══ HERO — Magazine Spread ══ */}
-        <div data-animate="scale-up" style={{ border:'2px solid #0a0a0a', marginBottom:24, overflow:'hidden' }}>
+        <div className="bhx-auto bhx-auto-scale-up bhx-d0" style={{ border:'2px solid #0a0a0a', marginBottom:24, overflow:'hidden' }}>
 
           {/* Address eyebrow bar */}
           <div style={{ borderBottom:'1px solid #e0e0e0', padding:'8px 20px', display:'flex', alignItems:'center', gap:12 }}>
@@ -394,7 +394,7 @@ export default function BuildingPage() {
 
             {/* LEFT — score + meta */}
             <div style={{ background:'#f5f5f5', borderRight:'2px solid #0a0a0a', padding:'20px 10px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:0 }}>
-              <div data-animate="stamp" style={{ fontFamily:'Georgia,serif', fontSize:'clamp(44px,10vw,80px)', fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
+              <div className="bhx-auto bhx-auto-stamp bhx-d200" style={{ fontFamily:'Georgia,serif', fontSize:'clamp(44px,10vw,80px)', fontWeight:700, lineHeight:1, color:scoreColor, letterSpacing:'-0.02em' }}>{s.grade}</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:'clamp(18px,5vw,28px)', fontWeight:700, color:scoreColor, lineHeight:1, marginTop:2 }}>{s.overall}</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:8, letterSpacing:'.12em', textTransform:'uppercase', color:'#888', marginTop:4 }}>/ 100 BHX</div>
               <div style={{ fontFamily:'"Space Mono",monospace', fontSize:9, letterSpacing:'.1em', textTransform:'uppercase', color:scoreColor, fontWeight:700, marginTop:10, padding:'3px 8px', border:`1px solid ${scoreColor}`, display:'inline-block' }}>{s.label}</div>
