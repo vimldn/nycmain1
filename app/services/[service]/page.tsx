@@ -172,11 +172,11 @@ export default function ServicePage({ params }: Props) {
                   </OpenModalButton>
                 </div>
                 {service.subHeadline ? (
-                  <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
+                  <p className="text-sm sm:text-lg text-[#333] leading-relaxed">
                     {service.subHeadline}
                   </p>
                 ) : (
-                  <p className="text-lg sm:text-xl text-[#333] leading-relaxed">
+                  <p className="text-sm sm:text-lg text-[#333] leading-relaxed">
                     {pitch}
                   </p>
                 )}
@@ -203,7 +203,7 @@ export default function ServicePage({ params }: Props) {
                 <div className="w-14 h-14 bg-[#e0f5f2]  flex items-center justify-center mx-auto mb-4">
                   <CheckCircle2 className="w-7 h-7 text-[#0b8a7a]" />
                 </div>
-                <div className="font-semibold text-lg mb-1">Matched to availability</div>
+                <div className="font-semibold text-sm sm:text-base mb-1">Matched to availability</div>
                 <div className="text-sm text-[#555]">Local options that serve you</div>
               </div>
               
@@ -211,7 +211,7 @@ export default function ServicePage({ params }: Props) {
                 <div className="w-14 h-14 bg-[#e8f0fe]  flex items-center justify-center mx-auto mb-4">
                   <Clock className="w-7 h-7 text-[#1a56db]" />
                 </div>
-                <div className="font-semibold text-lg mb-1">{service.timeline}</div>
+                <div className="font-semibold text-sm sm:text-base mb-1">{service.timeline}</div>
                 <div className="text-sm text-[#555]">Typical timing</div>
               </div>
               
@@ -219,7 +219,7 @@ export default function ServicePage({ params }: Props) {
                 <div className="w-14 h-14 bg-[#f3e8ff]  flex items-center justify-center mx-auto mb-4">
                   <DollarSign className="w-7 h-7 text-[#6b21a8]" />
                 </div>
-                <div className="font-semibold text-lg mb-1">{service.costRange}</div>
+                <div className="font-semibold text-sm sm:text-base mb-1">{service.costRange}</div>
                 <div className="text-sm text-[#555]">Typical cost range</div>
               </div>
             </div>
@@ -232,7 +232,7 @@ export default function ServicePage({ params }: Props) {
                     <ClipboardCheck className="w-7 h-7 text-[#b45309]" />
                   </div>
                   <div>
-                    <div className="font-semibold text-lg mb-1">Requirements: {service.extraQuickFact.label}</div>
+                    <div className="font-semibold text-sm sm:text-base mb-1">Requirements: {service.extraQuickFact.label}</div>
                     <div className="text-sm text-[#555]">{service.extraQuickFact.detail}</div>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ export default function ServicePage({ params }: Props) {
 
               {/* DATA MOAT — dynamic per service */}
               {service.dataMoat && (
-                <section className="bg-[#fffbf0] border-2 border-[#d97706]  p-8 lg:p-10">
+                <section className="bg-[#fffbf0] border-2 border-[#d97706] p-5 sm:p-8 lg:p-10">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 bg-[#fffbeb]  flex items-center justify-center flex-shrink-0">
                       <AlertTriangle className="w-6 h-6 text-[#b45309]" />
@@ -306,7 +306,7 @@ export default function ServicePage({ params }: Props) {
                       <p className="text-[#444] mt-1 text-sm">{service.dataMoat.subtitle}</p>
                     </div>
                   </div>
-                  <p className="text-[#333] leading-relaxed mb-6 max-w-3xl">
+                  <p className="text-sm sm:text-base text-[#333] leading-relaxed mb-4 max-w-3xl">
                     {service.dataMoat.body}
                   </p>
                   <Link
@@ -321,12 +321,12 @@ export default function ServicePage({ params }: Props) {
 
               {/* FAQ ACCORDION — SEO-optimized with Schema.org */}
               {service.faqs.length > 0 && (
-                <section id="faqs" className="bg-[#f5f5f5] border border-[#e0e0e0]  p-8 lg:p-10">
+                <section id="faqs" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-8 lg:p-10">
                   <div className="flex items-center gap-4 mb-8">
                     <div className="w-12 h-12 bg-[#e8f0fe]  flex items-center justify-center">
                       <HelpCircle className="w-6 h-6 text-[#1a56db]" />
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold">Frequently asked questions</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold leading-tight">Frequently asked questions</h2>
                   </div>
                   <div className="space-y-4">
                     {service.faqs.map((faq, i) => (
@@ -338,7 +338,7 @@ export default function ServicePage({ params }: Props) {
                           <span className="pr-4">{faq.q}</span>
                           <ChevronRight className="w-5 h-5 text-[#888] group-open:rotate-90 transition-transform flex-shrink-0" />
                         </summary>
-                        <div className="px-5 pb-5 text-[#444] leading-relaxed border-t border-[#eeeeee] pt-4">
+                        <div className="px-4 pb-4 text-sm text-[#444] leading-relaxed border-t border-[#eeeeee] pt-3">
                           {faq.a}
                         </div>
                       </details>
@@ -357,7 +357,7 @@ export default function ServicePage({ params }: Props) {
                         <div className="w-6 h-6 bg-[#d0eeeb]  flex items-center justify-center flex-shrink-0 mt-0.5">
                           <CheckCircle2 className="w-4 h-4 text-[#0b8a7a]" />
                         </div>
-                        <span className="text-[#444] leading-relaxed">{reason}</span>
+                        <span className="text-sm sm:text-base text-[#444] leading-relaxed">{reason}</span>
                       </li>
                     ))}
                   </ul>
@@ -371,7 +371,7 @@ export default function ServicePage({ params }: Props) {
                     <h2 className="text-2xl font-bold">Questions to ask</h2>
                   </div>
 
-                  <p className="text-[#555] mb-6 leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#555] mb-4 leading-relaxed">
                     Want higher quality quotes and fewer surprises? Ask the right questions before you book, especially for NYC building access rules and pricing structure.
                   </p>
 

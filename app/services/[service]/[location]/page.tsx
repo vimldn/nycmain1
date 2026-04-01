@@ -540,7 +540,7 @@ export default function ServiceLocationPage({ params }: Props) {
                 </div>{/* end flex-col-reverse wrapper */}
 
                 {/* Description */}
-                <p className="text-lg text-[#444] leading-relaxed mb-4">{pitch}</p>
+                <p className="text-sm sm:text-base text-[#444] leading-relaxed mb-3">{pitch}</p>
 
                 <div className="space-y-4 mb-6">
                   {seoIntro.split(/(?<=\.)\s+(?=[A-Z])/).reduce<string[][]>((acc, sentence, i) => {
@@ -549,7 +549,7 @@ export default function ServiceLocationPage({ params }: Props) {
                     acc[chunkIndex].push(sentence)
                     return acc
                   }, []).map((chunk, i) => (
-                    <p key={i} className="text-lg text-[#444] leading-relaxed">
+                    <p key={i} className="text-sm sm:text-base text-[#444] leading-relaxed">
                       {chunk.join(' ')}
                     </p>
                   ))}
@@ -612,12 +612,12 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* What you can request */}
-              <section id="why-need" className="bg-[#f5f5f5] border border-[#e0e0e0]  p-10">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-[#e8f0fe]  flex items-center justify-center">
+              <section id="why-need" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10">
+                <div className="flex items-start gap-3 mb-5">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f0fe]  flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6 text-[#1a56db]" />
                   </div>
-                  <h2 className="text-3xl font-bold">What you can request in {location.name}</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold leading-tight">What you can request in {location.name}</h2>
                 </div>
                 <ul className="space-y-5">
                   {service.whyNeed.map((reason, i) => (
@@ -628,7 +628,7 @@ export default function ServiceLocationPage({ params }: Props) {
                       <div className="w-8 h-8 bg-[#dde8fd]  flex items-center justify-center flex-shrink-0 mt-1">
                         <CheckCircle2 className="w-5 h-5 text-[#1a56db]" />
                       </div>
-                      <span className="text-[#444] leading-relaxed">{reason}</span>
+                      <span className="text-sm sm:text-base text-[#444] leading-relaxed">{reason}</span>
                     </li>
                   ))}
                 </ul>
@@ -637,13 +637,13 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* What to Look For */}
               <section
                 id="what-to-look-for"
-                className="bg-[#f9f9f9] border-2 border-[#e0e0e0]  p-10"
+                className="bg-[#f9f9f9] border-2 border-[#e0e0e0] p-5 sm:p-10"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-[#f3e8ff]  flex items-center justify-center">
+                <div className="flex items-start gap-3 mb-5">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#f3e8ff]  flex items-center justify-center">
                     <ClipboardCheck className="w-6 h-6 text-[#6b21a8]" />
                   </div>
-                  <h2 className="text-3xl font-bold">What to look for</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold leading-tight">What to look for</h2>
                 </div>
                 <div className="space-y-6">
                   {service.whatToLookFor.map((item, i) => (
@@ -655,8 +655,8 @@ export default function ServiceLocationPage({ params }: Props) {
                         <CheckCircle2 className="w-6 h-6 text-[#6b21a8]" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
-                        <p className="text-[#555] leading-relaxed">{item.desc}</p>
+                        <h4 className="font-semibold text-sm sm:text-base mb-1">{item.title}</h4>
+                        <p className="text-sm sm:text-base text-[#555] leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -666,22 +666,22 @@ export default function ServiceLocationPage({ params }: Props) {
               {/* Costs & Timeline */}
               <section
                 id="costs"
-                className="bg-white border-2 border-[#e0e0e0]  p-10"
+                className="bg-white border-2 border-[#e0e0e0] p-5 sm:p-10"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-[#e8f5e9]  flex items-center justify-center">
+                <div className="flex items-start gap-3 mb-5">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f5e9]  flex items-center justify-center">
                     <DollarSign className="w-6 h-6 text-[#15803d]" />
                   </div>
-                  <h2 className="text-3xl font-bold">{noun} costs in {location.name}</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold leading-tight">{noun} costs in {location.name}</h2>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="bg-[#f5f5f5]  p-6">
                     <div className="text-sm text-[#888] mb-2 uppercase ">Typical Cost Range</div>
-                    <div className="text-lg font-semibold text-[#0b8a7a]">{service.costRange}</div>
+                    <div className="text-sm sm:text-base font-semibold text-[#0b8a7a]">{service.costRange}</div>
                   </div>
                   <div className="bg-[#f5f5f5]  p-6">
                     <div className="text-sm text-[#888] mb-2 uppercase ">Timeline</div>
-                    <div className="text-lg font-semibold">{service.timeline}</div>
+                    <div className="text-sm sm:text-base font-semibold">{service.timeline}</div>
                   </div>
                 </div>
 
@@ -690,7 +690,7 @@ export default function ServiceLocationPage({ params }: Props) {
                     <Lightbulb className="w-6 h-6 text-[#b45309] flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold text-[#b45309] mb-2">Pro tip for {location.name}</h4>
-                      <p className="text-[#555] text-sm leading-relaxed">
+                      <p className="text-sm text-[#555] leading-relaxed">
                         {copy?.proTip
                           || (location.borough === 'Manhattan'
                             ? `Manhattan buildings often have strict requirements. Confirm scheduling rules and any COI requirements before booking.`
@@ -704,12 +704,12 @@ export default function ServiceLocationPage({ params }: Props) {
               </section>
 
               {/* FAQ - Collapsible accordion */}
-              <section id="faq" className="bg-[#f5f5f5] border border-[#e0e0e0]  p-10">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 bg-[#e8f0fe]  flex items-center justify-center">
+              <section id="faq" className="bg-[#f5f5f5] border border-[#e0e0e0] p-5 sm:p-10">
+                <div className="flex items-start gap-3 mb-5">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-[#e8f0fe]  flex items-center justify-center">
                     <HelpCircle className="w-6 h-6 text-[#1a56db]" />
                   </div>
-                  <h2 className="text-3xl font-bold">Frequently asked questions</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold leading-tight">Frequently asked questions</h2>
                 </div>
 
                 {/* Show top 5 FAQs expanded */}
@@ -719,8 +719,8 @@ export default function ServiceLocationPage({ params }: Props) {
                       key={`${faq.q}-${i}`}
                       className="pb-6 border-b border-[#eeeeee] last:border-0 last:pb-0"
                     >
-                      <h4 className="font-semibold text-lg mb-3">{faq.q}</h4>
-                      <p className="text-[#555] leading-relaxed">{faq.a}</p>
+                      <h4 className="font-semibold text-sm sm:text-base mb-2">{faq.q}</h4>
+                      <p className="text-sm text-[#555] leading-relaxed">{faq.a}</p>
                     </div>
                   ))}
                 </div>
@@ -739,8 +739,8 @@ export default function ServiceLocationPage({ params }: Props) {
                           key={`${faq.q}-${i}`}
                           className="pb-6 border-b border-[#eeeeee] last:border-0 last:pb-0"
                         >
-                          <h4 className="font-semibold text-lg mb-3">{faq.q}</h4>
-                          <p className="text-[#555] leading-relaxed">{faq.a}</p>
+                          <h4 className="font-semibold text-sm sm:text-base mb-2">{faq.q}</h4>
+                          <p className="text-sm text-[#555] leading-relaxed">{faq.a}</p>
                         </div>
                       ))}
                     </div>
