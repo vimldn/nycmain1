@@ -1003,3 +1003,43 @@ section { max-width: 100vw; overflow-x: hidden; }
     font-size: 10px !important;
   }
 }
+
+/* ===== SEARCH BAR MOBILE FIX ===== */
+
+/* Wrapper: account for shadow so form stays visually centred */
+.bhx-search-wrap {
+  /* On desktop: pad-right 6px so the shadow doesn't clip the page edge */
+  padding-right: 6px;
+}
+
+@media (max-width: 640px) {
+  /* Kill the offset shadow on mobile — it shifts the form right */
+  .bhx-search-form {
+    box-shadow: none !important;
+    border-width: 2px !important;
+  }
+
+  /* Remove the wrapper right-padding on mobile */
+  .bhx-search-wrap {
+    padding-right: 0;
+    /* Stretch edge-to-edge inside hero px-6 padding */
+    width: 100%;
+  }
+
+  /* Input: less horizontal padding so text has room */
+  .bhx-search-input {
+    padding: 16px 12px !important;
+    font-size: 14px !important;
+  }
+
+  /* Button: tighter padding, shorter label */
+  .bhx-search-btn {
+    padding: 16px 14px !important;
+    font-size: 18px !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  /* Show short label, hide long one */
+  .bhx-btn-full { display: none !important; }
+  .bhx-btn-short { display: inline !important; }
+}

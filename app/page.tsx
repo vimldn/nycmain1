@@ -325,7 +325,7 @@ export default function HomePage() {
           </p>
 
           {/* SEARCH BOX — the entire point of the page */}
-          <div className="max-w-3xl mx-auto" style={{ marginBottom: '16px' }}>
+          <div className="bhx-search-wrap max-w-3xl mx-auto" style={{ marginBottom: '16px' }}>
             <form
               onSubmit={handleSubmit}
               ref={dropdownRef}
@@ -336,7 +336,7 @@ export default function HomePage() {
                 background: '#fff',
                 position: 'relative',
               }}
-              className={loading ? 'pointer-events-none' : ''}
+              className={`bhx-search-form${loading ? ' pointer-events-none' : ''}`}
             >
               <input
                 ref={inputRef}
@@ -345,6 +345,7 @@ export default function HomePage() {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Enter any NYC address..."
+                className="bhx-search-input"
                 style={{
                   flex: 1, padding: '20px 24px', border: 'none', outline: 'none',
                   fontFamily: '"Space Mono", monospace',
