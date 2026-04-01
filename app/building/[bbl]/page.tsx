@@ -198,6 +198,8 @@ export default function BuildingPage() {
   const [error, setError] = useState('')
   const [tab, setTab] = useState<Tab>('overview')
   const [range, setRange] = useState<RangeKey>('90d')
+  const [showAllViolations, setShowAllViolations] = useState(false)
+  const [showAllGuides, setShowAllGuides] = useState(false)
   
 
   const pendingScrollRef = React.useRef<{ tab: Tab; sectionId?: string } | null>(null)
@@ -605,26 +607,33 @@ export default function BuildingPage() {
               <h3 className="font-bold mb-4 text-base">Recent violations ({data.violations.recent?.length})</h3>
 
 
-              <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                {data.violations.recent?.length > 0 ? data.violations.recent.map((v: any) => {
+              {(() => {
+                const SHOW = 5
+                const list = data.violations.recent ?? []
+                const visible = showAllViolations ? list : list.slice(0, SHOW)
+                const hidden = list.length - SHOW
+                return (
+                  <>
+                  <div className="space-y-3">
+                {list.length > 0 ? visible.map((v: any) => {
                   return (
-                    <div key={v.id} className="p-4 bg-[#f5f5f5] rounded-xl border border-[#ddd]">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex items-start gap-3 flex-1 min-w-0">
-                          <span className={`px-2 py-1 rounded text-xs font-bold flex-shrink-0 ${v.class === 'C' ? 'violation-c' : v.class === 'B' ? 'violation-b' : v.source === 'DOB' ? 'badge-orange' : 'violation-a'}`}>
+                    <div key={v.id} className="p-3 bg-[#f5f5f5] rounded-xl border border-[#ddd]">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-2 flex-1 min-w-0">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold flex-shrink-0 mt-0.5 ${v.class === 'C' ? 'violation-c' : v.class === 'B' ? 'violation-b' : v.source === 'DOB' ? 'badge-orange' : 'violation-a'}`}>
                             {v.source}{v.class ? ` ${v.class}` : ''}
                           </span>
                           <div className="min-w-0">
-                            <p className="text-sm">{v.description}</p>
-                            <div className="flex gap-3 mt-1 text-xs text-[#666]">
+                            <p className="text-xs text-[#333] line-clamp-2 leading-relaxed">{v.description}</p>
+                            <div className="flex gap-3 mt-1 text-[10px] text-[#888]">
                               <span>{v.category}</span>
                               {v.unit && <span>Unit: {v.unit}</span>}
                             </div>
                           </div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className={`text-xs font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#666]'}`}>{v.status}</span>
-                          <p className="text-xs text-[#888] mt-1">{v.date && new Date(v.date).toLocaleDateString()}</p>
+                          <span className={`text-[10px] font-medium ${v.status === 'Open' ? 'text-red-400' : 'text-[#666]'}`}>{v.status}</span>
+                          <p className="text-[10px] text-[#888] mt-0.5">{v.date && new Date(v.date).toLocaleDateString()}</p>
                         </div>
                       </div>
                       {/* Contextual lead form — only for open violations with a mapped service */}
@@ -658,11 +667,32 @@ export default function BuildingPage() {
                     </div>
                   )
                 }) : (
-                  <div className="text-center py-10 text-[#666]">
-                    <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-2" />No violations
+                  <div className="text-center py-8 text-[#666] text-sm">
+                    <CheckCircle className="w-8 h-8 text-emerald-500 mx-auto mb-2" />No violations on record
                   </div>
                 )}
               </div>
+                  {!showAllViolations && hidden > 0 && (
+                    <button
+                      onClick={() => setShowAllViolations(true)}
+                      className="w-full mt-3 py-2.5 border border-[#ddd] rounded-xl text-xs font-semibold text-[#555] hover:bg-[#f5f5f5] transition flex items-center justify-center gap-2"
+                    >
+                      Show {hidden} more violation{hidden !== 1 ? 's' : ''}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                  )}
+                  {showAllViolations && list.length > SHOW && (
+                    <button
+                      onClick={() => setShowAllViolations(false)}
+                      className="w-full mt-3 py-2.5 border border-[#ddd] rounded-xl text-xs font-semibold text-[#555] hover:bg-[#f5f5f5] transition flex items-center justify-center gap-2"
+                    >
+                      Show less
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                    </button>
+                  )}
+                  </>
+                )
+              })()}
 
             {/* ── Guide Panel — one article card per violation category ── */}
             {data.violations.recent?.length > 0 && (() => {
@@ -690,8 +720,14 @@ export default function BuildingPage() {
               return (
                 <div className="card p-6">
                   <h3 className="font-bold text-base mb-5">Guides for this building</h3>
+                  {(() => {
+                    const SHOW_G = 2
+                    const visibleGuides = showAllGuides ? guides : guides.slice(0, SHOW_G)
+                    const hiddenGuides = guides.length - SHOW_G
+                    return (
+                    <>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {guides.map(({ category, guide }) => (
+                    {visibleGuides.map(({ category, guide }) => (
                       <Link
                         key={category}
                         href={`/blog/${guide.slug}`}
@@ -726,6 +762,27 @@ export default function BuildingPage() {
                       </Link>
                     ))}
                   </div>
+                  {!showAllGuides && hiddenGuides > 0 && (
+                    <button
+                      onClick={() => setShowAllGuides(true)}
+                      className="w-full mt-3 py-2.5 border border-[#ddd] rounded-xl text-xs font-semibold text-[#555] hover:bg-[#f5f5f5] transition flex items-center justify-center gap-2"
+                    >
+                      Show {hiddenGuides} more guide{hiddenGuides !== 1 ? 's' : ''}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                  )}
+                  {showAllGuides && guides.length > SHOW_G && (
+                    <button
+                      onClick={() => setShowAllGuides(false)}
+                      className="w-full mt-3 py-2.5 border border-[#ddd] rounded-xl text-xs font-semibold text-[#555] hover:bg-[#f5f5f5] transition flex items-center justify-center gap-2"
+                    >
+                      Show less
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                    </button>
+                  )}
+                  </>
+                  )
+                  })()}
                 </div>
               )
             })()}
